@@ -39,12 +39,12 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>BAPKM ITS</h1>
-											<p>BIRO ADMINISTRASI PEMBELAJARAN DAN KESEJAHTERAAN MAHASISWA</p>
+											<h1 style="color: white;">BAPKM ITS</h1>
+											<p style="color: #c1c1c1;">BIRO ADMINISTRASI PEMBELAJARAN DAN KESEJAHTERAAN MAHASISWA</p>
 										</header>
 										<!-- <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p> -->
 										<ul class="actions">
-											<li><a href="#" class="button big">Learn More</a></li>
+											<li><a href="#" class="button big">Tentang Kami</a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -53,7 +53,7 @@
 								</section>
 
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Erat lacinia</h2>
 									</header>
@@ -87,12 +87,12 @@
 											</div>
 										</article>
 									</div>
-								</section>
+								</section> -->
 
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Ipsum sed dolor</h2>
+										<h2>Pengumuman</h2>
 									</header>
 									<div class="posts">
 										<article>
@@ -154,7 +154,7 @@
 						<div class="inner">
 
 							<!-- Search -->
-								<section id="search" class="alt">
+								<section id="search" class="alt" style="background-color:#16348e">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
@@ -167,9 +167,13 @@
 									</header>
 									<ul>
 										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
+										<li><a href="generic.html">Tentang Kami</a></li>
+										<li><a href="elements.html">Pengumuman</a></li>
+										<li><a href="elements.html">Integra</a></li>
+										<li><a href="elements.html">Laporan Semester</a></li>
+										<li><a href="elements.html">SMITS</a></li>
+										<li><a href="elements.html">Pencarian SK</a></li>
+										<!-- <li>
 											<span class="opener">Submenu</span>
 											<ul>
 												<li><a href="#">Lorem Dolor</a></li>
@@ -191,12 +195,12 @@
 										</li>
 										<li><a href="#">Maximus Erat</a></li>
 										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<li><a href="#">Amet Lacinia</a></li> -->
 									</ul>
 								</nav>
 
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Ante interdum</h2>
 									</header>
@@ -217,7 +221,7 @@
 									<ul class="actions">
 										<li><a href="#" class="button">More</a></li>
 									</ul>
-								</section>
+								</section> -->
 
 							<!-- Calendar -->
 
@@ -297,7 +301,7 @@
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Get in touch</h2>
+										<h2>Kontak</h2>
 									</header>
 									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 									<ul class="contact">
@@ -310,7 +314,7 @@
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy; BAPKM ITS. All rights reserved.</p>
 								</footer>
 
 						</div>
