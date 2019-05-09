@@ -3206,7 +3206,7 @@ input, select, textarea {
 				}
 
 					#sidebar > .inner > .alt {
-						margin: -1.6666666667em 0 3.3333333333em -1.6666666667em;
+						margin: -1.6666666667em 0 0.5em -1.6666666667em;
 						padding: 1.6666666667em;
 						width: calc(100% + 3.3333333333em);
 					}
