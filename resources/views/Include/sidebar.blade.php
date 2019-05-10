@@ -20,10 +20,10 @@
             <li style="margin-bottom: 1em;"><a href="/article">Pengumuman</a></li>
           </ul>
           <ul >
-            <li style="margin-top: 1em;"><a href="elements.html">Integra</a></li>
-            <li><a href="elements.html">Laporan Semester</a></li>
-            <li><a href="elements.html">SMITS</a></li>
-            <li><a href="elements.html">Pencarian SK</a></li>
+            <li style="margin-top: 1em;"><a href="http://integra.its.ac.id/">Integra</a></li>
+            <li><a href="http://10.103.1.158/i_repot/jurusan.php">Laporan Semester</a></li>
+            <li><a href="http://smits.its.ac.id/">SMITS</a></li>
+            <li><a href="http://10.103.1.10/sk/">Pencarian SK</a></li>
             <!-- <li>
               <span class="opener">Submenu</span>
               <ul>

@@ -37,7 +37,7 @@
                                 <input class="form-control" type="text" placeholder="Search..">
                             </div>
                         </li>
-                        
+
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
@@ -159,7 +159,7 @@
                                                         <th>Description</th>
                                                         <th>Posting Date</th>
                                                         <th>Status</th>
-                                                        <th>Menu</th>
+                                                        <th colspan="3">Menu</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -171,8 +171,13 @@
                                                         <td>{{ $article->tgl_post }}</td>
                                                         <td>{{ $article->status }}</td>
                                                         <td>
-                                                            <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{ $article->id}}"><i class="fas fa-edit fa-fw"></i>Edit</a> {!! Form::open(array('route' => array('article.destroy', $article->id), 'method' =>'delete','style' => 'display:inline'))!!}
+                                                            <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{ $article->id}}"><i class="fas fa-edit fa-fw"></i>Edit</a>
+                                                        </td>
+                                                        <td>
+                                                            {!! Form::open(array('route' => array('article.destroy', $article->id), 'method' =>'delete','style' => 'display:inline'))!!}
                                                             <button class="btn btn-danger"> Delete</button>
+                                                        </td>
+                                                        <td>
                                                             {!! Form::close() !!}
                                                             <button class="btn btn-primary"> View</button>
                                                         </td>
@@ -190,8 +195,8 @@
                                                                 <div class="modal-body">
                                                                     {!!Form::model($article,['method'=>'PATCH', 'action'=>['ArticleController@update',$article->id ]]) !!}
                                                                     <div class="row gtr-uniform" style="justify-content: center;">
-                                                                        <div class="col-11">
-                                                                            <img src="/files/{{ $article->fileImg}}" style="min-width: 300px;min-height: 100px;">
+                                                                        <div class="col-11" style="min-width:27vw;max-width:27vw;">
+                                                                            <img src="/files/{{ $article->fileImg}}" style="min-width: 25vw; max-width: 25vw; max-height: 80vh;">
                                                                         </div>
                                                                         <div class="col-11">
                                                                             {!! Form::label('title', 'Title') !!}

@@ -29,12 +29,9 @@
 
                 <section style="padding-top: 1.25em;">
                     <article>
-                        <section id="banner" style="background-image: url({{ asset('Editorial/images/pic01.jpg') }}) ; padding: 8em 0 8em 0;">
                             <span class="image object">
-      							<img src="/files/{{ $article->fileImg}}" alt="" />
-      						</span>
-                        </section>
-                        <br>
+      							                 <img src="/files/{{ $article->fileImg}}" alt="" />
+      						          </span>
                         <p>{{ $article->description}}</p>
                     </article>
                 </section>
