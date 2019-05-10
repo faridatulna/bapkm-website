@@ -22,7 +22,7 @@ Route::get('/articles', function () {
     return view('article',compact('article'));
 });
 
-Route::post('/article-page/{id}', 'ArticleController@articlepage')->name('article-single-page');
+Route::get('/article-page/{id}', 'ArticleController@articlepage')->name('article-single-page');
 
 Route::get('/about', function () {
     return view('about');
