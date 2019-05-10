@@ -98,11 +98,11 @@
 									<div class="posts">
 										@foreach($article as $article)
 										<article>
-											<a href="/article/{{$article->id}}" class="image"><img src="/files/{{ $article->fileImg}}" alt="" /></a>
+											<a href="/article-page/{{$article->id}}" class="image"><img src="/files/{{ $article->fileImg}}" alt="" /></a>
 											<h3>{{ $article->title}}</h3>
 											<p>{{ $article->description}}</p>
 											<ul class="actions">
-												<li><a href="/article/{{$article->id}}" class="button">More</a></li>
+												<li><a href="/article-page/{{$article->id}}" class="button">More</a></li>
 											</ul>
 										</article>
 										@endforeach

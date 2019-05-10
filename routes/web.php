@@ -17,7 +17,12 @@ Route::get('/', function () {
     return view('welcome',compact('article'));
 })->name('welcome');
 
-Route::get('/article/{id}', 'ArticleController@articlepage')->name('article-page');
+Route::get('/articles', function () {
+	$article = Article::all();
+    return view('article',compact('article'));
+});
+
+Route::post('/article-page/{id}', 'ArticleController@articlepage')->name('article-single-page');
 
 Route::get('/about', function () {
     return view('about');

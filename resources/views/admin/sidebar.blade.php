@@ -28,7 +28,7 @@
                                             <a class="nav-link" href="/admin/article">Tambah Artikel</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="">Lihat Artikel</a>
+                                            <a class="nav-link" href="/articles">Lihat Artikel</a>
                                         </li>
                                     </ul>
                                 </div>

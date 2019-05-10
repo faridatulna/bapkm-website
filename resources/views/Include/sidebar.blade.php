@@ -17,7 +17,7 @@
           <ul style="border-bottom: solid 1px rgba(210, 215, 217, 0.75);">
             <li><a href="/">Homepage</a></li>
             <li><a href="/about">Tentang Kami</a></li>
-            <li style="margin-bottom: 1em;"><a href="/article">Pengumuman</a></li>
+            <li style="margin-bottom: 1em;"><a href="/articles">Pengumuman</a></li>
           </ul>
           <ul >
             <li style="margin-top: 1em;"><a href="http://integra.its.ac.id/">Integra</a></li>
