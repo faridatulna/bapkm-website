@@ -72,25 +72,9 @@
                                 <td>{{ $data->status }}</td>
 
                                 <td>
-                                    <!-- <div class="btn-group dropdown">
-                                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Action
-                                        </button>
-                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" data-toggle="modal" data-target="#edit{{ $data->id}}" href="{{route('admin.article.edit', $data->id)}}"> Edit </a>
-                                            <form action="{{ route('admin.article.destroy', $data->id) }}" class="pull-left" method="post">
-                                                {{ csrf_field() }} {{ method_field('delete') }}
-                                                <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
-                                                </button>
-                                            </form>
-
-                                        </div>
-                                    </div> -->
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{ $data->id}}"><i class="fa fa-pencil"></i></button>
-                                        <form action="{{ route('admin.article.destroy', $data->id) }}" class="pull-left" method="post">
-                                                {{ csrf_field() }} {{ method_field('delete') }}
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#del{{ $data->id}}"><i class="fa fa-trash"></i></button>
                                         </form>
                                         <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></button>
   
@@ -114,7 +98,9 @@
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <div class="col-11" id="imgModal" style="min-width: 25vw; max-width: 20vw; max-height: 200vh;">
+                                                            <div class="col-11" style="min-width: 25vw; max-width: 20vw; max-height: 200vh;">
+                                                                <img width="300" height="300" @if($data->fileImg) src="{{ asset('files/'.$data->fileImg) }}" @endif />
+                                                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                                                                 <!-- <img id="outputEdit" width="100" height="250" style="min-width: 25vw; max-width: 20vw; max-height: 200vh;" @if($data->fileImg) src="{{ asset('files/'.$data->fileImg) }}" @endif >
                                                                 <script>
                                                                     var loadFile = function(event) {
@@ -123,8 +109,7 @@
                                                                     };
                                                                 </script>
                                                                 <input type="file" class="form-control-file" id="fileImg" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" onchange="loadFile(event)" style="margin-top: 20px;">-->
-                                                                <img width="300" height="300" @if($data->fileImg) src="{{ asset('files/'.$data->fileImg) }}" @endif />
-                                                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
@@ -161,7 +146,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                        {!! Form::open(array('route' => array('article.destroy', $data->id), 'method' => 'delete')) !!}
+                                        {!! Form::open(array('route' => array('admin.article.destroy', $data->id), 'method' => 'delete')) !!}
 
                                         Anda Yakin Ingin Menghapus data ??
                                         </div>
