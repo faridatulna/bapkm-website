@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -21,10 +22,18 @@ class AdminController extends Controller
 
     public function index()
     {
-        //
-        $article = Article::all();
         
-        return view('admin.article',compact('article'));
+        $article = Article::get();
+        $user   = User::get();
+        // if(Auth::user()->level == 'user')
+        // {
+        //     $datas = Transaksi::where('status', 'pinjam')
+        //                         ->where('anggota_id', Auth::user()->anggota->id)
+        //                         ->get();
+        // } else {
+        //     $datas = Transaksi::where('status', 'pinjam')->get();
+        // }
+        return view('dashboard', compact('article', 'user'));
     }
 
     /**
@@ -35,6 +44,7 @@ class AdminController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**

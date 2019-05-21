@@ -15,7 +15,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Article::get();
+        
+        return view('article.index',compact('datas'));
     }
 
     /**
@@ -38,7 +40,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -71,7 +73,7 @@ class ArticleController extends Controller
         $article->save();
         // Article::create($request->all());
         //echo $article;
-        return redirect(route('admin.article') . '#table')->with('status', 'Data Berhasil Ditambahkan');
+        return redirect(route('admin.article.index'));
     }
 
     /**
@@ -109,7 +111,7 @@ class ArticleController extends Controller
         //
         $article = Article::findorfail($id);
         $article->update($request->all());
-        return redirect(route('admin.article') . '#table')->with('status','Data Berhasil Diperbarui');
+        return redirect()->back();
     }
 
     /**
@@ -122,6 +124,6 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);       
         $article->delete();
-        return redirect(route('admin.article') . '#table')->with('status','Data Berhasil Dihapus');
+        return redirect()->back();
     }
 }

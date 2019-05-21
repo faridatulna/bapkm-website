@@ -1,84 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link href="{{ asset('admin-page/assets/vendor/fonts/circular-std/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('admin-page/assets/libs/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
-    <style>
-    html,
-    body {
-        height: 100%;
-    }
 
-    body {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-    </style>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ADMIN - LOGIN</title>
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="stylesheet" href="{{asset('adminlte/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{asset('adminlte/vendors/iconfonts/puse-icons-feather/feather.css')}}">
+  <link rel="stylesheet" href="{{asset('adminlte/vendors/css/vendor.bundle.base.css')}}">
+  <link rel="stylesheet" href="{{asset('adminlte/vendors/css/vendor.bundle.addons.css')}}">
+  <link rel="stylesheet" href="{{asset('adminlte/css/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- login page  -->
-    <!-- ============================================================== -->
-    <div class="splash-container">
-        <div class="card ">
-            <div class="card-header text-center"><h1>Admin</h1><span class="splash-description">Please enter your user information.</span></div>
-            <!-- <h1>Login Form</h1> -->
-            <div class="card-body">
-                <form method="post" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="email" name="email" input=old{email} type="email" placeholder="Email" required="">
-                        @if ($errors->has('email'))
-                            @foreach ($errors->get('email') as $error)
-                            <h5 class="alert alert-danger">{{ $error }}</h5>
-                            @endforeach
-                        @endif
+<form method="POST" action="{{ route('login') }}">
+{{ csrf_field() }}
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+      <div class="content-wrapper d-flex align-items-center auth theme-one">
+
+        <div class="row w-100">
+        <div class="col-md-12" style="margin-bottom: 20px;">
+        <h2 style="text-align: center;">ADMIN - LOGIN</h2>
+        </div>
+        <div class="col-lg-4 mx-auto">
+            <div class="auto-form-wrapper">
+
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}"">
+                  <label class="label">Email</label>
+                  <div class="input-group">
+                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="password" name="password" type="password" placeholder="Password">
-                         @if ($errors->has('password'))
-                            @foreach ($errors->get('password') as $error)
-                            <h5 class="alert alert-danger">{{ $error }}</h5>
-                            @endforeach
-                        @endif
+                  </div>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                  <label class="label">Password</label>
+                  <div class="input-group">
+                    <input id="password" type="password" class="form-control" name="password" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
                     </div>
-                    <div class="form-group">
-                        <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-                </form>
-            </div>
-            <div class="card-footer bg-white p-0  ">
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Create An Account</a></div>
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Forgot Password</a>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary submit-btn btn-block" type="submit">Login</button>
                 </div>
             </div>
+            <p class="footer-text text-center" style="margin-top: 20px;color: #308ee0">Copyright © {{date('Y')}} bapkm - All rights reserved.</p>
+          </div>
         </div>
+      </div>
+      <!-- content-wrapper ends Herziwp@gmail.com -->
     </div>
-  
-    <!-- ============================================================== -->
-    <!-- end login page  -->
-    <!-- ============================================================== -->
-    <!-- Optional JavaScript -->
-    <script src="{{ asset('admin-page/assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('admin-page/assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <!-- page-body-wrapper ends -->
+  </div>
+  </form>
+  <script src="{{asset('adminlte/vendors/js/vendor.bundle.base.js')}}"></script>
+  <script src="{{asset('adminlte/vendors/js/vendor.bundle.addons.js')}}"></script>
 </body>
- 
+
 </html>

@@ -8,6 +8,7 @@ class Article extends Model
 {
     protected $primaryKey = 'id';
 	public $incrementing = true;
+    protected $table = 'articles';
 
     protected $fillable = [
     	'id',

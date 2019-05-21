@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $article = Article::get();
+        $user   = User::get();
+        // if(Auth::user()->level == 'user')
+        // {
+        //     $datas = Transaksi::where('status', 'pinjam')
+        //                         ->where('anggota_id', Auth::user()->anggota->id)
+        //                         ->get();
+        // } else {
+        //     $datas = Transaksi::where('status', 'pinjam')->get();
+        // }
+        return view('dashboard', compact('article', 'user'));
     }
 }
