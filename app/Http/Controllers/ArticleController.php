@@ -8,17 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $datas = Article::get();
-        
-        return view('article.index',compact('datas'));
-    }
+   
 
     /**
      * Display the specified resource.
@@ -34,6 +24,29 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except('logout');
+    }
+    
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $datas = Article::get();
+        
+        return view('article.index',compact('datas'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -42,6 +55,7 @@ class ArticleController extends Controller
     {
         return view('article.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -111,6 +125,20 @@ class ArticleController extends Controller
         //
         $article = Article::findorfail($id);
         $article->update($request->all());
+        return redirect()->back();
+    }
+
+    public function posts($id){
+        $article = article::where('id',$id)->firstOrFail();
+
+        if( $article->status == 0 ){
+            $article->status = 1;
+            $article->save();
+        }
+        else{
+            $article->status = 0;
+            $article->save();
+        }
         return redirect()->back();
     }
 

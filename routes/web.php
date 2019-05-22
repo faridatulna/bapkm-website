@@ -34,6 +34,11 @@ Route::prefix('admin')
     ->group(function () {
     	Route::get('/','AdminController@index');
         Route::resource('article','ArticleController');
+        Route::get('/article/posts/{id}', 'ArticleController@posts')->name('article.posts');
+        Route::prefix('article')->name('article.')->group(function () {
+            
+        });
+        
         Route::resource('user','UserController');
     });
 

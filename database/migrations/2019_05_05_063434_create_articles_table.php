@@ -18,10 +18,10 @@ class CreateArticlesTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('title');
-            $table->text('fileImg');
+            $table->string('fileImg')->nullable();
             // $table->text('file');
             $table->longText('description');
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamp('tgl_post');
             $table->timestamps();
         });

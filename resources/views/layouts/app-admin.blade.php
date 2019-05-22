@@ -57,9 +57,9 @@
                 </div>
               </a>
               <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.edit', Auth::user()->id)}}">
-               Edit Profile
+               <i class="fa fa-cog">Edit Profile</i>
               </a>
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign Out
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out">Sign Out</i>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
                 </form>
