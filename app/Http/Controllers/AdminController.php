@@ -22,7 +22,6 @@ class AdminController extends Controller
 
     public function index()
     {
-        
         $article = Article::get();
         $user   = User::get();
         // if(Auth::user()->level == 'user')

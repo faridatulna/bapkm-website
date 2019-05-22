@@ -93,7 +93,7 @@
               </div>
             </div>
 </div>
-
+@if(Auth::user()->role_id == 0)
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -181,4 +181,5 @@
               </div>
             </div>
           </div>
+          @endif
 @endsection

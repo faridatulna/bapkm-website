@@ -35,9 +35,11 @@
             </a>
             <div class="collapse {{ setShow(['article*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                @if(Auth::user()->role_id == '0')
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('admin.user.index')}}">Data User</a>
                 </li>
+                @endif
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['article*']) }}" href="{{route('admin.article.index')}}">Data Article</a>
                 </li>
