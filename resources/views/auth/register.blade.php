@@ -40,7 +40,7 @@ var check = function() {
 
 @section('content')
 
-<form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.user.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 <div class="row">
             <div class="col-md-12 d-flex align-items-stretch grid-margin">
@@ -94,13 +94,13 @@ var check = function() {
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
-                            <label for="level" class="col-md-4 control-label">Level</label>
+                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                            <label for="role_id" class="col-md-4 control-label">Level</label>
                             <div class="col-md-6">
-                            <select class="form-control" name="level" required="">
+                            <select class="form-control" name="role_id" required="">
                                 <option value=""></option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option value="1">Admin-AP</option>
+                                <option value="2">Admin-KM</option>
                             </select>
                             </div>
                         </div>
@@ -130,7 +130,7 @@ var check = function() {
                         <button type="reset" class="btn btn-danger">
                                     Reset
                         </button>
-                        <a href="{{route('user.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('admin.user.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                   </div>
                 </div>

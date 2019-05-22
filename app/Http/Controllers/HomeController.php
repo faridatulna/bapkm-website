@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $article = Article::get();
-        $user   = User::get();
+        $datas   = User::get(); //data user
         // if(Auth::user()->level == 'user')
         // {
         //     $datas = Transaksi::where('status', 'pinjam')
@@ -36,6 +36,6 @@ class HomeController extends Controller
         // } else {
         //     $datas = Transaksi::where('status', 'pinjam')->get();
         // }
-        return view('dashboard', compact('article', 'user'));
+        return view('dashboard', compact('article', 'datas'));
     }
 }

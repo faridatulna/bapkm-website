@@ -17,7 +17,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','auth.admin'])->except('logout');
+        $this->middleware(['auth'])->except('logout');
     }
 
     public function index()

@@ -31,9 +31,12 @@ class LoginController extends Controller
             case 0:
             return '/admin';
                 break;
-            // case 1:
-            // return '/staff';
-            //     break;
+            case 1:
+            return '/admin';
+                 break;
+            case 2:
+            return '/admin';
+                 break;
             default:
                 return '/login';
                 break;

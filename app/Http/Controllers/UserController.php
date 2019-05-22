@@ -25,13 +25,13 @@ class UserController extends Controller
 
     public function index()
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
+        if(Auth::user()->role_id == 0) {
+            $datas = User::get();
+            return view('auth.user', compact('datas'));
         }
-
-        $datas = User::get();
-        return view('auth.user', compact('datas'));
+        Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        return redirect()->to('admin');
+        
     }
 
     /**
@@ -41,11 +41,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
+        if(Auth::user()->role_id == 0) {
+            return view('auth.register');
         }
-        return view('auth.register');
+        Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        return redirect()->to('admin');
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
         if($count>0){
             Session::flash('message', 'Already exist!');
             Session::flash('message_type', 'danger');
-            return redirect()->to('user');
+            return redirect()->to('admin');
         }
 
         $this->validate($request, [
@@ -79,7 +79,7 @@ class UserController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/user", $fileName);
+            $request->file('gambar')->move("adminlte/images/user", $fileName);
             $gambar = $fileName;
         }
 
@@ -87,14 +87,14 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
-            'level' => $request->input('level'),
+            'role_id' => $request->input('role_id'),
             'password' => bcrypt(($request->input('password'))),
             'gambar' => $gambar
         ]);
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect()->route('user.index');
+        return redirect()->route('admin.user.index');
 
     }
 
@@ -106,9 +106,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+        if( (Auth::user()->id != $id) && ( (Auth::user()->level == 1) || (Auth::user()->level == 2) ) ) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
+                return redirect()->to('admin');
         }
 
         $data = User::findOrFail($id);
@@ -124,9 +124,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {   
-        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+        if( (Auth::user()->id != $id) && ((Auth::user()->level == 1) || (Auth::user()->level == 2)) ) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
+                return redirect()->to('admin');
         }
 
         $data = User::findOrFail($id);
@@ -151,14 +151,14 @@ class UserController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/user", $fileName);
+            $request->file('gambar')->move("adminlte/images/user", $fileName);
             $user_data->gambar = $fileName;
         }
 
         $user_data->name = $request->input('name');
         $user_data->email = $request->input('email');
         if($request->input('password')) {
-        $user_data->level = $request->input('level');
+        $user_data->role_id = $request->input('role_id');
         }
 
         if($request->input('password')) {
@@ -170,7 +170,7 @@ class UserController extends Controller
 
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
-        return redirect()->to('user');
+        return redirect()->to('admin');
     }
 
     /**
@@ -181,7 +181,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->id != $id) {
+        if(Auth::user()->role_id==0 && Auth::user()->id != $id) {
             $user_data = User::findOrFail($id);
             $user_data->delete();
             Session::flash('message', 'Berhasil dihapus!');
@@ -190,6 +190,6 @@ class UserController extends Controller
             Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
             Session::flash('message_type', 'danger');
         }
-        return redirect()->to('user');
+        return redirect()->to('admin');
     }
 }

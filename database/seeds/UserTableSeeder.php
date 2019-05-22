@@ -13,14 +13,30 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        foreach (range(1,5) as $index) {
-            DB::table('users')->insert([
-                'name' => $faker->name,
-                'role_id' => $faker->numberBetween(0,1),
-                'email' => $faker->email,
-                'password' => Hash::make('123'),
-            ]);
-        }
+        \App\User::insert([
+            [
+              'id'              => 1,
+              'name'            => 'Super Admin',
+              'username'        => 'superadmin',
+              'email'           => 'superadmin@admin.com',
+              // 'alamat'          => NULL,
+              // 'notelp'          => NULL,
+              'password'        => bcrypt('superadmin123'),
+              'gambar'          => NULL,
+              'role_id'           => 0, //superadmin
+              'remember_token'  => NULL,
+              'created_at'      => \Carbon\Carbon::now(),
+              'updated_at'      => \Carbon\Carbon::now()
+            ]
+        ]);
+        // $faker = Faker::create();
+        // foreach (range(1,5) as $index) {
+        //     DB::table('users')->insert([
+        //         'name' => $faker->name,
+        //         'role_id' => $faker->numberBetween(0,1),
+        //         'email' => $faker->email,
+        //         'password' => Hash::make('123'),
+        //     ]);
+        // }
     }
 }

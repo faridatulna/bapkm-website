@@ -14,7 +14,7 @@
 <div class="row">
 
   <div class="col-lg-2">
-    <a href="{{ route('user.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah User</a>
+    <a href="{{ route('admin.user.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah User</a>
   </div>
     <div class="col-lg-12">
                   @if (Session::has('message'))
@@ -55,9 +55,9 @@
                         <tr>
                           <td class="py-1">
                           @if($data->gambar)
-                            <img src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img src="{{url('adminlte/images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img src="{{url('adminlte/images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
 
                           @endif
 
@@ -65,7 +65,7 @@
                             {{$data->name}}
                           </td>
                           <td>
-                          <a href="{{route('user.show', $data->id)}}"> 
+                          <a href="{{route('admin.user.show', $data->id)}}"> 
                           {{$data->username}}
                           </a>
                           </td>
@@ -81,8 +81,8 @@
                             Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"  method="post">
+                            <a class="dropdown-item" href="{{route('admin.user.edit', $data->id)}}"> Edit </a>
+                            <form action="{{ route('admin.user.destroy', $data->id) }}" class="pull-left"  method="post">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete

@@ -28,7 +28,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ setActive(['article*']) }}" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link {{ setActive(['article*','user*']) }}" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
@@ -36,9 +36,11 @@
             <div class="collapse {{ setShow(['article*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
+                  <a class="nav-link {{ setActive(['user*']) }}" href="{{route('admin.user.index')}}">Data User</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link {{ setActive(['article*']) }}" href="{{route('admin.article.index')}}">Data Article</a>
                 </li>
-                
               </ul>
             </div>
           </li>
