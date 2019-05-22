@@ -59,13 +59,10 @@
               <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.edit', Auth::user()->id)}}">
                Edit Profile
               </a>
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                 Sign Out
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign Out
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
               </a>
             </div>
           </li>
@@ -107,7 +104,7 @@
   <script src="{{asset('adminlte/js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('adminlte/js/sweetalert2.all.js')}}"></script>
   <script src="{{asset('adminlte/js/select2.min.js')}}"></script>
-
+  @include('sweetalert::alert')
   @section('js')
 
   @show
