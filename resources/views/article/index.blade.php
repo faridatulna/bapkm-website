@@ -179,9 +179,9 @@
 
                                         <div class="modal-footer" style="margin-right: 2;">
                                             {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary btn', 'data-dismiss' => 'modal' ))!!}
-                                            @if($data->status == 0) 
+                                            @if($data->status == 0 && Auth::user()->role_id == 0)
                                                 <a href="article/posts/{{$data->id}}" class="btn btn-success"><i class="fa fa-eye"></i>Post</a>
-                                            @else
+                                            @elseif($data->status == 1 && Auth::user()->role_id == 0)
                                                 <a href="article/posts/{{$data->id}}" class="btn btn-warning"><i class="fa fa-eye-slash"></i>Hide Post</a>
                                             @endif 
                                             {!! Form::close()!!}
