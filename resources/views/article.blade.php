@@ -32,12 +32,14 @@
                 					<div class="posts">
 										@foreach($article as $article)
 										<article>
+											@if($article->status == 1)
 											<a href="/article-page/{{$article->id}}" class="image"><img src="/files/{{ $article->fileImg}}" alt="" /></a>
 											<h3>{{ $article->title}}</h3>
 											<p>{{ $article->description}}</p>
 											<ul class="actions">
 												<li><a href="/article-page/{{$article->id}}" class="button">More</a></li>
 											</ul>
+											@endif
 										</article>
 										@endforeach
 									</div>
