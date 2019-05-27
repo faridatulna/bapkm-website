@@ -23,6 +23,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "semantic-ui-calendar": "0.0.8",
         "startbootstrap-sb-admin-2": "^4.0.3"
     }
 }
