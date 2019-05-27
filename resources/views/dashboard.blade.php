@@ -93,7 +93,7 @@
               </div>
             </div>
 </div>
-@if(Auth::user()->role_id == 0)
+
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -119,9 +119,11 @@
                           <th>
                             Created At
                           </th>
+                          @if(Auth::user()->role_id == 0)
                           <th>
                             Action
                           </th>
+                          @endif
                         </tr>
                       </thead>
                       <tbody>
@@ -139,7 +141,9 @@
                             {{$data->name}}
                           </td>
                           <td>
+                          @if(Auth::user()->role_id == 0)
                           <a href="{{route('admin.user.show', $data->id)}}"> 
+                          @endif
                           {{$data->username}}
                           </a>
                           </td>
@@ -155,6 +159,7 @@
                           <td>
                             {{$data->created_at}}
                           </td>
+                          @if(Auth::user()->role_id == 0)
                           <td>
                            <div class="btn-group dropdown">
                           <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -171,6 +176,7 @@
                           </div>
                         </div>
                           </td>
+                          @endif
                         </tr>
                       @endforeach
                       </tbody>
@@ -181,5 +187,5 @@
               </div>
             </div>
           </div>
-          @endif
+          
 @endsection

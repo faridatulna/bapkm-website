@@ -92,12 +92,20 @@
                                         </div>
                                         @endif
 
+                                        <!-- <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                            <label for="email" class="col-md-4 control-label">Current Password</label>
+                                                <div class="col-md-8">
+                                                    <input id="password" type="password" class="form-control" name="password" value="{{ $data->password }}" required readonly=""> @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif
+                                                </div>
+                                        </div> -->
+
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <label for="password" class="col-md-4 control-label">Password</label>
+                                            <label for="password" class="col-md-4 control-label">New Password</label>
                                                 <div class="col-md-8">
                                                     <input id="password" type="password" class="form-control" onkeyup='check();' name="password" @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif
                                                 </div>
                                         </div>
+                                        <br>
                                         <div class="form-group">
                                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                                                 <div class="col-md-8">
