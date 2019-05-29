@@ -13,8 +13,12 @@
 use App\Article;
 
 Route::get('/', function () {
-	$article = Article::all();
-    return view('welcome',compact('article'));
+    return view('welcome1');
+});
+
+Route::get('/b', function () {
+ $article = Article::all();
+   return view('welcome',compact('article'));
 })->name('welcome');
 
 Route::get('/articles', function () {
@@ -36,18 +40,11 @@ Route::prefix('admin')
         Route::resource('article','ArticleController');
         Route::get('/article/posts/{id}', 'ArticleController@posts')->name('article.posts');
         Route::prefix('article')->name('article.')->group(function () {
-            
+
         });
         
         Route::resource('link','linksController');
         Route::resource('user','UserController');
     });
 
-
-// Route::get('/admin', 'ArticleController@index')->name('article.index')->middleware(['auth','auth.admin']);
-
-// //resources
-// // Route::resource('article','ArticleController');
-
 Auth::routes();
-
