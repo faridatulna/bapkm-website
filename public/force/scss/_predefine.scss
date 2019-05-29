@@ -23,8 +23,8 @@ body{
     font-weight: normal;
     color: $pfont;
 }
-h1, h2, h3, h4, h5, h6{ 
-    font-family: $rob; 
+h1, h2, h3, h4, h5, h6{
+    font-family: $rob;
     font-weight: 500;
 }
 
@@ -88,11 +88,10 @@ button:focus{
 
 .main_title2{
 	background: #f9f9ff;
-	border-left: 3px solid $baseColor;
-	margin-bottom: 30px;
+	border-left: 3px solid #F4BA23;
 	h2{
 		color: $dip;
-		font-size: 18px; 
+		font-size: 18px;
 		font-family: $rob;
 		font-weight: 500;
 		line-height: 40px;
@@ -103,6 +102,3 @@ button:focus{
 
 /* End Main Title Area css
 ============================================================================================ */
-
-
-

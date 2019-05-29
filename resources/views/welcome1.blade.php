@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ asset('force/css/style2.css') }}">
         <link rel="stylesheet" href="{{ asset('force/css/responsive.css') }}">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    		<link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
@@ -47,18 +48,18 @@
                                 <div class="login-search-area d-flex align-items-center">
                                     <!-- Login -->
                                     <div class="login d-flex">
-                                      <div class="ui dropdown">
-                                        <a style="margin-right: 1vw;" href="#">ID<i style="margin-left: 0.3vw;"class="fa fa-angle-down"></i></a>
-                                        <div class="menu">
+                                      <div class="ui dropdown item">
+                                        <a style="margin-right: 1vw;">ID<i style="margin-left: 0.3vw;"class="fa fa-angle-down"></i></a>
+                                        <div class=" ui inverted yellow menu">
                                           <div class="item">
-                                             Bahasa Indonesia
+                                             <a href="#">Bahasa Indonesia</a>
                                           </div>
                                           <div class="item">
-                                             English
+                                             <a href="#">English</a>
                                           </div>
                                         </div>
                                       </div>
-                                        <a href="#">myITS</a>
+                                        <a href="integra.its.ac.id">myITS</a>
                                     </div>
                                     <!-- Search Form -->
                                     <div class="search-form">
@@ -102,94 +103,31 @@
                                 <!-- Nav Start -->
                                 <div class="classynav">
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="#">Pages</a>
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="catagories-post.html">Catagories</a></li>
-                                                <li><a href="single-post.html">Single Articles</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="#">Dropdown</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="index.html">Home</a></li>
-                                                        <li><a href="catagories-post.html">Catagories</a></li>
-                                                        <li><a href="single-post.html">Single Articles</a></li>
-                                                        <li><a href="about.html">About Us</a></li>
-                                                        <li><a href="contact.html">Contact</a></li>
-                                                    </ul>
+                                        <li class="nav-link"><a href="#"><strong>Home</strong></a></li>
+                                        <li class="nav-link"><a href="#"><strong>Tentang Kami</strong></a>
+                                            <div class="megamenu">
+                                                <ul class="single-mega cn-col-4">
+                                                  <li class="title">Administrasi Pembelajaran</li>
+                                                  <li><a href="index.html" class="sub-link">Visi</a></li>
+                                                  <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
+                                                  <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                                </ul>
+                                                <ul class="single-mega cn-col-4">
+                                                  <li class="title">Kesejahteraan Mahasiswa</li>
+                                                  <li class="sub-link"><a href="index.html">Visi</a></li>
+                                                  <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
+                                                  <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-link"><a href="#"><strong>Pengumuman</strong></a>
+                                            <ul class="dropdown" style="margin-top:5px;">
+                                                <li><a href="index.html">Umum</a></li>
+                                                <li><a href="catagories-post.html">Beasiswa</a></li>
+                                                <li><a href="single-post.html">UKM</a></li>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Mega Menu</a>
-                                            <div class="megamenu">
-                                                <ul class="single-mega cn-col-4">
-                                                    <li class="title">Catagories</li>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="catagories-post.html">Catagories</a></li>
-                                                    <li><a href="single-post.html">Single Articles</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                </ul>
-                                                <ul class="single-mega cn-col-4">
-                                                    <li class="title">Catagories</li>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="catagories-post.html">Catagories</a></li>
-                                                    <li><a href="single-post.html">Single Articles</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                </ul>
-                                                <ul class="single-mega cn-col-4">
-                                                    <li class="title">Catagories</li>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="catagories-post.html">Catagories</a></li>
-                                                    <li><a href="single-post.html">Single Articles</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                </ul>
-                                                <div class="single-mega cn-col-4">
-                                                    <!-- Single Featured Post -->
-                                                    <div class="single-blog-post small-featured-post d-flex">
-                                                        <div class="post-thumb">
-                                                            <a href="#"><img src="img/bg-img/23.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-data">
-                                                            <a href="#" class="post-catagory">Travel</a>
-                                                            <div class="post-meta">
-                                                                <a href="#" class="post-title">
-                                                                    <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                                                </a>
-                                                                <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Single Featured Post -->
-                                                    <div class="single-blog-post small-featured-post d-flex">
-                                                        <div class="post-thumb">
-                                                            <a href="#"><img src="img/bg-img/24.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="post-data">
-                                                            <a href="#" class="post-catagory">Politics</a>
-                                                            <div class="post-meta">
-                                                                <a href="#" class="post-title">
-                                                                    <h6>Augue semper congue sit amet ac sapien. Fusce consequat.</h6>
-                                                                </a>
-                                                                <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li><a href="#">Politics</a></li>
-                                        <li><a href="#">Breaking News</a></li>
-                                        <li><a href="#">Business</a></li>
-                                        <li><a href="#">Technology</a></li>
-                                        <li><a href="#">Health</a></li>
-                                        <li><a href="#">Travel</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>
                                 <!-- Nav End -->
@@ -326,73 +264,86 @@
         		<div class="row">
         			<div class="col-lg-8">
         				<div class="main_title2">
-							<h2>Latest News</h2>
-						</div>
+							    <h2>Pengumuman Terakhir</h2>
+						    </div>
         				<div class="latest_news">
         					<div class="media">
-        						<div class="d-flex">
+        						<!-- <div class="d-flex">
         							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
-        						</div>
+        						</div> -->
         						<div class="media-body">
         							<div class="choice_text">
-										<div class="date">
-											<a class="gad_btn" href="#">Gadgets</a>
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
-										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
-									</div>
+    										<div class="date">
+    											<a class="gad_btn date-info" href="#">BEASISWA</a>
+    											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+    										</div>
+    										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
+    										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
+									    </div>
         						</div>
         					</div>
         					<div class="media">
-        						<div class="d-flex">
+        						<!-- <div class="d-flex">
         							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-2.jpg') }}" alt="">
-        						</div>
+        						</div> -->
         						<div class="media-body">
         							<div class="choice_text">
-										<div class="date">
-											<a class="gad_btn" href="#">Gadgets</a>
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
-										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
-									</div>
+										    <div class="date">
+											    <a class="gad_btn" href="#">UMUM</a>
+											    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+										    </div>
+										    <a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
+										    <p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
+									    </div>
         						</div>
         					</div>
+                  <div class="view-more" align="right">
+                    <button class="ui right labeled icon button">
+                      <i class="right arrow icon"></i>
+                      View More
+                    </button>
+                  </div>
+        				</div>
+
+                <div class="main_title2">
+							    <h2>Beasiswa</h2>
+						    </div>
+
+        				<div class="latest_news">
         					<div class="media">
-        						<div class="d-flex">
-        							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-3.jpg') }}" alt="">
-        						</div>
+        						<!-- <div class="d-flex">
+        							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
+        						</div> -->
         						<div class="media-body">
         							<div class="choice_text">
-										<div class="date">
-											<a class="gad_btn" href="#">Gadgets</a>
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
-										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
-									</div>
+    										<div class="date">
+    											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+    										</div>
+      										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
+      										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
+									    </div>
         						</div>
         					</div>
-        					<div class="media">
-        						<div class="d-flex">
-        							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-4.jpg') }}" alt="">
-        						</div>
-        						<div class="media-body">
-        							<div class="choice_text">
-										<div class="date">
-											<a class="gad_btn" href="#">Gadgets</a>
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
-										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
-									</div>
-        						</div>
+        				<div class="media">
+        						<!-- <div class="d-flex">
+        							<img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-2.jpg') }}" alt="">
+        						</div> -->
+        					<div class="media-body">
+        						<div class="choice_text">
+  										<div class="date">
+  											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+  										</div>
+    										<a href="news-details.html"><h4>DFacts Why Inkjet Printing Is Very Appealing Compared To Ordinary Printing</h4></a>
+    										<p>Having a baby can be a nerve wracking experience for new parents not the nine months of pregnancy, I’m talking about</p>
+									  </div>
         					</div>
+        				</div>
+                  <div class="view-more" align="right">
+                    <button class="ui right labeled icon button">
+                      <i class="right arrow icon"></i>
+                      View More
+                    </button>
+                  </div>
         				</div>
         				<!-- <div class="tavel_food mt-100">
         					<div class="main_title2">
@@ -644,24 +595,65 @@
        								</div>
        							</div>
         					</aside> -->
-        					<aside class="r_widgets add_widgets text-center">
-                    <h3>Inline</h3>
-  <div class="ui calendar" id="example14">
-  </div>
-  <br/>
-        					</aside>
-        					<aside class="r_widgets social_widgets">
-        						<div class="main_title2">
-        							<h2>Social Networks</h2>
+        					<aside class="r_widgets add_widgets">
+                    <div class="main_title2">
+        							<h2>Agenda</h2>
         						</div>
-        						<ul class="list">
-        							<li><a href="#"><i class="fa fa-facebook"></i> 983Likes <span>Like our page</span></a></li>
-        							<li><a href="#"><i class="fa fa-twitter"></i> 983Followers <span>Follow Us</span></a></li>
-        							<li><a href="#"><i class="fa fa-youtube-play"></i> 9835Subscriber <span>Subscribe</span></a></li>
-        							<li><a href="#"><i class="fa fa-vimeo"></i> 59874Subscriber <span>Subscribe</span></a></li>
-        							<li><a href="#"><i class="fa fa-pinterest"></i> 36958Followers <span>Follow Us</span></a></li>
-        							<li><a href="#"><i class="fa fa-rss"></i>RSS Subscribe <span>Subscribe</span></a></li>
-        						</ul>
+                    <div  class="content_calendar ">
+                      <div class="detail-calendar-grey">
+                        <div class="calendar-grey">
+                            <h1 style="margin-top:10px;margin-bottom:0;">30</h1>
+                            <h3 style="margin-top:0;">Jan</h3>
+                        </div>
+                        <div class="calendar-contain-grey">
+                            <div class="calendar-contain-description-grey">
+                                <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">AUN-QA Assesment</a>
+                                <br>
+                                <small><i class="fa fa-clock-o"></i> &nbsp;08:00 - 00:00 WIB </small>
+                                <br>
+                                <small><i class="fa fa-map-marker"></i> &nbsp; Belum ditentukan</small>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="detail-calendar-grey">
+                        <div class="calendar-grey">
+                            <h1 style="margin-top:10px;margin-bottom:0;">30</h1>
+                            <h3 style="margin-top:0;">Jan</h3>
+                        </div>
+                        <div class="calendar-contain-grey">
+                            <div class="calendar-contain-description-grey">
+                                <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">AUN-QA Assesment</a>
+                                <br>
+                                <small><i class="fa fa-clock-o"></i> &nbsp;08:00 - 00:00 WIB </small>
+                                <br>
+                                <small><i class="fa fa-map-marker"></i> &nbsp; Belum ditentukan</small>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="main_title2">
+
+        						</div>
+
+        					</aside>
+
+
+        					<!-- <aside class="r_widgets">
+                    <div class="main_title2">
+        							<h2>Quick Links</h2>
+        						</div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-6">
+                            <ul class="list">
+                                <li><a href="http://integra.its.ac.id" class="ql">Integra</a></li>
+                                <li><a href="http://10.103.1.158/i_repot/jurusan.php" class="ql">Laporan Semester</a></li>
+                                <li><a href="http://smits.its.ac.id/" class="ql">SMITS</a></li>
+                                <li><a href="http://10.103.1.10/sk/" class="ql">Pencarian SK</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                  </aside> -->
         					<!-- </aside>
         					<aside class="r_widgets newsleter_widgets">
         						<div class="main_title2">
@@ -890,85 +882,35 @@
                 <div class="row f_widgets_inner">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-footer-widget ab_widgets">
-                           <img src="{{ asset('force/img/footer-logo.png') }}" alt="">
-                           <p>Technology and gadgets Adapter (MPA) is our favorite iPhone solution, since it lets you use the headphones you’re most comfortable with. It has an iPhone-compatible jack at one end and a microphone module with an Answer/End/Pause button and a female 3.5mm audio jack for connectingheadphones</p>
+                           <h2 style="color: white; padding:0;">BAPKM ITS</h2>
+                           <hr style="border: 1.5px solid #F4BA23; width: 40%;">
+                           <p style="color: #f4f4f4;">Technology and gadgets Adapter (MPA) is our favorite iPhone solution, since it lets you use the headphones you’re most comfortable with. It has an iPhone-compatible jack at one end and a microphone module with an Answer/End/Pause button and a female 3.5mm audio jack for connectingheadphones</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-footer-widget">
                             <div class="f_title">
-                            	<h3>Quick Links</h3>
+                            	<h3>Kontak Kami</h3>
                             </div>
                             <div class="row">
-                                <div class="col-6">
-                                    <ul class="list">
-                                        <li><a href="#">Sitemaps</a></li>
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Archives</a></li>
-                                        <li><a href="#">Advertise</a></li>
-                                        <li><a href="#">Ad Choice</a></li>
-                                    </ul>
+                                <div class="col-10">
+                                  <ul class="contact">
+                                    <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
+                                    <li><i class="ficon fa fa-phone"></i>(031) 5923619</li>
+                                    <li><i class="ficon fa fa-home"></i>Jalan Raya ITS, Kampus ITS Sukolilo, Surabaya 60117</li>
+                                  </ul>
                                 </div>
-                                <div class="col-6">
-                                    <ul class="list">
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Terms of Use</a></li>
-                                        <li><a href="#">Help Center</a></li>
-                                        <li><a href="#">Newsletters</a></li>
-                                        <li><a href="#">Feedback</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-footer-widget m_news_widgets">
-                            <div class="f_title">
-                            	<h3>Most Viewed News</h3>
-                            </div>
-                            <div class="m_news">
-                            	<div class="media">
-                            		<div class="d-flex">
-                            			<img src="{{ asset('force/img/product/product-13.jpg') }}" alt="">
-                            		</div>
-                            		<div class="media-body">
-                            			<a href="#"><h4>Converter Ipod Video Taking Portable Video Viewing To A Whole Level</h4></a>
-                            			<div class="date">
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-                            		</div>
-                            	</div>
-                            	<div class="media">
-                            		<div class="d-flex">
-                            			<img src="{{ asset('force/img/product/product-14.jpg') }}" alt="">
-                            		</div>
-                            		<div class="media-body">
-                            			<a href="#"><h4>Sony Laptops Are Still Part Of The Sony Family</h4></a>
-                            			<div class="date">
-											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-										</div>
-                            		</div>
-                            	</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                   	<div class="col-lg-12">
+                   	<!-- <div class="col-lg-12">
                    		<div class="f_boder"></div>
-                   	</div>
-                    <p class="col-lg-8 col-md-8 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                   	</div> -->
+                    <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true" style="color: #F4BA23;"></i> by <a href="https://colorlib.com" target="_blank" style="color: #F4BA23;">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    <div class="col-lg-4 col-md-4 footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-rss"></i></a>
-                    </div>
                 </div>
             </div>
         </footer>
@@ -1001,68 +943,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="{{ asset('force/js/plugins/plugins.js') }}"></script>
         <!-- Active js -->
         <script src="{{ asset('force/js/active.js') }}"></script>
-        <script>
-                  $('#example1').calendar();
-          $('#example2').calendar({
-          type: 'date'
-          });
-          $('#example3').calendar({
-          type: 'time'
-          });
-          $('#rangestart').calendar({
-          type: 'date',
-          endCalendar: $('#rangeend')
-          });
-          $('#rangeend').calendar({
-          type: 'date',
-          startCalendar: $('#rangestart')
-          });
-          $('#example4').calendar({
-          startMode: 'year'
-          });
-          $('#example5').calendar();
-          $('#example6').calendar({
-          ampm: false,
-          type: 'time'
-          });
-          $('#example7').calendar({
-          type: 'month'
-          });
-          $('#example8').calendar({
-          type: 'year'
-          });
-          $('#example9').calendar();
-          $('#example10').calendar({
-          on: 'hover'
-          });
-          var today = new Date();
-          $('#example11').calendar({
-          minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 5),
-          maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 5)
-          });
-          $('#example12').calendar({
-          monthFirst: false
-          });
-          $('#example13').calendar({
-          monthFirst: false,
-          formatter: {
-            date: function (date, settings) {
-              if (!date) return '';
-              var day = date.getDate();
-              var month = date.getMonth() + 1;
-              var year = date.getFullYear();
-              return day + '/' + month + '/' + year;
-            }
-          }
-          });
-          $('#example14').calendar({
-          inline: true
-          });
-          $('#example15').calendar();
-        </script>
         <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
         <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
-        <script type="text/javascript" src="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.js') }}"></script>
         <script>
         $('.ui.dropdown')
 .dropdown();
