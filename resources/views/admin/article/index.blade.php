@@ -47,7 +47,7 @@
         <div class="card">
 
             <div class="card-body">
-                <h4 class="card-title">Data Anggota</h4>
+                <h4 class="card-title">Data Article</h4>
 
                 <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -107,15 +107,6 @@
                                                             <div class="col-11" style="min-width: 25vw; max-width: 20vw; max-height: 200vh;">
                                                                 <img width="300" height="300" @if($data->fileImg) src="{{ asset('files/'.$data->fileImg) }}" @endif />
                                                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" >
-                                                                
-                                                                <!-- <img id="outputEdit" width="100" height="250" style="min-width: 25vw; max-width: 20vw; max-height: 200vh;" @if($data->fileImg) src="{{ asset('files/'.$data->fileImg) }}" @endif >
-                                                                <script>
-                                                                    var loadFile = function(event) {
-                                                                        var output = document.getElementById('outputEdit');
-                                                                        output.src = URL.createObjectURL(event.target.files[0]);
-                                                                    };
-                                                                </script>
-                                                                <input type="file" class="form-control-file" id="fileImg" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" onchange="loadFile(event)" style="margin-top: 20px;">-->
                                                                 
                                                             </div>
                                                         </div>

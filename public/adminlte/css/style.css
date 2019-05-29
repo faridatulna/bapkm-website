@@ -15945,6 +15945,12 @@ select.form-control {
   line-height: 1;
   vertical-align: top; }
 
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+  margin-left: 0.5vw;
+}
+
 .form-group.has-danger .form-control {
   border-color: #e65251; }
 

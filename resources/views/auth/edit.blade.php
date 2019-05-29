@@ -58,14 +58,14 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        <div class="form-group required{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="col-md-4 control-label">Name</label>
                                                 <div class="col-md-8">
                                                     <input id="name" type="text" class="form-control" name="name" value="{{ $data->name }}" required autofocus> @if ($errors->has('name'))
                                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span> @endif
                                                 </div>
                                         </div>
-                                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                        <div class="form-group required{{ $errors->has('username') ? ' has-error' : '' }}">
                                             <label for="username" class="col-md-4 control-label">Username</label>
                                                 <div class="col-md-8">
                                                     <input id="username" type="text" class="form-control" name="username" value="{{ $data->username }}" required readonly=""> @if ($errors->has('username'))
@@ -73,7 +73,7 @@
                                                 </div>
                                         </div>
 
-                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <div class="form-group required{{ $errors->has('email') ? ' has-error' : '' }}">
                                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                                                 <div class="col-md-8">
                                                     <input id="email" type="email" class="form-control" name="email" value="{{ $data->email }}" required readonly=""> @if ($errors->has('email'))<span class="help-block"><strong>{{ $errors->first('email') }}</strong></span> @endif
@@ -81,7 +81,7 @@
                                         </div>
 
                                         @if(Auth::user()->role_id == 0)
-                                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                                        <div class="form-group required{{ $errors->has('role_id') ? ' has-error' : '' }}">
                                             <label for="role_id" class="col-md-4 control-label">Level</label>
                                                 <div class="col-md-8">
                                                     <select class="form-control" name="role_id" required="">
@@ -92,14 +92,14 @@
                                         </div>
                                         @endif
 
-                                        <!-- <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                             <label for="email" class="col-md-4 control-label">Current Password</label>
                                                 <div class="col-md-8">
-                                                    <input id="password" type="password" class="form-control" name="password" value="{{ $data->password }}" required readonly=""> @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif
+                                                    <input id="password" type="text" class="form-control" name="password" value="{{ $data->pass_seen }}" required readonly=""> @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif
                                                 </div>
-                                        </div> -->
+                                        </div>
 
-                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <div class="form-group required{{ $errors->has('password') ? ' has-error' : '' }}">
                                             <label for="password" class="col-md-4 control-label">New Password</label>
                                                 <div class="col-md-8">
                                                     <input id="password" type="password" class="form-control" onkeyup='check();' name="password" @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif

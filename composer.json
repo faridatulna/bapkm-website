@@ -14,6 +14,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8.15",
         "realrashid/sweet-alert": "^1.1",
+        "tio/laravel": "^1.6",
         "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {

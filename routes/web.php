@@ -21,7 +21,7 @@ Route::get('/articles', function () {
 	$article = Article::all();
     return view('article',compact('article'));
 });
-Route::get('/article-page/{id}', 'ArticleController@articlepage')->name('article-single-page');
+Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
 Route::get('/about', function () {
     return view('about');
 });
@@ -39,6 +39,7 @@ Route::prefix('admin')
             
         });
         
+        Route::resource('link','linksController');
         Route::resource('user','UserController');
     });
 

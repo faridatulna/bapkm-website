@@ -4,21 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Links extends Model
 {
     protected $primaryKey = 'id';
 	public $incrementing = true;
-    protected $table = 'articles';
+    protected $table = 'links';
 
     protected $fillable = [
     	'id',
         'title',
-        'fileImg',
-        'url',
-        'filePdf',
-        'description',
-        'jenis',
-        'tgl_post'
+        'url'
     ];
-
 }

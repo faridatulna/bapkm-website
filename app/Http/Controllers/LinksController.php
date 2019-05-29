@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
-use App\User;
-use Illuminate\Support\Facades\Auth;
+use App\Links;
 
-class AdminController extends Controller
+class LinksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +18,16 @@ class AdminController extends Controller
         $this->middleware(['auth'])->except('logout');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $article = Article::get();
-        $user   = User::get();
-        return view('admin.dashboard', compact('article', 'user'));
+        $datas = Links::get();
+        
+        return view('admin.link.index',compact('datas'));
     }
 
     /**
@@ -35,7 +38,6 @@ class AdminController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**

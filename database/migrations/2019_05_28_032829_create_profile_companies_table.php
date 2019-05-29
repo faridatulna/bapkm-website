@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
+class CreateProfileCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('profile_companies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-
+            $table->longText('text');
             $table->string('fileImg')->nullable();
-            $table->string('filePdf')->nullable();
-            $table->string('url')->nullable();
-            
-            $table->longText('description')->nullable();
-            $table->integer('jenis'); // 0=umum , 1=beasiswa , 2=kemahasiswaan
-            $table->timestamp('tgl_post');
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('profile_companies');
     }
 }

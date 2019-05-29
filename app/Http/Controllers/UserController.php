@@ -89,6 +89,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'role_id' => $request->input('role_id'),
             'password' => bcrypt(($request->input('password'))),
+            'pass_seen' =>($request->input('password')),
             'gambar' => $gambar
         ]);
 
@@ -162,12 +163,12 @@ class UserController extends Controller
         $user_data->name = $request->input('name');
         $user_data->email = $request->input('email');
         if($request->input('password')) {
-        $user_data->role_id = $request->input('role_id');
+            $user_data->role_id = $request->input('role_id');
         }
 
         if($request->input('password')) {
             $user_data->password= bcrypt(($request->input('password')));
-        
+            $user_data->pass_seen=($request->input('password'));
         }
 
         $user_data->update();

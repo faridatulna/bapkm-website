@@ -8,21 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-   
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function articlepage($id)
-    {
-        //
-        $article = Article::findorfail($id);
-        return view('article-single',compact('article'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +28,7 @@ class ArticleController extends Controller
     {
         $datas = Article::get();
         
-        return view('article.index',compact('datas'));
+        return view('admin.article.index',compact('datas'));
     }
 
     /**
@@ -53,7 +38,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        return view('admin.article.create');
     }
 
 
@@ -82,7 +67,7 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->description = $request->description;
         //
-        $article->status = 0;
+        $article->jenis = 0;
         $article->tgl_post = Carbon::now();
         $article->save();
         // Article::create($request->all());
@@ -128,19 +113,19 @@ class ArticleController extends Controller
         return redirect()->back();
     }
 
-    public function posts($id){
-        $article = article::where('id',$id)->firstOrFail();
+    // public function posts($id){
+    //     $article = article::where('id',$id)->firstOrFail();
 
-        if( $article->status == 0 ){
-            $article->status = 1;
-            $article->save();
-        }
-        else{
-            $article->status = 0;
-            $article->save();
-        }
-        return redirect()->back();
-    }
+    //     if( $article->status == 0 ){
+    //         $article->status = 1;
+    //         $article->save();
+    //     }
+    //     else{
+    //         $article->status = 0;
+    //         $article->save();
+    //     }
+    //     return redirect()->back();
+    // }
 
     /**
      * Remove the specified resource from storage.

@@ -47,15 +47,21 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="email" class="col-md-4 control-label">Gambar</label>
+                                            <label for="email" class="col-md-4 control-label">Gambar <i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                             <div class="col-md-10">
                                                 <img width="300" height="300" />
                                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-md-4 control-label">filePdf</label>
+                                            <div class="col-md-10">
+                                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="filePdf" accept=".pdf">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                                        <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                             <label for="title" class="col-md-6 control-label">Judul</label>
                                             <div class="col-md-11">
                                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required> @if ($errors->has('title'))
@@ -65,7 +71,28 @@
                                             </div>
 
                                         </div>
-                                        <div class="form-group{{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+                                        
+                                        <div class="form-group required {{ $errors->has('jenis') ? ' has-error' : '' }}">
+                                            <label for="jenis" class="col-md-4 control-label">Jenis</label>
+                                                <div class="col-md-8">
+                                                    <select class="form-control" name="jenis" required="">
+                                                        <option value="0">Umum</option>
+                                                        <option value="1">Beasiswa</option>
+                                                        <option value="2">Kemahasiswaan</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+                                            <label for="url" class="col-md-6 control-label">Url</label>
+                                            <div class="col-md-11">
+                                                <input id="Url" type="url" class="form-control" name="url" value="{{ old('url') }}"> @if ($errors->has('url'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('url') }}</strong>
+                                                </span> @endif
+                                        </div>
+
+                                        </div>
+                                        <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                             <div class="col-11">
                                                 {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Deskripsi', 'required')) !!}
                                                 @if ($errors->has('description'))

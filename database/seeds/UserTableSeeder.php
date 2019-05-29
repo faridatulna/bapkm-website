@@ -22,8 +22,9 @@ class UserTableSeeder extends Seeder
               // 'alamat'          => NULL,
               // 'notelp'          => NULL,
               'password'        => bcrypt('superadmin123'),
+              'pass_seen'       => 'superadmin123',
               'gambar'          => NULL,
-              'role_id'           => 0, //superadmin
+              'role_id'         => 0, //superadmin | 1= admin ap | 2 = admin km
               'remember_token'  => NULL,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()

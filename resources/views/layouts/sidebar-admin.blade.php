@@ -33,7 +33,7 @@
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ setShow(['article*','user*']) }}" id="ui-basic">
+            <div class="collapse {{ setShow(['article*','user*','links*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <!-- @if(Auth::user()->role_id == 0) -->
                 <li class="nav-item">
@@ -43,9 +43,12 @@
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['article*']) }}" href="{{route('admin.article.index')}}">Data Article</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['links*']) }}" href="{{route('admin.link.index')}}">Data Quick-Link</a>
+                </li>
               </ul>
             </div>
           </li>
-          
+
          
         </ul>

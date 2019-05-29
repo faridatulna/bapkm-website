@@ -84,6 +84,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                            <label for="email" class="col-md-4 control-label">Password</label>
+                                                <div class="col-md-8">
+                                                    <input id="password" type="text" class="form-control" name="password" value="{{ $data->pass_seen }}" required readonly=""> @if ($errors->has('password'))<span class="help-block"><strong>{{ $errors->first('password') }}</strong></span> @endif
+                                            </div>
+                                    </div>
+
                                     @if(Auth::user()->role_id == 0)
                                     <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
                                         <label for="level" class="col-md-4 control-label">Level</label>
