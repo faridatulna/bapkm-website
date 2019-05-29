@@ -56,6 +56,9 @@
                  
                 </div>
               </a>
+              <!-- <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.show', Auth::user()->id)}}">
+               <i class="fa fa-user">Lihat Profile</i>
+              </a> -->
               <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.edit', Auth::user()->id)}}">
                <i class="fa fa-cog">Edit Profile</i>
               </a>

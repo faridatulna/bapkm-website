@@ -89,6 +89,7 @@
                                         <label for="level" class="col-md-4 control-label">Level</label>
                                         <div class="col-md-6">
                                             <select class="form-control" name="role_id" required="" readonly>
+                                                <option value="0" @if($data->role_id == 0) selected @endif>SUPER-ADMIN</option>
                                                 <option value="1" @if($data->role_id == 1) selected @endif>Admin-AP</option>
                                                 <option value="2" @if($data->role_id == 2) selected @endif>Admin-KM</option>
                                             </select>

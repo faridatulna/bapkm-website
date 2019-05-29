@@ -106,14 +106,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if( (Auth::user()->id != $id) && ( (Auth::user()->level == 1) || (Auth::user()->level == 2) ) ) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('admin');
-        }
-
         $data = User::findOrFail($id);
 
-        return view('auth.show', compact('data'));
+        if( Auth::user()->id == $id ) { //&& ( (Auth::user()->level == 1) || (Auth::user()->level == 2) )
+            return view('auth.show', compact('data'));
+        }
+        else if( Auth::user()->role_id == 0 ){
+            return view('auth.show', compact('data'));
+        }
+
+        Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        return redirect()->back();
+        
     }
 
     /**
@@ -124,9 +128,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {   
-        if( (Auth::user()->id != $id) && ((Auth::user()->level == 1) || (Auth::user()->level == 2)) ) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('admin');
+        if( Auth::user()->id != $id && Auth::user()->role_id == 0 ) {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('admin');
         }
 
         $data = User::findOrFail($id);
