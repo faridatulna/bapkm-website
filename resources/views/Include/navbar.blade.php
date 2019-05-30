@@ -6,7 +6,7 @@
                 <div class="top-header-content d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw;" alt=""></a>
+                        <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw;" alt=""></a>
                     </div>
 
                     <!-- Login Search Area -->
@@ -69,7 +69,7 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li class="nav-link"><a href="#"><strong>Home</strong></a></li>
+                            <li class="nav-link"><a href="/"><strong>Home</strong></a></li>
                             <li class="nav-link"><a href="#"><strong>Tentang Kami</strong></a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
