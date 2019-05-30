@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Links;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LinksController extends Controller
 {
@@ -30,15 +34,16 @@ class LinksController extends Controller
         return view('admin.link.index',compact('datas'));
     }
 
-    /**
+   /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -48,7 +53,15 @@ class LinksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $links = new Links;
+        $links->title = $request->title;
+        $links->url = $request->url;
+        $links->save();
+
+        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+        return redirect()->back();
     }
 
     /**
@@ -70,7 +83,7 @@ class LinksController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -83,8 +96,13 @@ class LinksController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+        $links = links::findorfail($id);
+        $links->update($request->all());
 
+        Session::flash('message', 'Berhasil diubah!');
+        Session::flash('message_type', 'success');
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -93,6 +111,10 @@ class LinksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $links = links::findorfail($id);     
+        $links->delete();
+        Session::flash('message', 'Berhasil dihapus!');
+        Session::flash('message_type', 'success');
+        return redirect()->back();
     }
 }

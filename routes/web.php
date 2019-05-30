@@ -11,13 +11,31 @@
 |
 */
 use App\Article;
+use App\Links;
+use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
-    return view('welcome1');
+    //$article = Article::all();
+    $article = Article::orderBy('tgl_post', 'desc')->take(2)->get(); //sort by desc
+    return view('welcome1',compact('article'));
 });
 
+Route::any ( '/search-result', function () {
+    $q = Input::get ( 'q' );
+    $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'tgl_post', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->get ();
+    //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $data ) > 0)
+        return view ( 'search' )->withDetails ( $data )->withQuery ( $q );
+    else
+        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+} );
+
+
 Route::get('/b', function () {
- $article = Article::all();
+   $article = Article::all();
    return view('welcome',compact('article'));
 })->name('welcome');
 
@@ -43,7 +61,7 @@ Route::prefix('admin')
 
         });
         
-        Route::resource('link','linksController');
+        Route::resource('link','LinksController');
         Route::resource('user','UserController');
     });
 

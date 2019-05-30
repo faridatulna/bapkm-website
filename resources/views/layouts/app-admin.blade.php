@@ -18,6 +18,11 @@
   <link rel="stylesheet" href="{{asset('adminlte/css/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminlte/css/select2.css')}}">
   <link rel="stylesheet" href="{{ asset('adminlte/css/dataTables.bootstrap4.min.css')}}">
+
+  <!--asset2-->
+    
+
+
   @section('css')
 
   @show
@@ -107,6 +112,9 @@
   <script src="{{asset('adminlte/js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('adminlte/js/sweetalert2.all.js')}}"></script>
   <script src="{{asset('adminlte/js/select2.min.js')}}"></script>
+
+    
+
   @include('sweetalert::alert')
   @section('js')
 

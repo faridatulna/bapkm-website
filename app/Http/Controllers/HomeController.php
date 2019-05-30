@@ -9,6 +9,12 @@ use Auth;
 
 class HomeController extends Controller
 {
+
+    function index()
+    {
+        
+    }
+
     /**
      * Display the specified resource.
      *

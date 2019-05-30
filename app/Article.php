@@ -11,11 +11,12 @@ class Article extends Model
     protected $table = 'articles';
 
     protected $fillable = [
-    	'id',
         'title',
+
         'fileImg',
         'url',
         'filePdf',
+        
         'description',
         'jenis',
         'tgl_post'

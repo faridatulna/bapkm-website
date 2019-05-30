@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use App\Article;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ArticleController extends Controller
@@ -52,26 +55,39 @@ class ArticleController extends Controller
     {
         $this->validate($request, [
             'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+            'filePdf' => 'required|file|mimes:pdf',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
+            'filePdf.mimes' => 'Format Image adalah (.pdf)',
         ]);
 
         $article = new Article;
-        $article->id_user = 1;
         //File Upload
         $fileImg = $request->file('fileImg');
         $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
         $desPath = public_path('/files');
         $fileImg->move($desPath,$inputFile['namafile']);
+
+
         $article->fileImg = $inputFile['namafile'];
+
+        $filePdf = $request->file('filePdf');
+        $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
+        $desPath = public_path('/filesPdf');
+        $fileImg->move($desPath,$inputFile['namafilePdf']);
+
+        $article->filePdf = $inputFile['namafilePdf'];
         $article->title = $request->title;
+        $article->url = $request->url;
         $article->description = $request->description;
         //
-        $article->jenis = 0;
+        $article->jenis = 0; //0=umum,1=beasiswa,2=kemahasiswaan
         $article->tgl_post = Carbon::now();
         $article->save();
         // Article::create($request->all());
         //echo $article;
+        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
         return redirect(route('admin.article.index'));
     }
 
@@ -83,7 +99,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -94,8 +110,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
-        
+        $data = Article::findorfail($id);
+        return view('admin.article.edit', compact('data'));
     }
 
     /**
@@ -110,6 +126,9 @@ class ArticleController extends Controller
         //
         $article = Article::findorfail($id);
         $article->update($request->all());
+        
+        Session::flash('message', 'Berhasil diubah!');
+        Session::flash('message_type', 'success');
         return redirect()->back();
     }
 
@@ -137,6 +156,9 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);       
         $article->delete();
+
+        Session::flash('message', 'Berhasil dihapus!');
+        Session::flash('message_type', 'success');
         return redirect()->back();
     }
 }

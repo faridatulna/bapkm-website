@@ -16020,7 +16020,7 @@ ul {
   color: #00ce68; }
 
 .list-star li:before {
-  content: '\F4CE';
+  content: "*";
   color: #ffaf00; }
 
 .bullet-line-list {

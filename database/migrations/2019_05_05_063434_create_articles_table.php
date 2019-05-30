@@ -17,8 +17,8 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
 
-            $table->string('fileImg')->nullable();
-            $table->string('filePdf')->nullable();
+            $table->text('fileImg')->nullable();
+            $table->text('filePdf')->nullable();
             $table->string('url')->nullable();
             
             $table->longText('description')->nullable();
