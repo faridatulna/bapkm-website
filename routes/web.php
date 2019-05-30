@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Input;
 Route::get('/', function () {
     //$article = Article::all();
     $article = Article::orderBy('tgl_post', 'desc')->take(2)->get(); //sort by desc
-    return view('welcome1',compact('article'));
+    $articleBeasiswa = Article::orderBy('tgl_post', 'desc')->where('jenis','=',1)->take(2)->get();
+    $articleUKM = Article::orderBy('tgl_post', 'desc')->where('jenis','=',2)->get();
+    return view('welcome1',compact('article','articleBeasiswa'));
 });
 
 Route::any ( '/search-result', function () {
+    
     $q = Input::get ( 'q' );
     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
@@ -49,6 +52,7 @@ Route::get('/about', function () {
 });
 
 
+//admin authorities
 Auth::routes();
 
 Route::prefix('admin')

@@ -20,9 +20,6 @@
   <link rel="stylesheet" href="{{ asset('adminlte/css/dataTables.bootstrap4.min.css')}}">
 
   <!--asset2-->
-    
-
-
   @section('css')
 
   @show

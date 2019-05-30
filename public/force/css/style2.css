@@ -80,7 +80,7 @@ img {
   max-width: 100%; }
 
 .nav-link {
-  padding: 20px 0;
+  padding: 25px 0;
   transition: 0.1s;
   border-bottom: 3px solid transparent;
   font-weight: bold;
@@ -103,17 +103,17 @@ img {
 }
 
 .main_title2{
-	background: #f9f9ff;
-	border-left: 3px solid #F4BA23;
-	h2{
-		color: $dip;
-		font-size: 18px;
-		font-family: $rob;
-		font-weight: 500;
-		line-height: 40px;
-		padding-left: 15px;
-		margin-bottom: 0px;
-	}
+  background: #f9f9ff;
+  border-left: 3px solid #F4BA23;
+  h2{
+    color: $dip;
+    font-size: 18px;
+    font-family: $rob;
+    font-weight: 500;
+    line-height: 40px;
+    padding-left: 15px;
+    margin-bottom: 0px;
+  }
 }
 
 .ql {
@@ -1164,6 +1164,7 @@ textarea:focus {
 
 /* :: 9.0 Footer Area */
 .footer-area {
+  margin-top: 100px;
   position: relative;
   z-index: 1;
   width: 100%;

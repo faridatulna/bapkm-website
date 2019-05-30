@@ -1,38 +1,104 @@
-<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+<!-- Top Header Area -->
+<div class="top-header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="top-header-content d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw;" alt=""></a>
+                    </div>
+
+                    <!-- Login Search Area -->
+                    <div class="login-search-area d-flex align-items-center">
+                        <!-- Login -->
+                        <div class="login d-flex">
+                            <div class="ui dropdown item">
+                                <a style="margin-right: 1vw;">ID<i style="margin-left: 0.3vw;"class="fa fa-angle-down"></i></a>
+                                <div class=" ui inverted yellow menu">
+                                    <div class="item">
+                                        <a href="#">Bahasa Indonesia</a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="#">English</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="integra.its.ac.id">myITS</a>
+                        </div>
+                        <!-- Search Form -->
+                        <div class="search-form">
+                            <form action="/search-result" method="post" role="search">
+                                {{ csrf_field() }}
+                                <input type="search" name="q" class="form-control" placeholder="Search">
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    </div>
+</div>
+
+<!-- Navbar Area -->
+<div class="newspaper-main-menu" id="stickyMenu">
+    <div class="classy-nav-container breakpoint-off">
+        <div class="container">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="newspaperNav">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                </div>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+
+                <!-- Menu -->
+                <div class="classy-menu">
+
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li class="nav-link"><a href="#"><strong>Home</strong></a></li>
+                            <li class="nav-link"><a href="#"><strong>Tentang Kami</strong></a>
+                                <div class="megamenu">
+                                    <ul class="single-mega cn-col-4">
+                                        <li class="title">Administrasi Pembelajaran</li>
+                                        <li><a href="index.html" class="sub-link">Visi</a></li>
+                                        <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
+                                        <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                    </ul>
+                                    <ul class="single-mega cn-col-4">
+                                        <li class="title">Kesejahteraan Mahasiswa</li>
+                                        <li class="sub-link"><a href="index.html">Visi</a></li>
+                                        <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
+                                        <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-link"><a href="#"><strong>Pengumuman</strong></a>
+                                <ul class="dropdown" style="margin-top:5px;">
+                                    <li><a href="index.html">Umum</a></li>
+                                    <li><a href="catagories-post.html">Beasiswa</a></li>
+                                    <li><a href="single-post.html">UKM</a></li>
+                            </li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

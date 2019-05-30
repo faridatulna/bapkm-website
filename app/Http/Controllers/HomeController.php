@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function articlepage($id)
     {
-        $article = Article::findorfail($id);
-        return view('article-single',compact('article'));
+        $data = Article::findorfail($id);
+        return view('article-single2',compact('data'));
     }
 }

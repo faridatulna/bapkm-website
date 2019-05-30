@@ -1,145 +1,11 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="img/favicon.png" type="image/png">
-    <title>BAPKM ITS</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('force/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/linericon/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/owl-carousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/lightbox/simpleLightbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/nice-select/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/animate-css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/jquery-ui/jquery-ui.css') }}">
-    <!-- main css -->
-    <link rel="stylesheet" href="{{ asset('force/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/style2.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/responsive.css') }}">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <meta charset="utf-8">
-</head>
-
-<body>
-
+@section('js')
+    <script>
+        $('.ui.dropdown')
+            .dropdown();
+    </script>
+@stop @extends('layouts.app') @section('content')
     <!--================Header Menu Area =================-->
-    <header class="header-area">
-
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="index.html"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw;" alt=""></a>
-                            </div>
-
-                            <!-- Login Search Area -->
-                            <div class="login-search-area d-flex align-items-center">
-                                <!-- Login -->
-                                <div class="login d-flex">
-                                    <div class="ui dropdown item">
-                                        <a style="margin-right: 1vw;">ID<i style="margin-left: 0.3vw;"class="fa fa-angle-down"></i></a>
-                                        <div class=" ui inverted yellow menu">
-                                            <div class="item">
-                                                <a href="#">Bahasa Indonesia</a>
-                                            </div>
-                                            <div class="item">
-                                                <a href="#">English</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="integra.its.ac.id">myITS</a>
-                                </div>
-                                <!-- Search Form -->
-                                <div class="search-form">
-                                    <form action="/search-result" method="post">
-                                        {{ csrf_field() }}
-                                        <input type="search" name="q" class="form-control" placeholder="Search">
-                                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navbar Area -->
-        <div class="newspaper-main-menu" id="stickyMenu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="newspaperNav">
-
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
-                        </div>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li class="nav-link"><a href="#"><strong>Home</strong></a></li>
-                                    <li class="nav-link"><a href="#"><strong>Tentang Kami</strong></a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Administrasi Pembelajaran</li>
-                                                <li><a href="index.html" class="sub-link">Visi</a></li>
-                                                <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
-                                                <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Kesejahteraan Mahasiswa</li>
-                                                <li class="sub-link"><a href="index.html">Visi</a></li>
-                                                <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
-                                                <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-link"><a href="#"><strong>Pengumuman</strong></a>
-                                        <ul class="dropdown" style="margin-top:5px;">
-                                            <li><a href="index.html">Umum</a></li>
-                                            <li><a href="catagories-post.html">Beasiswa</a></li>
-                                            <li><a href="single-post.html">UKM</a></li>
-                                    </li>
-                                    </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    
     <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->
@@ -286,15 +152,15 @@
                                         </a>
                                         <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
                                     </div>
-                                    <a href="news-details.html"><h4>{{ $data->title }}</h4></a>
-                                    
+                                    <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{{ $data->title }}</h4></a>
+                                        {{ csrf_field() }}
                                     <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                      <p>{{ $data->description }}</p>
+                                      <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         @endforeach
                         <div class="view-more" align="right">
                             <button class="ui right labeled icon button">
@@ -308,8 +174,7 @@
                     </div>
 
                     <div class="latest_news">
-                        @foreach($article as $data)
-                        @if( $data->jenis == 1)
+                        @foreach($articleBeasiswa as $data)
                         <div class="media">
                             <!-- <div class="d-flex">
                                     <img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
@@ -320,12 +185,10 @@
                                         <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
                                     </div>
                                     <a href="news-details.html"><h4>{{ $data->title }}</h4></a>
-                                        <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
+                                    <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
                                 </div>
                             </div>
                         </div>
-                        
-                        @endif
                         @endforeach
                         <div class="view-more" align="right">
                             <button class="ui right labeled icon button">
@@ -583,6 +446,22 @@
                                     </div>
                                 </div>
                             </aside> -->
+
+                        <aside class="r_widgets">
+                            <div class="main_title2">
+                                            <h2>Quick Links</h2>
+                                        </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-6">
+                                    <ul class="list">
+                                        <li><a href="http://integra.its.ac.id" class="ql">Integra</a></li>
+                                        <li><a href="http://10.103.1.158/i_repot/jurusan.php" class="ql">Laporan Semester</a></li>
+                                        <li><a href="http://smits.its.ac.id/" class="ql">SMITS</a></li>
+                                        <li><a href="http://10.103.1.10/sk/" class="ql">Pencarian SK</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
                         <aside class="r_widgets add_widgets">
                             <div class="main_title2">
                                 <h2>Agenda</h2>
@@ -603,61 +482,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="detail-calendar-grey">
-                                    <div class="calendar-grey">
-                                        <h1 style="margin-top:10px;margin-bottom:0;">30</h1>
-                                        <h3 style="margin-top:0;">Jan</h3>
-                                    </div>
-                                    <div class="calendar-contain-grey">
-                                        <div class="calendar-contain-description-grey">
-                                            <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">AUN-QA Assesment</a>
-                                            <br>
-                                            <small><i class="fa fa-clock-o"></i> &nbsp;08:00 - 00:00 WIB </small>
-                                            <br>
-                                            <small><i class="fa fa-map-marker"></i> &nbsp; Belum ditentukan</small>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
-                            <div class="main_title2">
-
-                            </div>
-
                         </aside>
-
-                        <!-- <aside class="r_widgets">
-                    <div class="main_title2">
-                                    <h2>Quick Links</h2>
-                                </div>
-                    <div class="row" style="margin-top:10px;">
-                        <div class="col-6">
-                            <ul class="list">
-                                <li><a href="http://integra.its.ac.id" class="ql">Integra</a></li>
-                                <li><a href="http://10.103.1.158/i_repot/jurusan.php" class="ql">Laporan Semester</a></li>
-                                <li><a href="http://smits.its.ac.id/" class="ql">SMITS</a></li>
-                                <li><a href="http://10.103.1.10/sk/" class="ql">Pencarian SK</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                  </aside> -->
-                        <!-- </aside>
-                            <aside class="r_widgets newsleter_widgets">
-                                <div class="main_title2">
-                                    <h2>Newsletter</h2>
-                                </div>
-                                <div class="nsl_inner">
-                                    <i class="fa fa-envelope"></i>
-                                    <h4>Subscribe to our Newsletter</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua adipisicing</p>
-                                    <div class="form-group d-flex flex-row">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter your email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
-                                        </div>
-                                        <a href="#" class="bbtns">Subcribe</a>
-                                    </div>
-                                </div>
-                            </aside> -->
                     </div>
                 </div>
             </div>
@@ -864,80 +690,8 @@
     <!--================End Product List Area =================-->
 
     <!--================ start footer Area  =================-->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row f_widgets_inner">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-footer-widget ab_widgets">
-                        <h2 style="color: white; padding:0;">BAPKM ITS</h2>
-                        <hr style="border: 1.5px solid #F4BA23; width: 40%;">
-                        <p style="color: #f4f4f4;">Technology and gadgets Adapter (MPA) is our favorite iPhone solution, since it lets you use the headphones you’re most comfortable with. It has an iPhone-compatible jack at one end and a microphone module with an Answer/End/Pause button and a female 3.5mm audio jack for connectingheadphones</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-footer-widget">
-                        <div class="f_title">
-                            <h3>Kontak Kami</h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-10">
-                                <ul class="contact">
-                                    <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
-                                    <li><i class="ficon fa fa-phone"></i>(031) 5923619</li>
-                                    <li><i class="ficon fa fa-home"></i>Jalan Raya ITS, Kampus ITS Sukolilo, Surabaya 60117</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                <!-- <div class="col-lg-12">
-                        <div class="f_boder"></div>
-                    </div> -->
-                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true" style="color: #F4BA23;"></i> by <a href="https://colorlib.com" target="_blank" style="color: #F4BA23;">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-            </div>
-        </div>
-    </footer>
+    
     <!--================ End footer Area  =================-->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ asset('force/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('force/js/popper.js') }}"></script>
-    <script src="{{ asset('force/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('force/js/stellar.js') }}"></script>
-    <script src="{{ asset('force/vendors/lightbox/simpleLightbox.min.js') }}"></script>
-    <script src="{{ asset('force/vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('force/vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('force/vendors/isotope/isotope-min.js') }}"></script>
-    <script src="{{ asset('force/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('force/vendors/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('force/js/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('force/js/mail-script.js') }}"></script>
-    <script src="{{ asset('force/js/theme.js') }}"></script>
-    <script src="{{ asset('force/js/jquery/jquery-2.2.4.min.js') }}"></script>
-    <!-- Popper js -->
-    <script src="{{ asset('force/js/bootstrap/popper.min.js') }}"></script>
-    <!-- Bootstrap js -->
-    <script src="{{ asset('force/js/bootstrap/bootstrap.min.js') }}"></script>
-    <!-- All Plugins js -->
-    <script src="{{ asset('force/js/plugins/plugins.js') }}"></script>
-    <!-- Active js -->
-    <script src="{{ asset('force/js/active.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
-    <script>
-        $('.ui.dropdown')
-            .dropdown();
-    </script>
-</body>
-
-</html>
+    
+    @endsection
