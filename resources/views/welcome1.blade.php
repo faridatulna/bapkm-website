@@ -185,7 +185,8 @@
                                         <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
                                     </div>
                                     <a href="news-details.html"><h4>{{ $data->title }}</h4></a>
-                                    <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
+                                    <!-- <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p> -->
+                                    <p>deskripsi artikel . url = aa.com | download : pdf.pdf</p>
                                 </div>
                             </div>
                         </div>

@@ -70,19 +70,19 @@
                     <div class="classynav">
                         <ul>
                             <li class="nav-link"><a href="/"><strong>Home</strong></a></li>
-                            <li class="nav-link"><a href="#"><strong>Tentang Kami</strong></a>
+                            <li class="nav-link"><a href="/about"><strong>Tentang Kami</strong></a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Administrasi Pembelajaran</li>
-                                        <li><a href="index.html" class="sub-link">Visi</a></li>
-                                        <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
-                                        <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                        <li><a href="/about" class="sub-link">Visi</a></li>
+                                        <li class="sub-link"><a href="/about">Misi</a></li>
+                                        <li class="sub-link"><a href="/about">Struktur Organisasi</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Kesejahteraan Mahasiswa</li>
-                                        <li class="sub-link"><a href="index.html">Visi</a></li>
-                                        <li class="sub-link"><a href="catagories-post.html">Misi</a></li>
-                                        <li class="sub-link"><a href="single-post.html">Struktur Organisasi</a></li>
+                                        <li><a href="/about" class="sub-link">Visi</a></li>
+                                        <li class="sub-link"><a href="/about">Misi</a></li>
+                                        <li class="sub-link"><a href="/about">Struktur Organisasi</a></li>
                                     </ul>
                                 </div>
                             </li>

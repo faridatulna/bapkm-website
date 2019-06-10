@@ -1203,6 +1203,10 @@ textarea:focus {
           color: #fff; }
 
 /* :: 10.0 About Area */
+.about {
+  margin-top: 30px;
+}
+
 .about-area {
   position: relative;
   z-index: 1; }

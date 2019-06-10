@@ -48,7 +48,7 @@ Route::get('/articles', function () {
 });
 Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
 Route::get('/about', function () {
-    return view('about');
+    return view('aboutus');
 });
 
 
