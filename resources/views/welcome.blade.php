@@ -45,7 +45,7 @@
 										</header>
 										<!-- <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p> -->
 										<ul class="actions">
-											<li><a href="/about" class="button big" style="box-shadow: inset 0 0 0 2px #e5e5e5; color: #e5e5e5;">Tentang Kami</a></li>
+											<li><a href="/about" class="button big" style="box-shadow: inset 0 0 0 2px #e5e5e5; color: #e5e5e5;">Berita</a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -93,7 +93,7 @@
 							<!-- Section -->
 								<section style="padding-top: 1.25em;">
 									<header class="major">
-										<h2 style="padding: 0; margin-bottom: 1em; color: black;">Pengumuman</h2>
+										<h2 style="padding: 0; margin-bottom: 1em; color: black;">Berita</h2>
 									</header>
 
 									<div class="posts">

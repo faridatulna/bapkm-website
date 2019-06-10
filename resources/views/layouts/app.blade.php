@@ -27,6 +27,9 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta charset="utf-8">
 
     <!--asset2-->
@@ -46,25 +49,41 @@
     <footer class="footer-area">
         <div class="container">
             <div class="row f_widgets_inner">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-3 col-md-3 col-sm-3">
+                    <img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:14vw;" alt=""  style="border-right: 3px solid #F4BA23;">
+              </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-widget ab_widgets">
-                        <h2 style="color: white; padding:0;">BAPKM ITS</h2>
-                        <hr style="border: 1.5px solid #F4BA23; width: 40%;">
-                        <p style="color: #f4f4f4;">Technology and gadgets Adapter (MPA) is our favorite iPhone solution, since it lets you use the headphones you’re most comfortable with. It has an iPhone-compatible jack at one end and a microphone module with an Answer/End/Pause button and a female 3.5mm audio jack for connectingheadphones</p>
+                       <h2 style="color: #F4BA23; padding:0;">BAPKM ITS</h2>
+                       <!-- <hr style="border: 1.5px solid #F4BA23; width: 40%;"> -->
+                       <p style="color: #f4f4f4;">Biro Administrasi Pembelajaran dan Kesejahteraan Mahasiswa</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-widget">
                         <div class="f_title">
-                            <h3>Kontak Kami</h3>
+                          <h3 style="color: #F4BA23;">Kontak Kami</h3>
                         </div>
                         <div class="row">
                             <div class="col-10">
-                                <ul class="contact">
-                                    <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
-                                    <li><i class="ficon fa fa-phone"></i>(031) 5923619</li>
-                                    <li><i class="ficon fa fa-home"></i>Jalan Raya ITS, Kampus ITS Sukolilo, Surabaya 60117</li>
-                                </ul>
+                              <ul class="contact">
+                                <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
+                                <li><i class="ficon fa fa-phone"></i>(031) 5923619</li>
+                                <li><i class="ficon fa fa-home"></i>Jalan Raya ITS, Kampus ITS Sukolilo, Surabaya 60117</li>
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single-footer-widget">
+                        <div class="f_title">
+                          <h3 style="color: #F4BA23;">Pengunjung</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
+                              <p style="color: white;">Hari ini:</p>
+                              <p style="color: white;">Total:</p>
                             </div>
                         </div>
                     </div>
@@ -72,16 +91,11 @@
             </div>
             <div class="row footer-bottom d-flex justify-content-between align-items-center">
                 <!-- <div class="col-lg-12">
-                            <div class="f_boder"></div>
-                        </div> -->
-                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script> All rights reserved <!-- | This template is made with <i class="fa fa-heart-o" aria-hidden="true" style="color: #F4BA23;"></i> by <a href="https://colorlib.com" target="_blank" style="color: #F4BA23;"> --><!-- Colorlib --></a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
+                  <div class="f_boder"></div>
+                </div> -->
+                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true" style="color: #F4BA23;"></i> by <a href="https://colorlib.com" target="_blank" style="color: #F4BA23;">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>
     </footer>
@@ -112,6 +126,114 @@
     <script src="{{ asset('force/js/active.js') }}"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script>
+      $(document).ready(function () {
+      var itemsMainDiv = ('.MultiCarousel');
+      var itemsDiv = ('.MultiCarousel-inner');
+      var itemWidth = "";
+
+      $('.leftLst, .rightLst').click(function () {
+          var condition = $(this).hasClass("leftLst");
+          if (condition)
+              click(0, this);
+          else
+              click(1, this)
+      });
+
+      ResCarouselSize();
+
+
+
+
+      $(window).resize(function () {
+          ResCarouselSize();
+      });
+
+      //this function define the size of the items
+      function ResCarouselSize() {
+          var incno = 0;
+          var dataItems = ("data-items");
+          var itemClass = ('.item');
+          var id = 0;
+          var btnParentSb = '';
+          var itemsSplit = '';
+          var sampwidth = $(itemsMainDiv).width();
+          var bodyWidth = $('body').width();
+          $(itemsDiv).each(function () {
+              id = id + 1;
+              var itemNumbers = $(this).find(itemClass).length;
+              btnParentSb = $(this).parent().attr(dataItems);
+              itemsSplit = btnParentSb.split(',');
+              $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+              if (bodyWidth >= 1200) {
+                  incno = itemsSplit[3];
+                  itemWidth = sampwidth / incno;
+              }
+              else if (bodyWidth >= 992) {
+                  incno = itemsSplit[2];
+                  itemWidth = sampwidth / incno;
+              }
+              else if (bodyWidth >= 768) {
+                  incno = itemsSplit[1];
+                  itemWidth = sampwidth / incno;
+              }
+              else {
+                  incno = itemsSplit[0];
+                  itemWidth = sampwidth / incno;
+              }
+              $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+              $(this).find(itemClass).each(function () {
+                  $(this).outerWidth(itemWidth);
+              });
+
+              $(".leftLst").addClass("over");
+              $(".rightLst").removeClass("over");
+
+          });
+      }
+
+
+      //this function used to move the items
+      function ResCarousel(e, el, s) {
+          var leftBtn = ('.leftLst');
+          var rightBtn = ('.rightLst');
+          var translateXval = '';
+          var divStyle = $(el + ' ' + itemsDiv).css('transform');
+          var values = divStyle.match(/-?[\d\.]+/g);
+          var xds = Math.abs(values[4]);
+          if (e == 0) {
+              translateXval = parseInt(xds) - parseInt(itemWidth * s);
+              $(el + ' ' + rightBtn).removeClass("over");
+
+              if (translateXval <= itemWidth / 2) {
+                  translateXval = 0;
+                  $(el + ' ' + leftBtn).addClass("over");
+              }
+          }
+          else if (e == 1) {
+              var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+              translateXval = parseInt(xds) + parseInt(itemWidth * s);
+              $(el + ' ' + leftBtn).removeClass("over");
+
+              if (translateXval >= itemsCondition - itemWidth / 2) {
+                  translateXval = itemsCondition;
+                  $(el + ' ' + rightBtn).addClass("over");
+              }
+          }
+          $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+      }
+
+      //It is used to get some elements from btn
+      function click(ell, ee) {
+          var Parent = "#" + $(ee).parent().attr("id");
+          var slide = $(Parent).attr("data-slide");
+          ResCarousel(ell, Parent, slide);
+      }
+
+  });
+    </script>
     @section('js') @show
 </body>
 

@@ -11,21 +11,6 @@
 
                     <!-- Login Search Area -->
                     <div class="login-search-area d-flex align-items-center">
-                        <!-- Login -->
-                        <div class="login d-flex">
-                            <div class="ui dropdown item">
-                                <a style="margin-right: 1vw;">ID<i style="margin-left: 0.3vw;"class="fa fa-angle-down"></i></a>
-                                <div class=" ui inverted yellow menu">
-                                    <div class="item">
-                                        <a href="#">Bahasa Indonesia</a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#">English</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="integra.its.ac.id">myITS</a>
-                        </div>
                         <!-- Search Form -->
                         <div class="search-form">
                             <form action="/search-result" method="post" role="search">
@@ -69,31 +54,24 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li class="nav-link"><a href="/"><strong>Home</strong></a></li>
-                            <li class="nav-link"><a href="/about"><strong>Tentang Kami</strong></a>
-                                <div class="megamenu">
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Administrasi Pembelajaran</li>
-                                        <li><a href="/about" class="sub-link">Visi</a></li>
-                                        <li class="sub-link"><a href="/about">Misi</a></li>
-                                        <li class="sub-link"><a href="/about">Struktur Organisasi</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Kesejahteraan Mahasiswa</li>
-                                        <li><a href="/about" class="sub-link">Visi</a></li>
-                                        <li class="sub-link"><a href="/about">Misi</a></li>
-                                        <li class="sub-link"><a href="/about">Struktur Organisasi</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-link2"><a href="/"><strong>Home</strong></a></li>
+                            <li class="nav-link2"><a href="/about"><strong>Tentang Kami</strong></a>
+                              <ul class="dropdown" style="margin-top:5px;">
+                                <li><a href="/about">Sejarah</a></li>
+                                  <li><a href="/about">Visi</a></li>
+                                  <li><a href="/about">Misi</a></li>
+                                  <li><a href="/about">Struktur Organisasi</a></li>
+                              </ul>
                             </li>
-                            <li class="nav-link"><a href="#"><strong>Pengumuman</strong></a>
+                            <li class="nav-link2"><a href="#"><strong>Pengumuman</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
-                                    <li><a href="index.html">Umum</a></li>
+                                    <li><a href="index.html">Terbaru</a></li>
                                     <li><a href="catagories-post.html">Beasiswa</a></li>
                                     <li><a href="single-post.html">UKM</a></li>
+                                    <li><a href="single-post.html">Calon Mahasiswa</a></li>
+                                </ul>
                             </li>
-                            </ul>
-                            </li>
+                            <li class="nav-link2"><a href="/"><strong>Bantuan</strong></a></li>
                         </ul>
                     </div>
                     <!-- Nav End -->
