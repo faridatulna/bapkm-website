@@ -55,12 +55,12 @@
                     <div class="classynav">
                         <ul>
                             <li class="nav-link2"><a href="/"><strong>Home</strong></a></li>
-                            <li class="nav-link2"><a href="#"><strong>Tentang Kami</strong></a>
+                            <li class="nav-link2"><a href="/about"><strong>Tentang Kami</strong></a>
                               <ul class="dropdown" style="margin-top:5px;">
-                                <li><a href="index.html">Sejarah</a></li>
-                                  <li><a href="index.html">Visi</a></li>
-                                  <li><a href="catagories-post.html">Misi</a></li>
-                                  <li><a href="single-post.html">Struktur Organisasi</a></li>
+                                <li><a href="/about">Sejarah</a></li>
+                                  <li><a href="/about">Visi</a></li>
+                                  <li><a href="/about">Misi</a></li>
+                                  <li><a href="/about">Struktur Organisasi</a></li>
                               </ul>
                             </li>
                             <li class="nav-link2"><a href="#"><strong>Pengumuman</strong></a>

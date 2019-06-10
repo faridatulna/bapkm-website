@@ -3984,12 +3984,12 @@ h6 {
 
 .f_title {
   background: #003A7F;
-  border-left: 3px solid #F4BA23;
-  margin-bottom: 30px;
+  /* border-left: 3px solid #F4BA23; */
+  margin-bottom: 15px;
 }
 
 .f_title h3 {
-  padding-left: 15px;
+  /* padding-left: 15px; */
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;

@@ -155,7 +155,8 @@
                                     <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{{ $data->title }}</h4></a>
                                         {{ csrf_field() }}
                                     <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                      <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
+                                      <!-- <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p> -->
+                                      <p>deskripsi artikel . url = aa.com | download : pdf.pdf</p>
                                     </span>
                                 </div>
                             </div>
