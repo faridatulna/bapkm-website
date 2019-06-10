@@ -5,11 +5,11 @@
     </script>
 @stop @extends('layouts.app') @section('content')
     <!--================Header Menu Area =================-->
-    
+
     <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->
-    <!-- <section class="home_banner_area">
+    <section class="home_banner_area">
             <div class="banner_inner d-flex align-items-center">
                 <div class="container">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
     <!--================End Home Banner Area =================-->
 
     <!--================Choice Area =================-->
@@ -133,7 +133,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="main_title2">
-                        <h2>Pengumuman Terakhir</h2>
+                        <h2>Berita Terbaru</h2>
                     </div>
                     <div class="latest_news">
                         @foreach($article as $data)
@@ -170,31 +170,102 @@
                     </div>
 
                     <div class="main_title2">
-                        <h2>Beasiswa</h2>
+                        <h2>Layanan Kami</h2>
                     </div>
 
                     <div class="latest_news">
-                        @foreach($articleBeasiswa as $data)
-                        <div class="media">
-                            <!-- <div class="d-flex">
-                                    <img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
-                                </div> -->
-                            <div class="media-body">
-                                <div class="choice_text">
-                                    <div class="date">
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
-                                    </div>
-                                    <a href="news-details.html"><h4>{{ $data->title }}</h4></a>
-                                    <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        <div class="view-more" align="right">
-                            <button class="ui right labeled icon button">
-                                <i class="right arrow icon"></i> View More
-                            </button>
-                        </div>
+                      <div class="container">
+<div class="row">
+  <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel"  data-interval="1000">
+          <div class="MultiCarousel-inner">
+            <a href="#">
+              <div class="item" style="color: white;">
+                  <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; filter: brightness(75%);">
+                      <p class="lead"><strong>Multi Item Carousel</strong></p>
+                      <p>₹ 1</p>
+                      <p>₹ 6000</p>
+                      <p>50% off</p>
+                  </div>
+              </div>
+            </a>
+              <div class="item">
+                  <div class="pad15" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; color: white;">
+                      <p class="lead">Multi Item Carousel</p>
+                      <p>₹ 1</p>
+                      <p>₹ 6000</p>
+                      <p>50% off</p>
+                  </div>
+              </div>
+                  <div class="item">
+                      <div class="pad15">
+                          <p class="lead">Multi Item Carousel</p>
+                          <p>₹ 1</p>
+                          <p>₹ 6000</p>
+                          <p>50% off</p>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="pad15">
+                          <p class="lead">Multi Item Carousel</p>
+                          <p>₹ 1</p>
+                          <p>₹ 6000</p>
+                          <p>50% off</p>
+                      </div>
+                  </div>
+                      <div class="item">
+                          <div class="pad15">
+                              <p class="lead">Multi Item Carousel</p>
+                              <p>₹ 1</p>
+                              <p>₹ 6000</p>
+                              <p>50% off</p>
+                          </div>
+                      </div>
+                      <div class="item">
+                          <div class="pad15">
+                              <p class="lead">Multi Item Carousel</p>
+                              <p>₹ 1</p>
+                              <p>₹ 6000</p>
+                              <p>50% off</p>
+                          </div>
+                      </div>
+                          <div class="item">
+                              <div class="pad15">
+                                  <p class="lead">Multi Item Carousel</p>
+                                  <p>₹ 1</p>
+                                  <p>₹ 6000</p>
+                                  <p>50% off</p>
+                              </div>
+                          </div>
+                          <div class="item">
+                              <div class="pad15">
+                                  <p class="lead">Multi Item Carousel</p>
+                                  <p>₹ 1</p>
+                                  <p>₹ 6000</p>
+                                  <p>50% off</p>
+                              </div>
+                          </div>
+                              <div class="item">
+                                  <div class="pad15">
+                                      <p class="lead">Multi Item Carousel</p>
+                                      <p>₹ 1</p>
+                                      <p>₹ 6000</p>
+                                      <p>50% off</p>
+                                  </div>
+                              </div>
+                              <div class="item">
+                                  <div class="pad15">
+                                      <p class="lead">Multi Item Carousel</p>
+                                      <p>₹ 1</p>
+                                      <p>₹ 6000</p>
+                                      <p>50% off</p>
+                                  </div>
+                              </div>
+          </div>
+          <button class="btn btn-primary leftLst"><</button>
+          <button class="btn btn-primary rightLst">></button>
+      </div>
+</div>
+</div>
                     </div>
                     <!-- <div class="tavel_food mt-100">
                             <div class="main_title2">
@@ -690,8 +761,10 @@
     <!--================End Product List Area =================-->
 
     <!--================ start footer Area  =================-->
-    
+
     <!--================ End footer Area  =================-->
 
-    
+
+
+
     @endsection
