@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::any ( '/search-result', function () {
-    
+
     $q = Input::get ( 'q' );
     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
@@ -41,6 +41,10 @@ Route::get('/b', function () {
    $article = Article::all();
    return view('welcome',compact('article'));
 })->name('welcome');
+
+Route::get('/c', function () {
+   return view('aboutus');
+});
 
 Route::get('/articles', function () {
 	$article = Article::all();
@@ -64,7 +68,7 @@ Route::prefix('admin')
         Route::prefix('article')->name('article.')->group(function () {
 
         });
-        
+
         Route::resource('link','LinksController');
         Route::resource('user','UserController');
     });
