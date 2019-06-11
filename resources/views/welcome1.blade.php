@@ -20,7 +20,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/wisuda-2015.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/banner-wisuda-2015.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
                                     <div class="banner_content text-center">
                                         <div class="date">
                                             <!-- <a class="gad_btn" href="#">Gadgets</a>
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/its3.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/banner-its3.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
                                     <div class="banner_content text-center">
                                         <div class="date">
                                             <!-- <a class="gad_btn" href="#">Gadgets</a>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/its2.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/banner-its2.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
                                     <div class="banner_content text-center">
                                         <div class="date">
                                             <!-- <a class="gad_btn" href="#">Gadgets</a>
@@ -142,7 +142,7 @@
                         <h2>Berita Terbaru</h2>
                     </div>
                     <div class="latest_news">
-                        @foreach($article as $data)
+
                         <div class="media">
                             <!-- <div class="d-flex">
                                     <img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
@@ -151,24 +151,41 @@
                                 <div class="choice_text">
                                     <div class="date">
                                         <a class="gad_btn text-uppercase" href="#" disabled="">
-                                            @if( $data->jenis == 0 ) Umum
-                                            @elseif( $data->jenis == 1 ) Beasiswa
-                                            @else UKM
-                                            @endif
+                                            Umum
                                         </a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
+                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>11/6/2019</a>
                                     </div>
-                                    <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{{ $data->title }}</h4></a>
-                                        {{ csrf_field() }}
-                                    <span class="d-inline-block text-truncate" style="max-width: 150px;">
-                                      <!-- <p style="overflow-wrap: break-word; word-break: break-word; max-height: 50em; ">{{ $data->description }}</p> -->
+                                    <a href="#" method="post"><h4>Denah Wisuda 119</h4></a>
+                                    <span class="d-inline-block text-truncate" style="overflow: hidden;">
+                                      <p>deskripsi artikel . url = aa.com | download : pdf.pdf</p>
+                                    </span>
+                                </div>
+                                <div class="choice_text">
+                                    <div class="date">
+                                        <a class="gad_btn text-uppercase" href="#" disabled="">
+                                            Calon Mahasiswa
+                                        </a>
+                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>10/6/2019</a>
+                                    </div>
+                                    <a href="#" method="post"><h4>Pengumuman SNMPTN 2019</h4></a>
+                                    <span class="d-inline-block text-truncate" style="overflow: hidden;">
+                                      <p>deskripsi artikel . url = aa.com | download : pdf.pdf</p>
+                                    </span>
+                                </div>
+                                <div class="choice_text">
+                                    <div class="date">
+                                        <a class="gad_btn text-uppercase" href="#" disabled="">
+                                            Calon Mahasiswa
+                                        </a>
+                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>09/6/2019</a>
+                                    </div>
+                                    <a href="#" method="post"><h4>Informasi Bagi Calon Mahasiswa Baru PKM 2019</h4></a>
+                                    <span class="d-inline-block text-truncate" style="overflow: hidden;">
                                       <p>deskripsi artikel . url = aa.com | download : pdf.pdf</p>
                                     </span>
                                 </div>
                             </div>
                         </div>
-
-                        @endforeach
                         <div class="view-more" align="right">
                             <button class="ui right labeled icon button">
                                 <i class="right arrow icon"></i> View More
@@ -182,98 +199,100 @@
 
                     <div class="latest_news">
                       <div class="container">
-        <div class="row">
-          <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                  <div class="MultiCarousel-inner">
-                    <a href="#">
-                      <div class="item" style="color: white;">
-                          <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; filter: brightness(75%);">
-                              <p class="lead">Multi Item Carousel</p>
-                              <p>₹ 1</p>
-                              <p>₹ 6000</p>
-                              <p>50% off</p>
-                          </div>
-                      </div>
-                    </a>
-                      <div class="item">
-                          <div class="pad15" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{url('force/img/wisuda-content.png')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; color: white;filter: brightness(75%);">
-                              <p class="lead">Multi Item Carousel</p>
-                              <p>₹ 1</p>
-                              <p>₹ 6000</p>
-                              <p>50% off</p>
-                          </div>
-                      </div>
-                          <!-- <div class="item">
-                              <div class="pad15">
-                                  <p class="lead">Multi Item Carousel</p>
-                                  <p>₹ 1</p>
-                                  <p>₹ 6000</p>
-                                  <p>50% off</p>
-                              </div>
-                          </div>
-                          <div class="item">
-                              <div class="pad15">
-                                  <p class="lead">Multi Item Carousel</p>
-                                  <p>₹ 1</p>
-                                  <p>₹ 6000</p>
-                                  <p>50% off</p>
-                              </div>
-                          </div>
-                              <div class="item">
-                                  <div class="pad15">
-                                      <p class="lead">Multi Item Carousel</p>
-                                      <p>₹ 1</p>
-                                      <p>₹ 6000</p>
-                                      <p>50% off</p>
-                                  </div>
-                              </div>
-                              <div class="item">
-                                  <div class="pad15">
-                                      <p class="lead">Multi Item Carousel</p>
-                                      <p>₹ 1</p>
-                                      <p>₹ 6000</p>
-                                      <p>50% off</p>
-                                  </div>
-                              </div>
-                                  <div class="item">
-                                      <div class="pad15">
-                                          <p class="lead">Multi Item Carousel</p>
-                                          <p>₹ 1</p>
-                                          <p>₹ 6000</p>
-                                          <p>50% off</p>
-                                      </div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="pad15">
-                                          <p class="lead">Multi Item Carousel</p>
-                                          <p>₹ 1</p>
-                                          <p>₹ 6000</p>
-                                          <p>50% off</p>
-                                      </div>
-                                  </div>
-                                      <div class="item">
-                                          <div class="pad15">
-                                              <p class="lead">Multi Item Carousel</p>
-                                              <p>₹ 1</p>
-                                              <p>₹ 6000</p>
-                                              <p>50% off</p>
+                        <div class="row">
+                          <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                                  <div class="MultiCarousel-inner">
+                                    <a href="#">
+                                      <div class="item" style="color: white;">
+                                          <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                              <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Persuratan</strong></p>
+                                              <!-- <p style="color: white;">₹ 1</p>
+                                              <p style="color: white;">₹ 6000</p>
+                                              <p style="color: white;">50% off</p> -->
                                           </div>
                                       </div>
+                                    </a>
+                                    <a href="#">
                                       <div class="item">
-                                          <div class="pad15">
-                                              <p class="lead">Multi Item Carousel</p>
-                                              <p>₹ 1</p>
+                                          <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                              <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                              <!-- <p>₹ 1</p>
                                               <p>₹ 6000</p>
-                                              <p>50% off</p>
+                                              <p>50% off</p> -->
                                           </div>
-                                      </div> -->
-                  </div>
-                  <button class="btn btn-primary leftLst"><</button>
-                  <button class="btn btn-primary rightLst">></button>
-              </div>
-        </div>
-        </div>
-                    </div>
+                                      </div>
+                                    </a>
+                                          <div class="item">
+                                              <div class="pad15">
+                                                  <p class="lead">Multi Item Carousel</p>
+                                                  <p>₹ 1</p>
+                                                  <p>₹ 6000</p>
+                                                  <p>50% off</p>
+                                              </div>
+                                          </div>
+                                          <div class="item">
+                                              <div class="pad15">
+                                                  <p class="lead">Multi Item Carousel</p>
+                                                  <p>₹ 1</p>
+                                                  <p>₹ 6000</p>
+                                                  <p>50% off</p>
+                                              </div>
+                                          </div>
+                                              <div class="item">
+                                                  <div class="pad15">
+                                                      <p class="lead">Multi Item Carousel</p>
+                                                      <p>₹ 1</p>
+                                                      <p>₹ 6000</p>
+                                                      <p>50% off</p>
+                                                  </div>
+                                              </div>
+                                              <div class="item">
+                                                  <div class="pad15">
+                                                      <p class="lead">Multi Item Carousel</p>
+                                                      <p>₹ 1</p>
+                                                      <p>₹ 6000</p>
+                                                      <p>50% off</p>
+                                                  </div>
+                                              </div>
+                                                  <div class="item">
+                                                      <div class="pad15">
+                                                          <p class="lead">Multi Item Carousel</p>
+                                                          <p>₹ 1</p>
+                                                          <p>₹ 6000</p>
+                                                          <p>50% off</p>
+                                                      </div>
+                                                  </div>
+                                                  <div class="item">
+                                                      <div class="pad15">
+                                                          <p class="lead">Multi Item Carousel</p>
+                                                          <p>₹ 1</p>
+                                                          <p>₹ 6000</p>
+                                                          <p>50% off</p>
+                                                      </div>
+                                                  </div>
+                                                      <div class="item">
+                                                          <div class="pad15">
+                                                              <p class="lead">Multi Item Carousel</p>
+                                                              <p>₹ 1</p>
+                                                              <p>₹ 6000</p>
+                                                              <p>50% off</p>
+                                                          </div>
+                                                      </div>
+                                                      <div class="item">
+                                                          <div class="pad15">
+                                                              <p class="lead">Multi Item Carousel</p>
+                                                              <p>₹ 1</p>
+                                                              <p>₹ 6000</p>
+                                                              <p>50% off</p>
+                                                          </div>
+                                                      </div>
+                                  </div>
+                                  <button class="btn btn-primary leftLst"><</button>
+                                  <button class="btn btn-primary rightLst">></button>
+                              </div>
+                        </div>
+                        </div>
+                                            </div>
                     <!-- <div class="tavel_food mt-100">
                             <div class="main_title2">
                                 <h2>Travel and food</h2>

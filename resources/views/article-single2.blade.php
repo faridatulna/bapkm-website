@@ -160,7 +160,7 @@
                                             <img class="img-fluid" src="{{ url('files/default.jpg') }}" alt="image"/>
                                         @endif -->
 
-                                    <img class="img-fluid" src="{{ asset('force/img/a.jpg') }}" alt="">
+                                    <!-- <img class="img-fluid" src="{{ asset('force/img/a.jpg') }}" alt=""> -->
                                     <p>{{ $data->description }}</p>
                                 </div>
                             </div>

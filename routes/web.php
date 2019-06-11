@@ -46,6 +46,10 @@ Route::get('/c', function () {
    return view('aboutus');
 });
 
+Route::get('/help', function () {
+   return view('help');
+});
+
 Route::get('/articles', function () {
 	$article = Article::all();
     return view('article',compact('article'));

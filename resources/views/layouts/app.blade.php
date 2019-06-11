@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="img/favicon.png" type="image/png">
     <title>BAPKM ITS</title>
+    <style>
+    .helpcards{
+      margin-top: 0 !important;
+    }
+    </style>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('force/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('force/vendors/linericon/style.css') }}">
@@ -30,6 +35,9 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <meta charset="utf-8">
 
     <!--asset2-->

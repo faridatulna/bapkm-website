@@ -71,7 +71,7 @@
                                     <li><a href="single-post.html">Calon Mahasiswa</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-link2"><a href="/"><strong>Bantuan</strong></a></li>
+                            <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>
                         </ul>
                     </div>
                     <!-- Nav End -->
