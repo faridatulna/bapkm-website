@@ -456,8 +456,9 @@ button:focus {
 
 .home_banner_area .banner_inner {
   position: relative;
-  background: url(../img/banner/home-banner.jpg) no-repeat scroll center center;
+  /*background: url(../img/banner/home-banner.jpg) no-repeat scroll center center;*/
   min-height: 350px;
+  min-width: 712px;
 }
 
 .home_banner_area .banner_inner .banner_content {
@@ -494,7 +495,7 @@ button:focus {
 }
 
 .home_banner_area .carousel .carousel-indicators {
-  bottom: -40px;
+  bottom: 25px; /*tadi -40px*/
   margin: 0 auto;
   z-index: 20;
 }

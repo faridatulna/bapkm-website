@@ -10,7 +10,7 @@
 
     <!--================Home Banner Area =================-->
     <section class="home_banner_area">
-            <div class="banner_inner d-flex align-items-center">
+            <div class="d-flex align-items-center" style="min-height: 350px;position: relative;">
                 <div class="container">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -20,36 +20,42 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/wisuda-2015.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                    <div class="banner_content text-center">
+                                        <div class="date">
+                                            <!-- <a class="gad_btn" href="#">Gadgets</a>
+                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a> -->
+                                        </div>
+                                        <!-- <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p> -->
                                     </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/its3.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                    <div class="banner_content text-center">
+                                        <div class="date">
+                                            <!-- <a class="gad_btn" href="#">Gadgets</a>
+                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a> -->
+                                        </div>
+                                        <!-- <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p> -->
                                     </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
+                                <div class="banner_inner d-flex align-items-center" style="background-image:url({{url('force/img/banner/its2.jpg')}}); background-repeat: no-repeat; background-position: center; filter: brightness(85%);">
+                                    <div class="banner_content text-center">
+                                        <div class="date">
+                                            <!-- <a class="gad_btn" href="#">Gadgets</a>
+                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a> -->
+                                        </div>
+                                        <!-- <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p> -->
                                     </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +188,7 @@
                     <a href="#">
                       <div class="item" style="color: white;">
                           <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; filter: brightness(75%);">
-                              <p class="lead"><strong>Multi Item Carousel</strong></p>
+                              <p class="lead">Multi Item Carousel</p>
                               <p>₹ 1</p>
                               <p>₹ 6000</p>
                               <p>50% off</p>
@@ -190,14 +196,14 @@
                       </div>
                     </a>
                       <div class="item">
-                          <div class="pad15" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; color: white;">
+                          <div class="pad15" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{url('force/img/wisuda-content.png')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center; color: white;filter: brightness(75%);">
                               <p class="lead">Multi Item Carousel</p>
                               <p>₹ 1</p>
                               <p>₹ 6000</p>
                               <p>50% off</p>
                           </div>
                       </div>
-                          <div class="item">
+                          <!-- <div class="item">
                               <div class="pad15">
                                   <p class="lead">Multi Item Carousel</p>
                                   <p>₹ 1</p>
@@ -260,7 +266,7 @@
                                               <p>₹ 6000</p>
                                               <p>50% off</p>
                                           </div>
-                                      </div>
+                                      </div> -->
                   </div>
                   <button class="btn btn-primary leftLst"><</button>
                   <button class="btn btn-primary rightLst">></button>
