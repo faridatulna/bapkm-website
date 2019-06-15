@@ -26,4 +26,6 @@ class HomeController extends Controller
         $data = Article::findorfail($id);
         return view('article-single2',compact('data'));
     }
+
+    
 }

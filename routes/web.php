@@ -19,7 +19,7 @@ Route::get('/', function () {
     $article = Article::orderBy('tgl_post', 'desc')->take(2)->get(); //sort by desc
     $articleBeasiswa = Article::orderBy('tgl_post', 'desc')->where('jenis','=',1)->take(2)->get();
     $articleUKM = Article::orderBy('tgl_post', 'desc')->where('jenis','=',2)->get();
-    return view('welcome1',compact('article','articleBeasiswa'));
+    return view('welcome',compact('article','articleBeasiswa'));
 });
 
 Route::any ( '/search-result', function () {
@@ -36,15 +36,20 @@ Route::any ( '/search-result', function () {
         return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
 
+Route::prefix('aboutus')
+    ->name('aboutus.')
+    ->group(function () {
+        Route::get('/history', function () {
+           return view('aboutus.history');
+        })->name('history');
+        Route::get('/organigram', function () {
+           return view('aboutus.organigram');
+        })->name('organigram');
+        Route::get('/services', function () {
+           return view('aboutus.services');
+        })->name('services');
 
-Route::get('/b', function () {
-   $article = Article::all();
-   return view('welcome',compact('article'));
-})->name('welcome');
-
-Route::get('/c', function () {
-   return view('aboutus');
-});
+    });
 
 Route::get('/help', function () {
    return view('help');
@@ -55,9 +60,6 @@ Route::get('/articles', function () {
     return view('article',compact('article'));
 });
 Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
-Route::get('/about', function () {
-    return view('aboutus');
-});
 
 
 //admin authorities

@@ -36,8 +36,8 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <meta charset="utf-8">
 
     <!--asset2-->
@@ -56,7 +56,7 @@
 
     <footer class="footer-area">
         <div class="container">
-            <div class="row f_widgets_inner">
+            <div class="row">  <!-- f_widgets_inner -->
               <div class="col-lg-3 col-md-3 col-sm-3">
                     <img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:14vw;" alt=""  style="border-right: 3px solid #F4BA23;">
               </div>
@@ -101,9 +101,9 @@
                 <!-- <div class="col-lg-12">
                   <div class="f_boder"></div>
                 </div> -->
-                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true" style="color: #F4BA23;"></i> by <a href="https://colorlib.com" target="_blank" style="color: #F4BA23;">Colorlib</a> -->
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center">
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>BAPKM</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -241,6 +241,21 @@
       }
 
   });
+
+    /*tentang kami */
+    $(function() {
+    var selectedClass = "";
+    $(".filter").click(function(){
+    selectedClass = $(this).attr("data-rel");
+    $("#gallery").fadeTo(100, 0.1);
+    $("#gallery div").not("."+selectedClass).fadeOut().removeClass('animation');
+    setTimeout(function() {
+    $("."+selectedClass).fadeIn().addClass('animation');
+    $("#gallery").fadeTo(300, 1);
+    }, 300);
+    });
+    });
+    
     </script>
     @section('js') @show
 </body>
