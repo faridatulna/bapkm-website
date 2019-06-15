@@ -7,13 +7,13 @@
 @stop @extends('layouts.app') @section('content')
 
 <div class="ui container">
-    <div class="ui large breadcrumb">
+    <!-- <div class="ui large breadcrumb">
       <a class="section">Home</a>
       <i class="right chevron icon divider"></i>
       <a class="section">Tentang Kami</a>
       <i class="right chevron icon divider"></i>
       <div class="active section">Gallery</div>
-    </div>
+    </div> -->
     
     <div class="pusher">
         <div class="ui vertical stripe segment">
