@@ -6,9 +6,7 @@
 
 @stop @extends('layouts.app') @section('content')
 
-
-
-<!-- <div class="container-fluid">
+<div class="container-fluid">
   <h2>Custom Tree</h2>
   <div id="custom-tree"><div class="org-tree"><div class="row"><div class="item col-lg-12 col-md-12 child-width-4" data-width="100"><div class="child root"><div class="parent"><div class="node center-block text-center">
                         <strong>John Doe</strong><br>
@@ -59,7 +57,7 @@
                         <strong>Mark Hughes</strong><br>
                         <em>Product Information Coordinator</em>
                     </div></div></div></div></div></div></div></div></div></div>
-</div> -->
+</div>
 
 
 @endsection
