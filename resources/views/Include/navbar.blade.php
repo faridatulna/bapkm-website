@@ -62,7 +62,7 @@
                                 <li><a href="{{ route('aboutus.services') }}">Gallery</a></li>
                               </ul>
                             </li>
-                            <li class="nav-link2"><a href="#"><strong>Pengumuman</strong></a>
+                            <li class="nav-link2"><a href="#"><strong>Berita</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
                                     <li><a href="index.html">Terbaru</a></li>
                                     <li><a href="catagories-post.html">Beasiswa</a></li>

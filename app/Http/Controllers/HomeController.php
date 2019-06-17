@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function articlepage($id)
     {
         $data = Article::findorfail($id);
-        return view('article-single2',compact('data'));
+        return view('article-single',compact('data'));
     }
 
     
