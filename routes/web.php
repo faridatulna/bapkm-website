@@ -55,6 +55,14 @@ Route::get('/help', function () {
    return view('help');
 });
 
+Route::get('/regdat', function () {
+   return view('regdat');
+});
+
+Route::get('/lsm', function () {
+   return view('lsm');
+});
+
 Route::get('/articles', function () {
 	$article = Article::all();
     return view('article',compact('article'));
