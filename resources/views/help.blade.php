@@ -8,6 +8,8 @@
 
     <div class="col-12" style="margin: 20px 30%;">
       <div class="row">
+
+        <a href="/regdat">
         <div class="helpcards ui cards" style="margin-right: 20px;">
 
           <div class="card" style="border-radius: 20px;">
@@ -22,6 +24,7 @@
             </a>
           </div>
         </div>
+      </a>
 
         <div class="helpcards ui cards" style="margin-top: 0 !important">
 

@@ -5,8 +5,9 @@
             <div class="col-12">
                 <div class="top-header-content d-flex align-items-center justify-content-between">
                     <!-- Logo -->
-                    <div class="logo">
-                        <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw;" alt=""></a>
+                    <div class="col-12 logo">
+                        <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
+                        <h2 style="float: rights; color: white; margin-left: 6vw;">KREATIF DAN INOVATIF</h2>
                     </div>
 
                     <!-- Login Search Area -->
