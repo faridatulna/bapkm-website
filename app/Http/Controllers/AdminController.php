@@ -24,7 +24,7 @@ class AdminController extends Controller
     {
         $article = Article::get();
         $user   = User::get();
-        return view('admin.dashboard', compact('article', 'user'));
+        return view('admin.index', compact('article', 'user'));
     }
 
     /**

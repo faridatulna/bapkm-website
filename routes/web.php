@@ -11,23 +11,25 @@
 |
 */
 use App\Article;
-use App\Links;
+use App\Quicklinks;
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     //$article = Article::all();
-    $article = Article::orderBy('tgl_post', 'desc')->take(2)->get(); //sort by desc
-    $articleBeasiswa = Article::orderBy('tgl_post', 'desc')->where('jenis','=',1)->take(2)->get();
-    $articleUKM = Article::orderBy('tgl_post', 'desc')->where('jenis','=',2)->get();
+    $article = Article::orderBy('datePost', 'desc')->take(2)->get(); //sort by desc
+    $articleBeasiswa = Article::orderBy('datePost', 'desc')->where('type','=',1)->take(2)->get();
+    $articleUKM = Article::orderBy('datePost', 'desc')->where('type','=',2)->get();
     return view('welcome',compact('article','articleBeasiswa'));
 });
+
+//DIPAKE KO! JGN DIHAPUSS
 
 Route::any ( '/search-result', function () {
 
     $q = Input::get ( 'q' );
     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'tgl_post', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'datePost', 'LIKE', '%' . $q . '%' )->
                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->get ();
     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
     if (count ( $data ) > 0)
@@ -65,26 +67,30 @@ Route::get('/lsm', function () {
 
 Route::get('/articles', function () {
 	$article = Article::all();
-    return view('article',compact('article'));
+    return view('article-single',compact('article'));
 });
 Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
 
 
 //admin authorities
-Auth::routes();
+// Auth::routes();
 
-Route::prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-    	Route::get('/','AdminController@index');
-        Route::resource('article','ArticleController');
-        Route::get('/article/posts/{id}', 'ArticleController@posts')->name('article.posts');
-        Route::prefix('article')->name('article.')->group(function () {
+// Route::prefix('admin')
+//     ->name('admin.')
+//     ->group(function () {
+//     	Route::get('/','AdminController@index');
+//         Route::resource('article','ArticleController');
+//         Route::get('/article/posts/{id}', 'ArticleController@posts')->name('article.posts');
+//         Route::prefix('article')->name('article.')->group(function () {
 
-        });
+//         });
 
-        Route::resource('link','LinksController');
-        Route::resource('user','UserController');
-    });
+//         Route::resource('quicklinks','LinksController');
+//         Route::resource('user','UserController');
+//     });
 
-Auth::routes();
+// Auth::routes();
+
+Route::get('/admin', function () {
+   return view('admin.index');
+});

@@ -2,122 +2,135 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BAPKM | Admin Dashboard</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="{{asset('adminlte/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/vendors/css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/vendors/css/vendor.bundle.addons.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('adminlte/css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/css/font-awesome.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('adminlte/css/select2.css')}}">
-  <link rel="stylesheet" href="{{ asset('adminlte/css/dataTables.bootstrap4.min.css')}}">
+    <!-- Required meta tags -->
 
-  <!--asset2-->
-  @section('css')
+    <meta charset="utf-8"> @section('css')
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link href="{{ asset('admin-page/assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/libs/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/charts/chartist-bundle/chartist.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/charts/morris-bundle/morris.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/charts/c3charts/c3.css')}}">
+    <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
+    <title>ADMIN - BAPKM</title>
+    <!--asset2-->
 
-  @show
-  <!-- endinject -->
-  <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+    <!-- <link rel="stylesheet" href="{{ asset('force/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/linericon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/owl-carousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/lightbox/simpleLightbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/nice-select/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/animate-css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/vendors/jquery-ui/jquery-ui.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('force/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/css/style2.css') }}">
+    <link rel="stylesheet" href="{{ asset('force/css/responsive.css') }}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <meta charset="utf-8"> -->
+
+    @show
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 </head>
+
 <body>
-    <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/admin" style="color: #2d2d2d">
-          BAPKM - ADMIN
-        </a>
-           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-          <i class="fa fa-align-justify" style="color: #fff;"></i>
-        </button>
-      </div>
-
-      <div class="navbar-menu-wrapper d-flex align-items-center">
-        <ul class="navbar-nav navbar-nav-right">
-         
-          <li class="nav-item dropdown d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
-                @if(Auth::user()->gambar == '')
-                  <img class="img-xs rounded-circle"  src="{{asset('adminlte/images/user/default.png')}}" alt="profile image">
-                @else
-                <img class="img-xs rounded-circle"  src="{{asset('adminlte/images/user/'.Auth::user()->gambar)}}" alt="profile image">
-                @endif
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                 
-                </div>
-              </a>
-              <!-- <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.show', Auth::user()->id)}}">
-               <i class="fa fa-user">Lihat Profile</i>
-              </a> -->
-              <a class="dropdown-item" style="margin-top: 20px;" href="{{route('admin.user.edit', Auth::user()->id)}}">
-               <i class="fa fa-cog">Edit Profile</i>
-              </a>
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out">Sign Out</i>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  {{ csrf_field() }}
-                </form>
-              </a>
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="index.html">ADMIN</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                <span class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-          </li>
-        </ul>
-     
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      @section('sidebar')
-          @include('layouts.sidebar-admin',['user' => Auth::User()])
-      @show
-      </nav>
-      <div class="main-panel">
-        <div class="content-wrapper">
-          @yield('content')
-
-        </div>
-        <footer class="footer">
-          <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © {{date('Y')}}
-            <a href="https://gilacoding.com/" target="_blank">BAPKM</a>. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+        </nav>
     </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <script src="{{asset('adminlte/vendors/js/vendor.bundle.base.js')}}"></script>
-  <script src="{{asset('adminlte/vendors/js/vendor.bundle.addons.js')}}"></script>
-  <script src="{{asset('adminlte/js/off-canvas.js')}}"></script>
-  <script src="{{asset('adminlte/js/misc.js')}}"></script>
-  <script src="{{asset('adminlte/js/dashboard.js')}}"></script>
-  <script src="{{asset('adminlte/js/jquery.dataTables.min.js')}}"></script>
-  <script src="{{asset('adminlte/js/dataTables.bootstrap4.min.js')}}"></script>
-  <script src="{{asset('adminlte/js/sweetalert2.all.js')}}"></script>
-  <script src="{{asset('adminlte/js/select2.min.js')}}"></script>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
 
-    
+    <div class="nav-left-sidebar sidebar-dark">
+        @section('navbar') @include('include.navbar-admin') @show
+    </div>
 
-  @include('sweetalert::alert')
-  @section('js')
+    <div class="dashboard-wrapper">
+        @yield('content')
 
-  @show
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="float-right">
+                        Copyright © 2019 BAPKM ITS
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end footer -->
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="{{ asset('admin-page/assets/vendor/jquery/jquery-3.3.1.min.js')}}"></script>
+    <!-- bootstap bundle js -->
+    <script src="{{ asset('admin-page/assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <!-- slimscroll js -->
+    <script src="{{ asset('admin-page/assets/vendor/slimscroll/jquery.slimscroll.js')}}"></script>
+    <!-- main js -->
+    <script src="{{ asset('admin-page/assets/libs/js/main-js.js')}}"></script>
+    <!-- chart chartist js -->
+    <script src="{{ asset('admin-page/assets/vendor/charts/chartist-bundle/chartist.min.js')}}"></script>
+    <!-- sparkline js -->
+    <script src="{{ asset('admin-page/assets/vendor/charts/sparkline/jquery.sparkline.js')}}"></script>
+    <!-- morris js -->
+    <script src="{{ asset('admin-page/assets/vendor/charts/morris-bundle/raphael.min.js')}}"></script>
+    <script src="{{ asset('admin-page/assets/vendor/charts/morris-bundle/morris.js')}}"></script>
+    <!-- chart c3 js -->
+    <script src="{{ asset('admin-page/assets/vendor/charts/c3charts/c3.min.js')}}"></script>
+    <script src="{{ asset('admin-page/assets/vendor/charts/c3charts/d3-5.4.0.min.js')}}"></script>
+    <script src="{{ asset('admin-page/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
+    <script src="{{ asset('admin-page/assets/libs/js/dashboard-ecommerce.js')}}"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+    @section('js') @show
 </body>
 
 </html>
-                         
-   

@@ -33,10 +33,20 @@
                     <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
                     <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.</p>
                     <blockquote class="blockquote">
-                        <p class="mb-0">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.</p>
+                        <div class="row">
+                            <div class="col-3">
+                                <h3 class="mb-0">
+                                    <i class="fa fa-download"></i> Unduh File
+                                </h3>
+                            </div>
+                            <div class="col-3">
+                                <h3 class="mb-0">
+                                    <i class="fa fa-download"></i> Unduh File
+                                </h3>
+                            </div>
+                        </div>
+                        
                     </blockquote>
-                    <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
-                    <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
                     <div class="news_d_footer">
                     </div>
                 </div>

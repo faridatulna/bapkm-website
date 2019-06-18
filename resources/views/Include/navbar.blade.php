@@ -5,13 +5,13 @@
             <div class="col-12">
                 <div class="top-header-content d-flex align-items-center justify-content-between">
                     <!-- Logo -->
-                    <div class="col-12 logo">
+                    <div class="col-7 logo">
                         <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
-                        <h2 style="float: rights; color: white; margin-left: 6vw;">KREATIF DAN INOVATIF</h2>
+                        <h2 style="float: left; color: white; margin-left: 2vw;">KREATIF DAN INOVATIF</h2>
                     </div>
 
                     <!-- Login Search Area -->
-                    <div class="login-search-area d-flex align-items-center">
+                    <div class="login-search-area d-flex align-items-right">
                         <!-- Search Form -->
                         <div class="search-form">
                             <form action="/search-result" method="post" role="search">
@@ -60,15 +60,14 @@
                               <ul class="dropdown" style="margin-top:5px;">
                                 <li><a href="{{ route('aboutus.history') }}">Sejarah</a></li>
                                 <li><a href="{{ route('aboutus.organigram') }}">Struktur Organisasi</a></li>
-                                <li><a href="{{ route('aboutus.services') }}">Gallery</a></li>
+                                <li><a href="{{ route('aboutus.services') }}">Profil</a></li>
                               </ul>
                             </li>
                             <li class="nav-link2"><a href="#"><strong>Berita</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
-                                    <li><a href="index.html">Terbaru</a></li>
-                                    <li><a href="catagories-post.html">Beasiswa</a></li>
-                                    <li><a href="single-post.html">UKM</a></li>
+                                    <li><a href="index.html">Umum</a></li>
                                     <li><a href="single-post.html">Calon Mahasiswa</a></li>
+                                    <li><a href="catagories-post.html">Beasiswa</a></li>
                                 </ul>
                             </li>
                             <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>

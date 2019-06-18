@@ -18,8 +18,8 @@ class Article extends Model
         'filePdf',
         
         'description',
-        'jenis',
-        'tgl_post'
+        'type',
+        'datePost'
     ];
 
 }

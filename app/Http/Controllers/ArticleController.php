@@ -62,27 +62,24 @@ class ArticleController extends Controller
         ]);
 
         $article = new Article;
-        //File Upload
+        //File Image Upload
         $fileImg = $request->file('fileImg');
         $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
         $desPath = public_path('/files');
         $fileImg->move($desPath,$inputFile['namafile']);
-
-
         $article->fileImg = $inputFile['namafile'];
-
+        //File Upload
         $filePdf = $request->file('filePdf');
         $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
         $desPath = public_path('/filesPdf');
         $fileImg->move($desPath,$inputFile['namafilePdf']);
-
         $article->filePdf = $inputFile['namafilePdf'];
+
         $article->title = $request->title;
         $article->url = $request->url;
         $article->description = $request->description;
-        //
-        $article->jenis = 0; //0=umum,1=beasiswa,2=kemahasiswaan
-        $article->tgl_post = Carbon::now();
+        $article->type = null; // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
+        $article->datePost = Carbon::now();
         $article->save();
         // Article::create($request->all());
         //echo $article;
