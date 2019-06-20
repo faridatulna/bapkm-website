@@ -101,7 +101,7 @@
         <ul>
           <li>1. Bukti transfer dari sponsor.</li>
           <li>2. RBA penggunaan dana sponsor.</li>
-          <li>3. Kwitansi bukti penggunaan dana.</li>
+          <li>3. Kuitansi bukti penggunaan dana.</li>
           <li>4. Fotokopi paspor.</li>
           <li>5. Bukti tiket dan boarding pass.</li>
           <li>6. Surat tugas dan surat rekomendasi kegiatan dari Wakil Rektor I.</li>
