@@ -56,11 +56,19 @@ Route::get('/help', function () {
 });
 
 Route::get('/regdat', function () {
-   return view('regdat');
+   return view('SOP.regdat');
 });
 
-Route::get('/lsm', function () {
-   return view('lsm');
+Route::get('/datkeg', function () {
+   return view('SOP.datkeg');
+});
+
+Route::get('/pep', function () {
+   return view('SOP.PEP');
+});
+
+Route::get('/beasiswa', function () {
+   return view('SOP.beasiswa');
 });
 
 Route::get('/articles', function () {

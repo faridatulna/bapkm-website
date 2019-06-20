@@ -10,7 +10,7 @@
 <div class="ui container ">
   <div class="col-md-12">
       <div class="page-header">
-          <h1>SOP Pengelolaan Data Kemahasiswaan</h1>
+          <h1>SOP Pengelolaan Data dan Kegiatan Mahasiswa</h1>
       </div>
       <div style="display:inline-block;width:100%;overflow-y:auto;">
 
@@ -28,7 +28,7 @@
     <div id="UKM" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Kegiatan Unit Kegiatan Mahasiswa (UKM)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal kegiatan UKM.</p>
-      <p><img src="{{ asset('files/123.jpg')}}"></p>
+      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -53,7 +53,7 @@
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Kegiatan Organisasi Mahasiswa (Fakultas dan Departemen)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal kegiatan organisasi mahasiswa (Fakultas dan Departemen).</p>
 
-      <p><img src="{{ asset('files/123.jpg')}}"></p>
+      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -74,7 +74,7 @@
     <div id="BEMHima" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Organisasi Mahasiswa (BEM dan Himadep)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal organisasi mahasiswa (BEM dan Himadep).</p>
-      <p><img src="{{ asset('files/123.jpg')}}"></p>
+      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -94,7 +94,7 @@
     <div id="Sponsor" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Dana Sponsor bagi Delegasi/Tim/Mahasiswa</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan sponsor bagi delegasi/tim/mahasiswa.</p>
-      <p><img src="{{ asset('files/4.jpg')}}"></p>
+      <p><img src="{{ asset('files/Data/DATA4.jpg')}}"></p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -113,7 +113,7 @@
     <div id="LPJSPJ" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Pengesahan Laporan Pertanggungjawaban (LPJ) dan Surat Pertanggungjawaban (SPJ)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengesahkan LPJ dan SPJ.</p>
-      <p><img src="{{ asset('files/5.jpg')}}"></p>
+      <p><img src="{{ asset('files/Data/DATA5.jpg')}}"></p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
