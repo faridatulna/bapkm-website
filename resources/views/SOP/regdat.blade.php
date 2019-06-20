@@ -3,32 +3,30 @@
         $('.ui.dropdown')
             .dropdown();
     </script>
+
 @stop @extends('layouts.app') @section('content')
     <!--================Header Menu Area =================-->
 
-    <div class="pusher">
-        <div class="ui vertical stripe segment">
-            <h1 style="margin-left: 215px;">SOP Registrasi dan Data</h1>
-            <div class="ui middle aligned stackable grid container">
-              <br>
-                <div class="row" style="margin-left: 18px;">
-                    <div class="col-12">
-                        <h3 class="ui header">Panduan Penggunaan Layanan Surat Mahasiswa</h3>
-                        <p>Klik <a href="{{ asset('force/img/core-img/lsm.pdf') }}" target="_blank">di sini</a> untuk detail.</p>
+<div class="ui container ">
+  <div class="col-md-12">
+      <div class="page-header">
+          <h1>SOP Registrasi dan Data</h1>
+      </div>
+      <div style="display:inline-block;width:100%;overflow-y:auto;">
 
-                    </div>
-                </div>
-                <!-- <div class="row">
-                  <div class="center aligned column">
-                    <a class="ui huge button">Check Them Out</a>
-                  </div>
-                </div> -->
-            </div>
-        </div>
+      </div>
+  </div>
+
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'beasiswa')" id="defaultOpen">Layanan Surat Mahasiswa</button>
     </div>
 
-    <!--================Header Menu Area =================-->
+    <div id="beasiswa" class="tabcontent">
+      <h3 class="ui header">Panduan Penggunaan Layanan Surat Mahasiswa</h3>
+      <p>Klik <a href="{{ asset('files/Regdat/REGDAT.pdf')}}">di sini</a> untuk detil panduan.</p>
+    </div>
 
-    <!--================End News Area =================-->
+</div>
+
 
     @endsection

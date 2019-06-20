@@ -58,7 +58,7 @@
 
       <h4>Untuk lulusan yang kehilangan transkrip:</h4>
       <p><img src="{{ asset('files/PEP/PEP2.jpg')}}"></p>
-      <h4>Untuk lulusan yang transkripnya rusak</h4>
+      <h4>Untuk lulusan yang transkripnya rusak:</h4>
       <p><img src="{{ asset('files/PEP/PEP3.jpg')}}"></p>
 
       <p>
@@ -118,7 +118,7 @@
           <h4>Untuk lulusan yang ijazahnya memiliki kesalahan data:</h4>
           <li>1. <i>Copy</i> ijazah.</li>
           <li>2. Form permohonan surat keterangan pengganti ijazah.</li>
-          <li>3. Surat pernyataan/keterangan dari sekolah/institusi/perguruan tinggi terkait kesalahan ijazah..</li>
+          <li>3. Surat pernyataan/keterangan dari sekolah/institusi/perguruan tinggi terkait kesalahan ijazah.</li>
         </ul>
       </p>
     </div>
@@ -127,14 +127,6 @@
       <h3 class="ui header">Panduan Pencetakan KRSM</h3>
       <p>Berikut adalah prosedur untuk mencetak KRSM.</p>
       <p><img src="{{ asset('files/PEP/PEP8.jpg')}}"></p>
-
-      <p>
-        <h3>Dokumen-Dokumen yang Diperlukan</h3>
-        <ul>
-          <li>1. Proposal LPJ.</li>
-          <li>2. Kuitansi SPJ.</li>
-        </ul>
-      </p>
     </div>
 
 </div>

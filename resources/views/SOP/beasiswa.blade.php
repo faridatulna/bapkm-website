@@ -28,7 +28,7 @@
 
       <p>
         <ul>
-          <li>*Persyaratan biasanya terdiri dari</li>
+          <li>*Persyaratan biasanya terdiri dari:</li>
           <li>1. Formulir pendaftaran</li>
           <li>2. <i>Curriculum vitae</i> (daftar riwayat hidup) terbaru</li>
           <li>3. Pas foto berwarna ukuran 4x6</li>
