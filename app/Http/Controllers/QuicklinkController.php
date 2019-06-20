@@ -9,7 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class LinksController extends Controller
+class QuicklinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,6 +22,13 @@ class LinksController extends Controller
         $this->middleware(['auth'])->except('logout');
     }
 
+    public function links()
+    {
+        $links = Quicklinks::all();
+         
+        return view('admin.article.list_link',compact('links'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,9 +36,9 @@ class LinksController extends Controller
      */
     public function index()
     {
-        $datas = Quicklinks::get();
+        $links = Quicklinks::paginate(10);
         
-        return view('admin.link.index',compact('datas'));
+        return view('admin.article.list_link',compact('links'));
     }
 
    /**
@@ -54,7 +61,7 @@ class LinksController extends Controller
     public function store(Request $request)
     {
         
-        $links = new Links;
+        $links = new Quicklinks;
         $links->title = $request->title;
         $links->url = $request->url;
         $links->save();
@@ -96,7 +103,7 @@ class LinksController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $links = links::findorfail($id);
+        $links = Quicklinks::findorfail($id);
         $links->update($request->all());
 
         Session::flash('message', 'Berhasil diubah!');
@@ -111,7 +118,7 @@ class LinksController extends Controller
      */
     public function destroy($id)
     {
-        $links = links::findorfail($id);     
+        $links = Quicklinks::findorfail($id);     
         $links->delete();
         Session::flash('message', 'Berhasil dihapus!');
         Session::flash('message_type', 'success');

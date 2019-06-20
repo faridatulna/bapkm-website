@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Events;
+use App\Quicklinks;
+use App\Services;
+use App\Helps;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +24,27 @@ class AdminController extends Controller
         $this->middleware(['auth'])->except('logout');
     }
 
+    public function links()
+    {
+        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->get();
+        $event = Events::all();
+        $article = Article::all();
+        $links = Quicklinks::all();
+        return view('admin.index',compact('article','datas','event','links'));
+    }
+    
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $article = Article::get();
-        $user   = User::get();
-        return view('admin.index', compact('article', 'user'));
+        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->paginate(10);
+        $event = Events::paginate(5);
+        $article = Article::all();
+        $links = Quicklinks::paginate(5);
+        return view('admin.index',compact('article','datas','event','links'));
     }
 
     /**

@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     //$article = Article::all();
-    $article = Article::orderBy('datePost', 'desc')->take(2)->get(); //sort by desc
-    $articleBeasiswa = Article::orderBy('datePost', 'desc')->where('type','=',1)->take(2)->get();
-    $articleUKM = Article::orderBy('datePost', 'desc')->where('type','=',2)->get();
+    $article = Article::orderBy('postDate', 'desc')->take(2)->get(); //sort by desc
+    $articleBeasiswa = Article::orderBy('postDate', 'desc')->where('type','=',1)->take(2)->get();
+    $articleUKM = Article::orderBy('postDate', 'desc')->where('type','=',2)->get();
     return view('welcome',compact('article','articleBeasiswa'));
 });
 
@@ -73,24 +73,37 @@ Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-si
 
 
 //admin authorities
-// Auth::routes();
+Auth::routes();
 
-// Route::prefix('admin')
-//     ->name('admin.')
-//     ->group(function () {
-//     	Route::get('/','AdminController@index');
-//         Route::resource('article','ArticleController');
-//         Route::get('/article/posts/{id}', 'ArticleController@posts')->name('article.posts');
-//         Route::prefix('article')->name('article.')->group(function () {
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+    	Route::get('/','AdminController@index');
 
-//         });
+        Route::get('/article','AdminController@index');
+        Route::resource('article','ArticleController');
+        Route::get('/calendar','CalendarController@index');
+        Route::resource('calendar','CalendarController');
+        Route::get('/event','EventController@index');
+        Route::resource('event','EventController');
+        Route::get('/quicklink','QuicklinkController@index');
+        Route::resource('link','QuicklinkController');
 
-//         Route::resource('quicklinks','LinksController');
-//         Route::resource('user','UserController');
-//     });
+        Route::prefix('product')->name('product.')->group(function () {
+            Route::get('/help','Help_SOPController@index');
+            Route::resource('help','Help_SOPController');
+            Route::get('/service','AdminController@index');
+            Route::resource('service','ServiceController');
+        });
+        
+        Route::prefix('home')->name('home.')->group(function () {
+            Route::get('/carousel','HomeAdminController@index')->name('carousel');
+            Route::resource('carousel','HomeAdminController');
+            
+        });
+        
+        Route::resource('gallery','GalleryController');
+        Route::resource('user','UserController');
+    });
 
-// Auth::routes();
-
-Route::get('/admin', function () {
-   return view('admin.index');
-});
+Auth::routes();

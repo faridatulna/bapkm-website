@@ -17,6 +17,6 @@ class Helps extends Model
         'filePdf',
         'description',
         'type',
-        'datePost'
+        'postDate'
     ];
 }

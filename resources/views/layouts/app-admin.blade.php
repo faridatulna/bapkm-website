@@ -18,33 +18,15 @@
     <link rel="stylesheet" href="{{ asset('admin-page/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
     <title>ADMIN - BAPKM</title>
     <!--asset2-->
-
-    <!-- <link rel="stylesheet" href="{{ asset('force/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/linericon/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/owl-carousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/lightbox/simpleLightbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/nice-select/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/animate-css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/vendors/jquery-ui/jquery-ui.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('force/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/style2.css') }}">
-    <link rel="stylesheet" href="{{ asset('force/css/responsive.css') }}">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <meta charset="utf-8"> -->
+    <link rel="stylesheet" href="{{ asset('adminlte/css/select2.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminlte/css/dataTables.bootstrap4.min.css')}}">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
     @show
     <!-- endinject -->
@@ -65,13 +47,18 @@
                     <li class="nav-item dropdown nav-user">
                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                            <div class="nav-user-info">
+                            <!-- <div class="nav-user-info">
                                 <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
                                 <span class="status"></span><span class="ml-2">Available</span>
-                            </div>
+                            </div> -->
                             <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a> -->
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2"></i>Sign Out
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                                </form>
+                            </a>
+                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a> -->
                         </div>
                     </li>
                 </ul>
@@ -95,13 +82,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="float-right">
-                        Copyright © 2019 BAPKM ITS
+                        Copyright © {{date('Y')}} bapkm - All rights reserved.
                     </div>
                 </div>
             </div>
         </div>
         <!-- ============================================================== -->
         <!-- end footer -->
+        
     </div>
 
     <!-- Optional JavaScript -->
@@ -127,10 +115,20 @@
     <script src="{{ asset('admin-page/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
     <script src="{{ asset('admin-page/assets/libs/js/dashboard-ecommerce.js')}}"></script>
 
+    <!-- /*databs*/ -->
+        <script src="{{asset('adminlte/js/jquery.dataTables.min.js')}}"></script>
+      <script src="{{asset('adminlte/js/dataTables.bootstrap4.min.js')}}"></script>
+      <script src="{{asset('adminlte/js/sweetalert2.all.js')}}"></script>
+      <script src="{{asset('adminlte/js/select2.min.js')}}"></script>
+
+    
+
+     @include('sweetalert::alert')
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
+    @section('js')
 
-    @section('js') @show
+    @show
 </body>
 
 </html>

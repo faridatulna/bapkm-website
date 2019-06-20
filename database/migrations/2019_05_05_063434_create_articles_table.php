@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->timestamp('datePost');
+            $table->timestamp('postDate');
             $table->text('fileImg')->nullable();
             $table->text('filePdf')->nullable();
             $table->string('url')->nullable();

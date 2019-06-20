@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Article;
+use App\Events;
+use App\Quicklinks;
+use App\Services;
+use App\Helps;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -14,6 +18,10 @@ class GalleryController extends Controller
     public function index()
     {
         //
+    }
+
+    public function pagehome(){
+        
     }
 
     /**

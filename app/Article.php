@@ -19,7 +19,7 @@ class Article extends Model
         
         'description',
         'type',
-        'datePost'
+        'postDate'
     ];
 
 }

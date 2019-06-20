@@ -22,7 +22,7 @@ class CreateHelpsTable extends Migration
             $table->integer('type'); 
             // 0=regdat 1=pep 2=beasiswa 3=ukm
 
-            $table->timestamp('datePost');
+            $table->timestamp('postDate');
             $table->timestamps();
         });
     }
