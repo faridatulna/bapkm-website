@@ -25,7 +25,7 @@ class QuicklinkController extends Controller
     public function links()
     {
         $links = Quicklinks::all();
-         
+
         return view('admin.article.list_link',compact('links'));
     }
 
@@ -37,7 +37,7 @@ class QuicklinkController extends Controller
     public function index()
     {
         $links = Quicklinks::paginate(10);
-        
+
         return view('admin.article.list_link',compact('links'));
     }
 
@@ -48,7 +48,7 @@ class QuicklinkController extends Controller
      */
     public function create()
     {
-        
+
     }
 
 
@@ -60,7 +60,7 @@ class QuicklinkController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $links = new Quicklinks;
         $links->title = $request->title;
         $links->url = $request->url;
@@ -90,7 +90,7 @@ class QuicklinkController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
@@ -118,7 +118,7 @@ class QuicklinkController extends Controller
      */
     public function destroy($id)
     {
-        $links = Quicklinks::findorfail($id);     
+        $links = Quicklinks::findorfail($id);
         $links->delete();
         Session::flash('message', 'Berhasil dihapus!');
         Session::flash('message_type', 'success');
