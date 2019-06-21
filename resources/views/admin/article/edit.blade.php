@@ -55,14 +55,14 @@
                                 <div class="card-body">
                                     <div class="row mb-4">
                                         <div class="col-sm-12">
-                                            <!-- <div id="summernote"></div>
+                                            <div id="summernote"></div>
                                             <script>
                                               $('#summernote').summernote({
                                                 placeholder: 'Hello stand alone ui',
                                                 tabsize: 2,
                                                 height: 100
                                               });
-                                            </script> -->
+                                            </script>
                                             <button id="edit" class="btn btn-primary" onclick="edit()" type="button">Edit 1</button>
                                             <button id="save" class="btn btn-primary" onclick="save()" type="button">Save 2</button>
                                             <div class="click2edit">click2edit</div>

@@ -64,42 +64,13 @@
                     <div id="submenu-9" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">SOP</a>
-                                <div id="submenu-10" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-google.html">Regdat</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-vector.html">PEP</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-google.html">Beasiswa</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-vector.html">UKM</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a class="nav-link" href="{{ route('admin.product.create')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fa fa-plus primary"></i>New</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Layanan</a>
-                                <div id="submenu-11" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-google.html">Regdat</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-vector.html">PEP</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-google.html">Beasiswa</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-vector.html">UKM</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a class="nav-link" href="{{ route('admin.product.sop.index')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">SOP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.product.service.index')}}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Layanan</a>
                             </li>
                         </ul>
                     </div>
@@ -119,8 +90,8 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Tentang Kami</a>
-                    <div id="submenu-8" class="collapse submenu" style="">
+                    <a class="nav-link" href="{{ route('admin.aboutus.index') }}" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Tentang Kami</a>
+                    <!-- <div id="submenu-8" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href=" ">Sejarah</a>
@@ -132,7 +103,7 @@
                                 <a class="nav-link" href=" ">Gallery</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </li>
                 
             </ul>

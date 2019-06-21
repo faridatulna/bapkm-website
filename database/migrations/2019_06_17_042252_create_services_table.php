@@ -19,7 +19,7 @@ class CreateServicesTable extends Migration
             $table->text('filePdf')->nullable();
             $table->text('fileImg')->nullable();
             $table->string('description')->nullable();
-            $table->string('url');
+            $table->string('url')->nullable();;
             $table->timestamps();
         });
     }

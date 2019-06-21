@@ -3,9 +3,9 @@
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 use Faker\Generator as Faker;
-use App\Links;
+use App\Quicklinks;
 
-$factory->define(Links::class, function (Faker $faker) {
+$factory->define(Quicklinks::class, function (Faker $faker) {
     return [
         'title'         => $faker->text(25),
         'url' 			=> $faker->domainName(),

@@ -16,12 +16,12 @@ class CreateHelpsTable extends Migration
         Schema::create('helps', function (Blueprint $table) {
             $table->bigIncrements('id');            
             $table->string('title');
+            $table->integer('type'); 
+            // 1=regdat 2=pep 3=beasiswa 4=ukm
             $table->text('fileImg')->nullable();
             $table->text('filePdf')->nullable();
             $table->longText('description')->nullable();
-            $table->integer('type'); 
-            // 0=regdat 1=pep 2=beasiswa 3=ukm
-
+            
             $table->timestamp('postDate');
             $table->timestamps();
         });

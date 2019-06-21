@@ -24,8 +24,8 @@ class ServiceController extends Controller
 
     public function links()
     {
-        $datas = Article::all();
-        return view('admin.article.index',compact('datas'));
+        $datas = Services::all();
+        return view('admin.help.service',compact('datas'));
     }
     
      /**
@@ -35,9 +35,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $datas = Article::paginate(25);
+        $datas = Services::paginate(25);
 
-        return view('admin.article.index',compact('datas'));
+        return view('admin.help.service',compact('datas'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        
     }
 
 
@@ -123,7 +123,7 @@ class ServiceController extends Controller
         //echo $article;
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect(route('admin.article.index'));
+        return redirect(route('admin.product.service.index'));
     }
 
     /**
@@ -145,8 +145,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $datas = Article::findorfail($id);
-        return view('admin.article.edit', compact('datas'));
+        
     }
 
     /**

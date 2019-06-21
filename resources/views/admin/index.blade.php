@@ -78,7 +78,7 @@
                                     <th scope="col">Judul</th>
                                     <th scope="col">Tanggal Post</th>
                                     <th scope="col">File PDF</th>
-                                    <th scope="col" colspan="2">Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,12 +89,7 @@
                                         <td>{{ $data->title}}</td>
                                         <td>{{ $data->postDate }}</td>
                                         <td><a href="">File PDF</a></td>
-                                        <td>
-                                            <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editcal{{ $data->id }}"></button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#delcal{{ $data->id }}"></button>
-                                        </td>
+                                        
                                     </tr>
 
                                     @endforeach
@@ -126,7 +121,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">title</th>
                                     <th scope="col">dateofEvent</th>
-                                    <th scope="col" colspan="2">Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -136,12 +131,7 @@
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{ $data->title}}</td>
                                         <td>{{ $data->dateofEvent }}</td>
-                                        <td>
-                                            <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editevent{{ $data->id }}"></button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#delevent{{ $data->id }}"></button>
-                                        </td>
+                                        
                                     </tr>
 
                                     @endforeach
@@ -174,7 +164,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">title</th>
                                     <th scope="col">url</th>
-                                    <th scope="col" colspan="2">Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -184,12 +174,7 @@
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{ $data->title}}</td>
                                         <td>{{ $data->url }}</td>
-                                        <td>
-                                            <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editlinks{{ $data->id }}"></button>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#dellinks{{ $data->id }}"></button>
-                                        </td>
+                                        
                                     </tr>
 
                                     @endforeach

@@ -9,7 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class Help_SOPController extends Controller
+class SopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class Help_SOPController extends Controller
     public function links()
     {
         $datas = Helps::all();
-        return view('admin.help.index',compact('datas'));
+        return view('admin.help.sop',compact('datas'));
     }
     
      /**
@@ -37,7 +37,7 @@ class Help_SOPController extends Controller
     {
         $datas = Helps::paginate(25);
 
-        return view('admin.help.index',compact('datas'));
+        return view('admin.help.sop',compact('datas'));
     }
 
     /**
@@ -47,7 +47,7 @@ class Help_SOPController extends Controller
      */
     public function create()
     {
-        return view('admin.help.create');
+       
     }
 
 
@@ -108,22 +108,18 @@ class Help_SOPController extends Controller
         }
         else if($request->type == [4]){
             $help->jenis = 4;
-        }
-        else if($request->type == [5]){
-            $help->type = 5;
-        }
-        else{
-            $help->type = 6;
-        }
+        }else{
+            
          // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+        }
         $help->postDate = Carbon::now();
-        //dd($request->all());
+        // dd($request->all());
         $help->save();
         // help::create($request->all());
         //echo $help;
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect(route('admin.help.index'));
+        return redirect(route('admin.product.sop.index'));
     }
 
     /**
@@ -145,8 +141,7 @@ class Help_SOPController extends Controller
      */
     public function edit($id)
     {
-        $datas = help::findorfail($id);
-        return view('admin.help.edit', compact('datas'));
+        
     }
 
     /**
@@ -159,7 +154,7 @@ class Help_SOPController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $help = help::findorfail($id);
+        $help = Helps::findorfail($id);
 
         $help->update($request->all());
         
@@ -190,7 +185,7 @@ class Help_SOPController extends Controller
      */
     public function destroy($id)
     {
-        $help = help::findOrFail($id);       
+        $help = Helps::findOrFail($id);       
         $help->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

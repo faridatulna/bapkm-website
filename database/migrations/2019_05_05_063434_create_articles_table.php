@@ -17,11 +17,13 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->timestamp('postDate');
+            $table->integer('type'); // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
+            
             $table->text('fileImg')->nullable();
             $table->text('filePdf')->nullable();
             $table->string('url')->nullable();
             $table->longText('description')->nullable();
-            $table->integer('type'); // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
+            
             $table->timestamps();
         });
     }

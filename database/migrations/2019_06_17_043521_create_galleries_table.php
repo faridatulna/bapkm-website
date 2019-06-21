@@ -15,7 +15,7 @@ class CreateGalleriesTable extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('fileImg');
+            $table->text('fileImg')->nullable();
             $table->string('type');
             //0=banner-home, 1=logo-history, 2=img-history, 3=img-service-ap, 4=img-service-km
             $table->timestamps();

@@ -38,7 +38,7 @@ class ArticleController extends Controller
     {
         $datas = Article::paginate(10);
          
-        return view('admin.article.a',compact('datas'));
+        return view('admin.article.index',compact('datas'));
     }
 
     /**

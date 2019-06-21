@@ -53,25 +53,30 @@ Route::prefix('aboutus')
 
     });
 
-Route::get('/help', function () {
-   return view('help');
-});
+Route::prefix('help')
+    ->name('help.')
+    ->group(function () {
+        Route::get('/help', function () {
+           return view('help');
+        });
 
-Route::get('/regdat', function () {
-   return view('SOP.regdat');
-});
+        Route::get('/regdat', function () {
+           return view('SOP.regdat');
+        });
 
-Route::get('/datkeg', function () {
-   return view('SOP.datkeg');
-});
+        Route::get('/datkeg', function () {
+           return view('SOP.datkeg');
+        });
 
-Route::get('/pep', function () {
-   return view('SOP.PEP');
-});
+        Route::get('/pep', function () {
+           return view('SOP.PEP');
+        });
 
-Route::get('/beasiswa', function () {
-   return view('SOP.beasiswa');
-});
+        Route::get('/beasiswa', function () {
+           return view('SOP.beasiswa');
+        });
+
+    });
 
 Route::get('/articles', function () {
 	$article = Article::all();
@@ -98,9 +103,12 @@ Route::prefix('admin')
         Route::resource('link','QuicklinkController');
 
         Route::prefix('product')->name('product.')->group(function () {
-            Route::get('/help','Help_SOPController@index');
-            Route::resource('help','Help_SOPController');
-            Route::get('/service','AdminController@index');
+            Route::get('/create', function () {
+               return view('admin.help.create');
+            })->name('create');
+            Route::get('/sop','SopController@index')->name('sop');
+            Route::resource('sop','SopController');
+            Route::get('/service','ServiceController@index')->name('service');
             Route::resource('service','ServiceController');
         });
         
@@ -110,6 +118,9 @@ Route::prefix('admin')
             
         });
         
+        Route::get('/aboutus','AboutusController@index')->name('aboutus');
+        Route::resource('aboutus','AboutusController');
+
         Route::resource('gallery','GalleryController');
         Route::resource('user','UserController');
     });
