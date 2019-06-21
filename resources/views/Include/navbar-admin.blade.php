@@ -38,7 +38,7 @@
                     </div> -->
                 </li>
                 <li class="nav-divider">
-                    Master Data 
+                    Master Data
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>Artikel <span class="badge badge-secondary">New</span></a>
@@ -76,7 +76,7 @@
                     </div>
                 </li>
                 <li class="nav-divider">
-                    Halaman 
+                    Halaman
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-home"></i> Home </a>
@@ -88,24 +88,24 @@
                         </ul>
                     </div>
                 </li>
-                
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.aboutus.index') }}" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Tentang Kami</a>
-                    <!-- <div id="submenu-8" class="collapse submenu" style="">
+                    <a class="nav-link" href="{{ route('admin.aboutus.history') }}" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-6"><i class="fas fa-fw fa-columns"></i> Tentang Kami </a>
+                    <div id="submenu-8" class="collapse submenu" style="">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href=" ">Sejarah</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=" ">Organigram</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=" ">Gallery</a>
-                            </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.aboutus.history') }}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"></i>Sejarah</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.aboutus.organigram') }}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">Struktur Organisasi</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.aboutus.services') }}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Profil</a>
+                          </li>
                         </ul>
-                    </div> -->
+                    </div>
                 </li>
-                
+
             </ul>
         </div>
     </nav>

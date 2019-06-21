@@ -1,63 +1,82 @@
 @section('js')
-<script>
-    $('.ui.dropdown')
-        .dropdown();
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".users").select2();
+    });
 </script>
 
-@stop @extends('layouts.app') @section('content')
+<script type="text/javascript">
+    function readURL() {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(input).prev().attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-<div class="container-fluid">
-  <h2>Custom Tree</h2>
-  <div id="custom-tree"><div class="org-tree"><div class="row"><div class="item col-lg-12 col-md-12 child-width-4" data-width="100"><div class="child root"><div class="parent"><div class="node center-block text-center">
-                        <strong>John Doe</strong><br>
-                        <em>President</em>
-                    </div></div></div><div class="row"><div class="item col-lg-4 col-md-4 child-width-2" data-width="33"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Jane Smith</strong><br>
-                        <em>Vice President of Administration</em>
-                    </div></div></div><div class="row"><div class="item col-lg-6" data-width="16"><div class="child"><div class="node center-block text-center">
-                        <strong>Peter West</strong><br>
-                        <em>Director of Finance</em>
-                    </div></div></div><div class="item col-lg-6" data-width="16"><div class="child"><div class="node center-block text-center">
-                        <strong>Sarah Jones</strong><br>
-                        <em>Director of Human Resources</em>
-                    </div></div></div></div></div><div class="item col-lg-4 col-md-4 child-width-2" data-width="33"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Richard Easton</strong><br>
-                        <em>Vice President of Operations</em>
-                    </div></div></div><div class="row"><div class="item col-lg-6" data-width="16"><div class="child"><div class="node center-block text-center">
-                        <strong>Amy Thomas</strong><br>
-                        <em>Director of Distribution</em>
-                    </div></div></div><div class="item col-lg-6 child-width-2" data-width="16"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Greg Li</strong><br>
-                        <em>Director of Customer Service</em>
-                    </div></div></div><div class="row"><div class="item col-lg-12" data-width="16"><div class="child"><div class="node center-block text-center">
-                        <strong>Laronda Phillips</strong><br>
-                        <em>Technical Support Manager</em>
-                    </div></div></div></div></div></div></div><div class="item col-lg-4 col-md-4 child-width-1" data-width="33"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Alice Ozaltin</strong><br>
-                        <em>Vice President of Merchandising</em>
-                    </div></div></div><div class="row"><div class="item col-lg-12 child-width-1" data-width="8"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Zach Kwon</strong><br>
-                        <em>Director of Purchasing</em>
-                    </div></div></div><div class="row"><div class="item col-lg-12" data-width="8"><div class="child"><div class="node center-block text-center">
-                        <strong>Jonathan Branham</strong><br>
-                        <em>Internal Purchasing Manager</em>
-                    </div></div></div></div></div><div class="item col-lg-12" data-width="8"><div class="child"><div class="node center-block text-center">
-                        <strong>Elizabeth Norman</strong><br>
-                        <em>Director of Appliances</em>
-                    </div></div></div><div class="item col-lg-12 child-width-1" data-width="8"><div class="child"><div class="parent"><div class="node center-block text-center">
-                        <strong>Peter Stevens</strong><br>
-                        <em>Director of Clothing</em>
-                    </div></div></div><div class="row"><div class="item col-lg-12" data-width="4"><div class="child"><div class="node center-block text-center">
-                        <strong>Rebecca Hammond</strong><br>
-                        <em>Womens Clothing Planner</em>
-                    </div></div></div><div class="item col-lg-12" data-width="4"><div class="child"><div class="node center-block text-center">
-                        <strong>Alex Kaplan</strong><br>
-                        <em>Mens Clothing Planner</em>
-                    </div></div></div></div></div><div class="item col-lg-12" data-width="8"><div class="child"><div class="node center-block text-center">
-                        <strong>Mark Hughes</strong><br>
-                        <em>Product Information Coordinator</em>
-                    </div></div></div></div></div></div></div></div></div></div>
+    $(function() {
+        $(".uploads").change(readURL)
+        $("#f").submit(function() {
+            // do ajax submit or just classic form submit
+            //  alert("fake subminting")
+            return false
+        })
+    })
+</script>
+@stop @extends('layouts.app-admin') @section('content')
+
+<div class="dashboard-main-wrapper">
+
+    <div class="container-fluid dashboard-content">
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic form -->
+                    <!-- ============================================================== -->
+
+                    <div class="card col-lg-12">
+                        <h5 class="card-header">Struktur Organisasi BAPKM ITS</h5>
+                        <div class="card-body">
+                            <ul style="color: red;font-size: 0.75rem;">
+                                <li class="fa fa-asterisk">
+                                    <em> Form Wajib diisi </em>
+                                </li>
+                            </ul>
+
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                        <div>
+                                            <img width="100%" height="250" />
+                                            <input width="100%" type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="pull-right" style="margin-right: 103px;">
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </form>
+        </div>
+
+    </div>
 </div>
-
 
 @endsection

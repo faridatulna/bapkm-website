@@ -28,7 +28,32 @@
     <div id="UKM" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Kegiatan Unit Kegiatan Mahasiswa (UKM)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal kegiatan UKM.</p>
-      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
+
+      <div class="container mt-4">
+      	<div class="row">
+
+      		<div class="col-md-12">
+      			<a data-target="#modalIMG" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+      				<div class="ba-0 tp-s">
+      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      				</div>
+      			</a>
+      		</div>
+
+      	</div>
+      </div>
+
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG" role="dialog" tabindex="-1">
+      	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
+      		<div class="modal-content">
+      			<div class="modal-body mb-0 p-0">
+      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      			</div>
+      		</div>
+      	</div>
+      </div>
+
+      <p>Klik gambar untuk memperbesar.</p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -53,7 +78,31 @@
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Kegiatan Organisasi Mahasiswa (Fakultas dan Departemen)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal kegiatan organisasi mahasiswa (Fakultas dan Departemen).</p>
 
-      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
+      <div class="container mt-4">
+      	<div class="row">
+
+      		<div class="col-md-12">
+      			<a data-target="#modalIMG2" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+      				<div class="ba-0 tp-s">
+      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      				</div>
+      			</a>
+      		</div>
+
+      	</div>
+      </div>
+
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG2" role="dialog" tabindex="-1">
+      	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
+      		<div class="modal-content">
+      			<div class="modal-body mb-0 p-0">
+      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      			</div>
+      		</div>
+      	</div>
+      </div>
+
+      <p>Klik gambar untuk memperbesar.</p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -74,7 +123,32 @@
     <div id="BEMHima" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Proposal Organisasi Mahasiswa (BEM dan Himadep)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan proposal organisasi mahasiswa (BEM dan Himadep).</p>
-      <p><img src="{{ asset('files/Data/DATA123.jpg')}}"></p>
+
+      <div class="container mt-4">
+      	<div class="row">
+
+      		<div class="col-md-12">
+      			<a data-target="#modalIMG3" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+      				<div class="ba-0 tp-s">
+      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      				</div>
+      			</a>
+      		</div>
+
+      	</div>
+      </div>
+
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG3" role="dialog" tabindex="-1">
+      	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
+      		<div class="modal-content">
+      			<div class="modal-body mb-0 p-0">
+      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      			</div>
+      		</div>
+      	</div>
+      </div>
+
+      <p>Klik gambar untuk memperbesar.</p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -94,7 +168,32 @@
     <div id="Sponsor" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Dana Sponsor bagi Delegasi/Tim/Mahasiswa</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan sponsor bagi delegasi/tim/mahasiswa.</p>
-      <p><img src="{{ asset('files/Data/DATA4.jpg')}}"></p>
+
+      <div class="container mt-4">
+      	<div class="row">
+
+      		<div class="col-md-12">
+      			<a data-target="#modalIMG4" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+      				<div class="ba-0 tp-s">
+      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA4.jpg')}}" style="width:100%;">
+      				</div>
+      			</a>
+      		</div>
+
+      	</div>
+      </div>
+
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG4" role="dialog" tabindex="-1">
+      	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
+      		<div class="modal-content">
+      			<div class="modal-body mb-0 p-0">
+      				<img src="{{ asset('Uploaded/Data/DATA4.jpg')}}" alt="" style="min-width:70vw" align="center">
+      			</div>
+      		</div>
+      	</div>
+      </div>
+
+      <p>Klik gambar untuk memperbesar.</p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
@@ -113,7 +212,32 @@
     <div id="LPJSPJ" class="tabcontent">
       <h3 class="ui header">Panduan Penggunaan Layanan Pengesahan Laporan Pertanggungjawaban (LPJ) dan Surat Pertanggungjawaban (SPJ)</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengesahkan LPJ dan SPJ.</p>
-      <p><img src="{{ asset('files/Data/DATA5.jpg')}}"></p>
+
+      <div class="container mt-4">
+      	<div class="row">
+
+      		<div class="col-md-12">
+      			<a data-target="#modalIMG5" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+      				<div class="ba-0 tp-s">
+      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA5.jpg')}}" style="width:100%;">
+      				</div>
+      			</a>
+      		</div>
+
+      	</div>
+      </div>
+
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG5" role="dialog" tabindex="-1">
+      	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
+      		<div class="modal-content">
+      			<div class="modal-body mb-0 p-0">
+      				<img src="{{ asset('Uploaded/Data/DATA5.jpg')}}" alt="" style="min-width:70vw" align="center">
+      			</div>
+      		</div>
+      	</div>
+      </div>
+
+      <p>Klik gambar untuk memperbesar.</p>
 
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
