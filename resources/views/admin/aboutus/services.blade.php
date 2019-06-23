@@ -1,132 +1,144 @@
 @section('js')
-<script>
-    $('.ui.dropdown')
-        .dropdown();
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".users").select2();
+    });
 </script>
 
-@stop @extends('layouts.app') @section('content')
+<script type="text/javascript">
+    function readURL() {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(input).prev().attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-<div class="ui container">
-    <!-- <div class="ui large breadcrumb">
-      <a class="section">Home</a>
-      <i class="right chevron icon divider"></i>
-      <a class="section">Tentang Kami</a>
-      <i class="right chevron icon divider"></i>
-      <div class="active section">Gallery</div>
-    </div> -->
-    
-    <div class="pusher">
-        <div class="ui vertical stripe segment">
-            <div class="ui middle aligned stackable grid container">
+    $(function() {
+        $(".uploads").change(readURL)
+        $("#f").submit(function() {
+            // do ajax submit or just classic form submit
+            //  alert("fake subminting")
+            return false
+        })
+    })
+</script>
+@stop @extends('layouts.app-admin') @section('content')
+
+<div class="dashboard-main-wrapper">
+
+    <div class="container-fluid dashboard-content">
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="row">
-                    <div class="eight wide column">
-                        <!-- Grid row -->
-                        <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- basic form -->
+                    <!-- ============================================================== -->
 
-                            <!-- Grid column -->
-                            <div class="col-lg-12 col-md-6 mb-4">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-5.jpg" alt="video" data-toggle="modal" data-target="#modal5"></a>
-                            </div>
-                            <!-- Grid column -->
-                            <!-- Grid column -->
-                            <div class="col-lg-6">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video" data-toggle="modal" data-target="#modal1"></a>
-                            </div>
-                            <!-- Grid column -->
+                    <div class="card">
+                        <h5 class="card-header">Profil BAPKM ITS</h5>
+                        <div class="card-body">
+                            <ul style="color: red;font-size: 0.75rem;">
+                                <li class="fa fa-asterisk">
+                                    <em> Form Wajib diisi </em>
+                                </li>
+                            </ul>
 
-                            <!-- Grid column -->
-                            <div class="col-lg-6">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-2.jpg" alt="video" data-toggle="modal" data-target="#modal6"></a>
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                        <div>
+                                            <img width="100%" height="250" />
+                                            <input width="100%" type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-8">
+
+                                  <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+                                      <div class="col-md-12">
+                                          <label for="description">Deskripsi</label>
+                                          <textarea name="description" id="summernote_add" style="visibility: hidden; display: none;"></textarea>
+                                          <!-- {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'SOP ini tentang ... ', 'required', 'visibility'=>'hidden')) !!} @if ($errors->has('description'))
+                                                  <span class="help-block">
+                                                          <strong>{{ $errors->first('description') }}</strong>
+                                                      </span> @endif -->
+                                      </div>
+                                      <script>
+                                          $('#summernote_add').summernote({
+                                              placeholder: 'Tentang BAPKM ITS ... ',
+                                              tabsize: 3,
+                                              height: 218
+                                          });
+                                      </script>
+                                  </div>
+
+                                </div>
+
                             </div>
-                            <!-- Grid column -->
+
+                            <br><hr><br>
+
+                            <div class="row">
+
+                              <div class="col-sm-8" style="padding-left: 0;">
+
+                                <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+                                    <div class="col-md-12">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description" id="summernote_add2" style="visibility: hidden; display: none;"></textarea>
+                                        <!-- {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'SOP ini tentang ... ', 'required', 'visibility'=>'hidden')) !!} @if ($errors->has('description'))
+                                                <span class="help-block">
+                                                        <strong>{{ $errors->first('description') }}</strong>
+                                                    </span> @endif -->
+                                    </div>
+                                    <script>
+                                        $('#summernote_add2').summernote({
+                                            placeholder: 'Tentang BAPKM ITS ... ',
+                                            tabsize: 3,
+                                            height: 218
+                                        });
+                                    </script>
+                                </div>
+
+                              </div>
+
+                                <div class="col-sm-4" style="padding-left: 0;">
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                        <div>
+                                            <img width="100%" height="250" />
+                                            <input width="100%" type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
                         </div>
-
-                        <!-- Grid row -->
-                        <div class="row">
-
-                        </div>
-                        <!-- Grid row -->
-                        <!-- Grid row -->
-                    </div>
-                    <div class="eight wide right floated column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-
-                    </div>
-                </div>
-                <div class="row">
-                  
-                </div>
-            </div>
-        </div>
-
-        <div class="ui vertical stripe quote segment">
-            <div class="ui equal width stackable internally celled grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <img class="ui centered small circular image" src="{{ asset('force/img/core-img/test.png') }}">
-                        <h3>Registrasi & Data</h3>
-                        <p>That is what they all say about us</p>
-                    </div>
-                    <div class="column">
-                        <img class="ui centered small circular image" src="{{ asset('force/img/core-img/exam.png') }}">
-                        <h3>Pemantauan dan Evaluasi Pembelajaran</h3>
-                        <p>That is what they all say about us</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="ui vertical stripe segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="eight wide column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-                    </div>
-                    <div class="eight wide right floated column">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 mb-4">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-5.jpg" alt="video" data-toggle="modal" data-target="#modal5"></a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video" data-toggle="modal" data-target="#modal1"></a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-2.jpg" alt="video" data-toggle="modal" data-target="#modal6"></a>
+                        <div class="card-footer">
+                            <div class="pull-right" style="margin-right: 103px;">
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                  
-                </div>
-            </div>
-        </div>
 
-        <div class="ui vertical stripe quote segment">
-            <div class="ui equal width stackable internally celled grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <img class="ui centered small circular image" src="{{ asset('force/img/core-img/book.png') }}">
-                        <h3>Pengelolaan Beasiswa</h3>
-                        <p>Apapun yang berkaitan dengan beasiswa</p>
-                    </div>
-                    <div class="column">
-                        <img class="ui centered small circular image" src="{{ asset('force/img/core-img/cultural.png') }}">
-                        <h3>Pengelolaan Data Kegiatan Mahasiswa</h3>
-                        <p>Apapun yang berkaitan dengan kegiatan</p>
-                    </div>
                 </div>
-            </div>
+                </form>
         </div>
 
     </div>
-</div>
 </div>
 
 @endsection

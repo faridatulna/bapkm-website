@@ -8,7 +8,7 @@
 <div class="col-12" style="margin: 20px 30%;">
     <div class="row">
 
-      <a href="{{ route('help.regdat') }}">
+      <a href="/help/regdat">
         <div class="helpcards ui cards" style="margin-right: 20px;">
           <div class="card" style="border-radius: 20px;">
             <div class="content">
@@ -20,9 +20,8 @@
         </div>
       </a>
 
-      <a href="{{ route('help.beasiswa') }}">
+      <a href="/help/beasiswa">
           <div class="helpcards ui cards" style="margin-top: 0 !important">
-
             <div class="card" style="border-radius: 20px;">
               <div class="content">
                 <div class="header" align="center">Pengelolaan Beasiswa</div>
@@ -37,7 +36,7 @@
       </div>
 
       <div class="row" style="margin-top: 20px;">
-        <a href="{{ route('help.pep') }}">
+        <a href="/help/pep">
           <div class="helpcards ui cards" style="margin-right: 20px;">
             <div class="card" style="border-radius: 20px;">
               <div class="content">
@@ -49,7 +48,7 @@
           </div>
         </a>
 
-        <a href="{{ route('help.datkeg') }}">
+        <a href="/help/datkeg">
           <div class="helpcards ui cards">
             <div class="card" style="border-radius: 20px;">
               <div class="content">

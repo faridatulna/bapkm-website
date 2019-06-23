@@ -110,18 +110,32 @@ Route::prefix('admin')
             Route::get('/service','ServiceController@index')->name('service');
             Route::resource('service','ServiceController');
         });
-        
+
         Route::prefix('home')->name('home.')->group(function () {
             Route::get('/carousel','HomeAdminController@index')->name('carousel');
             Route::resource('carousel','HomeAdminController');
-            
+
         });
-        
-        Route::get('/aboutus','AboutusController@index')->name('aboutus');
-        Route::resource('aboutus','AboutusController');
+
+
 
         Route::resource('gallery','GalleryController');
         Route::resource('user','UserController');
+
+        Route::prefix('aboutus')
+            ->name('aboutus.')
+            ->group(function () {
+                Route::get('/history', function () {
+                   return view('admin.aboutus.history');
+                })->name('history');
+                Route::get('/organigram', function () {
+                   return view('admin.aboutus.organigram');
+                })->name('organigram');
+                Route::get('/services', function () {
+                   return view('admin.aboutus.services');
+                })->name('services');
+                Route::resource('aboutus','AboutusController');
+            });
     });
 
 Auth::routes();
