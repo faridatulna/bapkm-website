@@ -25,7 +25,7 @@ class ServiceController extends Controller
     public function links()
     {
         $datas = Services::all();
-        return view('admin.help.service',compact('datas'));
+        return view('admin.help.services',compact('datas'));
     }
     
      /**
@@ -35,9 +35,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $datas = Services::paginate(25);
+        $datas = Services::paginate(10);
 
-        return view('admin.help.service',compact('datas'));
+        return view('admin.help.services',compact('datas'));
     }
 
     /**
@@ -67,7 +67,7 @@ class ServiceController extends Controller
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
         ]);
 
-        $article = new Article;
+        $service = new Services;
         //File Image Upload
         if ($request->file('fileImg') == null){
             $fileImg = null;
@@ -76,9 +76,9 @@ class ServiceController extends Controller
         }else{
             $fileImg = $request->file('fileImg');
             $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Images/Article');
+            $desPath = public_path('/Uploaded/Images/Product');
             $fileImg->move($desPath,$inputFile['namafile']);
-            $article->fileImg = $inputFile['namafile'];
+            $service->fileImg = $inputFile['namafile'];
         }
         
         //File Upload
@@ -88,37 +88,17 @@ class ServiceController extends Controller
         }else{
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/PDF/Article');
+            $desPath = public_path('/Uploaded/PDF/Product');
             $filePdf->move($desPath,$inputFile['namafilePdf']);
-            $article->filePdf = $inputFile['namafilePdf'];
+            $service->filePdf = $inputFile['namafilePdf'];
         }
         
 
-        $article->title = $request->title;
-        $article->url = $request->url;
-        $article->description = $request->description;
-        if($request->type == [1]){
-            $article->type = 1;
-        }
-        else if($request->type == [2]){
-            $article->type = 2;
-        }
-        else if($request->type == [3]){
-            $article->type = 3;
-        }
-        else if($request->type == [4]){
-            $article->jenis = 4;
-        }
-        else if($request->type == [5]){
-            $article->type = 5;
-        }
-        else{
-            $article->type = 6;
-        }
-         // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
-        $article->postDate = Carbon::now();
+        $service->title = $request->title;
+        $service->url = $request->url;
+        $service->description = $request->description;
         //dd($request->all());
-        $article->save();
+        $service->save();
         // Article::create($request->all());
         //echo $article;
         Session::flash('message', 'Berhasil ditambahkan!');
@@ -158,9 +138,9 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $article = Article::findorfail($id);
+        $service = Services::findorfail($id);
 
-        $article->update($request->all());
+        $service->update($request->all());
         
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
@@ -189,8 +169,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::findOrFail($id);       
-        $article->delete();
+        $service = Services::findOrFail($id);       
+        $service->delete();
 
         Session::flash('message', 'Berhasil dihapus!');
         Session::flash('message_type', 'success');

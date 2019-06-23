@@ -63,7 +63,7 @@
                                 <li><a href="{{ route('aboutus.services') }}">Profil</a></li>
                               </ul>
                             </li>
-                            <li class="nav-link2"><a href="#"><strong>Berita</strong></a>
+                            <li class="nav-link2"><a href="/news"><strong>Berita</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
                                     <li><a href="index.html">Umum</a></li>
                                     <li><a href="single-post.html">Calon Mahasiswa</a></li>

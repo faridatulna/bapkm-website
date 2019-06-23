@@ -24,7 +24,7 @@
     <div id="beasiswa" class="tabcontent">
       <h3 class="ui header">Panduan Pengajuan Beasiswa</h3>
       <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk mengajukan beasiswa.</p>
-      <p><img src="{{ asset('files/Beasiswa/BEASISWA1.jpg')}}"></p>
+      <p><img src="{{ asset('Uploaded/Beasiswa/BEASISWA1.jpg')}}"></p>
 
       <p>
         <ul>

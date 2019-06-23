@@ -56,26 +56,25 @@ Route::prefix('aboutus')
 Route::prefix('help')
     ->name('help.')
     ->group(function () {
-        Route::get('/help', function () {
+        Route::get('/', function () {
            return view('help');
         });
 
         Route::get('/regdat', function () {
            return view('SOP.regdat');
-        });
+        })->name('regdat');
 
         Route::get('/datkeg', function () {
            return view('SOP.datkeg');
-        });
+        })->name('datkeg');
 
         Route::get('/pep', function () {
            return view('SOP.PEP');
-        });
+        })->name('pep');
 
         Route::get('/beasiswa', function () {
            return view('SOP.beasiswa');
-        });
-
+        })->name('beasiswa');
     });
 
 Route::get('/articles', function () {

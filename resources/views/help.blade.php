@@ -8,7 +8,7 @@
 <div class="col-12" style="margin: 20px 30%;">
     <div class="row">
 
-      <a href="/regdat">
+      <a href="{{ route('help.regdat') }}">
         <div class="helpcards ui cards" style="margin-right: 20px;">
           <div class="card" style="border-radius: 20px;">
             <div class="content">
@@ -20,7 +20,7 @@
         </div>
       </a>
 
-      <a href="/beasiswa">
+      <a href="{{ route('help.beasiswa') }}">
           <div class="helpcards ui cards" style="margin-top: 0 !important">
 
             <div class="card" style="border-radius: 20px;">
@@ -37,7 +37,7 @@
       </div>
 
       <div class="row" style="margin-top: 20px;">
-        <a href="/pep">
+        <a href="{{ route('help.pep') }}">
           <div class="helpcards ui cards" style="margin-right: 20px;">
             <div class="card" style="border-radius: 20px;">
               <div class="content">
@@ -49,7 +49,7 @@
           </div>
         </a>
 
-        <a href="/datkeg">
+        <a href="{{ route('help.datkeg') }}">
           <div class="helpcards ui cards">
             <div class="card" style="border-radius: 20px;">
               <div class="content">

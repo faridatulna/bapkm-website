@@ -35,7 +35,7 @@ class SopController extends Controller
      */
     public function index()
     {
-        $datas = Helps::paginate(25);
+        $datas = Helps::paginate(10);
 
         return view('admin.help.sop',compact('datas'));
     }
