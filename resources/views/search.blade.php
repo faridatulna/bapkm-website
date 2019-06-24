@@ -59,99 +59,43 @@
         </section> -->
 <!--================End Home Banner Area =================-->
 
-<!--================Choice Area =================-->
-<!-- <section class="choice_area p_120">
-            <div class="container">
-                <div class="main_title2">
-                    <h2>Editor’s Choice</h2>
-                </div>
-                <div class="row choice_inner">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="choice_item">
-                            <img class="img-fluid" src="img/blog/choice/choice-1.jpg" alt="">
-                            <div class="choice_text">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                                <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                                <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="choice_item">
-                            <img class="img-fluid" src="img/blog/choice/choice-2.jpg" alt="">
-                            <div class="choice_text">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                                <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                                <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="choice_item">
-                            <img class="img-fluid" src="img/blog/choice/choice-3.jpg" alt="">
-                            <div class="choice_text">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                                <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                                <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="choice_item">
-                            <img class="img-fluid" src="img/blog/choice/choice-4.jpg" alt="">
-                            <div class="choice_text">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                                <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                                <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-<!--================End Choice Area =================-->
-
 <!--================News Area =================-->
-<section class="news_area">
+<section class="news_area  mt-50">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div>
-                    @if(isset($details))
-                    <h2>Hasil Pencarian ? <b><em> {{ $query }} </em></b></h2>
+                    <h1>Hasil Pencarian ? <b><em> @if($query) {{ $query }} @else Not Found @endif </em></b></h1>
                 </div>
                 <div class="latest_news">
+                    @if(isset($details))
+
                     @foreach($details as $data)
                     <div class="media">
-                        <!-- <div class="d-flex">
-                                    <img class="img-fluid" src="{{ asset('force/img/blog/l-news/l-news-1.jpg') }}" alt="">
-                                </div> -->
                         <div class="media-body">
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn text-uppercase" href="#" disabled="">
-                                                @if( $data->jenis == 0 ) Umum
-                                                @elseif( $data->jenis == 1 ) Beasiswa
-                                                @else UKM
-                                                @endif
-                                            </a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->tgl_post }}</a>
+                                        @if($data->type == 1)
+                                        Akademik
+
+                                        @elseif($data->type == 2)
+                                        Beasiswa
+
+                                        @elseif($data->type == 3)
+                                        Calon Mahasiswa
+
+                                        @elseif($data->type == 4)
+                                        Umum
+
+                                        @elseif($data->type == 5)
+                                        Wisuda
+
+                                        @elseif($data->type == 6)
+                                        Kalender
+                                        @endif
+                                    </a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->postDate }}</a>
                                 </div>
                                 <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{{ $data->title }}</h4></a> {{ csrf_field() }}
                                 <span class="d-inline-block text-truncate" style="max-width: 150px;">
@@ -161,13 +105,63 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
-                @endif
+                    
 
+                    @if ($details->hasPages()) Halaman <strong>{{ $details->currentPage() }}</strong> dari <strong>{{ $details->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($details->currentPage() -1) * $details->perPage()) + 1) }}</strong> sampai <strong>{{ ((($details->currentPage() -1) * $details->perPage()) + $details->count()) }}</strong> dari <strong>{{ $details->total() }}</strong> data yang ada.
+                        <br/> @endif
+                        <br> {{ $details->fragment('one')->links() }}
+
+                    @else
+                        <h2 class="mt-100"> Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.</h2>
+                    @endif
+                </div>
             </div>
             <div class="col-lg-4">
                 <div class="right_sidebar">
-                    <aside class="r_widgets">
+                    <aside class="r_widgets news_widgets">
+                        <div class="main_title2">
+                            <h2>Kalender Akademik</h2>
+                        </div>
+                        @foreach($cal_lastest as $data)
+                        <div class="choice_item">
+                            <div class="choice_text">
+                                <div class="date">
+                                    <a class="gad_btn" href="#">Kalender Akademik</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{!! $data->postDate !!}</a>
+                                </div>
+                                <div class="row" style="height: 40px;">
+                                    <div class="col-xs-3">
+                                        <div class="date">
+                                            <i class="fa fa-calendar fa-5x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <a href="news-details.html"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                        <div class="news_slider owl-carousel no-repeat">
+                            @foreach($cal as $data)
+                            <div class="item">
+                                <div class="choice_item">
+                                    <div class="choice_text">
+                                        <a href="news-details.html">
+                                            <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                        <div class="date">
+                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{$data->postDate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </aside>
+
+                    <aside class="r_widgets sosial_widgets">
                         <div class="main_title2">
                             <h2>Quick Links</h2>
                         </div>
@@ -188,21 +182,23 @@
                             <h2>Agenda</h2>
                         </div>
                         <div class="content_calendar ">
+                            @foreach($agenda as $data)
                             <div class="detail-calendar-grey">
                                 <div class="calendar-grey">
-                                    <h1 style="margin-top:10px;margin-bottom:0;">30</h1>
+                                    <h1 style="margin-top:10px;margin-bottom:0;">30</h1>{{$data->dateOfEvent}}
                                     <h3 style="margin-top:0;">Jan</h3>
                                 </div>
                                 <div class="calendar-contain-grey">
                                     <div class="calendar-contain-description-grey">
-                                        <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">AUN-QA Assesment</a>
+                                        <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
                                         <br>
-                                        <small><i class="fa fa-clock-o"></i> &nbsp;08:00 - 00:00 WIB </small>
+                                        <small><i class="fa fa-clock-o"></i> &nbsp;{{$data->jam}} 08.00 - 09.00 WIB</small>
                                         <br>
-                                        <small><i class="fa fa-map-marker"></i> &nbsp; Belum ditentukan</small>
+                                        <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}</small>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </aside>
                 </div>
@@ -211,208 +207,6 @@
     </div>
 </section>
 <!--================End News Area =================-->
-
-<!--================Product List Area =================-->
-<!-- <section class="product_list_area p_100">
-            <div class="container">
-                <div class="row product_list_inner">
-                    <div class="col-lg-4">
-                        <div class="main_title2">
-                            <h2>Best Product Deals</h2>
-                        </div>
-                        <div class="product_list">
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Video Games Playing With Imagination That surprise you</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-2.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>A Discount Toner Cartridge Is Better Than Ever And You Will Save</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-3.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Microsoft Patch Management For Home Users</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-4.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Asus Laptops Are Still Part Of The Dell Family</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="main_title2">
-                            <h2>Tech Culture</h2>
-                        </div>
-                        <div class="product_list">
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-5.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Will The Democrats Be Able To Reverse The Online Gambling Ban</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-6.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>For Women Only Your Computer Usage Could Cost You Your Job</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-7.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Converter Ipod Video Taking Portable Video Viewing To A Whole Level</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-8.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Sony Laptops Are Still Part Of The Sony Family</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="main_title2">
-                            <h2>Brilliant Ideas</h2>
-                        </div>
-                        <div class="product_list">
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-9.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Las Vegas How To Have Non Gambling Related Fun</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-10.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Website Hosting Reviews Free The Best Resource For Website</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-11.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>Compatible Inkjet Cartridge Which One Will You Choose</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/product/product-12.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="choice_text">
-                                        <a href="#"><h4>How To Protect Your Computer Wery Useful Tips</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-<!--================End Product List Area =================-->
-
-<!--================ start footer Area  =================-->
-
-<!--================ End footer Area  =================-->
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

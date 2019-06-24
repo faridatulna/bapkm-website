@@ -11,32 +11,121 @@
 |
 */
 use App\Article;
+use App\Events;
+use App\Helps;
+use App\Services;
 use App\Quicklinks;
 use Illuminate\Support\Facades\Input;
 
+//ui user
 Route::get('/', function () {
-    //$article = Article::all();
-    $article = Article::orderBy('postDate', 'desc')->take(2)->get(); //sort by desc
-    $articleBeasiswa = Article::orderBy('postDate', 'desc')->where('type','=',1)->take(2)->get();
-    $articleUKM = Article::orderBy('postDate', 'desc')->where('type','=',2)->get();
-    return view('welcome',compact('article','articleBeasiswa'));
+
+    $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+    $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+    $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+    $links = Quicklinks::all();
+    $article = Article::orderBy('postDate', 'desc')->take(4)->get(); 
+
+    return view('welcome',compact('article','cal','cal_lastest','agenda','links') );
 });
 
-//DIPAKE KO! JGN DIHAPUSS
-
 Route::any ( '/search-result', function () {
+    $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+    $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+    $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+    $links = Quicklinks::all();
 
     $q = Input::get ( 'q' );
     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'datePost', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->get ();
+                orWhere ( 'postDate', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
+    $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'postDate', 'LIKE', '%' . $q . '%' )->
+                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
+    // $data = Article::paginate(5);
     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
-    if (count ( $data ) > 0)
-        return view ( 'search' )->withDetails ( $data )->withQuery ( $q );
+    if (count($data) > 0)
+        return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
     else
-        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+        return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'ami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
 } );
+
+
+Route::prefix('article')
+    ->name('article.')
+    ->group(function () {
+        
+        Route::get('/', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+            $news = Article::orderBy('postDate', 'desc')->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->get();
+            $article = Article::orderBy('postDate', 'desc')->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        });
+        Route::get('/umum', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+            $news = Article::orderBy('postDate', 'desc')->where('type','=',4)->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',4)->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        })->name('umum');
+        Route::get('/camaba', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+
+            $news = Article::orderBy('postDate', 'desc')->where('type','=',3)->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',3)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',3)->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        })->name('camaba');
+        Route::get('/beasiswa', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+
+            $news = Article::orderBy('postDate', 'desc')->where('type','=',2)->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',2)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',2)->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        })->name('beasiswa');
+        Route::get('/akademik', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+
+            $news = Article::orderBy('postDate', 'desc')->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',1)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',1)->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        })->name('akademik');
+        Route::get('/wisuda', function () {
+            $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+            $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+            $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+
+            $news = Article::orderBy('postDate', 'desc')->take(4)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',5)->get();
+            $article = Article::orderBy('postDate', 'desc')->where('type','=',5)->paginate(6);
+            return view('article',compact('article','news','cal','cal_lastest','agenda'));
+        })->name('wisuda');
+
+    });
+
+Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
+// download files
+
+Route::get('download/{id}', function ($filename) {
+    $file= public_path('Uploaded/PDF/Article/').$filename;
+    return response()->download($file, $filename);
+});
+
 
 Route::prefix('aboutus')
     ->name('aboutus.')
@@ -59,29 +148,26 @@ Route::prefix('help')
         Route::get('/', function () {
            return view('help');
         });
-
         Route::get('/regdat', function () {
-           return view('SOP.regdat');
+            $sop = Helps::where('type','=',1)->get();
+            return view('SOP.regdat', compact('sop'));
         })->name('regdat');
 
-        Route::get('/datkeg', function () {
-           return view('SOP.datkeg');
-        })->name('datkeg');
-
         Route::get('/pep', function () {
-           return view('SOP.PEP');
+            $sop = Helps::where('type','=',2)->get();
+            return view('SOP.PEP', compact('sop'));
         })->name('pep');
 
         Route::get('/beasiswa', function () {
-           return view('SOP.beasiswa');
+            $sop = Helps::where('type','=',3)->get();
+            return view('SOP.beasiswa', compact('sop'));
         })->name('beasiswa');
-    });
 
-Route::get('/articles', function () {
-	$article = Article::all();
-    return view('article-single',compact('article'));
-});
-Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
+        Route::get('/datkeg', function () {
+            $sop = Helps::where('type','=',4)->get();
+            return view('SOP.datkeg', compact('sop'));
+        })->name('datkeg');
+    });
 
 
 //admin authorities
@@ -116,7 +202,6 @@ Route::prefix('admin')
             Route::resource('carousel','HomeAdminController');
 
         });
-
 
 
         Route::resource('gallery','GalleryController');

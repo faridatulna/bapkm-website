@@ -62,35 +62,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-timeline5">
+                        
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2017</span></div>
-                            <div class="timeline-content">
-                                <h3 class="title">BAKPM</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2010</span></div>
-                            <div class="timeline-content">
-                                <h3 class="title">BAKP</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2002</span></div>
-                            <div class="timeline-content">
-                                <h3 class="title">BADAN AKADEMIK</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2000</span></div>
+                            <div class="timeline-icon"><span class="year">1990</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAAK</h3>
                                 <p class="description">
@@ -108,9 +82,37 @@
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">1990</span></div>
+                            <div class="timeline-icon"><span class="year">2000</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAAK</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year">2002</span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">BADAN AKADEMIK</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                                                
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year">2010</span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">BAKP</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-icon"><span class="year">2017</span></div>
+                            <div class="timeline-content">
+                                <h3 class="title">BAKPM</h3>
                                 <p class="description">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
                                 </p>

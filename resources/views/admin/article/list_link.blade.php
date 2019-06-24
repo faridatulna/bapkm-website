@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1; ?>
+                                <?php $i = ($links->currentpage()-1)* $links->perpage() + 1;?>
                                     @foreach($links as $data)
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
@@ -122,7 +122,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {!! Form::open(array('route' => array('admin.links.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
+                                                    {!! Form::open(array('route' => array('admin.link.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
                                                 </div>
                                                 <div class="modal-footer pull-right" style="margin-right: 12px;">
                                                     {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!} {!! Form::close() !!}
@@ -140,7 +140,10 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $links->links() }}
+                        @if ($links->hasPages()) Halaman <strong>{{ $links->currentPage() }}</strong> dari <strong>{{ $links->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($links->currentPage() -1) * $links->perPage()) + 1) }}</strong> sampai <strong>{{ ((($links->currentPage() -1) * $links->perPage()) + $links->count()) }}</strong> dari <strong>{{ $links->total() }}</strong> data yang ada.
+                        <br/> @endif
+                        <br> {{ $links->fragment('one')->links() }}
                     </div>
                 </div>
 

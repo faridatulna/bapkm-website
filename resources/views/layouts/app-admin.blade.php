@@ -82,7 +82,7 @@
 
         <!-- footer -->
         <!-- ============================================================== -->
-        <div class="footer">
+        <div class="footer " style="position: fixed; bottom: 0px;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="float-right">

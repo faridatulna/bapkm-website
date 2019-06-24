@@ -64,7 +64,7 @@
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                         @endif
                     </div>
-                    <?php $i=1; ?>
+                    
                         <div class="card-body">
 
                             @if($datas->count())
@@ -80,6 +80,7 @@
                                 </thead>
 
                                 <tbody>
+                                    <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
                                     @foreach($datas as $data)
 
                                     <tr>
@@ -154,8 +155,22 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                         <div class="col-12">
-                                                            <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif />
-                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                            @if($data->fileImg)
+                                                                @if($data->type == 1)
+                                                                    <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                @elseif($data->type == 2)
+                                                                    <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                @elseif($data->type == 3)
+                                                                    <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                @elseif($data->type == 4)
+                                                                    <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                @else @endif
+                                                                        
+                                                            @else @endif
+                                                            <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
+                                                            <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
                                                         </div>
                                                     </div>
 
@@ -258,7 +273,17 @@
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12">
                                                                         @if($data->fileImg)
-                                                                        <img src="{{url('Uploaded/Images/Product', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> @else @endif
+                                                                            @if($data->type == 1)
+                                                                                <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 2)
+                                                                                <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 3)
+                                                                                <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 4)
+                                                                                <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @else @endif
+                                                                        
+                                                                        @else @endif
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-4">
@@ -300,7 +325,10 @@
                             @endif
                         </div>
                         <div class="card-footer">
-                            {{ $datas->links() }}
+                            @if ($datas->hasPages()) Halaman <strong>{{ $datas->currentPage() }}</strong> dari <strong>{{ $datas->lastPage() }}</strong>.
+                            <br/> Menampilkan <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + 1) }}</strong> sampai <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + $datas->count()) }}</strong> dari <strong>{{ $datas->total() }}</strong> data yang ada.
+                            <br/> @endif
+                            <br> {{ $datas->fragment('one')->links() }}
                         </div>
 
                 </div>

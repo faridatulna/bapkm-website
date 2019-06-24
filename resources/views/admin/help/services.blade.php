@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="card-body">
-                        <?php $i=1; ?>
+                        
                             @if($datas->count())
                             <table class="table table-striped">
                                 <thead>
@@ -80,7 +80,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
                                     @foreach($datas as $data)
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
@@ -210,7 +210,10 @@
                             @endif
                     </div>
                     <div class="card-footer">
-                        {{ $datas->links() }}
+                        @if ($datas->hasPages()) Halaman <strong>{{ $datas->currentPage() }}</strong> dari <strong>{{ $datas->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + 1) }}</strong> sampai <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + $datas->count()) }}</strong> dari <strong>{{ $datas->total() }}</strong> data yang ada.
+                        <br/> @endif
+                        <br> {{ $datas->fragment('one')->links() }}
                     </div>
 
                 </div>

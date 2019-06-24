@@ -54,7 +54,8 @@
 
     @yield('content')
 
-    <footer class="footer-area">
+    <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"><i class="fa fa-angle-up"></i></a>
+    <footer class="footer-area" style="bottom: 0px;">
         <div class="container">
             <div class="row">  <!-- f_widgets_inner -->
               <div class="col-lg-3 col-md-3 col-sm-3">
@@ -107,6 +108,7 @@
             </div>
         </div>
     </footer>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -278,7 +280,7 @@
     });
 
     </script>
-    <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"><i class="fa fa-angle-up"></i></a>
+    
     @section('js') @show
 </body>
 

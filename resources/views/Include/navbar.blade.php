@@ -63,11 +63,11 @@
                                 <li><a href="{{ route('aboutus.services') }}">Profil</a></li>
                               </ul>
                             </li>
-                            <li class="nav-link2"><a href="/news"><strong>Berita</strong></a>
+                            <li class="nav-link2"><a href="/article"><strong>Berita</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
-                                    <li><a href="index.html">Umum</a></li>
-                                    <li><a href="single-post.html">Calon Mahasiswa</a></li>
-                                    <li><a href="catagories-post.html">Beasiswa</a></li>
+                                    <li><a href="/article/umum">Umum</a></li>
+                                    <li><a href="/article/camaba">Calon Mahasiswa</a></li>
+                                    <li><a href="/article/beasiswa">Beasiswa</a></li>
                                 </ul>
                             </li>
                             <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>
