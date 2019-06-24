@@ -22,7 +22,6 @@
 
       <a href="/help/beasiswa">
           <div class="helpcards ui cards" style="margin-top: 0 !important">
-
             <div class="card" style="border-radius: 20px;">
               <div class="content">
                 <div class="header" align="center">Pengelolaan Beasiswa</div>

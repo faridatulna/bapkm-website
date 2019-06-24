@@ -64,22 +64,25 @@
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                         @endif
                     </div>
+                    
+                        <div class="card-body">
 
-                    <div class="card-body">
-                        @if($datas->count())
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Judul</th>
-                                    <th scope="col">Tanggal Post</th>
-                                    <th scope="col">Tipe SOP</th>
-                                    <th scope="col" colspan="3">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i=1; ?>
+                            @if($datas->count())
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Judul</th>
+                                        <th scope="col">Tanggal Post</th>
+                                        <th scope="col">Tipe SOP</th>
+                                        <th scope="col" colspan="3">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
                                     @foreach($datas as $data)
+
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{$data->title}}</td>
@@ -105,7 +108,6 @@
                                                 <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#del{{ $data->id }}"></button>
                                             </td>
                                     </tr>
-
                                     <!--edit-->
                                     <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
@@ -153,19 +155,33 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                         <div class="col-12">
-                                                            <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif />
-                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                            @if($data->fileImg)
+                                                                @if($data->type == 1)
+                                                                    <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                @elseif($data->type == 2)
+                                                                    <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                @elseif($data->type == 3)
+                                                                    <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                @elseif($data->type == 4)
+                                                                    <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                @else @endif
+                                                                        
+                                                            @else @endif
+                                                            <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
+                                                            <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                                         <div class="col-md-12">
                                                             <label for="description">Deskripsi</label>
-                                                            <textarea name="description" id="summernote" style="visibility: hidden; display: none;">{{ $data->description }}</textarea>
+                                                            <textarea name="description" id="summernote{{$data->id}}" style="visibility: hidden; display: none;">{{ $data->description }}</textarea>
                                                             <!-- {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control', 'required')) !!} -->
                                                         </div>
                                                         <script>
-                                                            $('#summernote').summernote({
+                                                            $('#summernote{{$data->id}}').summernote({
                                                                 tabsize: 3,
                                                                 height: 100
                                                             });
@@ -249,7 +265,7 @@
                                                                     <button class="btn btn-rounded btn-sm" style="background-color: #158701; color:#fff;" disabled="">SOP-BEASISWA</button>
                                                                     @elseif($data->type == 4)
                                                                     <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">SOP-PDKM</button>
-                                                                    
+
                                                                     @endif
                                                                 </h3> {{ $data->postDate}}</div>
                                                             </div>
@@ -257,14 +273,28 @@
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12">
                                                                         @if($data->fileImg)
-                                                                        <img src="{{url('Uploaded/Images/Product', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> @else @endif
+                                                                            @if($data->type == 1)
+                                                                                <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 2)
+                                                                                <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 3)
+                                                                                <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @elseif($data->type == 4)
+                                                                                <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                            @else @endif
+                                                                        
+                                                                        @else @endif
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12" id="summernote_show">
                                                                         {!! $data->description !!}
                                                                         <script type="text/javascript">
-                                                                            var markup = {{$data->description}};
+                                                                            var markup = {
+                                                                                {
+                                                                                    $data - > description
+                                                                                }
+                                                                            };
                                                                             $('#summernote_show').summernote('code', markup);
                                                                             console.log(markup);
                                                                         </script>
@@ -287,16 +317,19 @@
                                     </div>
 
                                     @endforeach
-                            </tbody>
-                        </table>
-                        @else
-                        <div class="alert alert-warning">
-                            <i class="fa fa-exclamation-triangle"></i> Data SOP tidak ditemukan</div>
-                        @endif
-                    </div>
-                    <div class="card-footer">
-                        {{ $datas->links() }}
-                    </div>
+                                </tbody>
+                            </table>
+                            @else
+                            <div class="alert alert-warning">
+                                <i class="fa fa-exclamation-triangle"></i> Data SOP tidak ditemukan</div>
+                            @endif
+                        </div>
+                        <div class="card-footer">
+                            @if ($datas->hasPages()) Halaman <strong>{{ $datas->currentPage() }}</strong> dari <strong>{{ $datas->lastPage() }}</strong>.
+                            <br/> Menampilkan <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + 1) }}</strong> sampai <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + $datas->count()) }}</strong> dari <strong>{{ $datas->total() }}</strong> data yang ada.
+                            <br/> @endif
+                            <br> {{ $datas->fragment('one')->links() }}
+                        </div>
 
                 </div>
 

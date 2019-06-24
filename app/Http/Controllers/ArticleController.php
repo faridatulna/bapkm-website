@@ -22,12 +22,12 @@ class ArticleController extends Controller
         $this->middleware(['auth'])->except('logout');
     }
 
-    public function links()
-    {
-        $datas = Article::all();
+    // public function links()
+    // {
+    //     $datas = Article::orderBy('updated_at','desc')->get();
          
-        return view('admin.article.index',compact('datas'));
-    }
+    //     return view('admin.article.index',compact('datas'));
+    // }
     
      /**
      * Display a listing of the resource.
@@ -36,8 +36,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $datas = Article::orderBy('updated_at','desc')->get();
         $datas = Article::paginate(10);
-         
         return view('admin.article.index',compact('datas'));
     }
 

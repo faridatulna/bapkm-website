@@ -23,15 +23,6 @@ class AdminController extends Controller
     {
         $this->middleware(['auth'])->except('logout');
     }
-
-    public function links()
-    {
-        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->get();
-        $event = Events::all();
-        $article = Article::all();
-        $links = Quicklinks::all();
-        return view('admin.index',compact('article','datas','event','links'));
-    }
     
      /**
      * Display a listing of the resource.
@@ -40,11 +31,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->paginate(10);
-        $event = Events::paginate(5);
         $article = Article::all();
-        $links = Quicklinks::paginate(5);
-        return view('admin.index',compact('article','datas','event','links'));
+
+        $datas = Article::orderBy('postDate', 'desc')->where('type','=',6)->get();
+        $datas = Article::orderBy('postDate', 'desc')->where('type','=',6)->paginate(5);
+        $event = Events::orderBy('updated_at', 'desc')->get(); 
+        $event = Events::orderBy('updated_at', 'desc')->paginate(5);
+
+        $links = Quicklinks::orderBy('updated_at', 'desc')->get(); 
+        $links = Quicklinks::orderBy('updated_at', 'desc')->paginate(5);
+        return view('admin.index',compact('article','event'));
     }
 
     /**

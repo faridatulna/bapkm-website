@@ -64,9 +64,6 @@
                     <div id="submenu-9" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.product.create')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fa fa-plus primary"></i>New</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.product.sop.index')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">SOP</a>
                             </li>
                             <li class="nav-item">

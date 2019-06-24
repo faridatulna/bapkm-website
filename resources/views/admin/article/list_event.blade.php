@@ -49,7 +49,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1; ?>
+                                <?php $i = ($event->currentpage()-1)* $event->perpage() + 1;?>
                                     @foreach($event as $data)
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
@@ -140,9 +140,10 @@
                         @endif
                     </div>
                     <div class="card-footer">
-                        {{ $event->links() }}
-                    </div>
-
+                        @if ($event->hasPages()) Halaman <strong>{{ $event->currentPage() }}</strong> dari <strong>{{ $event->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($event->currentPage() -1) * $event->perPage()) + 1) }}</strong> sampai <strong>{{ ((($event->currentPage() -1) * $event->perPage()) + $event->count()) }}</strong> dari <strong>{{ $event->total() }}</strong> data yang ada.
+                        <br/> @endif
+                        <br> {{ $event->fragment('one')->links() }}
                 </div>
 
             </div>

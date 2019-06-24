@@ -13,11 +13,11 @@ use Auth;
 
 class HomeController extends Controller
 {
-
     function index()
     {
-        
+         
     }
+
 
     /**
      * Display the specified resource.
@@ -27,8 +27,32 @@ class HomeController extends Controller
      */
     public function articlepage($id)
     {
+        $datas = Article::all();
         $data = Article::findorfail($id);
-        return view('article-single',compact('data'));
+        // echo($data);
+        if($datas->count() > 1 && $data->id == $datas->count()){
+            $prev = Article::findorfail($id-1);
+            $next = Article::findorfail($id);
+            // echo($prev);
+        }
+        else if($datas->count() >= 1 && $data->id == 1 ){
+            $next = Article::findorfail($id+1);
+            $prev = Article::findorfail($id);
+            // echo($next);
+        }
+        else{
+            $prev = Article::findorfail($id-1);
+            $next = Article::findorfail($id+1);
+            // echo($prev);
+            // echo($next);
+        }
+
+        $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
+        $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
+        $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
+        $news = Article::orderBy('postDate', 'desc')->take(4)->get();
+
+        return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next'));
     }
 
     

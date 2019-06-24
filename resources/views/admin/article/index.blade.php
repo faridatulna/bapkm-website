@@ -77,7 +77,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1; ?>
+                                <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
+
                                 @foreach($datas as $data)
                                 <tr>
                                     <th scope="row">{{$i++}}</th>
@@ -100,7 +101,7 @@
                                         @endif
 
                                         <td>
-                                            <button class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="#show{{ $data->id }}"></button>
+                                            <button class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="/article-page/{{$data->id}}"></button>
                                         </td>
                                         <td>
                                             <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#edit{{ $data->id }}"></button>
@@ -179,7 +180,7 @@
                                                                         <label class="col-md-4 control-label">Gambar</label>
                                                                         <div class="col-md-10">
                                                                             <img width="300" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Article',$data->fileImg) }}" @endif />
-                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ $data->fileImg }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -223,7 +224,7 @@
                                 </div>
 
                                 <!--show-->
-                                <div class="modal fade" id="show{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!-- <div class="modal fade" id="show{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -296,7 +297,7 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 @endforeach
                             </tbody>
@@ -307,7 +308,10 @@
                         @endif
                     </div>
                     <div class="card-footer">
-                        {{ $datas->links() }}
+                        @if ($datas->hasPages()) Halaman <strong>{{ $datas->currentPage() }}</strong> dari <strong>{{ $datas->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + 1) }}</strong> sampai <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + $datas->count()) }}</strong> dari <strong>{{ $datas->total() }}</strong> data yang ada.
+                        <br/> @endif
+                        <br> {{ $datas->fragment('one')->links() }}
                     </div>
                     
                 </div>

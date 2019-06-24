@@ -35,7 +35,7 @@ class SopController extends Controller
      */
     public function index()
     {
-        $datas = Helps::paginate(25);
+        $datas = Helps::paginate(10);
 
         return view('admin.help.sop',compact('datas'));
     }
@@ -62,6 +62,8 @@ class SopController extends Controller
         $this->validate($request, [
             'fileImg' => 'file|mimes:jpeg,png,jpg',
             'filePdf' => 'file|mimes:pdf',
+            'namafile' => 'required',
+            'namafilePdf' => 'required',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
