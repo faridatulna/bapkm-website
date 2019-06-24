@@ -187,28 +187,28 @@
                     <h2>Layanan Kami</h2>
                 </div>
 
-                <div class='cube'>
+                <!-- <div class='cube'>
                     <div class='design'>
                         <i class='fa-paper-plane' style='margin-right:2px'></i> Design
                     </div>
                     <div class='development'>
                         <i class='fa-code' style='margin-right:2px'></i>Development
                     </div>
-                </div>
+                </div> -->
 
                 <div class="container">
                     <div class="row">
                         <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel" data-interval="1000">
                             <div class="MultiCarousel-inner">
                                 <a href="#">
-                                    <div class="item cube" style="color: white;">
-                                        <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                    <div class="item cube">
+                                        <div class="pad15 design" style="background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-size: 300px 200px;">
                                             <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Persuratan</strong></p>
                                             <!-- <p style="color: white;">₹ 1</p>
                                               <p style="color: white;">₹ 6000</p>
                                               <p style="color: white;">50% off</p> -->
                                         </div>
-                                        <div class="pad15 development" style="color: white; background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                        <div class="pad15 development" style="color: white; background-color: black;">
                                             <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Persuratan</strong></p>
                                             <!-- <p style="color: white;">₹ 1</p>
                                               <p style="color: white;">₹ 6000</p>
@@ -217,45 +217,59 @@
                                     </div>
                                 </a>
                                 <a href="#">
-                                    <div class="item">
-                                        <div class="pad15" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
-                                            <!-- <p>₹ 1</p>
-                                              <p>₹ 6000</p>
-                                              <p>50% off</p> -->
-                                        </div>
-                                    </div>
+                                  <div class="item cube">
+                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                      <div class="pad15 development" style="color: white; background-color: black;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                  </div>
+                                </a>
+                                <a href="#">
+                                  <div class="item cube">
+                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                      <div class="pad15 development" style="color: white; background-color: black;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                  </div>
+                                </a>
+                                <a href="#">
+                                  <div class="item cube">
+                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                      <div class="pad15 development" style="color: white; background-color: black;">
+                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                          <!-- <p style="color: white;">₹ 1</p>
+                                            <p style="color: white;">₹ 6000</p>
+                                            <p style="color: white;">50% off</p> -->
+                                      </div>
+                                  </div>
                                 </a>
                                 <div class="item">
                                     <div class="pad15">
-                                        <p class="lead">Multi Item Carousel</p>
+                                        <!-- <p class="lead">Multi Item Carousel</p>
                                         <p>₹ 1</p>
                                         <p>₹ 6000</p>
-                                        <p>50% off</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="pad15">
-                                        <p class="lead">Multi Item Carousel</p>
-                                        <p>₹ 1</p>
-                                        <p>₹ 6000</p>
-                                        <p>50% off</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="pad15">
-                                        <p class="lead">Multi Item Carousel</p>
-                                        <p>₹ 1</p>
-                                        <p>₹ 6000</p>
-                                        <p>50% off</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="pad15">
-                                        <p class="lead">Multi Item Carousel</p>
-                                        <p>₹ 1</p>
-                                        <p>₹ 6000</p>
-                                        <p>50% off</p>
+                                        <p>50% off</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -597,11 +611,14 @@
                             </div>
                             @endforeach
                         </div>
+
                     </aside>
 
                     <aside class="r_widgets add_widgets text-center">
                         <img class="img-fluid" src="img/blog/add-1.jpg" alt="">
                     </aside>
+
+
 
                 </div>
             </div>
