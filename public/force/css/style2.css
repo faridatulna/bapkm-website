@@ -183,6 +183,7 @@ img {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
 }
 
 .content_calendar .calendar-contain-grey .calendar-contain-description-grey a {

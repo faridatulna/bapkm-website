@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row">  <!-- f_widgets_inner -->
               <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:14vw;" alt=""  style="border-right: 3px solid #F4BA23;">
+                    <img src="{{ asset('force/img/core-img/logo.png') }}" style="width:14vw;height: auto;" alt=""  style="border-right: 3px solid #F4BA23;">
               </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-widget ab_widgets">
@@ -154,7 +154,7 @@
       document.getElementById("defaultOpen").click();
       </script>
       <!--end of sop-->
-      
+
     <script>
       $(document).ready(function () {
       var itemsMainDiv = ('.MultiCarousel');
