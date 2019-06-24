@@ -164,8 +164,8 @@
                                                                     <div class="col-sm-6">
                                                                         <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                                         <div class="col-md-12">
-                                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Article',$data->filePdf) }}" @endif>
-                                                                            <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Article',$data->filePdf) }}" @endif>
+                                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article',$data->filePdf) }}" @endif>
+                                                                            <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article',$data->filePdf) }}" @endif>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -179,7 +179,7 @@
                                                                     <div class="col-sm-6">
                                                                         <label class="col-md-4 control-label">Gambar</label>
                                                                         <div class="col-md-10">
-                                                                            <img width="300" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Article',$data->fileImg) }}" @endif />
+                                                                            <img width="300" height="250" @if($data->fileImg) src="{{ url('Uploaded/Article',$data->fileImg) }}" @endif />
                                                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ $data->fileImg }}">
                                                                         </div>
                                                                     </div>
@@ -273,7 +273,7 @@
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12">
                                                                         @if($data->fileImg)
-                                                                            <img src="{{url('Uploaded/Images/Article', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
+                                                                            <img src="{{url('Uploaded/Article', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
                                                                         @else
                                                                             
                                                                         @endif
@@ -283,7 +283,7 @@
                                                             <div class="card-footer bg-white">
                                                                 <div class="col-sm-12">
                                                                     @if($data->filePdf)
-                                                                        <a src="{{url('Uploaded/PDF/Article', $data->fileImg)}}"><i class="fa fa-download"> Unduh File PDF </i></a>
+                                                                        <a src="{{url('Uploaded/Article', $data->fileImg)}}"><i class="fa fa-download"> Unduh File PDF </i></a>
                                                                     @else
                                                                         
                                                                     @endif

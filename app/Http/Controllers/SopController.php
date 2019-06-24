@@ -60,10 +60,8 @@ class SopController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fileImg' => 'file|mimes:jpeg,png,jpg',
-            'filePdf' => 'file|mimes:pdf',
-            'namafile' => 'required',
-            'namafilePdf' => 'required',
+            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+            'filePdf' => 'required|file|mimes:pdf',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
@@ -78,7 +76,22 @@ class SopController extends Controller
         }else{
             $fileImg = $request->file('fileImg');
             $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Images/Product');
+                if($request->type == [1]){
+                   $desPath = public_path('/Uploaded/Regdat'); 
+                }
+                else if($request->type == [2]){
+                    $desPath = public_path('/Uploaded/PEP'); 
+                }
+                else if($request->type == [3]){
+                    $desPath = public_path('/Uploaded/Beasiswa'); 
+                }
+                else if($request->type == [4]){
+                    $desPath = public_path('/Uploaded/Data'); 
+                }else{
+                    
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
+            
             $fileImg->move($desPath,$inputFile['namafile']);
             $help->fileImg = $inputFile['namafile'];
         }
@@ -90,7 +103,22 @@ class SopController extends Controller
         }else{
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/PDF/Product');
+
+            if($request->type == [1]){
+                   $desPath = public_path('/Uploaded/Regdat'); 
+                }
+                else if($request->type == [2]){
+                    $desPath = public_path('/Uploaded/PEP'); 
+                }
+                else if($request->type == [3]){
+                    $desPath = public_path('/Uploaded/Beasiswa'); 
+                }
+                else if($request->type == [4]){
+                    $desPath = public_path('/Uploaded/Data'); 
+                }else{
+                    
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
             $filePdf->move($desPath,$inputFile['namafilePdf']);
             $help->filePdf = $inputFile['namafilePdf'];
         }

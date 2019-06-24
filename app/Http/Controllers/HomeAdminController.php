@@ -34,7 +34,7 @@ class HomeAdminController extends Controller
 
         $fileImg = $request->file('fileImg');
         $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-        $desPath = public_path('/Uploaded/Images/Banner');
+        $desPath = public_path('/Uploaded/Banner');
         $fileImg->move($desPath,$inputFile['namafile']);
         $banner->fileImg = $inputFile['namafile'];
         $banner->type = 0; //0=banner

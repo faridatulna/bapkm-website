@@ -63,8 +63,8 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fileImg' => 'file|mimes:jpeg,png,jpg',
-            'filePdf' => 'file|mimes:pdf',
+            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+            'filePdf' => 'required|file|mimes:pdf',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
@@ -81,7 +81,7 @@ class CalendarController extends Controller
             $article->description = null;
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/PDF/Article');
+            $desPath = public_path('/Uploaded/Article');
             $filePdf->move($desPath,$inputFile['namafilePdf']);
             $article->filePdf = $inputFile['namafilePdf'];
 
