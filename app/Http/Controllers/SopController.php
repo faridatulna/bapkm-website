@@ -69,12 +69,13 @@ class SopController extends Controller
 
         $help = new Helps;
         //File Image Upload
+
         if ($request->file('fileImg') == null){
             $fileImg = null;
             
         }else{
             $fileImg = $request->file('fileImg');
-            $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
+            $inputFile['namafile'] = $fileImg->getClientOriginalName();
                 if($request->type == [1]){
                    $desPath = public_path('/Uploaded/Regdat'); 
                 }
@@ -100,7 +101,7 @@ class SopController extends Controller
             $filePdf = null;
         }else{
             $filePdf = $request->file('filePdf');
-            $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
+            $inputFile['namafilePdf'] = $filePdf->getClientOriginalName();
 
             if($request->type == [1]){
                    $desPath = public_path('/Uploaded/Regdat'); 
@@ -183,7 +184,79 @@ class SopController extends Controller
         //
         $help = Helps::findorfail($id);
 
-        $help->update($request->all());
+        // $help->update($request->all());
+        $help->title = $request->title;
+        // $help->url = $request->url;
+        $help->description = $request->description;
+        if ($request->file('fileImg') == null){
+            $fileImg = null;
+            
+        }else{
+            $fileImg = $request->file('fileImg');
+            $inputFile['namafile'] = $fileImg->getClientOriginalName();
+                if($request->type == [1]){
+                   $desPath = public_path('/Uploaded/Regdat'); 
+                }
+                else if($request->type == [2]){
+                    $desPath = public_path('/Uploaded/PEP'); 
+                }
+                else if($request->type == [3]){
+                    $desPath = public_path('/Uploaded/Beasiswa'); 
+                }
+                else if($request->type == [4]){
+                    $desPath = public_path('/Uploaded/Data'); 
+                }else{
+                    
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
+            
+            $fileImg->move($desPath,$inputFile['namafile']);
+            $help->fileImg = $inputFile['namafile'];
+        }
+        
+        //File Upload
+        if ($request->file('filePdf') == null){
+            $filePdf = null;
+        }else{
+            $filePdf = $request->file('filePdf');
+            $inputFile['namafilePdf'] = $filePdf->getClientOriginalName();
+
+            if($request->type == [1]){
+                   $desPath = public_path('/Uploaded/Regdat'); 
+                }
+                else if($request->type == [2]){
+                    $desPath = public_path('/Uploaded/PEP'); 
+                }
+                else if($request->type == [3]){
+                    $desPath = public_path('/Uploaded/Beasiswa'); 
+                }
+                else if($request->type == [4]){
+                    $desPath = public_path('/Uploaded/Data'); 
+                }else{
+                    
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
+            $filePdf->move($desPath,$inputFile['namafilePdf']);
+            $help->filePdf = $inputFile['namafilePdf'];
+        }
+
+        if($request->type == [1]){
+            $help->type = 1;
+        }
+        else if($request->type == [2]){
+            $help->type = 2;
+        }
+        else if($request->type == [3]){
+            $help->type = 3;
+        }
+        else if($request->type == [4]){
+            $help->jenis = 4;
+        }else{
+            
+         // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+        }
+
+        $help->update();
         
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');

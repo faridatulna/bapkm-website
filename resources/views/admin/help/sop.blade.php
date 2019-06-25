@@ -195,8 +195,22 @@
                                                         <div class="col-6 form-group">
                                                             <label for="email" class="col-md-6 control-label">File Pdf</label>
                                                             <div class="col-md-12">
-                                                                <input type="file" class="uploads form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Product',$data->filePdf) }}" @endif>
-                                                                <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Article',$data->filePdf) }}" @endif>
+                                                                <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                                                @if($data->filePdf)
+                                                                @if($data->type == 1)
+                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Regdat',$data->filePdf) }}" @endif>
+                                                                    
+                                                                @elseif($data->type == 2)
+                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PEP',$data->filePdf) }}" @endif>
+                                                                @elseif($data->type == 3)
+                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Beasiswa',$data->filePdf) }}" @endif>
+                                                                    
+                                                                @elseif($data->type == 4)
+                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Data',$data->filePdf) }}" @endif>
+                                                                @else @endif
+                                                                        
+                                                            @else @endif
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="col-6 form-group{{ $errors->has('url') ? ' has-error' : '' }}">

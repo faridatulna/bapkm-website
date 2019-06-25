@@ -49,11 +49,10 @@
                         <!-- Grid row -->
                     </div>
                     <div class="eight wide right floated column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-
+                        <h2 class="ui header">Apa itu Administrasi Pembelajaran dan Apa Saja Ranah Kerja AP ?</h2>
+                        <p style="font-size: 20px;">AP atau Administrasi Pembelajaran merupakan bagian dari BAPKM yang bergerak dibidang administrasi registrasi data dan juga evaluasi pembelajaran.</p>
+                        <h2 class="ui header">Apa Saja Layanan AP ?</h2>
+                        <p style="font-size: 20px;">Layanan AP adalah mulai dari informasi penerimaan ptn untuk semua jalur yang digunakan ITS, wisuda, dan juga informasi seputar kalender akademik. </p>
                     </div>
                 </div>
                 <div class="row">
@@ -68,12 +67,12 @@
                     <div class="column">
                         <img class="ui centered small circular image" src="{{ asset('force/img/core-img/test.png') }}">
                         <h3>Registrasi & Data</h3>
-                        <p>That is what they all say about us</p>
+                        <p> Penerimaan Jalur PTN ITS </p>
                     </div>
                     <div class="column">
                         <img class="ui centered small circular image" src="{{ asset('force/img/core-img/exam.png') }}">
                         <h3>Pemantauan dan Evaluasi Pembelajaran</h3>
-                        <p>That is what they all say about us</p>
+                        <p> IPK dan Nilai </p>
                     </div>
                 </div>
             </div>
@@ -83,10 +82,10 @@
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
                     <div class="eight wide column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+                        <h2 class="ui header">Apa itu Kesejahteraan Mahasiswa dan Apa Saja Ranah Kerja KM ?</h2>
+                        <p style="font-size: 20px;">KM atau Kesejahteraan Mahasiswa merupakan bagian dari BAPKM yang bergerak dibidang pengolahan informasi beasiswa dan kegiatan mahasiswa seperti UKM.</p>
+                        <h2 class="ui header">Apa Saja Layanan KM ?</h2>
+                        <p style="font-size: 20px;">Layanan KM adalah mulai dari informasi beasiswa, layanan mengurus surat beasiswa, SPJ dan LPJ Kegiatan. </p>
                     </div>
                     <div class="eight wide right floated column">
                         <div class="row">

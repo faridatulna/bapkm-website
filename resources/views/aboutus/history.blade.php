@@ -24,7 +24,7 @@
                     <div class="six wide column">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 mb-4">
-                                <a><img class="img-fluid z-depth-1" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Logo-Free.jpg" alt="video" data-toggle="modal" data-target="#modal5"></a>
+                                <a><img class="img-fluid z-depth-1" src="{{url('force/img/core-img/logo.jpg')}}" alt="video" data-toggle="modal" data-target="#modal5"></a>
                             </div>
                         </div>
 
@@ -33,10 +33,11 @@
                         </div> -->
                     </div>
                     <div class="ten wide right floated column">
-                        <h3 class="ui header">We Help Companies and Companions</h3>
-                        <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-                        <h3 class="ui header">We Make Bananas That Can Dance</h3>
-                        <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+                        <h2 class="ui header">Tahukah Kamu Apa Itu <strong>BAPKM</strong> ?</h3>
+                        <p style="font-size: 20px;">BAPKM merupakan Badan Institusi <strong> ITS</strong> yang bergerak pada bidang Administrasi Pembelajaran (AP) dan Kesejahteraan Mahasiswa (Kesma). </p>
+
+                        <h2 class="ui header">Apakah Nama BAPKM Sudah Digunakan Sejak Lama ?</h3>
+                        <p style="font-size: 20px;">Yapp, Nama BAPKM sendiri belum lama digunakan tepatnya selama 6 periode BAPKM yang kita kenal saat ini telah mengalami perubahan nama. </p>
 
                     </div>
                 </div>
