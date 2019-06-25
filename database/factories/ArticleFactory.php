@@ -14,6 +14,5 @@ $factory->define(Article::class, function (Faker $faker) {
         'description' 	=> $faker->text(30),
         'type'			=> $faker->numberBetween(1,6),
         // 0=umum , 1=beasiswa , 2=kemahasiswaan
-        'postDate' 		=> $faker->dateTime(),
     ];
 });

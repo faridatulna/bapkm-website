@@ -16,7 +16,6 @@ class Helps extends Model
         'fileImg',
         'filePdf',
         'description',
-        'type', //0=SOP-REGDAT, 1=SOP-PEP, 2=SOP-BEASISWA, 3=SOP-KM
-        'postDate'
+        'type' //0=SOP-REGDAT, 1=SOP-PEP, 2=SOP-BEASISWA, 3=SOP-KM
     ];
 }

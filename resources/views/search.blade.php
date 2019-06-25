@@ -95,7 +95,7 @@
                                         Kalender
                                         @endif
                                     </a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ $data->postDate }}</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{{ $data->title }}</h4></a> {{ csrf_field() }}
                                 <span class="d-inline-block text-truncate" style="max-width: 150px;">
@@ -128,7 +128,7 @@
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn" href="#">Kalender Akademik</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{!! $data->postDate !!}</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <div class="row" style="height: 40px;">
                                     <div class="col-xs-3">
@@ -145,18 +145,21 @@
                         @endforeach
 
                         <div class="news_slider owl-carousel no-repeat">
-                            @foreach($cal as $data)
+                            @foreach($cal as $i=>$data)
+                            @if($i > 1)
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">
                                         <a href="news-details.html">
                                             <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
                                         <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{$data->postDate}}</a>
+                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @else
+                            @endif
                             @endforeach
                         </div>
                     </aside>
@@ -182,25 +185,35 @@
                             <h2>Agenda</h2>
                         </div>
                         <div class="content_calendar ">
-                            @foreach($agenda as $data)
-                            <div class="detail-calendar-grey">
-                                <div class="calendar-grey">
-                                    <h1 style="margin-top:10px;margin-bottom:0;">30</h1>{{$data->dateOfEvent}}
-                                    <h3 style="margin-top:0;">Jan</h3>
-                                </div>
-                                <div class="calendar-contain-grey">
-                                    <div class="calendar-contain-description-grey">
-                                        <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
-                                        <br>
-                                        <small><i class="fa fa-clock-o"></i> &nbsp;{{$data->jam}} 08.00 - 09.00 WIB</small>
-                                        <br>
-                                        <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}</small>
+                            <div id="wrapper">
+                          <div class="scrollbar" id="style-7">
+                            <div class="force-overflow">
+                              <div class="content_calendar no-repeat">
+                                @foreach($agenda as $data)
+                                <div class="detail-calendar-grey">
+                                    <div class="calendar-grey">
+                                        <h1 style="margin-top:10px;margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
+                                        <h3 style="margin-top:0;">{{ date('M', strtotime($data->dateOfEvent)) }}</h3>
+                                    </div>
+                                    <div class="calendar-contain-grey">
+                                        <div class="calendar-contain-description-grey">
+                                            <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
+                                            <br>
+                                            <small><i class="fa fa-clock-o"></i> &nbsp;
+                                                {{ date('h:ia', strtotime($data->fromTime)) }} - {{ date('h:ia', strtotime($data->totime)) }}
+                                            </small>
+                                            <br>
+                                            <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+                                @endforeach
+                              </div>
+                            
                         </div>
+
                     </aside>
+
                 </div>
             </div>
         </div>

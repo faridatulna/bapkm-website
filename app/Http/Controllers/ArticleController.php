@@ -109,13 +109,12 @@ class ArticleController extends Controller
             $article->type = 3;
         }
         else if($request->type == [4]){
-            $article->jenis = 4;
+            $article->type = 4;
         }
         else if($request->type == [5]){
             $article->type = 5;
         }
              // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
-        $article->postDate = Carbon::now();
         //dd($request->all());
         $article->save();
             // Article::create($request->all());

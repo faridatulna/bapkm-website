@@ -24,7 +24,7 @@ class EventController extends Controller
 
     public function links()
     {
-        $event = Events::all();
+        $event = Events::orderBy('dateOfEvent', 'desc')->get();
         return view('admin.article.list_event',compact('event'));
     }
     
@@ -35,7 +35,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Events::paginate(10);
+        $event = Events::orderBy('dateOfEvent', 'desc')->paginate(10);
 
         return view('admin.article.list_event',compact('event'));
     }
@@ -61,16 +61,12 @@ class EventController extends Controller
     {
         $event = new Events;
         $event->title = $request->title;
-        $event->place = null;
-        $event->dateOfEvent=null;
-        $event->time = null;
-        $date = \Carbon\Carbon::parse($request->current_date);
-
-        $day = $date->day;
-        $month = $date->month;
-        $year = $date->year;
-        $event->dateOfEvent = $date;
-        // dd($request->all());
+        $event->place = $request->place;
+        $event->fromTime = $request->fromTime;
+        $event->toTime = $request->toTime;
+        $event->dateOfEvent = $request->dateOfEvent;
+ 
+        //dd($event->dateOfEvent->toFormattedDateString());
         $event->save();
 
         Session::flash('message', 'Berhasil ditambahkan!');

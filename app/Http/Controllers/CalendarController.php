@@ -24,7 +24,7 @@ class CalendarController extends Controller
 
     public function links()
     {
-        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->get();
+        $datas = Article::where('type', 6)->orderBy('updated_at', 'desc')->get();
         // $event = Events::all();
         // $links = Quicklinks::all();
         return view('admin.article.list_cal',compact('datas'));
@@ -37,7 +37,7 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $datas = Article::where('type', 6)->orderBy('postDate', 'desc')->paginate(10);
+        $datas = Article::where('type', 6)->orderBy('updated_at', 'desc')->paginate(10);
         // $event = Events::paginate(5);
         // $links = Quicklinks::paginate(5);
         return view('admin.article.list_cal',compact('datas'));
@@ -74,11 +74,12 @@ class CalendarController extends Controller
         //File Image Upload
             $article->type = 6;
             $article->title = $request->title;
-            $article->postDate = Carbon::now();
+            
             $fileImg = null;
             $inputFile['namafile'] = null;
             $article->url = null;
             $article->description = null;
+
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
             $desPath = public_path('/Uploaded/Article');

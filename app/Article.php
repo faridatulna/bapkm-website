@@ -18,8 +18,7 @@ class Article extends Model
         'filePdf',
         
         'description',
-        'type',
-        'postDate'
+        'type'
     ];
 
 }

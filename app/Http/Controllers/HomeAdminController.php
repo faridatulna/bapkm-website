@@ -19,7 +19,7 @@ class HomeAdminController extends Controller
     {
         $datas = Galleries::all();
 
-        return view('admin.home.carousel', compact('datas'));
+        return view('welcome', compact('datas'));
     }
 
     /**
@@ -30,17 +30,7 @@ class HomeAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $banner = new Galleries;
-
-        $fileImg = $request->file('fileImg');
-        $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-        $desPath = public_path('/Uploaded/Banner');
-        $fileImg->move($desPath,$inputFile['namafile']);
-        $banner->fileImg = $inputFile['namafile'];
-        $banner->type = 0; //0=banner
-        $banner->save();
-
-        return redirect()->back();
+        
     }
 
     /**
@@ -53,10 +43,6 @@ class HomeAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $banner = Galleries::findorfail($id);
-
-        $banner->update($request->all());
-        return redirect()->back();
     }
 
     /**
@@ -67,8 +53,6 @@ class HomeAdminController extends Controller
      */
     public function destroy($id)
     {
-        $banner = Galleries::findorfail($id);  
-        $banner->delete();
-        return redirect()->back();
+        
     }
 }

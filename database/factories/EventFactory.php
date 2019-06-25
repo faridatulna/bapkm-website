@@ -8,6 +8,9 @@ use App\Events;
 $factory->define(Events::class, function (Faker $faker) {
     return [
         'title' => $faker->text(25),
-        'dateOfEvent'	=> $faker->dateTime(),
+        'dateOfEvent'	=> $faker->date(),
+        'fromTime' => $faker->time(),
+        'toTime' => $faker->time(),
+        'place' => $faker->address(),
     ];
 });

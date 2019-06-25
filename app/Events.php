@@ -12,6 +12,9 @@ class Events extends Model
 
     protected $fillable = [
         'title',
-        'dateofEvent'
+        'dateOfEvent',
+        'fromTime',
+        'toTime',
+        'place'
     ];
 }

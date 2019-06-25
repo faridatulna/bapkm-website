@@ -22,7 +22,6 @@ class CreateHelpsTable extends Migration
             $table->text('filePdf')->nullable();
             $table->longText('description')->nullable();
             
-            $table->timestamp('postDate');
             $table->timestamps();
         });
     }

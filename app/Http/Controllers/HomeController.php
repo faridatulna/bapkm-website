@@ -47,10 +47,10 @@ class HomeController extends Controller
             // echo($next);
         }
 
-        $cal_lastest = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(1)->get();
-        $cal = Article::orderBy('postDate', 'desc')->where('type','=',6)->take(3)->get();
-        $agenda = Events::orderBy('updated_at', 'desc')->take(3)->get();
-        $news = Article::orderBy('postDate', 'desc')->take(4)->get();
+        $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+        $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+        $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+        $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
 
         return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next'));
     }

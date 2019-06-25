@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\Events;
-use App\Quicklinks;
+use App\Galleries;
 use App\Services;
 use App\Helps;
 use Illuminate\Http\Request;
@@ -17,7 +17,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Galleries::all();
+        $data_first = Galleries::firstOrFail();
+        return view('admin.home.carousel', compact('datas','data_first'));
     }
 
     public function pagehome(){
@@ -42,7 +44,30 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carousel = new Galleries;
+
+        if ($request->file('banner') == null){
+            $banner = null;
+            $inputFile['namafile'] = null;
+            
+        }else{
+            $banner = $request->file('banner');
+            $inputFile['namafile'] = time().".".$banner->getClientOriginalExtension();
+            $desPath = public_path('/Uploaded/Banner');
+            $banner->move($desPath,$inputFile['namafile']);
+            $carousel->banner = $inputFile['namafile'];
+        }
+        
+        if($request->type == [1]){
+            $carousel->type = 1;
+        }
+        elseif($request->type == [2]){
+            $carousel->type = 2;
+        }
+        
+        $carousel->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -76,7 +101,10 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carousel = Galleries::findorfail($id);
+
+        $carousel->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -87,6 +115,8 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $carousel = Galleries::findorfail($id);  
+        $carousel->delete();
+        return redirect()->back();
     }
 }

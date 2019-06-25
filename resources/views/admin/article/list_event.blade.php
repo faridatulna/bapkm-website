@@ -43,8 +43,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">title</th>
-                                    <th scope="col">dateofEvent</th>
+                                    <th scope="col">Judul</th>
+                                    <th scope="col">Tanggal Agenda</th>
+                                    <th scope="col">Waktu Agenda</th>
+                                    <th scope="col">Tempat </th>
                                     <th scope="col" colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -54,7 +56,9 @@
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{ $data->title}}</td>
-                                        <td>{{ $data->dateofEvent }}</td>
+                                        <td>{{ date('M j, Y', strtotime($data->dateOfEvent)) }}</td>
+                                        <td>{{ date('h:ia', strtotime($data->fromTime)) }} - {{ date('h:ia', strtotime($data->toTime)) }}</td>
+                                        <td>{{ $data->place}}</td>
                                         <td>
                                             <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editevent{{ $data->id }}"></button>
                                         </td>
@@ -85,21 +89,50 @@
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                                         <label for="title" class="col-md-6 control-label">Judul</label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul" required> @if ($errors->has('title'))
+                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required> @if ($errors->has('title'))
                                                             <span class="help-block">
                                                                     <strong>{{ $errors->first('title') }}</strong>
                                                                 </span> @endif
                                                         </div>
                                                     </div>
-                                                    <div class="form-group required {{ $errors->has('date') ? ' has-error' : '' }}">
+                                                    <div class="form-group required {{ $errors->has('dateOfEvent') ? ' has-error' : '' }}">
                                                         <label for="date" class="col-md-6 control-label">Tanggal Agenda</label>
                                                         <div class="col-md-12">
-                                                            <input id="date" type="date" class="form-control" name="title" value="{{ $data->dateOfEvent }}" placeholder="Tanggal Agenda" required> @if ($errors->has('title'))
+                                                            <input id="date" type="date" class="form-control" name="dateOfEvent" value="{{ $data->dateOfEvent }}" placeholder="{{ date('M j, Y', strtotime($data->dateOfEvent)) }}" required> @if ($errors->has('dateOfEvent'))
                                                             <span class="help-block">
-                                                                    <strong>{{ $errors->first('title') }}</strong>
+                                                                    <strong>{{ $errors->first('dateOfEvent') }}</strong>
                                                                 </span> @endif
                                                         </div>
                                                     </div>
+                                                    <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
+                                                        <label for="time" class="col-md-6 control-label">Waktu Agenda</label>
+                                                        <div class="row col-12">
+                                                            <div class="col-5">
+                                                                <input id="fromTime" type="time" class="form-control" name="fromTime" value="{{ $data->fromTime }}" placeholder="{{ time('h:ia', strtotime($data->fromTime)) }}" required> @if ($errors->has('fromTime'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('fromTime') }}</strong>
+                                                                </span> @endif
+                                                            </div>
+                                                            <div class="col-2"> - </div>
+                                                            <div class="col-5">
+                                                                <input id="toTime" type="time" class="form-control" name="toTime" value="{{ $data->toTime }}" placeholder="{{ time('h:ia', strtotime($data->toTime)) }}" required> @if ($errors->has('toTime'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('toTime') }}</strong>
+                                                                </span> @endif
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
+                                                        <label for="place" class="col-md-6 control-label">Akhir</label>
+                                                        <div class="col-md-12">
+                                                            <input id="place" type="place" class="form-control" name="place" value="{{ $data->place }}" placeholder="{{$data->place}}" required> @if ($errors->has('place'))
+                                                            <span class="help-block">
+                                                                    <strong>{{ $errors->first('place') }}</strong>
+                                                                </span> @endif
+                                                        </div>
+                                                    </div>
+
 
                                                 </div>
                                                 <div class="modal-footer">
@@ -179,13 +212,33 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="dateOfEvent" class="col-md-6 control-label">Waktu Pelaksanaan</label>
+                            <div class="form-group required {{ $errors->has('dateOfEvent') ? ' has-error' : '' }}">
+                                <label for="dateOfEvent" class="col-md-6 control-label">Tanggal Pelaksanaan</label>
                                 <div class="col-12">
-                                    <input id="dateOfEvent" type="date" class="form-control" name="date" placeholder="Judul Artikel" required> @if ($errors->has('dateOfEvent'))
-                                    <span class="help-block">
-                                                    <strong>{{ $errors->first('dateOfEvent') }}</strong>
-                                                </span> @endif
+                                    <input id="dateOfEvent" type="date" class="form-control" name="dateOfEvent" placeholder="Judul Artikel" >
+                                </div>
+
+                            </div>
+
+                            <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
+                                <label for="dateOfEvent" class="col-md-6 control-label">Waktu Pelaksanaan</label>
+                                <div class="row col-12">
+                                    <div class="col-5">
+                                    <input id="fromTime" type="time" class="form-control" name="fromTime" placeholder="Mulai" >
+                                    </div>
+                                    <div class="col-2"> - </div>
+                                    <div class="col-5">
+                                        <input id="toTime" type="time" class="form-control" name="toTime" placeholder="Akhir" >
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+
+                            <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
+                                <label for="place" class="col-12 control-label">Tempat Pelaksanaan</label>
+                                <div class="col-12">
+                                    <input id="place" type="text" class="form-control" name="place" placeholder="Tempat Pelaksanaan" >
                                 </div>
 
                             </div>

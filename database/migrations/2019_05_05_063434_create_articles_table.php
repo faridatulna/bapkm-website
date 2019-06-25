@@ -16,8 +16,8 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->timestamp('postDate');
-            $table->integer('type'); // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
+            $table->integer('type'); 
+            // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
             
             $table->text('fileImg')->nullable();
             $table->text('filePdf')->nullable();

@@ -97,7 +97,7 @@
                               <a class="nav-link" href="{{ route('admin.aboutus.organigram') }}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">Struktur Organisasi</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('admin.aboutus.services') }}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Profil</a>
+                              <a class="nav-link" href="{{ route('admin.aboutus.profile') }}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Profil</a>
                           </li>
                         </ul>
                     </div>

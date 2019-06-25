@@ -35,7 +35,6 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
                     <h2 class="pageheader-title">Master Data - Pengumuman</h2>
-                    <!-- <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p> -->
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -83,7 +82,7 @@
                                 <tr>
                                     <th scope="row">{{$i++}}</th>
                                     <td>{{$data->title}}</td>
-                                    <td>{{ $data->postDate }}</td>
+                                    <td>{{ date('M j, Y h:ia', strtotime($data->updated_at)) }}</td>
                                     <td>
                                         @if($data->type == 1)
                                         <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">Akademik</button>
@@ -101,7 +100,7 @@
                                         @endif
 
                                         <td>
-                                            <button class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="/article-page/{{$data->id}}"></button>
+                                            <a href="/article-page/{{$data->id}}"><button class="btn btn-primary fa fa-eye" ></button></a>
                                         </td>
                                         <td>
                                             <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#edit{{ $data->id }}"></button>
@@ -152,7 +151,7 @@
                                                                             <option value="5" @if($data->type == 5) selected @endif>Wisuda</option>
                                                                             <option value="6" @if($data->type == 6) selected @endif>Kalender</option>
                                                                         </select>
-                                                                    </h3> Update Date: 03-05-2020</div>
+                                                                    </h3> Update Date: {{ date('M j, Y h:ia', strtotime($data->updated_at)) }}</div>
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="row">

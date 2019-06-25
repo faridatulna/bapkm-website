@@ -33,8 +33,8 @@ class AdminController extends Controller
     {
         $article = Article::all();
 
-        $datas = Article::orderBy('postDate', 'desc')->where('type','=',6)->get();
-        $datas = Article::orderBy('postDate', 'desc')->where('type','=',6)->paginate(5);
+        $datas = Article::orderBy('updated_at', 'desc')->where('type','=',6)->get();
+        $datas = Article::orderBy('updated_at', 'desc')->where('type','=',6)->paginate(5);
         $event = Events::orderBy('updated_at', 'desc')->get(); 
         $event = Events::orderBy('updated_at', 'desc')->paginate(5);
 

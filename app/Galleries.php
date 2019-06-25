@@ -11,7 +11,7 @@ class Galleries extends Model
     protected $table = 'galleries';
 
     protected $fillable = [
-        'fileImg',
+        'banner',
         'type',
     ];
 }
