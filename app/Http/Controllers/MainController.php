@@ -16,12 +16,13 @@ class MainController extends Controller
     function checklogin(Request $request)
     {
          $this->validate($request, [
+              'username'   => 'required|username',
               'email'   => 'required|email',
               'password'  => 'required|alphaNum|min:3'
           ]);
 
          $user_data = array(
-              'email'  => $request->get('email'),
+              'username'  => $request->get('username'),
               'password' => $request->get('password')
          );
 

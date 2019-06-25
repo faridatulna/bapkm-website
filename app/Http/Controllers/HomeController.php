@@ -40,6 +40,10 @@ class HomeController extends Controller
             $prev = Article::findorfail($id);
             // echo($next);
         }
+        // }elseif ($datas->count() == 1) {
+        //     $prev = Article::findorfail($id);
+        //     $next = Article::findorfail($id);
+        // }
         else{
             $prev = Article::findorfail($id-1);
             $next = Article::findorfail($id+1);

@@ -30,7 +30,7 @@
             <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
 
                 <div class="card">
-                    <h5 class="card-header">Quick Links</h5>
+                    <!-- <h5 class="card-header">Quick Links</h5> -->
 
                     <div class="col-lg-12">
                         @if (Session::has('message'))
@@ -45,8 +45,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">title</th>
-                                    <th scope="col">url</th>
+                                    <th scope="col">Nama QuickLinks</th>
+                                    <th scope="col">Url (https://www.its.ac.id)</th>
                                     <th scope="col" colspan="2">Action</th>
                                 </tr>
                             </thead>

@@ -16,6 +16,7 @@ use App\Helps;
 use App\Services;
 use App\Galleries;
 use App\Quicklinks;
+use App\Aboutus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 
@@ -27,7 +28,6 @@ Route::get('/', function () {
     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
     $links = Quicklinks::all();
     $article = Article::orderBy('updated_at', 'desc')->take(4)->get(); 
-    $gal_active = Galleries::first();
     $gal = Galleries::all();
     return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active') );
 });
@@ -213,19 +213,23 @@ Route::prefix('admin')
         Route::resource('user','UserController');
 
         Route::prefix('aboutus')
-            ->name('aboutus.')
+            ->name('aboutus.') //['hist-logo','hist-name','hist-gallery','org','profile-ap','profile-km','home']
             ->group(function () {
                 Route::get('/history', function () {
-                   return view('admin.aboutus.history');
+                    $histlogo = Aboutus::where('type','=',1)->get();
+                   return view('admin.aboutus.history',compact('histlogo','histname','histgal'));
                 })->name('history');
                 Route::get('/organigram', function () {
                    return view('admin.aboutus.organigram');
                 })->name('organigram');
                 Route::get('/profile', function () {
-                   return view('admin.aboutus.profile');
+                   $profap = Aboutus::where('type','=',5);
+
+                   return view('admin.aboutus.profile',compact('profap'));
                 })->name('profile');
-                Route::resource('','AboutusController');
+                
             });
+            Route::resource('aboutus','AboutusController');
 
 
     });

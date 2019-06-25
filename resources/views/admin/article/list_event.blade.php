@@ -30,7 +30,7 @@
             <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
 
                 <div class="card">
-                    <h5 class="card-header">Agenda</h5>
+                    <!-- <h5 class="card-header">Agenda</h5> -->
                     <div class="col-lg-12">
                         @if (Session::has('message'))
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
@@ -43,10 +43,11 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Judul</th>
-                                    <th scope="col">Tanggal Agenda</th>
-                                    <th scope="col">Waktu Agenda</th>
+                                    <th scope="col">Agenda</th>
+                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">Waktu </th>
                                     <th scope="col">Tempat </th>
+
                                     <th scope="col" colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -97,8 +98,8 @@
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('dateOfEvent') ? ' has-error' : '' }}">
                                                         <label for="date" class="col-md-6 control-label">Tanggal Agenda</label>
-                                                        <div class="col-md-12">
-                                                            <input id="date" type="date" class="form-control" name="dateOfEvent" value="{{ $data->dateOfEvent }}" placeholder="{{ date('M j, Y', strtotime($data->dateOfEvent)) }}" required> @if ($errors->has('dateOfEvent'))
+                                                        <div class="col-md-6">
+                                                            <input id="date" type="date" class="form-control" name="dateOfEvent" value="{{ date('m/d/y', strtotime($data->dateOfEvent)) }}" placeholder="{{ date('m/d/y', strtotime($data->dateOfEvent)) }}" required> @if ($errors->has('dateOfEvent'))
                                                             <span class="help-block">
                                                                     <strong>{{ $errors->first('dateOfEvent') }}</strong>
                                                                 </span> @endif

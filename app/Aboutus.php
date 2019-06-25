@@ -14,7 +14,9 @@ class Aboutus extends Model
         'title',
         'year',
         'type', //'hist-logo','hist-name','hist-gallery','org','profile-ap','profile-km','home'
-        'banner',
+        'image',
+        'image2',
+        'image1',
         'longText'
     ];
 

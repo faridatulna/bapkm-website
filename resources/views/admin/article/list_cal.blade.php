@@ -30,7 +30,7 @@
             <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
 
                 <div class="card">
-                    <h5 class="card-header">Kalendar</h5>
+                    <!-- <h5 class="card-header">Kalendar</h5> -->
                     <div class="col-lg-12">
                         @if (Session::has('message'))
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu1" style="margin-top:10px;">{{ Session::get('message') }}</div>
@@ -44,7 +44,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Judul</th>
+                                    <th scope="col">Kalender</th>
                                     <th scope="col">Tanggal Post</th>
                                     <th scope="col">File PDF</th>
                                     <th scope="col" colspan="2">Action</th>
@@ -56,8 +56,8 @@
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{ $data->title}}</td>
-                                        <td>{{ $data->postDate }}</td>
-                                        <td><a href="">File PDF</a></td>
+                                        <td>{{ date('M j, Y hi: a',strtotime('$data->uploaded_at')) }}</td>
+                                        <td><a @if($data->filePdf) href="{{ url('Uploaded/Article', $data->filePdf) }}" @endif> <i class="fa fa-download"></i> File PDF</a></td>
                                         <td>
                                             <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editcal{{ $data->id }}"></button>
                                         </td>
@@ -85,10 +85,14 @@
                                                         </li>
                                                     </ul>
 
+                                                    <input type="text" class="form-control" name="type" hidden="" value="6">
+                                                    <input type="file" class="uploads form-control" name="fileImg" hidden="" value="">
+                                                    <input type="text" class="form-control" name="url" hidden="" value="">
+
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                                         <label for="title" class="col-md-6 control-label">Judul</label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul" required> @if ($errors->has('title'))
+                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{$data->title}}" required> @if ($errors->has('title'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('title') }}</strong>
                                                             </span> @endif
@@ -97,7 +101,8 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                         <div class="col-md-12">
-                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                                            <input type="file" class="form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article', $data->filePdf) }}" @endif>
+                                                            <input name="filePdf" hidden="" @if($data->filePdf) src="{{ asset('Uploaded/Article', $data->filePdf) }}" @endif>
                                                         </div>
                                                     </div>
 
@@ -172,14 +177,9 @@
                                 </li>
                             </ul>
 
-                            <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type" class="col-md-6 control-label"></label>
-                                <div class="col-md-12">
-                                    <select class="form-control" name="type[]" required="">
-                                        <option value="6">Kalender</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" name="type" hidden="" value="6">
+                            <input type="file" class="uploads form-control" name="fileImg" hidden="" value="">
+                            <input type="text" class="form-control" name="url" hidden="" value="">
 
                             <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-6 control-label">Judul</label>

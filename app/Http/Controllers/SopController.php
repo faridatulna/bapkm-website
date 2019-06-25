@@ -71,7 +71,6 @@ class SopController extends Controller
         //File Image Upload
         if ($request->file('fileImg') == null){
             $fileImg = null;
-            $inputFile['namafile'] = null;
             
         }else{
             $fileImg = $request->file('fileImg');
@@ -99,7 +98,6 @@ class SopController extends Controller
         //File Upload
         if ($request->file('filePdf') == null){
             $filePdf = null;
-            $inputFile['namafilePdf'] = null;
         }else{
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
@@ -142,8 +140,7 @@ class SopController extends Controller
             
          // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
         }
-        $help->postDate = Carbon::now();
-        // dd($request->all());
+
         $help->save();
         // help::create($request->all());
         //echo $help;

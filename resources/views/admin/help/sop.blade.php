@@ -72,8 +72,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Judul</th>
-                                        <th scope="col">Tanggal Post</th>
+                                        <th scope="col">Nama SOP</th>
+                                        <th scope="col">Terakhir Update</th>
                                         <th scope="col">Tipe SOP</th>
                                         <th scope="col" colspan="3">Action</th>
                                     </tr>
@@ -86,7 +86,7 @@
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{$data->title}}</td>
-                                        <td>{{ $data->postDate }}</td>
+                                        <td>{{ $data->updated_at }}</td>
                                         <td>
                                             @if($data->type == 1)
                                             <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">SOP-RD</button>
@@ -141,9 +141,9 @@
                                                         </div>
 
                                                         <div class="col-8 form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                            <label for="title" class="col-md-6 control-label">Judul</label>
+                                                            <label for="title" class="col-md-6 control-label">Nama SOP</label>
                                                             <div class="col-md-12">
-                                                                <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                                                <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Nama Sop" required> @if ($errors->has('title'))
                                                                 <span class="help-block">
                                                         <strong>{{ $errors->first('title') }}</strong>
                                                     </span> @endif
@@ -157,18 +157,20 @@
                                                         <div class="col-12">
                                                             @if($data->fileImg)
                                                                 @if($data->type == 1)
-                                                                    <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                    <img src="{{url('Uploaded/Regdat', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    
                                                                 @elseif($data->type == 2)
-                                                                    <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <img src="{{url('Uploaded/PEP', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
                                                                 @elseif($data->type == 3)
-                                                                    <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                                    <img src="{{url('Uploaded/Beasiswa', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    
                                                                 @elseif($data->type == 4)
-                                                                    <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+                                                                    <img src="{{url('Uploaded/Data', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
                                                                 @else @endif
                                                                         
                                                             @else @endif
+                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                            <input type="hidden" class="uploads form-control" style="margin-top: 20px;" name="hidden_fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
                                                             <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
                                                             <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
                                                         </div>
@@ -177,7 +179,7 @@
                                                     <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                                         <div class="col-md-12">
                                                             <label for="description">Deskripsi</label>
-                                                            <textarea name="description" id="summernote{{$data->id}}" style="visibility: hidden; display: none;">{{ $data->description }}</textarea>
+                                                            <textarea name="description" id="summernote{{$data->id}}" style="visibility: hidden; display: none;">{!! $data->description !!}</textarea>
                                                             <!-- {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control', 'required')) !!} -->
                                                         </div>
                                                         <script>
@@ -369,9 +371,9 @@
                                 </div>
 
                                 <div class="col-8 form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                    <label for="title" class="col-md-6 control-label">Judul</label>
+                                    <label for="title" class="col-md-6 control-label">Nama Sop</label>
                                     <div class="col-md-12">
-                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Nama Sop" required> @if ($errors->has('title'))
                                         <span class="help-block">
                                                     <strong>{{ $errors->first('title') }}</strong>
                                                 </span> @endif

@@ -30,14 +30,39 @@ class UserTableSeeder extends Seeder
               'updated_at'      => \Carbon\Carbon::now()
             ]
         ]);
-        // $faker = Faker::create();
-        // foreach (range(1,5) as $index) {
-        //     DB::table('users')->insert([
-        //         'name' => $faker->name,
-        //         'role_id' => $faker->numberBetween(0,1),
-        //         'email' => $faker->email,
-        //         'password' => Hash::make('123'),
-        //     ]);
-        // }
+        \App\User::insert([
+            [
+              'id'              => 2,
+              'name'            => 'Admin AP',
+              'username'        => 'adminap',
+              'email'           => 'adminap@admin.com',
+              // 'alamat'          => NULL,
+              // 'notelp'          => NULL,
+              'password'        => bcrypt('adminap123'),
+              'pass_seen'       => 'adminap123',
+              'gambar'          => NULL,
+              'role_id'         => 0, //superadmin | 1= admin ap | 2 = admin km
+              'remember_token'  => NULL,
+              'created_at'      => \Carbon\Carbon::now(),
+              'updated_at'      => \Carbon\Carbon::now()
+            ]
+        ]);
+        \App\User::insert([
+            [
+              'id'              => 3,
+              'name'            => 'Admin KM',
+              'username'        => 'adminkm',
+              'email'           => 'adminkm@admin.com',
+              // 'alamat'          => NULL,
+              // 'notelp'          => NULL,
+              'password'        => bcrypt('adminkm123'),
+              'pass_seen'       => 'adminkm123',
+              'gambar'          => NULL,
+              'role_id'         => 0, //superadmin | 1= admin ap | 2 = admin km
+              'remember_token'  => NULL,
+              'created_at'      => \Carbon\Carbon::now(),
+              'updated_at'      => \Carbon\Carbon::now()
+            ]
+        ]);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
+use Storage;
 
 class CalendarController extends Controller
 {
@@ -63,35 +64,31 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
-            'filePdf' => 'required|file|mimes:pdf',
+            'filePdf' => 'file|mimes:pdf',
         ],[
-            'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
         ]);
 
         $article = new Article;
         //File Image Upload
-            $article->type = 6;
-            $article->title = $request->title;
+        $article->type = 6;
+        $article->title = $request->title;
             
-            $fileImg = null;
-            $inputFile['namafile'] = null;
-            $article->url = null;
-            $article->description = null;
+        $article->fileImg = null;
+        $article->description = null;
 
-            $filePdf = $request->file('filePdf');
-            $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Article');
-            $filePdf->move($desPath,$inputFile['namafilePdf']);
-            $article->filePdf = $inputFile['namafilePdf'];
+        $filePdf = $request->file('filePdf');
+        $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
+        $desPath = public_path('/Uploaded/Article');
+        $filePdf->move($desPath,$inputFile['namafilePdf']);
+        $article->filePdf = $inputFile['namafilePdf'];
 
-            $article->save();
+        $article->save();
             // Article::create($request->all());
-            //echo $article;
-            Session::flash('message', 'Berhasil ditambahkan!');
-            Session::flash('message_type', 'success');
-            return redirect()->back();  
+        
+        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+        return redirect()->back();  
     }
 
     /**
@@ -124,10 +121,28 @@ class CalendarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $article = Article::findorfail($id);
 
-        $article->update($request->all());
+        $article = Article::findorfail($id);
+        //File Image Upload
+        $article->type = 6;
+        $article->title = $request->title;
+            
+        $article->fileImg = null;
+        $article->description = null;
+
+        $filePdf = $request->file('filePdf');
+        
+        if(!$request->hasFile('filePdf')){
+            $article->filePdf=$article->filePdf;
+        }else{
+            $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
+            $desPath = public_path('/Uploaded/Article');
+            $filePdf->move($desPath,$inputFile['namafilePdf']);
+            $article->filePdf = $inputFile['namafilePdf'];
+        }
+
+        $article->update();
+        //dd($filePdf);
         
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
@@ -142,7 +157,8 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::findOrFail($id);       
+        $article = Article::findOrFail($id); 
+        Storage::delete($article->filePdf);      
         $article->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

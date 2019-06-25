@@ -94,6 +94,7 @@
                                 <a href="/article-page/{{$data->id-1}}"><h4>{{$prev->title}}</h4></a>
                             </div>
                         </div>
+                        
                         @else
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                             <div class="arrow">

@@ -120,7 +120,7 @@
                                                     <span aria-hidden="true">×</span>
                                                 </a>
                                             </div>
-                                            {!!Form::model($data,['method'=>'PATCH', 'action'=>['ArticleController@update',$data->id ]]) !!}
+                                            {!!Form::model($data,['method'=>'PATCH', 'action'=>['ArticleController@update',$data->id ,'files'=>'true']]) !!}
                                                 
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
@@ -156,15 +156,15 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
-                                                                        {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control', 'required')) !!}
+                                                                        {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control')) !!}
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-sm-6">
                                                                         <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                                         <div class="col-md-12">
-                                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article',$data->filePdf) }}" @endif>
-                                                                            <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article',$data->filePdf) }}" @endif>
+                                                                            <input type="file" name="filePdf">
+                                                                            <input type="hidden" name="hidden_filePdf" >
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -178,8 +178,9 @@
                                                                     <div class="col-sm-6">
                                                                         <label class="col-md-4 control-label">Gambar</label>
                                                                         <div class="col-md-10">
-                                                                            <img width="300" height="250" @if($data->fileImg) src="{{ url('Uploaded/Article',$data->fileImg) }}" @endif />
-                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ $data->fileImg }}">
+                                                                            <img width="300" height="250" src="{{ url('Uploaded/Article',$data->fileImg) }}" />
+                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                                            <input type="hidden" name="hidden_image" value="{{$data->fileImg}}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -375,7 +376,7 @@
                                     </div>
                                     <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                         <div class="col-11">
-                                            {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ', 'required')) !!} @if ($errors->has('description'))
+                                            {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
                                             <span class="help-block">
                                                     <strong>{{ $errors->first('description') }}</strong>
                                                 </span> @endif
