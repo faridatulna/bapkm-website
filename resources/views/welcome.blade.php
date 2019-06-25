@@ -200,70 +200,55 @@
                     <div class="row">
                         <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel" data-interval="1000">
                             <div class="MultiCarousel-inner">
-                                <a href="#">
+                                <a href="{{ asset('Uploaded/Regdat/lsm.pdf') }}" target="_blank">
                                     <div class="item cube">
                                         <div class="pad15 design" style="background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-size: 300px 200px;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Persuratan</strong></p>
+                                            <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Layanan Persuratan</strong></p>
                                             <!-- <p style="color: white;">₹ 1</p>
                                               <p style="color: white;">₹ 6000</p>
                                               <p style="color: white;">50% off</p> -->
                                         </div>
-                                        <div class="pad15 development" style="color: white; background-color: black;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Persuratan</strong></p>
+                                        <div class="pad15 development" style="background-color: #003A7F;">
+                                            <p class="lead" style="margin-top: 11.5vh;"><strong>Layanan surat mahasiswa daring yang dapat diakses melalui Integra.</strong></p>
                                             <!-- <p style="color: white;">₹ 1</p>
                                               <p style="color: white;">₹ 6000</p>
                                               <p style="color: white;">50% off</p> -->
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#">
+                                <a href="http://baak.its.ac.id/wsd/cari.php" target="_blank">
                                   <div class="item cube">
-                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                      <div class="pad15 design" style="background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                          <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Layanan Wisuda</strong></p>
                                           <!-- <p style="color: white;">₹ 1</p>
                                             <p style="color: white;">₹ 6000</p>
                                             <p style="color: white;">50% off</p> -->
                                       </div>
-                                      <div class="pad15 development" style="color: white; background-color: black;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                      <div class="pad15 development" style="background-color: #003A7F;">
+                                          <p class="lead" style="margin-top: 15vh;"><strong>Layanan pencarian tempat duduk untuk wisudawan.</strong></p>
                                           <!-- <p style="color: white;">₹ 1</p>
                                             <p style="color: white;">₹ 6000</p>
                                             <p style="color: white;">50% off</p> -->
                                       </div>
                                   </div>
                                 </a>
-                                <a href="#">
+                                <a href="{{ asset('Uploaded/PDF/servicedesk.pdf') }}" target="_blank">
                                   <div class="item cube">
-                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                      <div class="pad15 design" style="background-image:url({{url('force/img/core-img/sd.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
+                                          <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Service Desk</strong></p>
                                           <!-- <p style="color: white;">₹ 1</p>
                                             <p style="color: white;">₹ 6000</p>
                                             <p style="color: white;">50% off</p> -->
                                       </div>
-                                      <div class="pad15 development" style="color: white; background-color: black;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                      <div class="pad15 development" style="background-color: #003A7F;">
+                                          <p class="lead" style="margin-top: 11.5vh;"><strong>Layanan penerimaan keluhan yang terintegrasi dengan semua badan di ITS.</strong></p>
                                           <!-- <p style="color: white;">₹ 1</p>
                                             <p style="color: white;">₹ 6000</p>
                                             <p style="color: white;">50% off</p> -->
                                       </div>
                                   </div>
                                 </a>
-                                <a href="#">
-                                  <div class="item cube">
-                                      <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
-                                          <!-- <p style="color: white;">₹ 1</p>
-                                            <p style="color: white;">₹ 6000</p>
-                                            <p style="color: white;">50% off</p> -->
-                                      </div>
-                                      <div class="pad15 development" style="color: white; background-color: black;">
-                                          <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
-                                          <!-- <p style="color: white;">₹ 1</p>
-                                            <p style="color: white;">₹ 6000</p>
-                                            <p style="color: white;">50% off</p> -->
-                                      </div>
-                                  </div>
-                                </a>
+
                                 <div class="item">
                                     <div class="pad15">
                                         <!-- <p class="lead">Multi Item Carousel</p>
