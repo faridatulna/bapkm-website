@@ -200,7 +200,7 @@
                     <div class="row">
                         <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel" data-interval="1000">
                             <div class="MultiCarousel-inner">
-                                <a href="{{ asset('Uploaded/Regdat/lsm.pdf') }}" target="_blank">
+                                <a href="https://integra.its.ac.id" target="_blank">
                                     <div class="item cube">
                                         <div class="pad15 design" style="background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-size: 300px 200px;">
                                             <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Layanan Persuratan</strong></p>
@@ -232,7 +232,7 @@
                                       </div>
                                   </div>
                                 </a>
-                                <a href="{{ asset('Uploaded/PDF/servicedesk.pdf') }}" target="_blank">
+                                <a href="https://servicedesk.its.ac.id/." target="_blank">
                                   <div class="item cube">
                                       <div class="pad15 design" style="background-image:url({{url('force/img/core-img/sd.jpg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
                                           <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Service Desk</strong></p>

@@ -9,6 +9,15 @@
 
 <div class="ui container ">
   <div class="col-md-12">
+    <div class="content active" style="margin: 20px 0;">
+        <div class="ui labels">
+            <!-- /*label*/ -->
+            <a class="ui yellow small label" href="/help/regdat">Registrasi dan Data</a>
+            <a class="ui yellow small label" href="/help/beasiswa">Beasiswa</a>
+            <a class="ui yellow small label" href="/help/pep">Pemantauan dan Evaluasi Pembelajaran</a>
+            <a class="ui orange small label" href="/help/datkeg">Data dan Kegiatan Bahasiswa</a>
+        </div>
+    </div>
       <div class="page-header">
           <h1>SOP Pengelolaan Data dan Kegiatan Mahasiswa</h1>
       </div>
@@ -31,8 +40,7 @@
     @foreach($sop as $data)
     <div id="{{$data->id}}" class="tabcontent">
       <h3 class="ui header">{{$data->title}}</h3>
-      <p>Berikut adalah prosedur dan dokumen-dokumen yang dibutuhkan untuk </p> <p> {{$data->title}}</p>
-      
+
       @if($data->fileImg)
       <div class="container mt-4">
         <div class="row">
@@ -64,10 +72,13 @@
       @else
       @endif
 
+      @if($data->description)
       <p>
         <h3>Dokumen-Dokumen yang Diperlukan</h3>
         {!!$data->description!!}
       </p>
+      @else
+      @endif
     </div>
     @endforeach
 

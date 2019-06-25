@@ -48,13 +48,16 @@
 </head>
 
 <body>
-    <header class="header-area">
+    <header class="header-area thetop">
         @section('navbar') @include('include.navbar') @show
     </header>
 
     @yield('content')
 
-    <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"><i class="fa fa-angle-up"></i></a>
+    <div class='scrolltop'>
+      <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
+    </div>
+
     <footer class="footer-area" style="bottom: 0px;">
         <div class="container">
             <div class="row">  <!-- f_widgets_inner -->
@@ -108,7 +111,7 @@
             </div>
         </div>
     </footer>
-    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -280,7 +283,20 @@
     });
 
     </script>
-    
+    <script>
+    $(window).scroll(function() {
+            if ($(this).scrollTop() > 50 ) {
+                $('.scrolltop:hidden').stop(true, true).fadeIn();
+            } else {
+                $('.scrolltop').stop(true, true).fadeOut();
+            }
+        });
+
+        $(function() {
+          $(".scrolltop").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");
+          return false})});
+    </script>
+
     @section('js') @show
 </body>
 

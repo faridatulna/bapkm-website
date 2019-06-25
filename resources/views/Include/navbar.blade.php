@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <div class="col-7 logo">
                         <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
-                        <h2 style="float: left; color: white; margin-left: 2vw;">KREATIF DAN INOVATIF</h2>
+                        <h2 style="float: left; color: white; margin-left: 2vw;"><a href="/" style="color: white !important;">KREATIF DAN INOVATIF</a></h2>
                     </div>
 
                     <!-- Login Search Area -->
