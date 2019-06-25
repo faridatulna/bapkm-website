@@ -60,8 +60,8 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fileImg' => 'file|mimes:jpeg,png,jpg',
-            'filePdf' => 'file|mimes:pdf',
+            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+            'filePdf' => 'required|file|mimes:pdf',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
@@ -76,7 +76,7 @@ class ServiceController extends Controller
         }else{
             $fileImg = $request->file('fileImg');
             $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Images/Product');
+            $desPath = public_path('/Uploaded/Product');
             $fileImg->move($desPath,$inputFile['namafile']);
             $service->fileImg = $inputFile['namafile'];
         }
@@ -88,7 +88,7 @@ class ServiceController extends Controller
         }else{
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/PDF/Product');
+            $desPath = public_path('/Uploaded/Product');
             $filePdf->move($desPath,$inputFile['namafilePdf']);
             $service->filePdf = $inputFile['namafilePdf'];
         }

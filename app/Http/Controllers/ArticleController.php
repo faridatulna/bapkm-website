@@ -61,8 +61,8 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fileImg' => 'file|mimes:jpeg,png,jpg',
-            'filePdf' => 'file|mimes:pdf',
+            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+            'filePdf' => 'required|file|mimes:pdf',
         ],[
             'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
             'filePdf.mimes' => 'Format Image adalah (.pdf)',
@@ -78,7 +78,7 @@ class ArticleController extends Controller
         }else{
             $fileImg = $request->file('fileImg');
             $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Images/Article');
+            $desPath = public_path('/Uploaded/Article');
             $fileImg->move($desPath,$inputFile['namafile']);
             $article->fileImg = $inputFile['namafile'];
         }
@@ -90,7 +90,7 @@ class ArticleController extends Controller
         }else{
             $filePdf = $request->file('filePdf');
             $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/PDF/Article');
+            $desPath = public_path('/Uploaded/Article');
             $filePdf->move($desPath,$inputFile['namafilePdf']);
             $article->filePdf = $inputFile['namafilePdf'];
         }

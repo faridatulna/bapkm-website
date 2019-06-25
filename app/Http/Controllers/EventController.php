@@ -62,6 +62,8 @@ class EventController extends Controller
         $event = new Events;
         $event->title = $request->title;
         $event->place = null;
+        $event->dateOfEvent=null;
+        $event->time = null;
         $date = \Carbon\Carbon::parse($request->current_date);
 
         $day = $date->day;
