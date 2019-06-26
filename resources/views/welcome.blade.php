@@ -190,60 +190,40 @@
                     <div class="row">
                         <div class="MultiCarousel" data-items="3.5,3.5,3.5,3.5" data-slide="1" id="MultiCarousel" data-interval="1000">
                             <div class="MultiCarousel-inner">
-                                <a href="https://integra.its.ac.id" target="_blank">
+                                @foreach($service as $data)
+                                <a href="{{ $data->url }}" target="_blank">
                                     <div class="item cube">
-                                        <div class="pad15 design" style="background-image:url({{url('force/img/core-img/persuratan.jpg')}}); background-size: 300px 200px;">
-                                            <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Layanan Persuratan</strong></p>
-                                            <!-- <p style="color: white;">₹ 1</p>
-                                              <p style="color: white;">₹ 6000</p>
-                                              <p style="color: white;">50% off</p> -->
+                                        <div class="pad15 design" style="background-image:url({{ url('Uploaded/Product',$data->fileImg) }}); background-size: 300px 200px;" >
+                                            <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>{{$data->title}}</strong></p>
                                         </div>
                                         <div class="pad15 development" style="background-color: #003A7F;">
-                                            <p class="lead" style="margin-top: 11.5vh;"><strong>Layanan surat mahasiswa daring yang dapat diakses melalui Integra.</strong></p>
-                                            <!-- <p style="color: white;">₹ 1</p>
-                                              <p style="color: white;">₹ 6000</p>
-                                              <p style="color: white;">50% off</p> -->
+                                            <p class="lead" style="margin-top: 11.5vh;"><strong>{{ $data->description }}</strong></p>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#">
+                                @endforeach()
+                                <!-- <a href="http://baak.its.ac.id/wsd/cari.php" target="_blank">
                                     <div class="item cube">
-                                        <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
+                                        <div class="pad15 design" style="background-image:url({{url('Uploaded/Product/wisuda.jpeg')}}); background-size: 300px 200px;">
+                                            <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Layanan Wisuda</strong></p>
                                         </div>
                                         <div class="pad15 development" style="background-color: #003A7F;">
-                                          <p class="lead" style="margin-top: 15vh;">
+                                          <p class="lead" style="margin-top:11.5vh;">
                                             <strong>Layanan pencarian tempat duduk untuk wisudawan.</strong>
                                           </p>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#">
+                                <a href="https://servicedesk.its.ac.id/" target="_blank"">
                                     <div class="item cube">
-                                        <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
-                                            <!-- <p style="color: white;">₹ 1</p>
-                                            <p style="color: white;">₹ 6000</p>
-                                            <p style="color: white;">50% off</p> -->
-                                        </div>
-                                        <div class="pad15 development" style="color: white; background-color: black;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Layanan Wisuda</strong></p>
-                                            <!-- <p style="color: white;">₹ 1</p>
-                                            <p style="color: white;">₹ 6000</p>
-                                            <p style="color: white;">50% off</p> -->
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="item cube">
-                                        <div class="pad15 design" style="color: white; background-image:url({{url('force/img/core-img/wisuda.jpeg')}}); background-repeat: no-repeat; background-size: 300px 200px; background-position: center;">
-                                            <p class="lead" style="color: white; margin-top: 15vh;"><strong>Service Desk</strong></p>
+                                        <div class="pad15 design" style="background-image:url( {{ url('Uploaded/Product/sd.jpg') }} );  background-size: 300px 200px; ">
+                                            <p class="lead" style="font-size: 75%; font-weight: 500; line-height: 1em; margin-top: 60%;"><strong>Service Desk</strong></p>
                                         </div>
                                         <div class="pad15 development" style="background-color: #003A7F;">
                                           <p class="lead" style="margin-top: 11.5vh;"><strong>Layanan penerimaan keluhan yang terintegrasi dengan semua badan di ITS.</strong></p>
                                         </div>
                                     </div>
-                                </a>
+                                </a> -->
 
                                 <div class="item">
                                     <div class="pad15">
@@ -280,7 +260,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="news-details.html"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +273,7 @@
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">
-                                        <a href="news-details.html">
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
                                             <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
                                         <div class="date">
                                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
@@ -314,10 +294,9 @@
                         <div class="row" style="margin-top:10px;">
                             <div class="col-6">
                                 <ul class="list">
-                                    <li><a href="http://integra.its.ac.id" class="ql">Integra</a></li>
-                                    <li><a href="http://10.103.1.158/i_repot/jurusan.php" class="ql">Laporan Semester</a></li>
-                                    <li><a href="http://smits.its.ac.id/" class="ql">SMITS</a></li>
-                                    <li><a href="http://10.103.1.10/sk/" class="ql">Pencarian SK</a></li>
+                                    @foreach($links as $data)
+                                    <li><a href="{{ $data->url }}" class="ql">{{$data->title}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

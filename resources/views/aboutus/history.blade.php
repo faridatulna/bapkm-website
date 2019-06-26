@@ -17,14 +17,14 @@
 
     <div class="pusher">
         <div class="ui vertical stripe segment">
-            <h1>Mengenal Lebih Dekat Dengan BAPKM </h1>
+            <h1></h1>
             <div class="ui middle aligned stackable grid container">
 
                 <div class="row">
                     <div class="six wide column">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 mb-4">
-                                <a><img class="img-fluid z-depth-1" src="{{url('force/img/core-img/logo.jpg')}}" alt="video" data-toggle="modal" data-target="#modal5"></a>
+                                <a><img class="img-fluid z-depth-1" src="{{url('Uploaded/logo large.png')}}" alt="video" data-toggle="modal" data-target="#modal5"></a>
                             </div>
                         </div>
 
@@ -133,14 +133,14 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-10 mb-4">
-                <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-5.jpg" alt="video" data-toggle="modal" data-target="#modal5"></a>
+                <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/gal0.jpg') }}" alt="video" data-toggle="modal" data-target="#modal5"></a>
             </div>
 
             <div class="col-md-4">
                 <div class="row">
-                    <div class="col"><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video" data-toggle="modal" data-target="#modal1"></div>
+                    <div class="col"><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/gal1.jpg') }}" alt="video" data-toggle="modal" data-target="#modal1"></div>
                     <div class="w-100" style="margin:9px;"></div>
-                    <div class="col"><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video" data-toggle="modal" data-target="#modal1"></div>
+                    <div class="col"><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/gal2.jpg') }}" alt="video" data-toggle="modal" data-target="#modal1"></div>
                 </div>
             </div>
         </div>

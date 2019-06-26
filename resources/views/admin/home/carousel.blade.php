@@ -62,17 +62,11 @@
                                 @endforeach
                             </ol>
                             <div class="carousel-inner">
-                                <!-- <div class="carousel-item active">
-                                    <img class="d-block w-100 " alt="slide 0" @if($data->banner) src="{{ url('Uploaded/Banner',$data_first->banner) }}" height="365px" @endif>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h3 class="text-white">Heading Title Carousel</h3>
-                                        <p>Mauris fermentum elementum ligula in efficitur. Aliquam id congue lorem. Proin consectetur feugiat enim ut luctus. Aliquam pellentesque ut tellus ultricies bibendum.</p>
-                                    </div>
-                                </div> -->
+                                
                                 @foreach($datas as $i=>$data)
                                 <div class="carousel-item @if($i == 0) active @endif">
                                     <img class="d-block w-100 h-375" alt="slide {{$i++}}" @if($data->banner) src="{{ url('Uploaded/Banner',$data->banner) }}" height="365px" @endif >
-                                    <div class="carousel-caption d-none d-md-block">
+                                    <div class="carousel-caption d-flex d-md-block">
                                         <h3 class="text-white">Heading Title Carousel</h3>
                                         <p>Mauris fermentum elementum ligula in efficitur. Aliquam id congue lorem. Proin consectetur feugiat enim ut luctus. Aliquam pellentesque ut tellus ultricies bibendum.</p>
                                     </div>
@@ -105,8 +99,11 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn-warning btn" data-toggle="modal" data-target="#editcar{{$data->id}}"><i class="fa fa-edit"></i></button>
-                        <button class="btn-danger btn" data-toggle="modal" data-target="#delcar{{$data->id}}"><i class="fa fa-trash"></i></button>
+                        <div class="float-right">
+                            <button class="btn-warning btn" data-toggle="modal" data-target="#editcar{{$data->id}}"><i class="fa fa-edit"></i></button>
+                            <button class="btn-danger btn " data-toggle="modal" data-target="#delcar{{$data->id}}"><i class="fa fa-trash"></i></button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -136,7 +133,8 @@
                                 <label class="col-md-4 control-label">Gambar</label>
                                 <div class="col-md-10">
                                     <img width="725" height="300" @if($data->banner) src="{{ url('Uploaded/Banner',$data->banner) }}" @endif />
-                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="banner" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ $data->banner }}" multiple="">
+                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="banner" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" multiple="">
+                                    <input type="hidden" class="uploads form-control" style="margin-top: 20px;" name="hidden_banner" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ $data->banner }}" multiple="">
                                 </div>
                             </div>
 
@@ -162,7 +160,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            {!! Form::open(array('route' => array('admin.home.carousel.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
+                            {!! Form::open(array('route' => array('admin.gallery.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
                         </div>
                         <div class="modal-footer pull-right" style="margin-right: 12px;">
                             {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!} {!! Form::close() !!}
@@ -185,7 +183,7 @@
                     <span aria-hidden="true">×</span>
                 </a>
             </div>
-            <form method="POST" action="{{ route('admin.home.carousel.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.gallery.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <ul style="color: red;font-size: 0.75rem;">

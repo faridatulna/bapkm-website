@@ -18,8 +18,8 @@ class GalleryController extends Controller
     public function index()
     {
         $datas = Galleries::all();
-        $data_first = Galleries::firstOrFail();
-        return view('admin.home.carousel', compact('datas','data_first'));
+        // $data_first = Galleries::firstOrFail();
+        return view('admin.home.carousel', compact('datas'));
     }
 
     public function pagehome(){
@@ -46,17 +46,11 @@ class GalleryController extends Controller
     {
         $carousel = new Galleries;
 
-        if ($request->file('banner') == null){
-            $banner = null;
-            $inputFile['namafile'] = null;
-            
-        }else{
-            $banner = $request->file('banner');
-            $inputFile['namafile'] = time().".".$banner->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Banner');
-            $banner->move($desPath,$inputFile['namafile']);
-            $carousel->banner = $inputFile['namafile'];
-        }
+        $banner = $request->file('banner');
+        $inputFile['namafile'] = time().".".$banner->getClientOriginalExtension();
+        $desPath = public_path('/Uploaded/Banner');
+        $banner->move($desPath,$inputFile['namafile']);
+        $carousel->banner = $inputFile['namafile'];
         
         if($request->type == [1]){
             $carousel->type = 1;
@@ -102,8 +96,24 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $carousel = Galleries::findorfail($id);
+        
+        $hidden = $request->file('hidden_banner');
+        $banner = $request->file('banner');
+        
+        $inputFile['banner'] = time().".".$hidden->getClientOriginalExtension();
+        $desPath = public_path('/Uploaded/Banner');
+        $banner->move($desPath,$inputFile['banner']);
+        $carousel->banner = $inputFile['banner'];
 
-        $carousel->update($request->all());
+        if($request->type == [1]){
+            $carousel->type = 1;
+        }
+        elseif($request->type == [2]){
+            $carousel->type = 2;
+        }
+        
+        $carousel->update();
+
         return redirect()->back();
     }
 

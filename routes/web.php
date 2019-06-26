@@ -27,9 +27,10 @@ Route::get('/', function () {
     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
     $links = Quicklinks::all();
-    $article = Article::orderBy('updated_at', 'desc')->take(4)->get(); 
+    $service = Services::all();
+    $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get(); 
     $gal = Galleries::all();
-    return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active') );
+    return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active','service') );
 });
 
 Route::any ( '/search-result', function () {
@@ -65,9 +66,9 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->get();
-            $article = Article::orderBy('updated_at', 'desc')->paginate(6);
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
+            $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
+            $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         });
         Route::get('/umum', function () {
@@ -75,7 +76,7 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->where('type','=',4)->take(4)->get();
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',4)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
@@ -85,7 +86,7 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->where('type','=',3)->take(4)->get();
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',3)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',3)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
@@ -95,7 +96,7 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->where('type','=',2)->take(4)->get();
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',2)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',2)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
@@ -105,7 +106,7 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',1)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',1)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
@@ -115,7 +116,7 @@ Route::prefix('article')
             $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
             $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
-            $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
+            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',5)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',5)->paginate(6);
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
@@ -204,10 +205,7 @@ Route::prefix('admin')
 
         Route::prefix('home')->name('home.')->group(function () {
             Route::get('/carousel','GalleryController@index')->name('carousel');
-            Route::resource('carousel','GalleryController');
-
         });
-
 
         Route::resource('gallery','GalleryController');
         Route::resource('user','UserController');

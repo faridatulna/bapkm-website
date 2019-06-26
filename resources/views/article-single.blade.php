@@ -119,12 +119,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="right_sidebar">
-
-                    <aside class="r_widgets add_widgets text-center mt-50">
-                        <img class="img-fluid" src="img/blog/add-1.jpg" alt="">
-                    </aside>
-
+                <div class="right_sidebar mt-50">
                     <aside class="r_widgets news_widgets">
                         <div class="main_title2">
                             <h2>Kalender Akademik</h2>
@@ -143,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="news-details.html"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
                                     </div>
                                 </div>
                             </div>
@@ -151,12 +146,12 @@
                         @endforeach
 
                         <div class="news_slider owl-carousel no-repeat">
-                            @foreach($cal as $i=>$data)
+                            @foreach($cal as $i=>$data) 
                             @if($i > 1)
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">
-                                        <a href="news-details.html">
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
                                             <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
                                         <div class="date">
                                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
@@ -164,8 +159,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @else
-                            @endif
+                            @else 
+                            @endif 
                             @endforeach
                         </div>
                     </aside>
@@ -180,34 +175,35 @@
                         </div>
                         <div class="content_calendar ">
                             <div id="wrapper">
-                          <div class="scrollbar" id="style-7">
-                            <div class="force-overflow">
-                              <div class="content_calendar no-repeat">
-                                @foreach($agenda as $data)
-                                <div class="detail-calendar-grey">
-                                    <div class="calendar-grey">
-                                        <h1 style="margin-top:10px;margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
-                                        <h3 style="margin-top:0;">{{ date('M', strtotime($data->dateOfEvent)) }}</h3>
-                                    </div>
-                                    <div class="calendar-contain-grey">
-                                        <div class="calendar-contain-description-grey">
-                                            <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
-                                            <br>
-                                            <small><i class="fa fa-clock-o"></i> &nbsp;
-                                                {{ date('h:ia', strtotime($data->fromTime)) }} - {{ date('h:ia', strtotime($data->totime)) }}
-                                            </small>
-                                            <br>
-                                            <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}</small>
+                                <div class="scrollbar" id="style-7">
+                                    <div class="force-overflow">
+                                        <div class="content_calendar no-repeat">
+                                            @foreach($agenda as $data)
+                                            <div class="detail-calendar-grey">
+                                                <div class="calendar-grey">
+                                                    <h1 style="margin-top:10px;margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
+                                                    <h3 style="margin-top:0;">{{ date('M', strtotime($data->dateOfEvent)) }}</h3>
+                                                </div>
+                                                <div class="calendar-contain-grey">
+                                                    <div class="calendar-contain-description-grey">
+                                                        <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
+                                                        <br>
+                                                        <small><i class="fa fa-clock-o"></i> &nbsp;
+                                                            {{ date('h:ia', strtotime($data->fromTime)) }} - {{ date('h:ia', strtotime($data->totime)) }}
+                                                        </small>
+                                                        <br>
+                                                        <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
-                              </div>
-                            
+                            </div>
                         </div>
-
                     </aside>
-
                 </div>
             </div>
         </div>
