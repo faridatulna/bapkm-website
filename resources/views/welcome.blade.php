@@ -238,6 +238,15 @@
                             <button class="btn btn-primary rightLst"><i class="fa fa-angle-right"></i></button>
                         </div>
                     </div>
+
+                    <div class="row" style="margin-left: 4px; margin-top: 20px;">
+                      <a href="{{ asset('Uploaded/Regdat/lsm.pdf')}}" target="_blank">Panduan penggunaan layanan surat mahasiswa</a>
+                    </div>
+                    <div class="row" style="margin-left: 4px;">
+                      <a href="{{ asset('Uploaded/PDF/servicedesk.pdf')}}" target="_blank">Panduan penggunaan <i>service desk</i> ITS</a>
+                    </div>
+
+
                 </div>
             </div>
             <div class="col-lg-4">
@@ -268,7 +277,7 @@
                         @endforeach
 
                         <div class="news_slider owl-carousel no-repeat">
-                            @foreach($cal as $i=>$data) 
+                            @foreach($cal as $i=>$data)
                             <!-- @if($i > 1) -->
                             <div class="item">
                                 <div class="choice_item">
