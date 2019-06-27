@@ -34,7 +34,7 @@
     </div>
     @foreach($sop as $data)
     <div id="{{$data->id}}" class="tabcontent">
-      <h3 class="ui header">{{$data->title}}</h3>
+      <h3 class="ui header">Panduan {{$data->title}}</h3>
 
       @if($data->fileImg)
       <div class="container mt-4">
@@ -69,7 +69,6 @@
 
       @if($data->description)
       <p>
-        <h3>Dokumen-Dokumen yang Diperlukan</h3>
         {!!$data->description!!}
       </p>
       @else
