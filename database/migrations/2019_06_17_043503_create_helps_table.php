@@ -18,8 +18,8 @@ class CreateHelpsTable extends Migration
             $table->string('title');
             $table->integer('type'); 
             // 1=regdat 2=pep 3=beasiswa 4=ukm
-            $table->text('fileImg')->nullable();
-            $table->text('filePdf')->nullable();
+            $table->string('fileImg')->nullable();
+            $table->string('filePdf')->nullable();
             $table->longText('description')->nullable();
             
             $table->timestamps();

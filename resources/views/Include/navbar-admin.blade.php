@@ -64,10 +64,10 @@
                     <div id="submenu-9" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.product.sop.index')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">SOP</a>
+                                <a class="nav-link" href="{{ route('admin.sop.index')}}" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">SOP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.product.service.index')}}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Layanan</a>
+                                <a class="nav-link" href="{{ route('admin.service.index')}}" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Layanan</a>
                             </li>
                         </ul>
                     </div>

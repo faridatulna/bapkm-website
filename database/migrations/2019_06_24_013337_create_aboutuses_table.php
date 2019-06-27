@@ -17,7 +17,7 @@ class CreateAboutusesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->nullable();
             $table->date('year')->nullable();
-            $table->text('banner')->nullable();
+            $table->string('banner')->nullable();
             $table->enum('type',['carousel','gal-logo','gall-aboutus','org','abus-ap','abus-km']);
             $table->longText('description')->nullable();
             //['carousel','gal-logo','gall-aboutus','org','abus-ap','abus-km']

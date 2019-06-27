@@ -118,7 +118,7 @@
                                                         <span aria-hidden="true">×</span>
                                                     </a>
                                                 </div>
-                                                {!!Form::model($data,['method'=>'PATCH', 'action'=>['SopController@update',$data->id ]]) !!}
+                                                <form action="{{ route('admin.sop.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
@@ -169,8 +169,7 @@
                                                                 @else @endif
                                                                         
                                                             @else @endif
-                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
-                                                            <input type="hidden" class="uploads form-control" style="margin-top: 20px;" name="hidden_fileImg" accept=".jpg,.png,.jpeg,.svg" value="{{$data->fileImg}}">
+                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                                             <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
                                                             <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
                                                         </div>
@@ -231,7 +230,7 @@
                                                 </div>
 
                                             </div>
-                                            {!! Form::close()!!}
+                                            </form>
                                         </div>
                                     </div>
 
@@ -362,7 +361,7 @@
                             <span aria-hidden="true">×</span>
                         </a>
                     </div>
-                    <form method="POST" action="{{ route('admin.product.sop.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.sop.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
                             <ul style="color: red;font-size: 0.75rem;">

@@ -8,6 +8,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Storage;
+use Validator;
 
 class ArticleController extends Controller
 {
@@ -36,8 +37,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $datas = Article::orderBy('updated_at','desc')->get();
-        $datas = Article::paginate(10);
+        $datas = Article::where('type','!=', 6)->orderBy('updated_at','desc')->get();
+        $datas = Article::where('type','!=', 6)->orderBy('updated_at','desc')->paginate(10);
         return view('admin.article.index',compact('datas'));
     }
 
@@ -60,63 +61,44 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-            'fileImg' => 'file|mimes:jpeg,png,jpg',
-            'filePdf' => 'file|mimes:pdf',
-        ]);
-
-        $article = new Article;
+       Validator::make($request->all(), [
+            'fileImg' => 'file|mimes:jpeg,png,jpg|max:10240',
+            'filePdf' => 'file|mimes:pdf|max:10240',
+        ])->validate();
 
         //File Upload
         if ($request->file('fileImg') == ''){
-            $fileImg = null;
+            $fileImg = "";
         }else{
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $desPath = public_path('/Uploaded/Article');
+            $desPath = public_path('Uploaded/Article');
             $request->file('fileImg')->move($desPath, $fileName);
             $fileImg = $fileName;
         }
             
         if ($request->file('filePdf') == ''){
-            $filePdf = null;
+            $filePdf = "";
         }else{
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $desPath = public_path('/Uploaded/Article');
+            $desPath = public_path('Uploaded/Article');
             $request->file('filePdf')->move($desPath, $fileName);
             $filePdf = $fileName;
         }
 
-        $article->filePdf = $filePdf;
-        $article->fileImg = $fileImg ;   
-        $article->title = $request->title;
-        $article->url = $request->url;
-        $article->description = $request->description;
-        
-        if($request->type == [1]){
-            $article->type = 1;
-        }
-        else if($request->type == [2]){
-            $article->type = 2;
-        }
-        else if($request->type == [3]){
-            $article->type = 3;
-        }
-        else if($request->type == [4]){
-            $article->type = 4;
-        }
-        else if($request->type == [5]){
-            $article->type = 5;
-        }
-        
-        // dd($article->filePdf);
-        //dd($article->fileImg);
-        $article->save();
+        Article::create([
+            'title' => $request->input('title'),
+            'type' => $request->input('type'),
+            'fileImg' => $fileImg,
+            'filePdf' => $filePdf,
+            'url' => $request->input('url'),
+            'description' =>$request->input('description')
+        ]);
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
@@ -158,65 +140,42 @@ class ArticleController extends Controller
     {
         $article = Article::findorfail($id);
 
-        $image_name = $request->hidden_image;
-        $image = $request->file('fileImg');
+        // Validator::make($request->all(), [
+        //     'fileImg' => 'file|mimes:jpeg,png,jpg|max:10240',
+        //     'filePdf' => 'file|mimes:pdf|max:10240',
+        // ])->validate();
 
-        $file_name = $request->hidden_filePdf;
-        $file = $request->file('filePdf');
-
-        //File Upload
-        if ($image != ''){
-
-            $request->validate([
-                'fileImg' => 'image|max:2048'       
-            ]);
-
-            $image_name = time().'.'.$image->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Article');   
-            $image->move($desPath, $image_name);
+        if ($request->hasFile('fileImg'))
+        {
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('fileImg')->move($desPath, $fileName);
+            
+            // Storage::delete($article->fileImg);
+            $article->fileImg = $fileName;
         }
-        elseif($file != ''){
-            $file_name = time().'.'.$file->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Article');   
-            $file->move($desPath, $file_name);
-            $article->filePdf = $file;
-        }elseif( $image != '' && $file != ''){
-            $request->validate([
-                'fileImg' => 'image|max:2048'       
-            ]);
+            
+        if ($request->hasFile('filePdf'))
+        {
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('filePdf')->move($desPath, $fileName);
 
-            $image_name = time().'.'.$image->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Article');   
-            $image->move($desPath, $image_name);
-            $file_name = time().'.'.$file->getClientOriginalExtension();  
-            $file->move($desPath, $file_name);
-            $article->filePdf = $file;
-            $article->fileImg = $image;
+            // Storage::delete($article->filePdf);
+            $article->filePdf = $fileName;
         }
 
-           
-        $article->title = $request->title;
-        $article->url = $request->url;
-        $article->description = $request->description;
+        $article->title = $request->input('title');
+        $article->type = $request->input('type');
+        $article->description = $request->input('description');
+        $article->url = $request->input('url');
         
-        if($request->type == [1]){
-            $article->type = 1;
-        }
-        else if($request->type == [2]){
-            $article->type = 2;
-        }
-        else if($request->type == [3]){
-            $article->type = 3;
-        }
-        else if($request->type == [4]){
-            $article->type = 4;
-        }
-        else if($request->type == [5]){
-            $article->type = 5;
-        }
-        
-         //echo ($article->filePdf);
-        //echo($article->fileImg);
         $article->update();
 
         Session::flash('message', 'Berhasil diubah!');

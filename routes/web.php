@@ -203,10 +203,12 @@ Route::prefix('admin')
                return view('admin.help.create');
             })->name('create');
             Route::get('/sop','SopController@index')->name('sop');
-            Route::resource('sop','SopController');
             Route::get('/service','ServiceController@index')->name('service');
-            Route::resource('service','ServiceController');
+            
         });
+
+        Route::resource('sop','SopController');
+        Route::resource('service','ServiceController');
 
         Route::prefix('home')->name('home.')->group(function () {
             Route::get('/carousel','GalleryController@index')->name('carousel');

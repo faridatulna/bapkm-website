@@ -50,10 +50,10 @@
                 <ul class="navbar-nav ml-auto navbar-right-top navbar-dark">
                     <li class="nav-item dropdown nav-user">
                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @if(Auth::user()->gambar == '')
-                              <img src="{{ url('admin-page/assets/images/avatar-1.jpg') }}" alt="" class="user-avatar-md rounded-circle">
-                            @else
+                            @if(Auth::user()->gambar)
                               <img src="{{ url('Uploaded/Admin', Auth::user()->gambar) }}" alt="" class="user-avatar-md rounded-circle">
+                            @else
+                              <img src="{{ url('admin-page/assets/images/avatar-1.jpg') }}" alt="" class="user-avatar-md rounded-circle">
                             @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">

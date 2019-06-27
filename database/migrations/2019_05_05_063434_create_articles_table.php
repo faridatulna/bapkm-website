@@ -19,8 +19,8 @@ class CreateArticlesTable extends Migration
             $table->integer('type'); 
             // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
             
-            $table->text('fileImg')->nullable();
-            $table->text('filePdf')->nullable();
+            $table->string('fileImg')->nullable();
+            $table->string('filePdf')->nullable();
             $table->string('url')->nullable();
             $table->longText('description')->nullable();
             

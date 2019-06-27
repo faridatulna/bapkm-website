@@ -115,7 +115,7 @@
                                                         <span aria-hidden="true">×</span>
                                                     </a>
                                                 </div>
-                                                {!!Form::model($data,['method'=>'PATCH', 'action'=>['ServiceController@update',$data->id ]]) !!}
+                                                <form action="{{ route('admin.service.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
@@ -148,16 +148,15 @@
                                                     <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                                                     <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                     <div class="col-12">
-                                                        <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif />
+                                                        <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
                                                         <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ old('fileImg') }}">
-                                                        <input type="text" class="uploads form-control" name="fileImg" disabled accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" @if($data->fileImg) value="{{ $data->fileImg }}" @endif >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email" class="col-md-6 control-label">File Pdf</label>
                                                     <div class="col-md-12">
-                                                        <input type="file" class="uploads form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Product', $data->filePdf) }}" @endif>
-                                                        <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PDF/Product',$data->filePdf) }}" @endif >
+                                                        <input type="file" name="filePdf">
+                                                        <a href="{{ url('Uploaded/Article',$data->filePdf) }}" target="_blank"> <i class="fa fa-download"></i> File Pdf</a>
                                                     </div>
                                                 </div>
 
@@ -177,7 +176,7 @@
                                                 </div>
 
                                             </div>
-                                            {!! Form::close()!!}
+                                            </form>
                                         </div>
                                     </div>
 
@@ -192,7 +191,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {!! Form::open(array('route' => array('admin.product.service.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
+                                                    {!! Form::open(array('route' => array('admin.service.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
                                                 </div>
                                                 <div class="modal-footer pull-right" style="margin-right: 12px;">
                                                     {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!} {!! Form::close() !!}
@@ -231,7 +230,7 @@
                             <span aria-hidden="true">×</span>
                         </a>
                     </div>
-                    <form method="POST" action="{{ route('admin.product.service.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.service.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
                             <ul style="color: red;font-size: 0.75rem;">

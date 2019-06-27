@@ -76,7 +76,7 @@
                                                         <span aria-hidden="true">×</span>
                                                     </a>
                                                 </div>
-                                                {!!Form::model($data,['method'=>'PATCH', 'action'=>['CalendarController@update',$data->id ]]) !!}
+                                                <form action="{{ route('admin.calendar.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
@@ -101,8 +101,8 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                         <div class="col-md-12">
-                                                            <input type="file" class="form-control" name="filePdf" accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Article', $data->filePdf) }}" @endif>
-                                                            <input name="filePdf" hidden="" @if($data->filePdf) src="{{ asset('Uploaded/Article', $data->filePdf) }}" @endif>
+                                                            <input type="file" name="filePdf">
+                                                            <a href="{{ url('Uploaded/Article',$data->filePdf) }}" target="_blank"> <i class="fa fa-download"></i> File Pdf</a>
                                                         </div>
                                                     </div>
 
@@ -113,7 +113,7 @@
                                                 </div>
 
                                             </div>
-                                            {!! Form::close()!!}
+                                            </form>
                                         </div>
                                     </div>
 

@@ -119,7 +119,8 @@
                                                     <span aria-hidden="true">×</span>
                                                 </a>
                                             </div>
-                                            {!!Form::model($data,['method'=>'PATCH', 'action'=>['ArticleController@update',$data->id ,'files'=>'true']]) !!}
+
+                                            <form action="{{ route('admin.article.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
                                                 
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
@@ -148,7 +149,7 @@
                                                                             <option value="3" @if($data->type == 3) selected @endif>Calon Mahasiswa</option>
                                                                             <option value="4" @if($data->type == 4) selected @endif>Umum</option>
                                                                             <option value="5" @if($data->type == 5) selected @endif>Wisuda</option>
-                                                                            <option value="6" @if($data->type == 6) selected @endif>Kalender</option>
+                                                                            <!-- <option value="6" @if($data->type == 6) selected @endif>Kalender</option> -->
                                                                         </select>
                                                                     </h3> Update Date: {{ date('M j, Y h:ia', strtotime($data->updated_at)) }}</div>
                                                             </div>
@@ -163,7 +164,7 @@
                                                                         <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                                         <div class="col-md-12">
                                                                             <input type="file" name="filePdf">
-                                                                            <input type="hidden" name="hidden_filePdf" >
+                                                                            <a href="{{ url('Uploaded/Article',$data->filePdf) }}" target="_blank"> <i class="fa fa-download"></i> File Pdf</a>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -177,8 +178,8 @@
                                                                     <div class="col-sm-6">
                                                                         <label class="col-md-4 control-label">Gambar</label>
                                                                         <div class="col-md-10">
-                                                                            <img width="300" height="250" src="{{ url('Uploaded/Article',$data->fileImg) }}" />
-                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                                            <img width="300" height="250" @if($data->fileImg) src="{{ asset('Uploaded/Article/'.$data->fileImg) }}" @endif />
+                                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg">
                                                                             <input type="hidden" name="hidden_image" value="{{$data->fileImg}}">
                                                                         </div>
                                                                     </div>
@@ -194,7 +195,7 @@
                                                 </div>
 
                                         </div>
-                                        {!! Form::close()!!}
+                                        </form>
                                     </div>
                                 </div>
 
@@ -216,7 +217,7 @@
                                             <div class="modal-footer pull-right" style="margin-right: 12px;">
                                                 {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!}
                                                 {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}
-                                                {!! Form::close() !!}
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
@@ -340,7 +341,7 @@
                             <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-6 control-label">Jenis Artikel</label>
                                 <div class="col-md-11">
-                                    <select class="form-control" name="type[]" required="">
+                                    <select class="form-control" name="type" required="">
                                         <option value="1">Akademik</option>
                                         <option value="2">Beasiswa</option>
                                         <option value="3">Calon Mahasiswa</option>
@@ -403,7 +404,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="submit">Add</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
 

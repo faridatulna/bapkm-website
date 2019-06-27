@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
+use Storage;
+use Validator;
 
 class ServiceController extends Controller
 {
@@ -59,51 +61,48 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'fileImg' => 'required|file|mimes:jpeg,png,jpg',
-        //     'filePdf' => 'required|file|mimes:pdf',
-        // ],[
-        //     'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
-        //     'filePdf.mimes' => 'Format Image adalah (.pdf)',
-        // ]);
+        Validator::make($request->all(), [
+            'fileImg' => 'file|mimes:jpeg,png,jpg|max:10240',
+            'filePdf' => 'file|mimes:pdf|max:10240',
+        ])->validate();
 
-        $service = new Services;
         //File Image Upload
-        if ($request->file('fileImg') == null){
-            $fileImg = null;
-            $inputFile['namafile'] = null;
-            
+        if ($request->file('fileImg') == ''){
+            $fileImg = "";
         }else{
-            $fileImg = $request->file('fileImg');
-            $inputFile['namafile'] = time().".".$fileImg->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Product');
-            $fileImg->move($desPath,$inputFile['namafile']);
-            $service->fileImg = $inputFile['namafile'];
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Product');
+            $request->file('fileImg')->move($desPath, $fileName);
+            $fileImg = $fileName;
         }
-        
-        //File Upload
-        if ($request->file('filePdf') == null){
-            $filePdf = null;
-            $inputFile['namafilePdf'] = null;
+            
+        if ($request->file('filePdf') == ''){
+            $filePdf = "";
         }else{
-            $filePdf = $request->file('filePdf');
-            $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Product');
-            $filePdf->move($desPath,$inputFile['namafilePdf']);
-            $service->filePdf = $inputFile['namafilePdf'];
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Product');
+            $request->file('filePdf')->move($desPath, $fileName);
+            $filePdf = $fileName;
         }
         
 
-        $service->title = $request->title;
-        $service->url = $request->url;
-        $service->description = $request->description;
-        //dd($request->all());
-        $service->save();
-        // Article::create($request->all());
-        //echo $article;
+        Services::create([
+            'title' => $request->input('title'),
+            'fileImg' => $fileImg,
+            'filePdf' => $filePdf,
+            'url' => $request->input('url'),
+            'description' =>$request->input('description')
+        ]);
+
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect(route('admin.product.service.index'));
+        return redirect(route('admin.service.index'));
     }
 
     /**
@@ -140,7 +139,37 @@ class ServiceController extends Controller
         //
         $service = Services::findorfail($id);
 
-        $service->update($request->all());
+        if ($request->hasFile('fileImg'))
+        {
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('fileImg')->move($desPath, $fileName);
+            
+            // Storage::delete($article->fileImg);
+            $service->fileImg = $fileName;
+        }
+            
+        if ($request->hasFile('filePdf'))
+        {
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('filePdf')->move($desPath, $fileName);
+
+            // Storage::delete($article->filePdf);
+            $service->filePdf = $fileName;
+        }
+
+        $service->title = $request->input('title');
+        $service->description = $request->input('description');
+        $service->url = $request->input('url');
+
+        $service->update();
         
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');

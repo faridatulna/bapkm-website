@@ -9,6 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Storage;
+use Validator;
 
 class CalendarController extends Controller
 {
@@ -63,32 +64,48 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'filePdf' => 'file|mimes:pdf',
-        ],[
-            'filePdf.mimes' => 'Format Image adalah (.pdf)',
+        Validator::make($request->all(), [
+            'fileImg' => 'file|mimes:jpeg,png,jpg|max:10240',
+            'filePdf' => 'file|mimes:pdf|max:10240',
+        ])->validate();
+
+        //File Upload
+        if ($request->file('fileImg') == ''){
+            $fileImg = null;
+        }else{
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('fileImg')->move($desPath, $fileName);
+            $fileImg = $fileName;
+        }
+            
+        if ($request->file('filePdf') == ''){
+            $filePdf = null;
+        }else{
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('filePdf')->move($desPath, $fileName);
+            $filePdf = $fileName;
+        }
+
+        Article::create([
+            'title' => $request->input('title'),
+            'type' => 6,
+            'fileImg' => $fileImg,
+            'filePdf' => $filePdf,
+            'url' => null,
+            'description' =>null
         ]);
 
-        $article = new Article;
-        //File Image Upload
-        $article->type = 6;
-        $article->title = $request->title;
-            
-        $article->fileImg = null;
-        $article->description = null;
-
-        $filePdf = $request->file('filePdf');
-        $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-        $desPath = public_path('/Uploaded/Article');
-        $filePdf->move($desPath,$inputFile['namafilePdf']);
-        $article->filePdf = $inputFile['namafilePdf'];
-
-        $article->save();
-            // Article::create($request->all());
-        
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect()->back();  
+        return redirect(route('admin.article.list_cal'));
     }
 
     /**
@@ -121,29 +138,46 @@ class CalendarController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validator::make($request->all(), [
+        //     'fileImg' => 'file|mimes:jpeg,png,jpg|max:10240',
+        //     'filePdf' => 'file|mimes:pdf|max:10240',
+        // ])->validate();
 
         $article = Article::findorfail($id);
-        //File Image Upload
-        $article->type = 6;
-        $article->title = $request->title;
-            
-        $article->fileImg = null;
-        $article->description = null;
 
-        $filePdf = $request->file('filePdf');
-        
-        if(!$request->hasFile('filePdf')){
-            $article->filePdf=$article->filePdf;
-        }else{
-            $inputFile['namafilePdf'] = time().".".$filePdf->getClientOriginalExtension();
-            $desPath = public_path('/Uploaded/Article');
-            $filePdf->move($desPath,$inputFile['namafilePdf']);
-            $article->filePdf = $inputFile['namafilePdf'];
+        if ($request->hasFile('fileImg'))
+        {
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('fileImg')->move($desPath, $fileName);
+            
+            // Storage::delete($fileImg);
+            $article->fileImg = $fileName;
+        }
+            
+        if ($request->hasFile('filePdf'))
+        {
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $desPath = public_path('Uploaded/Article');
+            $request->file('filePdf')->move($desPath, $fileName);
+            
+            // Storage::delete($filePdf);
+            $article->filePdf = $fileName;
         }
 
-        $article->update();
-        //dd($filePdf);
+        $article->title = $request->input('title');
+        $article->type = 6;
+        $article->description = null;
+        $article->url = null;
         
+        $article->update();
+
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
         return redirect()->back();
