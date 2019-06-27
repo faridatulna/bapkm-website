@@ -38,6 +38,19 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-inline-block">
+                            <h5 class="text-muted">Total Admin</h5>
+                            <h2 class="mb-0"> {{ $user->count() }}</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
                             <h5 class="text-muted">Total Artikel</h5>
                             <h2 class="mb-0"> {{ $article->count() }}</h2>
                         </div>
@@ -56,6 +69,19 @@
                         </div>
                         <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <i class="fa fa-calendar fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Total Pengunjung</h5>
+                            <h2 class="mb-0"> {{ $article->count() }}</h2> <!--  {{ $article->count() }} row aja yg diitung-->
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                            <i class="fa fa-users fa-fw fa-sm text-info"></i>
                         </div>
                     </div>
                 </div>

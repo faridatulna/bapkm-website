@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Input;
 //ui user
 Route::get('/', function () {
 
-    $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+    $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
     $links = Quicklinks::all();
@@ -232,9 +232,7 @@ Route::prefix('admin')
                 })->name('profile');
                 
             });
-            Route::resource('aboutus','AboutusController');
-
-
+        Route::resource('aboutus','AboutusController');
     });
 
 Auth::routes();

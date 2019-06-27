@@ -94,8 +94,60 @@
                         </div>
                         <div class="row">
                             <div class="col-10">
-                              <p style="color: white;">Hari ini:</p>
-                              <p style="color: white;">Total:</p>
+                              <?php
+                                    $servername = "localhost";
+                                    $username = "root";
+                                    $password = "";
+                                    $dbname = "bapkm-db";
+                                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    } 
+
+                                    session_start();
+
+                                    if(isset( $_SESSION['views']) ){
+                                      $_SESSION['views'] = $_SESSION['views']+ 1;
+                                      $sql = "UPDATE counter SET today_visitors = today_visitors+1, total_visitors = total_visitors+1  WHERE id = 1";
+                                      $conn->query($sql);
+                                      $sql = "SELECT today_visitors,total_visitors FROM counter WHERE id = 1";
+                                      // echo $_SESSION['views']; // this will include the counter. 
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while($row = $result->fetch_assoc()) {
+                                                $visits = $row["today_visitors"];
+                                                $total = $row["total_visitors"];
+                                            }
+                                        } else {
+                                            echo "no results";
+                                        }
+
+                                    }else{
+                                       $visits = 0;
+                                       $_SESSION['views'] = 1;
+                                       $sql = "UPDATE counter SET today_visitors = 1 WHERE id = 1";
+                                       $conn->query($sql);
+
+                                       $sql = "SELECT today_visitors,total_visitors FROM counter WHERE id = 1";
+                                       $result = $conn->query($sql);
+                                       if ($result->num_rows > 0) {
+                                            while($row = $result->fetch_assoc()) {
+                                                $visits = $row["today_visitors"];
+                                                $total = $row["total_visitors"];
+                                            }
+                                        } else {
+                                            echo "no results";
+                                        }
+                                    }
+
+                                    $conn->close();
+                                ?>
+                              <p style="color: white;">Hari ini: <?php print $visits; ?>
+                              </p>
+                              <p style="color: white;">Total: <?php print $total; ?></p>
                             </div>
                         </div>
                     </div>

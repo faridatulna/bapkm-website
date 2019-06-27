@@ -21,7 +21,7 @@
                         <div class="media-body">
                             <div class="choice_text">
                                 <div class="date">
-                                    <a class="gad_btn" href="#" disabled=""><h2><!-- {{ ucfirst($type) }} --></h2>
+                                    <a class="gad_btn" href="#" disabled="">
                                     </a>
                                 </div>
                                 @foreach($modelSearchResults as $searchResult)
@@ -44,6 +44,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="right_sidebar mt-50">
+
                     <aside class="r_widgets news_widgets">
                         <div class="main_title2">
                             <h2>Kalender Akademik</h2>
@@ -88,6 +89,8 @@
                             @endforeach
                         </div>
                     </aside>
+
+                    
 
                     <aside class="r_widgets sosial_widgets">
                         <div class="main_title2">

@@ -59,13 +59,13 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'fileImg' => 'required|file|mimes:jpeg,png,jpg',
-            'filePdf' => 'required|file|mimes:pdf',
-        ],[
-            'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
-            'filePdf.mimes' => 'Format Image adalah (.pdf)',
-        ]);
+        // $this->validate($request, [
+        //     'fileImg' => 'required|file|mimes:jpeg,png,jpg',
+        //     'filePdf' => 'required|file|mimes:pdf',
+        // ],[
+        //     'fileImg.mimes' => 'Format Image adalah (.jpeg,.png,.jpg)',
+        //     'filePdf.mimes' => 'Format Image adalah (.pdf)',
+        // ]);
 
         $service = new Services;
         //File Image Upload

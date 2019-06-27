@@ -54,7 +54,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <button class="btn-primary btn fa fa-plus" data-toggle="modal" data-target="#add"><i class="fa fa-add"></i> Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Tambah</button>
 
                     </div>
                     <div class="col-lg-12">

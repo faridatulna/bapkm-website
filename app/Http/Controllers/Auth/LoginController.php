@@ -17,41 +17,57 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+ 
     use AuthenticatesUsers;
-
+ 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    public function redirectTo()
-    {
-        switch(Auth::user()->role_id){
-            case 0:
-            return '/admin';
-                break;
-            case 1:
-            return '/admin';
-                 break;
-            case 2:
-            return '/admin';
-                 break;
-            default:
-                return '/login';
-                break;
-        }
-         
-        // return $next($request);
-    } 
-
+    protected $redirectTo = '/admin';
+ 
+    /**
+     * Login username to be used by the controller.
+     *
+     * @var string
+     */
+    protected $username;
+ 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //$this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
+ 
+        $this->username = $this->findUsername();
     }
+ 
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function findUsername()
+    {
+        $login = request()->input('login');
+ 
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+ 
+        request()->merge([$fieldType => $login]);
+ 
+        return $fieldType;
+    }
+ 
+    /**
+     * Get username property.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return $this->username;
+    } 
+
 }

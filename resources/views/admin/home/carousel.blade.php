@@ -66,10 +66,10 @@
                                 @foreach($datas as $i=>$data)
                                 <div class="carousel-item @if($i == 0) active @endif">
                                     <img class="d-block w-100 h-375" alt="slide {{$i++}}" @if($data->banner) src="{{ url('Uploaded/Banner',$data->banner) }}" height="365px" @endif >
-                                    <div class="carousel-caption d-flex d-md-block">
+                                    <!-- <div class="carousel-caption d-flex d-md-block">
                                         <h3 class="text-white">Heading Title Carousel</h3>
                                         <p>Mauris fermentum elementum ligula in efficitur. Aliquam id congue lorem. Proin consectetur feugiat enim ut luctus. Aliquam pellentesque ut tellus ultricies bibendum.</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 @endforeach
                             </div>

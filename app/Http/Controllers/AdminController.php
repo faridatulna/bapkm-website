@@ -32,7 +32,7 @@ class AdminController extends Controller
     public function index()
     {
         $article = Article::all();
-
+        $user = User::all();
         $datas = Article::orderBy('updated_at', 'desc')->where('type','=',6)->get();
         $datas = Article::orderBy('updated_at', 'desc')->where('type','=',6)->paginate(5);
         $event = Events::orderBy('updated_at', 'desc')->get(); 
@@ -40,7 +40,7 @@ class AdminController extends Controller
 
         $links = Quicklinks::orderBy('updated_at', 'desc')->get(); 
         $links = Quicklinks::orderBy('updated_at', 'desc')->paginate(5);
-        return view('admin.index',compact('article','event'));
+        return view('admin.index',compact('article','event','user'));
     }
 
     /**

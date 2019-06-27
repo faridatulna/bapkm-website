@@ -79,7 +79,7 @@ class UserController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("adminlte/images/user", $fileName);
+            $request->file('gambar')->move("Uploaded/Admin", $fileName);
             $gambar = $fileName;
         }
 

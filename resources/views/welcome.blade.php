@@ -246,12 +246,11 @@
                         <div class="main_title2">
                             <h2>Kalender Akademik</h2>
                         </div>
-                        @foreach($cal_lastest as $data)
                         <div class="choice_item">
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn" href="#">Kalender Akademik</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($cal_lastest->updated_at)) }}</a>
                                 </div>
                                 <div class="row" style="height: 40px;">
                                     <div class="col-xs-3">
@@ -260,29 +259,25 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$cal_lastest->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
 
                         <div class="news_slider owl-carousel no-repeat">
                             @foreach($cal as $i=>$data) 
-                            <!-- @if($i > 1) -->
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">
                                         <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
-                                            <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                            <h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                         <div class="date">
                                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- @else  -->
-                            <!-- @endif  -->
                             @endforeach
                         </div>
                     </aside>
