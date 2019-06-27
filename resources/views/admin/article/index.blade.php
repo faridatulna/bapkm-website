@@ -90,7 +90,6 @@
                                         <button class="btn btn-rounded btn-sm" style="background-color: #5b048e; color:#fff;" disabled="">Beasiswa</button>
                                         @elseif($data->type == 3)
                                         <button class="btn btn-rounded btn-sm" style="background-color: #158701; color:#fff;" disabled="">Calon Mahasiswa</button>
-                                        <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">Akademik</button>
                                         @elseif($data->type == 4)
                                         <button class="btn btn-rounded btn-sm" style="background-color: #5b048e; color:#fff;" disabled="">Umum</button>
                                         @elseif($data->type == 5)

@@ -31,31 +31,36 @@ Route::get('/', function () {
     $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get(); 
     $gal = Galleries::all();
     return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active','service') );
-});
+})->name('welcome');
 
-Route::any ( '/search-result', function () {
-    $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-    $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-    $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-    $links = Quicklinks::all();
+// Route::any ( '/search-result', function () {
+//     $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+//     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+//     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+//     $links = Quicklinks::all();
+//     $sop = Helps::all();
+//     $service = Services::all();
 
-    $q = Input::get ( 'q' );
-    $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
-    $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-                orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
-    // $data = Article::paginate(5);
-    //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
-    if (count($data) > 0)
-        return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
-    else
-        return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'ami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
-} );
+//     $projects = Article::search(Input::get('search'))->get();
 
+//     $q = Input::get ( 'q' );
+//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
+//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
+//     // $data = Article::paginate(5);
+//     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
+//     if (count($data) > 0)
+//         return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
+//     else
+//         return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
+// } );
+
+Route::any('/search-result', 'HomeController@search')->name('search');
 
 Route::prefix('article')
     ->name('article.')
@@ -124,7 +129,7 @@ Route::prefix('article')
 
     });
 
-Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-single-page');
+Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-page');
 // download files
 
 Route::get('download/{id}', function ($filename) {
@@ -142,9 +147,9 @@ Route::prefix('aboutus')
         Route::get('/organigram', function () {
            return view('aboutus.organigram');
         })->name('organigram');
-        Route::get('/services', function () {
-           return view('aboutus.services');
-        })->name('services');
+        Route::get('/profile', function () {
+           return view('aboutus.profile');
+        })->name('profile');
 
     });
 

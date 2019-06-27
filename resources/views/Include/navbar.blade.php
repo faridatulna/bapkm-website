@@ -60,14 +60,17 @@
                               <ul class="dropdown" style="margin-top:5px;">
                                 <li><a href="{{ route('aboutus.history') }}">Sejarah</a></li>
                                 <li><a href="{{ route('aboutus.organigram') }}">Struktur Organisasi</a></li>
-                                <li><a href="{{ route('aboutus.services') }}">Profil</a></li>
+                                <li><a href="{{ route('aboutus.profile') }}">Profil</a></li>
                               </ul>
                             </li>
                             <li class="nav-link2"><a href="/article"><strong>Berita</strong></a>
                                 <ul class="dropdown" style="margin-top:5px;">
                                     <li><a href="/article/umum">Umum</a></li>
                                     <li><a href="/article/camaba">Calon Mahasiswa</a></li>
+                                    <li class="nav-divider"></li>
                                     <li><a href="/article/beasiswa">Beasiswa</a></li>
+                                    <li><a href="/article/akademik">Akademik</a></li>
+                                    <li><a href="/article/wisuda">Wisuda</a></li>
                                 </ul>
                             </li>
                             <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>

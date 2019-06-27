@@ -123,7 +123,7 @@
                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                         </div>
                         <a href="/article-page/{{$data->id}}"><h4>{{$data->title}}</h4></a>
-                        <p>{{$data->description}}</p>
+                        <p class="word-wrap">{!!$data->description!!}</p>
                     </div>
                 </div>
             </div>
@@ -156,6 +156,7 @@
                 <div class="latest_news">
 
                     <div class="media">
+                        @if( $article->count() )
                         <div class="media-body">
                             @foreach($article as $data)
                             <div class="choice_text">
@@ -183,13 +184,18 @@
                                     <a><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <a href="/article-page/{{$data->id}}" method="post"><h4>{{$data->title}}</h4></a> {{ csrf_field() }}
-                                <span class="d-inline-block text-truncate" style="overflow: hidden;">
-                                      <p>{{$data->description}}</p>
+                                <span class="d-inline-block">
+                                      <p class="word-wrap">{!!$data->description!!}</p>
                                 </span>
+
                             </div>
                             @endforeach
                         </div>
-
+                        @else
+                        <br></br>
+                        <div class="alert alert-warning" >
+                            <h4> Informasi belum ditambahkan pada laman berikut ini :) </h4></div>
+                        @endif
                     </div>
 
                     <nav aria-label="Page navigation example">
@@ -221,7 +227,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>

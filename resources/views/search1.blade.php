@@ -5,116 +5,41 @@
 </script>
 @stop @extends('layouts.app') @section('content')
 
-<!--================Header Menu Area =================-->
-<!--================Header Menu Area =================-->
-
-<!--================Home Banner Area =================-->
-<!-- <section class="home_banner_area">
-            <div class="banner_inner d-flex align-items-center">
-                <div class="container">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                    </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                    </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="banner_content text-center">
-                                    <div class="date">
-                                        <a class="gad_btn" href="#">Gadgets</a>
-                                        <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                    </div>
-                                    <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-<!--================End Home Banner Area =================-->
-
-<!--================News Area =================-->
 <section class="news_area  mt-50">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div>
-                    <h1>Hasil Pencarian ? <b><em> @if($query) {{ $query }} @else Not Found @endif </em></b></h1>
+
+                    <h2>Hasil Pencarian ? <b><em> {{ $searchResults->count() }} hasil ditemukan untuk pencarian"{{ request('q') }}"</em></b></h2>
                 </div>
                 <div class="latest_news">
-                    @if(isset($details))
+                    @if( $searchResults->count() > 0)
 
-                    @foreach($details as $data)
+                    @foreach($searchResults->groupByType() as $type => $modelSearchResults)
                     <div class="media">
                         <div class="media-body">
                             <div class="choice_text">
                                 <div class="date">
-                                    <a class="gad_btn text-uppercase" href="#" disabled="">
-                                        @if($data->type == 1)
-                                        Akademik
-
-                                        @elseif($data->type == 2)
-                                        Beasiswa
-
-                                        @elseif($data->type == 3)
-                                        Calon Mahasiswa
-
-                                        @elseif($data->type == 4)
-                                        Umum
-
-                                        @elseif($data->type == 5)
-                                        Wisuda
-
-                                        @elseif($data->type == 6)
-                                        Kalender
-                                        @endif
+                                    <a class="gad_btn" href="#" disabled=""><h2><!-- {{ ucfirst($type) }} --></h2>
                                     </a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
-                                <a href="{{ route('article-single-page', $data->id) }}" method="post"><h4>{!! $data->title !!}</h4></a> {{ csrf_field() }}
-                                <span class="d-inline-block" >
-                                    <p class="word-wrap">{{ $data->description }}</p>
-                                </span>
+                                @foreach($modelSearchResults as $searchResult)
+                                <ul>
+                                    <li>
+                                        <a href="{{ $searchResult->url }}" method="post"><h4>{!! $searchResult->title !!}</h4></a> {{ csrf_field() }}
+                                    </li>
+                                </ul>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     @endforeach
-                    
-
-                    @if ($details->hasPages()) Halaman <strong>{{ $details->currentPage() }}</strong> dari <strong>{{ $details->lastPage() }}</strong>.
-                        <br/> Menampilkan <strong>{{ ((($details->currentPage() -1) * $details->perPage()) + 1) }}</strong> sampai <strong>{{ ((($details->currentPage() -1) * $details->perPage()) + $details->count()) }}</strong> dari <strong>{{ $details->total() }}</strong> data yang ada.
-                        <br/> @endif
-                        <br> {{ $details->fragment('one')->links() }}
 
                     @else
                         <h2 class="mt-100"> Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.</h2>
                     @endif
+                
                 </div>
             </div>
             <div class="col-lg-4">
@@ -137,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!$data->title!}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>

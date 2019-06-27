@@ -33,6 +33,7 @@
                         </div> -->
                     </div>
                     <div class="ten wide right floated column">
+                        <h2><i>mari mengenal lebih dekat dengan BAPKM </i></h2>
                         <h2 class="ui header">Tahukah Kamu Apa Itu <strong>BAPKM</strong> ?</h3>
                         <p style="font-size: 20px;">BAPKM merupakan Badan Institusi <strong> ITS</strong> yang bergerak pada bidang Administrasi Pembelajaran (AP) dan Kesejahteraan Mahasiswa (Kesma). </p>
 

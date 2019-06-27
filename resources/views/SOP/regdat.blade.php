@@ -42,7 +42,7 @@
         <div class="row">
 
           <div class="col-md-12">
-            <a data-target="#modalIMG" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
+            <a data-target="#modalIMG{{$data->id}}" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
               <div class="ba-0 tp-s">
                 <img class="card-img-top"  style="width:100%;" src="{{ url('Uploaded/PEP/',$data->fileImg) }}">
               </div>
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG" role="dialog" tabindex="-1">
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modalIMG{{$data->id}}" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
           <div class="modal-content">
             <div class="modal-body mb-0 p-0">

@@ -148,6 +148,12 @@ Table of Content:
 	-o-transition: 0.5s;
 }
 
+.word-wrap {
+  font-size: 1.1em;
+  /*width:auto;*/
+  /*width: 700px;*/
+  overflow: hidden;
+}
 /*org chart*/
 
 .cube{

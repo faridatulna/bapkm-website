@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>{{$data->description}}</p>
+                    <p class="word-wrap">{!!$data->description!!}</p>
 
                     <img class="img-fluid" src="https://dummyimage.com/600x400/000/fff" alt="">
 
@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                 <div class="choice_item">
                                     <div class="choice_text">
                                         <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
-                                            <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
+                                            <h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                         <div class="date">
                                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                         </div>

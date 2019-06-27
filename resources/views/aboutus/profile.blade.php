@@ -49,6 +49,7 @@
                         <!-- Grid row -->
                     </div>
                     <div class="eight wide right floated column">
+                        
                         <h2 class="ui header">Apa itu AP dan apa saja ranah kerjanya?</h2>
                         <p style="font-size: 19px;">AP atau Administrasi Pembelajaran merupakan bagian dari BAPKM yang bergerak dibidang administrasi registrasi data dan juga evaluasi pembelajaran.</p>
                         <h2 class="ui header">Apa saja layanan di AP?</h2>
