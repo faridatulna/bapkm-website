@@ -21,21 +21,21 @@
                 <div class="row">
                     <div class="eight wide column mt-50">
                         <!-- Grid row -->
-                        <div class="row" style="height: 470px; width: 453px; margin-left: 20px;">
+                        <div class="row" style="height: 470px; width: 453px;">
 
                             <!-- Grid column -->
-                            <div class="col-lg-12 col-md-6" style="padding: 0;">
+                            <div class="col-lg-12 col-md-6 mb-4">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/ap0.jpg') }}" alt="video" data-toggle="modal" data-target="#modal5" style="height: 250px; width: 550px;"></a>
                             </div>
                             <!-- Grid column -->
                             <!-- Grid column -->
-                            <div class="col-lg-6" style="padding-right: 5px; padding-left: 0;">
+                            <div class="col-lg-6">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/ap1.jpg') }}" alt="video" data-toggle="modal" data-target="#modal1"></a>
                             </div>
                             <!-- Grid column -->
 
                             <!-- Grid column -->
-                            <div class="col-lg-6" style="padding-right: 0; padding-left: 5px;;">
+                            <div class="col-lg-6">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/ap2.jpg') }}" alt="video" data-toggle="modal" data-target="#modal6"></a>
                             </div>
                             <!-- Grid column -->
@@ -49,7 +49,6 @@
                         <!-- Grid row -->
                     </div>
                     <div class="eight wide right floated column">
-
                         <h2 class="ui header">Apa itu AP dan apa saja ranah kerjanya?</h2>
                         <p style="font-size: 19px;">AP atau Administrasi Pembelajaran merupakan bagian dari BAPKM yang bergerak dibidang administrasi registrasi data dan juga evaluasi pembelajaran.</p>
                         <h2 class="ui header">Apa saja layanan di AP?</h2>
@@ -89,33 +88,17 @@
                         <p style="font-size: 19px;">Layanan KM adalah mulai dari informasi beasiswa, layanan mengurus surat beasiswa, SPJ dan LPJ Kegiatan. </p>
                     </div>
                     <div class="eight wide right floated column">
-                        <!-- Grid row -->
-                        <div class="row" style="height: 470px; width: 453px; margin-left: 25px; margin-top: 25px;">
-
-                            <!-- Grid column -->
-                            <div class="col-lg-12 col-md-6" style="padding: 0;">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 mb-4">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/km0.jpg') }}" alt="video" data-toggle="modal" data-target="#modal5" style="height: 250px; width: 550px;"></a>
                             </div>
-                            <!-- Grid column -->
-                            <!-- Grid column -->
-                            <div class="col-lg-6" style="padding-right: 5px; padding-left: 0;">
+                            <div class="col-lg-6">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/km1.jpg') }}" alt="video" data-toggle="modal" data-target="#modal1"></a>
                             </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-lg-6" style="padding-right: 0; padding-left: 5px;;">
+                            <div class="col-lg-6">
                                 <a><img class="img-fluid z-depth-1" src="{{ url('Uploaded/Aboutus/km2.jpg') }}" alt="video" data-toggle="modal" data-target="#modal6"></a>
                             </div>
-                            <!-- Grid column -->
                         </div>
-
-                        <!-- Grid row -->
-                        <div class="row">
-
-                        </div>
-                        <!-- Grid row -->
-                        <!-- Grid row -->
                     </div>
                 </div>
                 <div class="row">

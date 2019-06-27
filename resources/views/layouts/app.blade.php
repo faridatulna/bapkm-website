@@ -80,8 +80,11 @@
                             <div class="col-10">
                               <ul class="contact">
                                 <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
-                                <li><i class="ficon fa fa-phone"></i>(031) 5923619</li>
-                                <li><i class="ficon fa fa-home"></i>Jalan Raya ITS, Kampus ITS Sukolilo, Surabaya 60117</li>
+                                <li><i class="ficon fa fa-phone"></i>(031) 5994251-54</li>
+                                <li><i class="ficon fa fa-phone" style="opacity: 0;"></i>PABX: 1012 (AP), 1109 (KM)</li>
+                                <li><i class="ficon fa fa-fax"></i>(031) 5923619 (Fax)</li>
+                                <li><i class="ficon fa fa-home" style="margin-bottom: 0;"></i>Jalan Raya ITS, Kampus ITS</li>
+                                <li><i class="ficon fa fa-home" style="opacity: 0;"></i>Sukolilo, Surabaya 60117</li>
                               </ul>
                             </div>
                         </div>

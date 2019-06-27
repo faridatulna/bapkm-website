@@ -64,59 +64,70 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-timeline5">
-                        
+
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">1990</span></div>
+                            <div class="timeline-icon"><span class="year">I</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAAK</h3>
+                                <p class="description subtitle"><strong>Biro Administrasi Akademik dan Kemahasiswaan</strong></p>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Ir. Sulastri D. S. <i class="fa fa-arrow-right"></i> Dra. Subaidah <i class="fa fa-arrow-right"></i> Drs. Lukman Sulaiman
                                 </p>
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">1998</span></div>
+                            <div class="timeline-icon"><span class="year">II</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAAKPSI</h3>
+                                <p class="description subtitle"><strong>Biro Administrasi, Akademik, Perencanaan dan Sistem Informasi </strong></p>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Drs. R. Hari Santoso
                                 </p>
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2000</span></div>
+                            <div class="timeline-icon"><span class="year">III</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAAK</h3>
+                                <p class="description subtitle"><strong>Biro Administrasi Akademik dan Kemahasiswaan</strong></p>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Drs. R. Hari Santoso <i class="fa fa-arrow-right"></i> Drs. Mukayat
                                 </p>
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2002</span></div>
+                            <div class="timeline-icon"><span class="year">IV</span></div>
                             <div class="timeline-content">
-                                <h3 class="title">BADAN AKADEMIK</h3>
+                                <h3 class="title" style="margin-bottom: 5px;">Badan Akademik</h3>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Dr. Ismaini Zain, M.Si.
                                 </p>
                             </div>
                         </div>
-                                                
+
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2010</span></div>
+                            <div class="timeline-icon"><span class="year">V</span></div>
                             <div class="timeline-content">
                                 <h3 class="title">BAKP</h3>
+                                <p class="description subtitle"><strong>Biro Administrasi Kemahasiswaan dan Pembelajaran</strong></p>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Drs. Tri Budi Utama, M.S.M.
                                 </p>
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-icon"><span class="year">2017</span></div>
+                            <div class="timeline-icon"><span class="year">VI</span></div>
                             <div class="timeline-content">
-                                <h3 class="title">BAKPM</h3>
+                                <h3 class="title">BAPKM</h3>
+                                <p class="description subtitle"><strong>Biro Administrasi Pembelajaran dan Kesejahteraan Mahasiswa</strong></p>
+                                <p class="description">Pimpinan:</p>
                                 <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                                    Drs. Mukayat <i class="fa fa-arrow-right"></i> Ir. Agus Gunaryo
                                 </p>
                             </div>
                         </div>
