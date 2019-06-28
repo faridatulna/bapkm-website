@@ -39,58 +39,53 @@
                     @else
                         <h2 class="mt-100"> Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.</h2>
                     @endif
-                
+
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="right_sidebar mt-50">
 
-                    <aside class="r_widgets news_widgets">
-                        <div class="main_title2">
-                            <h2>Kalender Akademik</h2>
-                        </div>
-                        @foreach($cal_lastest as $data)
-                        <div class="choice_item">
-                            <div class="choice_text">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Kalender Akademik</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
-                                </div>
-                                <div class="row" style="height: 40px;">
-                                    <div class="col-xs-3">
-                                        <div class="date">
-                                            <i class="fa fa-calendar fa-5x"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                  <aside class="r_widgets news_widgets">
+                      <div class="main_title2">
+                          <h2>Kalender Akademik</h2>
+                      </div>
+                      <div class="choice_item">
+                          <div class="choice_text">
+                              <div class="date">
+                                  <a class="gad_btn" href="#">Kalender Akademik</a>
+                                  <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($cal_lastest->updated_at)) }}</a>
+                              </div>
+                              <div class="row" style="height: 40px;">
+                                  <div class="col-xs-3">
+                                      <div class="date">
+                                          <i class="fa fa-calendar fa-5x"></i>
+                                      </div>
+                                  </div>
+                                  <div class="col-xs-9">
+                                      <a href="{{ url('Uploaded/Article', $cal_lastest->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$cal_lastest->title!!}</h4></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
 
-                        <div class="news_slider owl-carousel no-repeat">
-                            @foreach($cal as $i=>$data) 
-                            @if($i > 1)
-                            <div class="item">
-                                <div class="choice_item">
-                                    <div class="choice_text">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
-                                            <h4 style="text-transform: uppercase;">{{$data->title}}</h4></a>
-                                        <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @else 
-                            @endif 
-                            @endforeach
-                        </div>
-                    </aside>
+                      <div class="news_slider owl-carousel no-repeat">
+                          @foreach($cal as $i=>$data)
+                          <div class="item">
+                              <div class="choice_item">
+                                  <div class="choice_text">
+                                      <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
+                                          <h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
+                                      <div class="date">
+                                          <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          @endforeach
+                      </div>
+                  </aside>
 
-                    
+
 
                     <aside class="r_widgets sosial_widgets">
                         <div class="main_title2">

@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     function index()
     {
-         
+
     }
 
 
@@ -51,7 +51,7 @@ class HomeController extends Controller
             // echo($prev);// echo($next);
         }
 
-        $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+        $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
         $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
         $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
         $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
@@ -61,9 +61,9 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-        $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-        $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+      $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+      $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+      $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
         $links = Quicklinks::all();
         $sop = Helps::all();
         $service = Services::all();
@@ -79,5 +79,5 @@ class HomeController extends Controller
         //    dd($searchResults);
     }
 
-    
+
 }

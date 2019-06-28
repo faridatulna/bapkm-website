@@ -28,7 +28,7 @@ Route::get('/', function () {
     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
     $links = Quicklinks::all();
     $service = Services::all();
-    $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get(); 
+    $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get();
     $gal = Galleries::all();
     return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active','service') );
 })->name('welcome');
@@ -65,11 +65,11 @@ Route::any('/search-result', 'HomeController@search')->name('search');
 Route::prefix('article')
     ->name('article.')
     ->group(function () {
-        
+
         Route::get('/', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
@@ -77,9 +77,9 @@ Route::prefix('article')
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         });
         Route::get('/umum', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',4)->get();
@@ -87,9 +87,9 @@ Route::prefix('article')
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         })->name('umum');
         Route::get('/camaba', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',3)->get();
@@ -97,9 +97,9 @@ Route::prefix('article')
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         })->name('camaba');
         Route::get('/beasiswa', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',2)->get();
@@ -107,9 +107,9 @@ Route::prefix('article')
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         })->name('beasiswa');
         Route::get('/akademik', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',1)->get();
@@ -117,9 +117,9 @@ Route::prefix('article')
             return view('article',compact('article','news','cal','cal_lastest','agenda'));
         })->name('akademik');
         Route::get('/wisuda', function () {
-            $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-            $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-            $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
 
             $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
             $article = Article::orderBy('updated_at', 'desc')->where('type','=',5)->get();
@@ -204,7 +204,7 @@ Route::prefix('admin')
             })->name('create');
             Route::get('/sop','SopController@index')->name('sop');
             Route::get('/service','ServiceController@index')->name('service');
-            
+
         });
 
         Route::resource('sop','SopController');
@@ -232,7 +232,7 @@ Route::prefix('admin')
 
                    return view('admin.aboutus.profile',compact('profap'));
                 })->name('profile');
-                
+
             });
         Route::resource('aboutus','AboutusController');
     });

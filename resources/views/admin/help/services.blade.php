@@ -56,7 +56,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <button class="btn-primary btn fa fa-plus" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-add"></i> Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-plus"></i>$nbsp Tambah</button>
 
                     </div>
                     <div class="col-lg-12">
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                             @if($datas->count())
                             <table class="table table-striped">
                                 <thead>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <!-- <td>
-                                          @if($data->fileImage) 
+                                          @if($data->fileImage)
                                           <img src="{{ url('Uploaded/Image/Product', $data->fileImg ) }}" alt="image" style="margin-right: 10px;" >
                                           @else
                                               <img src="" alt="image" style="margin-right: 10px;" />
@@ -145,11 +145,11 @@
 
                                                     </div>
 
-                                                    <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                                    <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                                    <div class="form-group{{ $errors->has('fileImg') ? ' has-error' : '' }}">
+                                                    <label for="fileImg" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                     <div class="col-12">
                                                         <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
-                                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ old('fileImg') }}">
+                                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -168,7 +168,7 @@
                                                 </div>
                                                 </div>
 
-                                                
+
 
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary" id="submit">Update</button>

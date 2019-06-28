@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="card-body">
-                        <button class="btn-primary btn fa fa-plus mb-4" data-toggle="modal" data-target="#addcal"><i class="fa fa-add"></i> Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#addcal"><i class="fa fa-plus"></i>&nbsp Tambah</button>
                         @if($datas->count())
                         <table class="table table-striped">
                             <thead>
@@ -79,11 +79,10 @@
                                                 <form action="{{ route('admin.calendar.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
-                                                    <ul style="color: red;font-size: 0.75rem;">
-                                                        <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
-                                                        </li>
-                                                    </ul>
+                                                  <ul style="color: red;font-size: 0.75rem;">
+                                                      <i class="fa fa-asterisk"></i>
+                                                      <em> Form wajib diisi </em>
+                                                  </ul>
 
                                                     <input type="text" class="form-control" name="type" hidden="" value="6">
                                                     <input type="file" class="uploads form-control" name="fileImg" hidden="" value="">
@@ -171,11 +170,10 @@
                     <form method="POST" action="{{ route('admin.calendar.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <li class="fa fa-asterisk">
-                                    <em> Form Wajib diisi </em>
-                                </li>
-                            </ul>
+                          <ul style="color: red;font-size: 0.75rem;">
+                              <i class="fa fa-asterisk"></i>
+                              <em> Form wajib diisi </em>
+                          </ul>
 
                             <input type="text" class="form-control" name="type" hidden="" value="6">
                             <input type="file" class="uploads form-control" name="fileImg" hidden="" value="">

@@ -35,7 +35,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
                     <h2 class="pageheader-title">Page - Home - Carousel</h2>
-                     
+
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -62,7 +62,7 @@
                                 @endforeach
                             </ol>
                             <div class="carousel-inner">
-                                
+
                                 @foreach($datas as $i=>$data)
                                 <div class="carousel-item @if($i == 0) active @endif">
                                     <img class="d-block w-100 h-375" alt="slide {{$i++}}" @if($data->banner) src="{{ url('Uploaded/Banner',$data->banner) }}" height="365px" @endif >
@@ -103,7 +103,7 @@
                             <button class="btn-warning btn" data-toggle="modal" data-target="#editcar{{$data->id}}"><i class="fa fa-edit"></i></button>
                             <button class="btn-danger btn " data-toggle="modal" data-target="#delcar{{$data->id}}"><i class="fa fa-trash"></i></button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                                 <span aria-hidden="true">×</span>
                             </a>
                         </div>
-                        {!!Form::model($data,['method'=>'PATCH', 'action'=>['GalleryController@update',$data->id ]]) !!}
+                        <form action="{{ route('admin.gallery.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                         <div class="modal-body">
                             <ul style="color: red;font-size: 0.75rem;">
@@ -145,7 +145,7 @@
                         </div>
 
                     </div>
-                    {!! Form::close()!!}
+                    </form>
                 </div>
             </div>
 

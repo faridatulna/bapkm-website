@@ -29,7 +29,7 @@ class SopController extends Controller
         $datas = Helps::all();
         return view('admin.help.sop',compact('datas'));
     }
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -49,7 +49,7 @@ class SopController extends Controller
      */
     public function create()
     {
-       
+
     }
 
 
@@ -70,73 +70,93 @@ class SopController extends Controller
 
         if ($request->file('fileImg') == ''){
             $fileImg = "";
-            
+
         }else{
-            $file = $request->file('fileImg');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
                 if($request->type == [1]){
+                   $file = $request->file('fileImg');
+                   $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
                    $desPath = public_path('Uploaded/Regdat');
-                   $request->file('fileImg')->move($desPath, $fileName); 
+                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                   $request->file('fileImg')->move($desPath, $fileName);
                    $fileImg = $fileName;
                 }
                 else if($request->type == [2]){
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
                     $desPath = public_path('Uploaded/PEP');
-                    $request->file('fileImg')->move($desPath, $fileName); 
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('fileImg')->move($desPath, $fileName);
                     $fileImg = $fileName;
                 }
                 else if($request->type == [3]){
-                    $desPath = public_path('Uploaded/Beasiswa'); 
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Beasiswa');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
                     $request->file('fileImg')->move($desPath, $fileName);
                     $fileImg = $fileName;
                 }
                 else if($request->type == [4]){
-                    $desPath = public_path('Uploaded/Data'); 
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Data');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
                     $request->file('fileImg')->move($desPath, $fileName);
                     $fileImg = $fileName;
                 }else{
-                    
+
                  // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
                 }
-            
-            
+
+
         }
-        
+
         //File Upload
         if ($request->file('filePdf') == ''){
             $filePdf = "";
         }else{
-            $file = $request->file('filePdf');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
                 if($request->type == [1]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
                    $desPath = public_path('Uploaded/Regdat');
-                   $request->file('filePdf')->move($desPath, $fileName); 
+                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                   $request->file('filePdf')->move($desPath, $fileName);
                    $filePdf = $fileName;
                 }
                 else if($request->type == [2]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
                     $desPath = public_path('Uploaded/PEP');
-                    $request->file('filePdf')->move($desPath, $fileName); 
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('filePdf')->move($desPath, $fileName);
                     $filePdf = $fileName;
                 }
                 else if($request->type == [3]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
                     $desPath = public_path('Uploaded/Beasiswa');
-                    $request->file('filePdf')->move($desPath, $fileName); 
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('filePdf')->move($desPath, $fileName);
                     $filePdf = $fileName;
                 }
                 else if($request->type == [4]){
-                    $desPath = public_path('Uploaded/Data'); 
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Data');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
                     $request->file('filePdf')->move($desPath, $fileName);
                     $filePdf = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
                 }
-            
         }
-        
+
 
         Helps::create([
             'title' => $request->input('title'),
@@ -172,7 +192,7 @@ class SopController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
@@ -187,81 +207,107 @@ class SopController extends Controller
         //
         $help = Helps::findorfail($id);
 
-        // $help->update($request->all());
-        if ($request->hasFile('fileImg'))
-        {
-            $file = $request->file('fileImg');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            if($request->type == [1]){
-                   $desPath = public_path('Uploaded/Regdat');
-                   $request->file('fileImg')->move($desPath, $fileName); 
-                   $help->fileImg = $fileName;
-                }
-                else if($request->type == [2]){
-                    $desPath = public_path('Uploaded/PEP');
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $help->fileImg = $fileName; 
-                }
-                else if($request->type == [3]){
-                    $desPath = public_path('Uploaded/Beasiswa'); 
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $help->fileImg = $fileName;
-                }
-                else if($request->type == [4]){
-                    $desPath = public_path('Uploaded/Data'); 
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $help->fileImg = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
-                }
-            
-            // Storage::delete($article->fileImg);
-            
-        }
-            
-        if ($request->hasFile('filePdf'))
-        {
-            $file = $request->file('filePdf');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            if($request->type == [1]){
-                   $desPath = public_path('Uploaded/Regdat');
-                   $request->file('filePdf')->move($desPath, $fileName);
-                   $help->filePdf = $fileName; 
-                }
-                else if($request->type == [2]){
-                    $desPath = public_path('Uploaded/PEP');
-                    $request->file('filePdf')->move($desPath, $fileName);
-                    $help->filePdf = $fileName; 
-                }
-                else if($request->type == [3]){
-                    $desPath = public_path('Uploaded/Beasiswa');
-                    $request->file('filePdf')->move($desPath, $fileName);
-                    $help->filePdf = $fileName; 
-                }
-                else if($request->type == [4]){
-                    $desPath = public_path('Uploaded/Data'); 
-                    $request->file('filePdf')->move($desPath, $fileName);
-                    $help->filePdf = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
-                }
-            
-
-            // Storage::delete($article->filePdf);
-            
-        }
-
         $help->title = $request->input('title');
         $help->type = $request->input('type');
+
+        if ($request->hasFile('fileImg'))
+        {
+            if($help->type == 1){
+                   $file = $request->file('fileImg');
+                   $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                   $desPath = public_path('Uploaded/Regdat');
+                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                   $request->file('fileImg')->move($desPath, $fileName);
+                   $fileImg = $fileName;
+                }
+                else if($help->type == 2){
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/PEP');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('fileImg')->move($desPath, $fileName);
+                    $fileImg = $fileName;
+                }
+                else if($help->type == 3){
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Beasiswa');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('fileImg')->move($desPath, $fileName);
+                    $fileImg = $fileName;
+                }
+                else if($help->type == 4){
+                    $file = $request->file('fileImg');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Data');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('fileImg')->move($desPath, $fileName);
+                    $fileImg = $fileName;
+                }else{
+
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
+
+            // Storage::delete($article->fileImg);
+
+        }
+
+        if ($request->hasFile('filePdf'))
+        {
+
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            if($request->type == [1]){
+                   $file = $request->file('filePdf');
+                   $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                   $desPath = public_path('Uploaded/Regdat');
+                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                   $request->file('filePdf')->move($desPath, $fileName);
+                   $filePdf = $fileName;
+                }
+                else if($request->type == [2]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/PEP');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('filePdf')->move($desPath, $fileName);
+                    $filePdf = $fileName;
+                }
+                else if($request->type == [3]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Beasiswa');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('filePdf')->move($desPath, $fileName);
+                    $filePdf = $fileName;
+                }
+                else if($request->type == [4]){
+                    $file = $request->file('filePdf');
+                    $dt = Carbon::now();
+                   $acak  = $file->getClientOriginalExtension();
+                    $desPath = public_path('Uploaded/Data');
+                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                    $request->file('filePdf')->move($desPath, $fileName);
+                    $filePdf = $fileName;
+                }else{
+
+                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
+                }
+
+            // Storage::delete($article->filePdf);
+
+        }
+
         $help->description = $request->input('description');
-        // $article->url = $request->input('url');
-        
+
         $help->update();
 
         Session::flash('message', 'Berhasil diubah!');
@@ -291,7 +337,7 @@ class SopController extends Controller
      */
     public function destroy($id)
     {
-        $help = Helps::findOrFail($id);       
+        $help = Helps::findOrFail($id);
         $help->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

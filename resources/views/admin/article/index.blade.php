@@ -50,11 +50,11 @@
 
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                
+
                 <div class="card">
                     <div class="card-header">
 
-                        <button class="btn-primary btn" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i>&nbsp Tambah</button>
 
                     </div>
                     <div class="col-lg-12">
@@ -121,12 +121,11 @@
                                             </div>
 
                                             <form action="{{ route('admin.article.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
-                                                
+
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
-                                                        <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
-                                                        </li>
+                                                        <i class="fa fa-asterisk"></i>
+                                                        <em> Kolom jenis, judul, dan deskripsi wajib diisi </em>
                                                     </ul>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -216,7 +215,7 @@
                                             </div>
                                             <div class="modal-footer pull-right" style="margin-right: 12px;">
                                                 {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!}
-                                                {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}
+                                                {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}{{ Form::close() }}
                                             </div>
                                             </div>
                                         </div>
@@ -236,7 +235,7 @@
                                                 <div class="modal-body">
                                                     <ul style="color: red;font-size: 0.75rem;">
                                                         <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
+                                                            <em> Form wajib diisi </em>
                                                         </li>
                                                     </ul>
 
@@ -244,7 +243,7 @@
                                                         <div class="card">
                                                             <div class="card-header p-4">
                                                                  <h1 class="pt-2 d-inline-block">{{ $data->title}}</h1>
-                                                               
+
                                                                 <div class="float-right"> <h3 class="mb-0">
                                                                     @if($data->type == 1)
                                                                     <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">Akademik</button>
@@ -275,7 +274,7 @@
                                                                         @if($data->fileImg)
                                                                             <img src="{{url('Uploaded/Article', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
                                                                         @else
-                                                                            
+
                                                                         @endif
                                                                     </div>
                                                                 </div>
@@ -285,7 +284,7 @@
                                                                     @if($data->filePdf)
                                                                         <a src="{{url('Uploaded/Article', $data->fileImg)}}"><i class="fa fa-download"> Unduh File PDF </i></a>
                                                                     @else
-                                                                        
+
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -293,7 +292,7 @@
                                                     </div>
 
                                                 </div>
-                                                
+
 
                                         </div>
                                     </div>
@@ -313,9 +312,9 @@
                         <br/> @endif
                         <br> {{ $datas->fragment('one')->links() }}
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
 
@@ -332,11 +331,10 @@
                     <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <li class="fa fa-asterisk">
-                                    <em> Form Wajib diisi </em>
-                                </li>
-                            </ul>
+                          <ul style="color: red;font-size: 0.75rem;">
+                              <i class="fa fa-asterisk"></i>
+                              <em> Kolom jenis, judul, dan deskripsi wajib diisi </em>
+                          </ul>
 
                             <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-6 control-label">Jenis Artikel</label>
