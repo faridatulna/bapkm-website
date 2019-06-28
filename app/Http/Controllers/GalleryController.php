@@ -45,10 +45,10 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $carousel = new Galleries;
-
+        
         $banner = $request->file('banner');
         $inputFile['namafile'] = time().".".$banner->getClientOriginalExtension();
-        $desPath = public_path('/Uploaded/Banner');
+        $desPath = public_path('Uploaded/Banner');
         $banner->move($desPath,$inputFile['namafile']);
         $carousel->banner = $inputFile['namafile'];
         
@@ -97,13 +97,17 @@ class GalleryController extends Controller
     {
         $carousel = Galleries::findorfail($id);
         
-        $hidden = $request->file('hidden_banner');
-        $banner = $request->file('banner');
+        // $hidden = $request->file('hidden_banner');
+        // $banner = $request->file('banner');
         
-        $inputFile['banner'] = time().".".$hidden->getClientOriginalExtension();
-        $desPath = public_path('/Uploaded/Banner');
-        $banner->move($desPath,$inputFile['banner']);
-        $carousel->banner = $inputFile['banner'];
+        if ($request->hasFile('banner'))
+        {
+            $file = $request->file('banner');
+            $inputFile['banner'] = time().".".$file->getClientOriginalExtension();
+            $desPath = public_path('Uploaded/Banner');
+            $request->file('banner')->move($desPath, $inputFile['banner']);
+            $carousel->banner = $inputFile['banner'];
+        }
 
         if($request->type == [1]){
             $carousel->type = 1;

@@ -145,7 +145,7 @@ class ServiceController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $desPath = public_path('Uploaded/Article');
+            $desPath = public_path('Uploaded/Product');
             $request->file('fileImg')->move($desPath, $fileName);
             
             // Storage::delete($article->fileImg);
@@ -158,7 +158,7 @@ class ServiceController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $desPath = public_path('Uploaded/Article');
+            $desPath = public_path('Uploaded/Product');
             $request->file('filePdf')->move($desPath, $fileName);
 
             // Storage::delete($article->filePdf);

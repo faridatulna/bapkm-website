@@ -118,7 +118,7 @@
                                 <span aria-hidden="true">×</span>
                             </a>
                         </div>
-                        {!!Form::model($data,['method'=>'PATCH', 'action'=>['GalleryController@update',$data->id ]]) !!}
+                        <form action="{{ route('admin.gallery.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                         <div class="modal-body">
                             <ul style="color: red;font-size: 0.75rem;">
@@ -145,7 +145,7 @@
                         </div>
 
                     </div>
-                    {!! Form::close()!!}
+                    </form>
                 </div>
             </div>
 

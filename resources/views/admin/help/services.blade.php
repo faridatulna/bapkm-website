@@ -145,11 +145,11 @@
 
                                                     </div>
 
-                                                    <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                                    <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                                    <div class="form-group{{ $errors->has('fileImg') ? ' has-error' : '' }}">
+                                                    <label for="fileImg" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                     <div class="col-12">
                                                         <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
-                                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{ old('fileImg') }}">
+                                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

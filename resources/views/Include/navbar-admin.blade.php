@@ -86,7 +86,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" hidden="">
                     <a class="nav-link" href="{{ route('admin.aboutus.history') }}" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-6"><i class="fas fa-fw fa-columns"></i> Tentang Kami </a>
                     <div id="submenu-8" class="collapse submenu" style="">
                         <ul class="nav flex-column">

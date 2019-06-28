@@ -155,20 +155,8 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                         <div class="col-12">
-                                                            @if($data->fileImg)
-                                                                @if($data->type == 1)
-                                                                    <img src="{{url('Uploaded/Regdat', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                    
-                                                                @elseif($data->type == 2)
-                                                                    <img src="{{url('Uploaded/PEP', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                @elseif($data->type == 3)
-                                                                    <img src="{{url('Uploaded/Beasiswa', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                    
-                                                                @elseif($data->type == 4)
-                                                                    <img src="{{url('Uploaded/Data', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
-                                                                @else @endif
-                                                                        
-                                                            @else @endif
+                                                            <img @if($data->fileImg && $data->type == 1) src="{{url('Uploaded/Regdat', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 2) src="{{url('Uploaded/PEP', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 3) src="{{url('Uploaded/Beasiswa', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 4) src="{{url('Uploaded/Data', $data->fileImg)}}" @else @endif width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" /> 
+
                                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                                             <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
                                                             <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
@@ -282,7 +270,7 @@
                                                                     <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">SOP-PDKM</button>
 
                                                                     @endif
-                                                                </h3> {{ $data->postDate}}</div>
+                                                                </h3> {{ date('M j ,Y', strtotime($data->updated_at)) }}</div>
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="row mb-4">
@@ -299,27 +287,19 @@
                                                                             @else @endif
                                                                         
                                                                         @else @endif
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12" id="summernote_show">
                                                                         {!! $data->description !!}
-                                                                        <script type="text/javascript">
-                                                                            var markup = {
-                                                                                {
-                                                                                    $data - > description
-                                                                                }
-                                                                            };
-                                                                            $('#summernote_show').summernote('code', markup);
-                                                                            console.log(markup);
-                                                                        </script>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="card-footer bg-white">
                                                                 <div class="col-sm-12">
                                                                     @if($data->filePdf)
-                                                                    <a src="{{url('Uploaded/PDF/Product', $data->fileImg)}}"><i class="fa fa-download"> Unduh File PDF </i></a> @else @endif
+                                                                    <a src="{{url('Uploaded/Product', $data->filePdf)}}"><i class="fa fa-download"> Unduh File PDF </i></a> @else @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -373,7 +353,7 @@
                                 <div class="col-4 form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
                                     <label for="type" class="col-md-6 control-label">Jenis SOP</label>
                                     <div class="col-md-12">
-                                        <select class="form-control" name="type[]" required="">
+                                        <select class="form-control" name="type" required="">
                                             <option value=" ">Pilih jenis SOP</option>
                                             <option value="1">SOP-RD</option>
                                             <option value="2">SOP-PEP</option>

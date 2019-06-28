@@ -119,14 +119,14 @@
 
                                         $result = $conn->query($sql);
 
-                                        if ($result->num_rows > 0) {
-                                            while($row = $result->fetch_assoc()) {
-                                                $visits = $row["today_visitors"];
-                                                $total = $row["total_visitors"];
-                                            }
-                                        } else {
-                                            echo "no results";
-                                        }
+                                        // if ($result->num_rows > 0) {
+                                        //     while($row = $result->fetch_assoc()) {
+                                        //         $visits = $row["today_visitors"];
+                                        //         $total = $row["total_visitors"];
+                                        //     }
+                                        // } else {
+                                        //     echo "no results";
+                                        // }
 
                                     }else{
                                        $visits = 0;
@@ -135,22 +135,20 @@
                                        $conn->query($sql);
 
                                        $sql = "SELECT today_visitors,total_visitors FROM counter WHERE id = 1";
-                                       $result = $conn->query($sql);
-                                       if ($result->num_rows > 0) {
-                                            while($row = $result->fetch_assoc()) {
-                                                $visits = $row["today_visitors"];
-                                                $total = $row["total_visitors"];
-                                            }
-                                        } else {
-                                            echo "no results";
-                                        }
+                                       // $result = $conn->query($sql);
+                                       // if ($result->num_rows > 0) {
+                                       //      while($row = $result->fetch_assoc()) {
+                                       //          $visits = $row["today_visitors"];
+                                       //          $total = $row["total_visitors"];
+                                       //      }
+                                       //  } else {
+                                       //      echo "no results";
+                                       //  }
                                     }
 
                                     $conn->close();
                                 ?>
-                              <p style="color: white;">Hari ini: <?php print $visits; ?>
-                              </p>
-                              <p style="color: white;">Total: <?php print $total; ?></p>
+                              
                             </div>
                         </div>
                     </div>
