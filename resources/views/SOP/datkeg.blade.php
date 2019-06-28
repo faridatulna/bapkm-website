@@ -48,7 +48,7 @@
           <div class="col-md-12">
             <a data-target="#modalIMG{{$data->id}}" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
               <div class="ba-0 tp-s">
-                <img class="card-img-top"  style="width:100%;" src="{{ url('Uploaded/Data/',$data->fileImg) }}" >
+                <img class="card-img-top"  style="width:100%;" src="{{ url('Uploaded/SOP/',$data->fileImg) }}" >
               </div>
             </a>
           </div>
@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
           <div class="modal-content">
             <div class="modal-body mb-0 p-0">
-              <img alt="" style="min-width:70vw" align="center" src="{{ url('Uploaded/Data/',$data->fileImg) }}" >
+              <img alt="" style="min-width:70vw" align="center" src="{{ url('Uploaded/SOP/',$data->fileImg) }}" >
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
 
       <p>Klik gambar untuk memperbesar.</p>
       @elseif($data->filePdf)
-      <p>Klik <a href="{{ url('Uploaded/Data/',$data->filePdf) }}">di sini</a> untuk detil panduan.</p>
+      <p>Klik <a href="{{ url('Uploaded/SOP/',$data->filePdf) }}">di sini</a> untuk detil panduan.</p>
       @else
       @endif
 
@@ -92,7 +92,7 @@
       		<div class="col-md-12">
       			<a data-target="#modalIMG" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       				<div class="ba-0 tp-s">
-      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      					<img class="card-img-top" src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" style="width:100%;">
       				</div>
       			</a>
       		</div>
@@ -104,7 +104,7 @@
       	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
       		<div class="modal-content">
       			<div class="modal-body mb-0 p-0">
-      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      				<img src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
       			</div>
       		</div>
       	</div>
@@ -141,7 +141,7 @@
       		<div class="col-md-12">
       			<a data-target="#modalIMG2" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       				<div class="ba-0 tp-s">
-      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      					<img class="card-img-top" src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" style="width:100%;">
       				</div>
       			</a>
       		</div>
@@ -153,7 +153,7 @@
       	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
       		<div class="modal-content">
       			<div class="modal-body mb-0 p-0">
-      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      				<img src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
       			</div>
       		</div>
       	</div>
@@ -187,7 +187,7 @@
       		<div class="col-md-12">
       			<a data-target="#modalIMG3" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       				<div class="ba-0 tp-s">
-      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA123.jpg')}}" style="width:100%;">
+      					<img class="card-img-top" src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" style="width:100%;">
       				</div>
       			</a>
       		</div>
@@ -199,7 +199,7 @@
       	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
       		<div class="modal-content">
       			<div class="modal-body mb-0 p-0">
-      				<img src="{{ asset('Uploaded/Data/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
+      				<img src="{{ asset('Uploaded/SOP/DATA123.jpg')}}" alt="" style="min-width:70vw" align="center">
       			</div>
       		</div>
       	</div>
@@ -232,7 +232,7 @@
       		<div class="col-md-12">
       			<a data-target="#modalIMG4" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       				<div class="ba-0 tp-s">
-      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA4.jpg')}}" style="width:100%;">
+      					<img class="card-img-top" src="{{ asset('Uploaded/SOP/DATA4.jpg')}}" style="width:100%;">
       				</div>
       			</a>
       		</div>
@@ -244,7 +244,7 @@
       	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
       		<div class="modal-content">
       			<div class="modal-body mb-0 p-0">
-      				<img src="{{ asset('Uploaded/Data/DATA4.jpg')}}" alt="" style="min-width:70vw" align="center">
+      				<img src="{{ asset('Uploaded/SOP/DATA4.jpg')}}" alt="" style="min-width:70vw" align="center">
       			</div>
       		</div>
       	</div>
@@ -276,7 +276,7 @@
       		<div class="col-md-12">
       			<a data-target="#modalIMG5" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       				<div class="ba-0 tp-s">
-      					<img class="card-img-top" src="{{ asset('Uploaded/Data/DATA5.jpg')}}" style="width:100%;">
+      					<img class="card-img-top" src="{{ asset('Uploaded/SOP/DATA5.jpg')}}" style="width:100%;">
       				</div>
       			</a>
       		</div>
@@ -288,7 +288,7 @@
       	<div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
       		<div class="modal-content">
       			<div class="modal-body mb-0 p-0">
-      				<img src="{{ asset('Uploaded/Data/DATA5.jpg')}}" alt="" style="min-width:70vw" align="center">
+      				<img src="{{ asset('Uploaded/SOP/DATA5.jpg')}}" alt="" style="min-width:70vw" align="center">
       			</div>
       		</div>
       	</div>

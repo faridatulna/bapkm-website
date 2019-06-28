@@ -155,7 +155,7 @@
                                                     <div class="form-group">
                                                         <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
                                                         <div class="col-12">
-                                                            <img @if($data->fileImg && $data->type == 1) src="{{url('Uploaded/Regdat', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 2) src="{{url('Uploaded/PEP', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 3) src="{{url('Uploaded/Beasiswa', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 4) src="{{url('Uploaded/Data', $data->fileImg)}}" @else @endif width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
+                                                            <img @if($data->fileImg && $data->type == 1) src="{{url('Uploaded/SOP', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 2) src="{{url('Uploaded/SOP', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 3) src="{{url('Uploaded/SOP', $data->fileImg)}}" @elseif($data->fileImg && $data->type == 4) src="{{url('Uploaded/SOP', $data->fileImg)}}" @else @endif width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
 
                                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                                             <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
@@ -184,19 +184,8 @@
                                                             <div class="col-md-12">
                                                                 <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                                                 @if($data->filePdf)
-                                                                @if($data->type == 1)
-                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Regdat',$data->filePdf) }}" @endif>
-
-                                                                @elseif($data->type == 2)
-                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/PEP',$data->filePdf) }}" @endif>
-                                                                @elseif($data->type == 3)
-                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Beasiswa',$data->filePdf) }}" @endif>
-
-                                                                @elseif($data->type == 4)
-                                                                    <input type="text" class="uploads form-control" name="filePdf" disabled accept=".pdf" @if($data->filePdf) value="{{ url('Uploaded/Data',$data->filePdf) }}" @endif>
+                                                                    <a href="{{ url('Uploaded/SOP/'. $data->filePdf) }}"></a>
                                                                 @else @endif
-
-                                                            @else @endif
 
                                                             </div>
                                                         </div>
@@ -276,16 +265,7 @@
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12">
                                                                         @if($data->fileImg)
-                                                                            @if($data->type == 1)
-                                                                                <img src="{{url('Uploaded/Regdat/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
-                                                                            @elseif($data->type == 2)
-                                                                                <img src="{{url('Uploaded/PEP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
-                                                                            @elseif($data->type == 3)
-                                                                                <img src="{{url('Uploaded/Beasiswa/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
-                                                                            @elseif($data->type == 4)
-                                                                                <img src="{{url('Uploaded/Data/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
-                                                                            @else @endif
-
+                                                                          <img src="{{url('Uploaded/SOP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
                                                                         @else @endif
 
                                                                     </div>
@@ -299,7 +279,7 @@
                                                             <div class="card-footer bg-white">
                                                                 <div class="col-sm-12">
                                                                     @if($data->filePdf)
-                                                                    <a src="{{url('Uploaded/Product', $data->filePdf)}}"><i class="fa fa-download"> Unduh File PDF </i></a> @else @endif
+                                                                    <a src="{{url('Uploaded/SOP/', $data->filePdf)}}"><i class="fa fa-download"> Unduh File PDF </i></a> @else @endif
                                                                 </div>
                                                             </div>
                                                         </div>
