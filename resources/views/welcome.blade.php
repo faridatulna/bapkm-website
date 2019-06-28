@@ -268,14 +268,14 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$cal_lastest->title!!}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $cal_lastest->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$cal_lastest->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="news_slider owl-carousel no-repeat">
-                            @foreach($cal as $i=>$data) 
+                            @foreach($cal as $i=>$data)
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">

@@ -29,7 +29,7 @@ class ServiceController extends Controller
         $datas = Services::all();
         return view('admin.help.services',compact('datas'));
     }
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -49,7 +49,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        
+
     }
 
 
@@ -73,24 +73,24 @@ class ServiceController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Product');
             $request->file('fileImg')->move($desPath, $fileName);
             $fileImg = $fileName;
         }
-            
+
         if ($request->file('filePdf') == ''){
             $filePdf = "";
         }else{
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Product');
             $request->file('filePdf')->move($desPath, $fileName);
             $filePdf = $fileName;
         }
-        
+
 
         Services::create([
             'title' => $request->input('title'),
@@ -124,7 +124,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
@@ -144,20 +144,20 @@ class ServiceController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Product');
             $request->file('fileImg')->move($desPath, $fileName);
-            
+
             // Storage::delete($article->fileImg);
             $service->fileImg = $fileName;
         }
-            
+
         if ($request->hasFile('filePdf'))
         {
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Product');
             $request->file('filePdf')->move($desPath, $fileName);
 
@@ -170,7 +170,7 @@ class ServiceController extends Controller
         $service->url = $request->input('url');
 
         $service->update();
-        
+
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
         return redirect()->back();
@@ -198,7 +198,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Services::findOrFail($id);       
+        $service = Services::findOrFail($id);
         $service->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

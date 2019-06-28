@@ -26,10 +26,10 @@ class SopController extends Controller
 
     public function links()
     {
-        $datas = Helps::all();
+        $datas = Helps::orderBy('updated_at','desc')->get();
         return view('admin.help.sop',compact('datas'));
     }
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -37,7 +37,7 @@ class SopController extends Controller
      */
     public function index()
     {
-        $datas = Helps::paginate(10);
+        $datas = Helps::orderBy('updated_at','desc')->paginate(10);
 
         return view('admin.help.sop',compact('datas'));
     }
@@ -49,7 +49,7 @@ class SopController extends Controller
      */
     public function create()
     {
-       
+
     }
 
 
@@ -70,93 +70,30 @@ class SopController extends Controller
 
         if ($request->file('fileImg') == ''){
             $fileImg = "";
-            
+
         }else{
-                if($request->type == [1]){
-                   $file = $request->file('fileImg');
-                   $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                   $desPath = public_path('Uploaded/Regdat');
-                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                   $request->file('fileImg')->move($desPath, $fileName); 
-                   $fileImg = $fileName;
-                }
-                else if($request->type == [2]){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/PEP');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName); 
-                    $fileImg = $fileName;
-                }
-                else if($request->type == [3]){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Beasiswa'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $fileImg = $fileName;
-                }
-                else if($request->type == [4]){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Data'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $fileImg = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
-                }
-            
-            
+            $file = $request->file('fileImg');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $desPath = public_path('Uploaded/SOP');
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            $request->file('fileImg')->move($desPath, $fileName);
+            $fileImg = $fileName;
         }
-        
+
         //File Upload
         if ($request->file('filePdf') == ''){
             $filePdf = "";
         }else{
-                if($request->type == [1]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                   $desPath = public_path('Uploaded/Regdat');
-                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                   $request->file('filePdf')->move($desPath, $fileName); 
-                   $filePdf = $fileName;
-                }
-                else if($request->type == [2]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/PEP');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName); 
-                    $filePdf = $fileName;
-                }
-                else if($request->type == [3]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Beasiswa');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName); 
-                    $filePdf = $fileName;
-                }
-                else if($request->type == [4]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Data'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName);
-                    $filePdf = $fileName;
-                }
+            $file = $request->file('filePdf');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $desPath = public_path('Uploaded/SOP');
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            $request->file('filePdf')->move($desPath, $fileName);
+            $filePdf = $fileName;
         }
-        
+
 
         Helps::create([
             'title' => $request->input('title'),
@@ -192,7 +129,7 @@ class SopController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**
@@ -212,102 +149,28 @@ class SopController extends Controller
 
         if ($request->hasFile('fileImg'))
         {
-            if($help->type == 1){
-                   $file = $request->file('fileImg');
-                   $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                   $desPath = public_path('Uploaded/Regdat');
-                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                   $request->file('fileImg')->move($desPath, $fileName); 
-                   $fileImg = $fileName;
-                }
-                else if($help->type == 2){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/PEP');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName); 
-                    $fileImg = $fileName;
-                }
-                else if($help->type == 3){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Beasiswa'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $fileImg = $fileName;
-                }
-                else if($help->type == 4){
-                    $file = $request->file('fileImg');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Data'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                    $request->file('fileImg')->move($desPath, $fileName);
-                    $fileImg = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
-                }
-            
-            // Storage::delete($article->fileImg);
-            
-        }
-            
-        if ($request->hasFile('filePdf'))
-        {
-            
+            $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            if($request->type == [1]){
-                   $file = $request->file('filePdf');
-                   $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                   $desPath = public_path('Uploaded/Regdat');
-                   $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                   $request->file('filePdf')->move($desPath, $fileName); 
-                   $filePdf = $fileName;
-                }
-                else if($request->type == [2]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/PEP');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName); 
-                    $filePdf = $fileName;
-                }
-                else if($request->type == [3]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Beasiswa');
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName); 
-                    $filePdf = $fileName;
-                }
-                else if($request->type == [4]){
-                    $file = $request->file('filePdf');
-                    $dt = Carbon::now();
-                   $acak  = $file->getClientOriginalExtension();
-                    $desPath = public_path('Uploaded/Data'); 
-                    $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                    $request->file('filePdf')->move($desPath, $fileName);
-                    $filePdf = $fileName;
-                }else{
-                    
-                 // 0=regdat, 1=pep, 2=beasiswa, 3=kemahasiswaan
-                }
-            
-            // Storage::delete($article->filePdf);
-            
+            $desPath = public_path('Uploaded/SOP');
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            $request->file('fileImg')->move($desPath, $fileName);
+            $help->fileImg = $fileName;
+        }
+
+        if ($request->hasFile('filePdf'))
+        {
+          $file = $request->file('filePdf');
+          $dt = Carbon::now();
+          $acak  = $file->getClientOriginalExtension();
+          $desPath = public_path('Uploaded/SOP');
+          $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+          $request->file('filePdf')->move($desPath, $fileName);
+          $help->filePdf = $fileName;
         }
 
         $help->description = $request->input('description');
-        
+
         $help->update();
 
         Session::flash('message', 'Berhasil diubah!');
@@ -337,7 +200,7 @@ class SopController extends Controller
      */
     public function destroy($id)
     {
-        $help = Helps::findOrFail($id);       
+        $help = Helps::findOrFail($id);
         $help->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

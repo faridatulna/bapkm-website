@@ -44,7 +44,7 @@
           <div class="col-md-12">
             <a data-target="#modalIMG{{$data->id}}" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
               <div class="ba-0 tp-s">
-                <img class="card-img-top"  style="width:100%;" src="{{ url('Uploaded/PEP/',$data->fileImg) }}">
+                <img class="card-img-top"  style="width:100%;" src="{{ url('Uploaded/SOP/',$data->fileImg) }}">
               </div>
             </a>
           </div>
@@ -56,7 +56,7 @@
         <div class="modal-dialog modal-lg" role="document" style="margin:13vh 15vw;">
           <div class="modal-content">
             <div class="modal-body mb-0 p-0">
-              <img alt="" style="min-width:70vw" align="center" src="{{ url('Uploaded/PEP/',$data->fileImg) }}">
+              <img alt="" style="min-width:70vw" align="center" src="{{ url('Uploaded/SOP/',$data->fileImg) }}">
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
 
       <p>Klik gambar untuk memperbesar.</p>
       @elseif($data->filePdf)
-      <p>Klik <a href="{{ url('Uploaded/Regdat/',$data->filePdf) }}">di sini</a> untuk detil panduan.</p>
+      <p>Klik <a href="{{ url('Uploaded/SOP/',$data->filePdf) }}">di sini</a> untuk detil panduan.</p>
       @else
       @endif
 

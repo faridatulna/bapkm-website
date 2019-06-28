@@ -37,7 +37,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary fa fa-plus mb-4" data-toggle="modal" data-target="#addevent">Tambah</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addevent"><i class="fa fa-plus"></i>&nbsp Tambah</button>
                         @if($event->count())
                         <table class="table table-striped">
                             <thead>
@@ -81,11 +81,10 @@
                                                 {!!Form::model($data,['method'=>'PATCH', 'action'=>['EventController@update',$data->id ]]) !!}
 
                                                 <div class="modal-body">
-                                                    <ul style="color: red;font-size: 0.75rem;">
-                                                        <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
-                                                        </li>
-                                                    </ul>
+                                                  <ul style="color: red;font-size: 0.75rem;">
+                                                      <i class="fa fa-asterisk"></i>
+                                                      <em> Form wajib diisi </em>
+                                                  </ul>
 
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                                         <label for="title" class="col-md-6 control-label">Judul</label>
@@ -122,7 +121,7 @@
                                                                 </span> @endif
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
                                                         <label for="place" class="col-md-6 control-label">Akhir</label>
@@ -197,11 +196,10 @@
                     <form method="POST" action="{{ route('admin.event.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <li class="fa fa-asterisk">
-                                    <em> Form Wajib diisi </em>
-                                </li>
-                            </ul>
+                          <ul style="color: red;font-size: 0.75rem;">
+                              <i class="fa fa-asterisk"></i>
+                              <em> Form wajib diisi </em>
+                          </ul>
 
                             <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-6 control-label">Judul</label>
@@ -232,7 +230,7 @@
                                         <input id="toTime" type="time" class="form-control" name="toTime" placeholder="Akhir" >
                                     </div>
                                 </div>
-                                
+
 
                             </div>
 

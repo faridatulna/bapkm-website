@@ -102,10 +102,12 @@
                             <div class="timeline-icon"><span class="year">IV</span></div>
                             <div class="timeline-content">
                                 <h3 class="title" style="margin-bottom: 5px;">Badan Akademik</h3>
-                                <p class="description">Pimpinan:</p>
+                                <p class="description subtitle"><strong></strong></p>
+                                <p class="description" style="margin-bottom: 50px;">Pimpinan:</p>
                                 <p class="description">
-                                    Dr. Ismaini Zain, M.Si.
+                                    Dr. Ismaini Zain, M.Si. <i class="fa fa-arrow-right" hidden=""></i>
                                 </p>
+
                             </div>
                         </div>
 

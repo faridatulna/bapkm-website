@@ -26,10 +26,10 @@ class ArticleController extends Controller
     // public function links()
     // {
     //     $datas = Article::orderBy('updated_at','desc')->get();
-         
+
     //     return view('admin.article.index',compact('datas'));
     // }
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -73,19 +73,19 @@ class ArticleController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('fileImg')->move($desPath, $fileName);
             $fileImg = $fileName;
         }
-            
+
         if ($request->file('filePdf') == ''){
             $filePdf = "";
         }else{
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('filePdf')->move($desPath, $fileName);
             $filePdf = $fileName;
@@ -103,7 +103,7 @@ class ArticleController extends Controller
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
         return redirect(route('admin.article.index'));
-        
+
     }
 
     /**
@@ -150,20 +150,20 @@ class ArticleController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('fileImg')->move($desPath, $fileName);
-            
+
             // Storage::delete($article->fileImg);
             $article->fileImg = $fileName;
         }
-            
+
         if ($request->hasFile('filePdf'))
         {
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('filePdf')->move($desPath, $fileName);
 
@@ -175,7 +175,7 @@ class ArticleController extends Controller
         $article->type = $request->input('type');
         $article->description = $request->input('description');
         $article->url = $request->input('url');
-        
+
         $article->update();
 
         Session::flash('message', 'Berhasil diubah!');
@@ -205,7 +205,7 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::findOrFail($id); 
+        $article = Article::findOrFail($id);
         Storage::delete($article->filePdf);
         Storage::delete($article->fileImg);
 
