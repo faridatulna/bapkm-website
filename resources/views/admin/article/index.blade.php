@@ -158,7 +158,7 @@
                                                           <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                                                               <label for="url" class="col-md-6 control-label">Url</label>
                                                               <div class="col-md-11">
-                                                                  <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
+                                                                  <input id="Url" type="url" name="url" class="form-control" value="{{$data->url}}" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
                                                                   <span class="help-block">
                                                                           <strong>{{ $errors->first('url') }}</strong>
                                                                   </span> @endif
@@ -166,7 +166,7 @@
                                                           </div>
                                                           <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                                               <div class="col-11">
-                                                                  {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
+                                                                  {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description', $data->description , array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
                                                                   <span class="help-block">
                                                                           <strong>{{ $errors->first('description') }}</strong>
                                                                       </span> @endif
@@ -186,6 +186,10 @@
                                                               <label for="email" class="col-md-4 control-label">File Pdf</label>
                                                               <div class="col-md-10">
                                                                   <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                                                  @if($data->filePdf)
+                                                                    <a href="{{url('Uploaded/Article/', $data->filePdf )}}" ><i class="fa fa-download"></i> File Pdf Sudah Ada</a>
+                                                                  @else
+                                                                    @endif
                                                               </div>
                                                           </div>
                                                       </div>
@@ -197,9 +201,9 @@
                                                     <button type="submit" class="btn btn-primary" id="submit">Update</button>
                                                     <button type="reset" class="btn btn-danger">Reset</button>
                                                 </div>
-
+                                            </form>
                                         </div>
-                                        </form>
+
                                     </div>
                                 </div>
 
