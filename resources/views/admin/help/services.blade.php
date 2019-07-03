@@ -56,7 +56,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-plus"></i>$nbsp Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-plus"></i> Tambah</button>
 
                     </div>
                     <div class="col-lg-12">
@@ -127,7 +127,8 @@
                                                     <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
                                                         <label for="url" class="col-md-6 control-label">Url</label>
                                                         <div class="col-md-12">
-                                                            <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" value="{{ $data->url }}"> @if ($errors->has('url'))
+                                                            <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" value="{{ $data->url }}">
+                                                            @if ($errors->has('url'))
                                                             <span class="help-block">
                                                             <strong>{{ $errors->first('url') }}</strong>
                                                     </span> @endif
@@ -137,7 +138,8 @@
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                                         <label for="title" class="col-md-6 control-label">Judul</label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul Artikel" required>
+                                                            @if ($errors->has('title'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('title') }}</strong>
                                                                   </span> @endif
@@ -156,7 +158,9 @@
                                                     <label for="email" class="col-md-6 control-label">File Pdf</label>
                                                     <div class="col-md-12">
                                                         <input type="file" name="filePdf">
-                                                        <a href="{{ url('Uploaded/Article',$data->filePdf) }}" target="_blank"> <i class="fa fa-download"></i> File Pdf</a>
+                                                        @if($data->filePdf)
+                                                        <a src="{{url('Uploaded/SOP/', $data->filePdf)}}"><i class="fa fa-download"> </i>Unduh File PDF </a>
+                                                        @else @endif
                                                     </div>
                                                 </div>
 

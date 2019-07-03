@@ -55,8 +55,8 @@
                                     @foreach($datas as $data)
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
-                                        <td>{{ $data->title}}</td>
-                                        <td>{{ date('M j, Y hi: a',strtotime('$data->uploaded_at')) }}</td>
+                                        <td>{!! $data->title!!}</td>
+                                        <td>{{ date('M j, Y h : i a',strtotime($data->updated_at)) }}</td>
                                         <td><a @if($data->filePdf) href="{{ url('Uploaded/Article', $data->filePdf) }}" @endif> <i class="fa fa-download"></i> File PDF</a></td>
                                         <td>
                                             <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#editcal{{ $data->id }}"></button>
@@ -91,7 +91,7 @@
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                                         <label for="title" class="col-md-6 control-label">Judul</label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{$data->title}}" required> @if ($errors->has('title'))
+                                                            <input id="title" type="text" class="form-control" name="title" value="{!! $data->title !!}" placeholder="{!! $data->title !!}" required> @if ($errors->has('title'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('title') }}</strong>
                                                             </span> @endif

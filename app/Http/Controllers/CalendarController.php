@@ -31,7 +31,7 @@ class CalendarController extends Controller
         // $links = Quicklinks::all();
         return view('admin.article.list_cal',compact('datas'));
     }
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -76,19 +76,19 @@ class CalendarController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('fileImg')->move($desPath, $fileName);
             $fileImg = $fileName;
         }
-            
+
         if ($request->file('filePdf') == ''){
             $filePdf = null;
         }else{
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('filePdf')->move($desPath, $fileName);
             $filePdf = $fileName;
@@ -105,7 +105,7 @@ class CalendarController extends Controller
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-        return redirect(route('admin.article.list_cal'));
+        return redirect()->back();
     }
 
     /**
@@ -150,23 +150,23 @@ class CalendarController extends Controller
             $file = $request->file('fileImg');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('fileImg')->move($desPath, $fileName);
-            
+
             // Storage::delete($fileImg);
             $article->fileImg = $fileName;
         }
-            
+
         if ($request->hasFile('filePdf'))
         {
             $file = $request->file('filePdf');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
             $desPath = public_path('Uploaded/Article');
             $request->file('filePdf')->move($desPath, $fileName);
-            
+
             // Storage::delete($filePdf);
             $article->filePdf = $fileName;
         }
@@ -175,7 +175,7 @@ class CalendarController extends Controller
         $article->type = 6;
         $article->description = null;
         $article->url = null;
-        
+
         $article->update();
 
         Session::flash('message', 'Berhasil diubah!');
@@ -191,8 +191,8 @@ class CalendarController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::findOrFail($id); 
-        Storage::delete($article->filePdf);      
+        $article = Article::findOrFail($id);
+        Storage::delete($article->filePdf);
         $article->delete();
 
         Session::flash('message', 'Berhasil dihapus!');

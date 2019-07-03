@@ -184,7 +184,7 @@
                                                             <div class="col-md-12">
                                                                 <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                                                 @if($data->filePdf)
-                                                                    <a href="{{ url('Uploaded/SOP/'. $data->filePdf) }}"></a>
+                                                                    <a href="{{ url('Uploaded/SOP/'. $data->filePdf) }}"> <i class="fa fa-download"></i> File Pdf Sudah Ada</a>
                                                                 @else @endif
 
                                                             </div>
