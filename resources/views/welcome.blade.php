@@ -7,7 +7,8 @@
 
 <!--================Home Banner Area =================-->
 <section class="home_banner_area">
-    <div class="d-flex align-items-center" style="min-height: 350px;position: relative;">
+
+    <div class="d-flex align-items-center">
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -31,7 +32,8 @@
                     </div> -->
                     @foreach($gal as $i=>$data)
                     <div class="carousel-item @if($i == 0) active @endif">
-                        <div class="banner_inner d-flex align-items-center" @if($data->banner) style="background-image:url({{ url('Uploaded/Banner',$data->banner) }}); background-repeat: no-repeat; background-position: center; filter: brightness(85%); background-size: 100%;" @endif>
+                        <div class="banner_inner d-flex align-items-center" @if($data->banner) style="background:url({{ url('Uploaded/Banner',$data->banner) }}) no-repeat scroll center center; filter: brightness(85%); background-size: cover;" @endif>
+                            <!-- style="background-image:url({{ url('Uploaded/Banner',$data->banner) }}); background-repeat: no-repeat; background-position: center; filter: brightness(85%); background-size: 100%;" -->
                             <div class="banner_content text-center">
                                 <div class="date">
                                     <!-- <a class="gad_btn" href="#">Gadgets</a>
@@ -50,74 +52,6 @@
     </div>
 </section>
 <!--================End Home Banner Area =================-->
-
-<!--================Choice Area =================-->
-<!-- <section class="choice_area p_120">
-    <div class="container">
-        <div class="main_title2">
-            <h2>Editor’s Choice</h2>
-        </div>
-        <div class="row choice_inner">
-            <div class="col-lg-3 col-md-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/choice/choice-1.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                        <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/choice/choice-2.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                        <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/choice/choice-3.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                        <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/choice/choice-4.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Myspace Layouts The Missing Element already</h4></a>
-                        <p>Planning to visit Las Vegas or any other vacational resort where casinos</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!--================End Choice Area =================-->
 
 <!--================News Area =================-->
 <section class="news_area">
@@ -201,7 +135,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                @endforeach()
+                                @endforeach
                                 <!-- <a href="http://baak.its.ac.id/wsd/cari.php" target="_blank">
                                     <div class="item cube">
                                         <div class="pad15 design" style="background-image:url({{url('Uploaded/Product/wisuda.jpeg')}}); background-size: 300px 200px;">
@@ -255,27 +189,30 @@
                         <div class="main_title2">
                             <h2>Kalender Akademik</h2>
                         </div>
+                        @foreach($cal_lastest as $i=>$data)
                         <div class="choice_item">
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn" href="#">Kalender Akademik</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($cal_lastest->updated_at)) }}</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <div class="row" style="height: 40px;">
                                     <div class="col-xs-3">
                                         <div class="date">
-                                            <i class="fa fa-calendar fa-5x"></i>
+                                            <i class="fa fa-calendar fa-5x" style="color: #003A7F;"></i>
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <a href="{{ url('Uploaded/Article', $cal_lastest->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$cal_lastest->title!!}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="news_slider owl-carousel no-repeat">
+                        @endforeach
+                        <?p $i=0; ?>
+                        <div class="news_slider owl-carousel">
                             @foreach($cal as $i=>$data)
+                            @if($i!=0)
                             <div class="item">
                                 <div class="choice_item">
                                     <div class="choice_text">
@@ -287,8 +224,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @else @endif
                             @endforeach
                         </div>
+
                     </aside>
 
                     <aside class="r_widgets sosial_widgets">

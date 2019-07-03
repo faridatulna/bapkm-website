@@ -1069,8 +1069,8 @@ button:focus {
 .home_banner_area .banner_inner {
   position: relative;
   /*background: url(../img/banner/home-banner.jpg) no-repeat scroll center center;*/
-  min-height: 350px;
-  min-width: 712px;
+  min-height: 350px; 
+  /*min-width: 712px;*/
 }
 
 .home_banner_area .banner_inner .banner_content {

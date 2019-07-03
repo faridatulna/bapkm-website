@@ -5,18 +5,18 @@
             <div class="col-12">
                 <div class="top-header-content d-flex align-items-center justify-content-between">
                     <!-- Logo -->
-                    <div class="col-7 logo">
-                        <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
-                        <h2 style="float: left; color: white; margin-left: 2vw;"><a href="/" style="color: white !important;">KREATIF DAN INOVATIF</a></h2>
+                    <div class="logo">
+                        <a href=""><img src="https://colorlib.com/preview/theme/newspaper/img/core-img/logo.png" alt=""></a>
+                        <!-- <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
+                        <h2 style="float: left; color: white; margin-left: 2vw;"><a href="/" style="color: white !important;">KREATIF DAN INOVATIF</a></h2> -->
                     </div>
 
                     <!-- Login Search Area -->
-                    <div class="login-search-area d-flex align-items-right">
-                        <!-- Search Form -->
+                    <div class="login-search-area d-flex align-items-center">
                         <div class="search-form">
                             <form action="/search-result" method="post" role="search">
                                 {{ csrf_field() }}
-                                <input type="search" name="q" class="form-control" placeholder="Search">
+                                <input type="text" name="q" class="form-control" placeholder="Search">
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
@@ -27,6 +27,8 @@
     </div>
 </div>
 
+
+
 <!-- Navbar Area -->
 <div class="newspaper-main-menu" id="stickyMenu">
     <div class="classy-nav-container breakpoint-off">
@@ -36,7 +38,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="index.html"><img src="https://colorlib.com/preview/theme/newspaper/img/core-img/logo.png" alt=""></a>
                 </div>
 
                 <!-- Navbar Toggler -->

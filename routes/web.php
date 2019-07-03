@@ -21,16 +21,21 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 
 //ui user
+
+// Route::get('/', function() {
+//   echo "hello ini '/'";
+// });
+
 Route::get('/', function () {
 
-    $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+    $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
     $links = Quicklinks::all();
     $service = Services::all();
     $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get();
     $gal = Galleries::all();
-    return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','gal_active','service') );
+    return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service') );
 })->name('welcome');
 
 // Route::any ( '/search-result', function () {
