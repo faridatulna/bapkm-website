@@ -179,10 +179,9 @@
                     <div class="row" style="margin-left: 4px;">
                       <a href="{{ asset('Uploaded/PDF/servicedesk.pdf')}}" target="_blank">Panduan penggunaan <i>service desk</i> ITS</a>
                     </div>
-
-
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <div class="right_sidebar">
                     <aside class="r_widgets news_widgets">
@@ -193,8 +192,8 @@
                         <div class="choice_item">
                             <div class="choice_text">
                                 <div class="date">
-                                    <a class="gad_btn" href="#">Kalender Akademik</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                    <a class="gad_btn" href="">Kalender Akademik</a>
+                                    <a ><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <div class="row" style="height: 40px;">
                                     <div class="col-xs-3">
@@ -204,11 +203,15 @@
                                     </div>
                                     <div class="col-xs-9">
                                         <a href="{{ url('Uploaded/Article', $data->filePdf) }}"><h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
+                                        <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
+                                            Lihat Kalender <i class="arrow right icon"></i> 
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
+
                         <?p $i=0; ?>
                         <div class="news_slider owl-carousel">
                             @foreach($cal as $i=>$data)
@@ -219,7 +222,7 @@
                                         <a href="{{ url('Uploaded/Article', $data->filePdf) }}">
                                             <h4 style="text-transform: uppercase;">{!!$data->title!!}</h4></a>
                                         <div class="date">
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                            <a ><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -234,13 +237,17 @@
                         <div class="main_title2">
                             <h2>Quick Links</h2>
                         </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-6">
+                        <div class="content_calendar">
+                            <div id="wrapper">
+                            <div class="scrollbar-ql " id="style-7" style="margin-top:10px;">
                                 <ul class="list">
                                     @foreach($links as $data)
-                                    <li><a href="{{ $data->url }}" class="ql">{{$data->title}}</a></li>
+                                    <a href="{{ $data->url }}" class="ql">
+                                        <li style="border-bottom:1px solid #d9d9d9; "> {{$data->title}} </li>
+                                    </a>
                                     @endforeach
                                 </ul>
+                            </div>
                             </div>
                         </div>
                     </aside>
@@ -253,11 +260,11 @@
                             <div id="wrapper">
                                 <div class="scrollbar" id="style-7">
                                     <div class="force-overflow">
-                                        <div class="content_calendar no-repeat">
+                                        <div class="content_calendar no-repeat" style="margin-top: 0;">
                                             @foreach($agenda as $data)
                                             <div class="detail-calendar-grey">
                                                 <div class="calendar-grey">
-                                                    <h1 style="margin-top:10px;margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
+                                                    <h1 style="margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
                                                     <h3 style="margin-top:0;">{{ date('M', strtotime($data->dateOfEvent)) }}</h3>
                                                 </div>
                                                 <div class="calendar-contain-grey">

@@ -51,13 +51,17 @@ Table of Content:
 /*
  *  STYLE 7
  */
+ .scrollbar-ql
+ {
+  overflow-y: scroll;
+  min-width: inherit;
+  height: 80px;
+ }
 
  .scrollbar
  {
- 	float: left;
+  overflow-y: scroll;
  	height: 300px;
- 	width: 350px;
- 	overflow-y: scroll;
  }
 
  .force-overflow
@@ -68,7 +72,6 @@ Table of Content:
  #wrapper
  {
  	text-align: center;
- 	width: 500px;
  	margin: auto;
  }
 
@@ -564,7 +567,7 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   /* border: 1px solid #ccc; */
   background-color: #f1f1f1;
-  width: 30%;
+  width: 40%;
   height: auto;
 }
 
@@ -598,7 +601,7 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   padding: 0px 12px;
   /* border: 1px solid #ccc; */
-  width: 70%;
+  width: 60%;
   border-left: none;
   height: auto;
 }
@@ -1049,6 +1052,38 @@ button:focus {
 .card:hover::after {
     opacity: 1;
 }
+
+/* help page css*/
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px 30px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    padding-right: 30px;
+    padding-left: 30px;
+    /*margin-bottom: 20px;*/
+  }
+}
+
+/* end help page css*/
 
 /* End Header Area css
 ============================================================================================ */
