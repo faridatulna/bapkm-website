@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
+use App\Comment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -37,9 +38,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $datas = Article::where('type','!=', 6)->orderBy('updated_at','desc')->get();
-        $datas = Article::where('type','!=', 6)->orderBy('updated_at','desc')->paginate(10);
-        return view('admin.article.index',compact('datas'));
+        $datas = Article::orderBy('updated_at','desc')->get();
+        $datas = Article::orderBy('updated_at','desc')->paginate(4);
+        $comments = Comment::orderBy('updated_at','desc')->get();
+        $comments = Comment::orderBy('updated_at','desc')->paginate(5);
+
+        return view('admin.article.index',compact('datas','comments'));
     }
 
     /**
@@ -114,7 +118,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-
+        $data = Article::findorfail($id);
+        return view('admin.article.article-single', compact('data'));
     }
 
     /**

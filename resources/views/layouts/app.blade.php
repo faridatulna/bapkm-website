@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('force/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('force/css/style2.css') }}">
     <link rel="stylesheet" href="{{ asset('force/css/responsive.css') }}">
+    
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />

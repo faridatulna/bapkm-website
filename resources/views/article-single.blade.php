@@ -3,21 +3,30 @@
     $('.ui.dropdown')
         .dropdown();
 </script>
+
 <script>
 function showForm() {
-  var x = document.getElementById("comment-div");
+  var x = document.getElementById("comment-form");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
 }
-function likeArticle(x) {
-  x.classList.toggle("fa-thumbs-up");
-}
+
+$(".iconlike.fa").click(function() {
+  $(this).toggleClass("fa-heart fa-heart-o");
+});
+
 </script>
 
-@stop @extends('layouts.app') @section('content')
+@stop @extends('layouts.app') 
+<style>
+    .comment-list .comment-list {
+        margin-left: 40px
+    }
+</style>
+@section('content')
 
 <!--================News Area =================-->
 <section class="news_area">
@@ -30,7 +39,7 @@ function likeArticle(x) {
                     </h4>
                     <div class="user_details">
                         <div class="float-left">
-                            <a class="gad_btn" href="#">
+                            <a class="gad_btn">
                                 @if($data->type == 1)
                                     Akademik
 
@@ -81,17 +90,6 @@ function likeArticle(x) {
                             </div>
                         </div>
                     </blockquote>
-                    <div class="news_d_footer">
-                        <a><i onclick="likeArticle(this)" class="iconlike fa fa-thumbs-o-up fa-2x"></i>4 people like this</a>
-                        <a onclick="showForm()" class="button justify-content-center ml-auto"><i class="fa fa-comments-o fa-2x"></i>Komentar</a>
-                        <!-- <div class="news_socail ml-auto">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-rss"></i></a>
-                        </div> -->
-                    </div>
                 </div>
 
                 <div class="navigation-area mt-50">
@@ -102,148 +100,83 @@ function likeArticle(x) {
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                             <div class="detials">
-                                <p>Next Post</p>
+                                <p style="text-align: right;"><span></span> Next Post <span class="lnr lnr-arrow-right"></span> </p>
                                 <a href="/article-page/{{$next->id}}"><h4>{!!$next->title!!}</h4></a>
                             </div>
-                            <div class="arrow">
+                            <!-- <div class="arrow">
                                 <a href="/article-page/{{$next->id}}"><span class="lnr text-white lnr-arrow-right"></span></a>
-                            </div>
+                            </div> -->
                         </div>
                         @elseif( $datas->count() > 1 && $data->id == $datas->max('id') )
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                            <div class="arrow">
+                            <!-- <div class="arrow">
                                 <a href="/article-page/{{$prev->id}}"><span class="lnr text-white lnr-arrow-left"></span></a>
-                            </div>
+                            </div> -->
                             <div class="detials">
-                                <p>Prev Post</p>
+                                <p><span class="lnr lnr-arrow-left"></span> Prev Post</p>
                                 <a href="/article-page/{{$prev->id}}"><h4>{!!$prev->title!!}</h4></a>
                             </div>
                         </div>
 
                         @else
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                            <div class="arrow">
+                            <!-- <div class="arrow">
                                 <a href="/article-page/{{$prev->id}}"><span class="lnr text-white lnr-arrow-left"></span></a>
-                            </div>
+                            </div> -->
                             <div class="detials">
-                                <p>Prev Post</p>
+                                <p><span class="lnr lnr-arrow-left"></span> Prev Post</p>
                                 <a href="/article-page/{{$prev->id}}"><h4>{!!$prev->title!!}</h4></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                             <div class="detials">
-                                <p>Next Post</p>
+                                <p style="text-align: right;"><span></span> Next Post <span class="lnr lnr-arrow-right"></span> </p>
                                 <a href="/article-page/{{$next->id}}"><h4>{!!$next->title!!}</h4></a>
                             </div>
-                            <div class="arrow">
+                            <!-- <div class="arrow">
                                 <a href="/article-page/{{$next->id}}"><span class="lnr text-white lnr-arrow-right"></span></a>
-                            </div>
+                            </div> -->
                         </div>
                         @endif
                     </div>
                 </div>
 
-                <div class="comment-form">
-                    <h4>Leave a Reply</h4>
-                    <form>
+                <div class="main_blog_details">
+                    <div class="news_d_footer">
+                        <a> <i class="iconlike fa fa-heart-o "></i>like this post! 4</a>
+
+                        <a onclick="showForm()" class="iconlike justify-content-center ml-auto"><i class="fa fa-comments-o"></i>5 Komentar</a>
+                        <!-- <div class="news_socail ml-auto">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-rss"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="comment-form" id="comment-form" style="display: none;">
+                    <h4>Leave a Comment</h4>
+                    <form method="post" action="{{ route('comment.add') }}">
+                        {{ csrf_field() }}
                         <div class="form-group form-inline">
                             <div class="form-group col-lg-6 col-md-6 name">
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter Name'">
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 email">
-                                <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter email address'">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter Name'">
+                                <input type="hidden" name="article_id" value="{{ $data->id }}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Subject'">
+                            <textarea class="form-control mb-10" rows="5" name="body" placeholder="Message" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Message'" required=""></textarea>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Messege'" required=""></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button action="" class="primary-btn submit_btn">Post Comment</button>
+                            <button class="primary-btn submit_btn">Post Comment</button>
                         </div>
                     </form>
                 </div>
 
-                <div id="comment-div" class="comments-area" hidden="">
-                    <h4>05 Comments</h4>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="img/blog/c1.jpg" alt="">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">Emilly Blunt</a></h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    <p class="comment">
-                                        Never say goodbye till the end comes!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-list left-padding">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="img/blog/c2.jpg" alt="">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">Elsie Cunningham</a></h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    <p class="comment">
-                                        Never say goodbye till the end comes!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-list left-padding">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="img/blog/c3.jpg" alt="">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">Annie Stephens</a></h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    <p class="comment">
-                                        Never say goodbye till the end comes!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="img/blog/c4.jpg" alt="">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">Maria Luna</a></h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    <p class="comment">
-                                        Never say goodbye till the end comes!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="comments-area">
+                    @include('partials._comment_replies', ['comments' => $data->comments, 'article_id' => $data->id])
                 </div>
             </div>
 
@@ -334,94 +267,5 @@ function likeArticle(x) {
     </div>
 </section>
 <!--================End News Area =================-->
-
-<!--================Choice Area =================-->
-<!-- <section class="choice_area mt-50 mb-50">
-    <div class="container">
-        <div class="main_title2">
-            <h2>Berita Terakhir</h2>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-9.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <p>It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-10.jpg" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <p>It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="choice_item small">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-11.jpg" alt="">
-                    <div class="choice_text">
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <div class="date">
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="choice_item small">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-12.jpg" alt="">
-                    <div class="choice_text">
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <div class="date">
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="choice_item small">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-13.jpg" alt="">
-                    <div class="choice_text">
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <div class="date">
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="choice_item small">
-                    <img class="img-fluid" src="img/blog/popular-post/pp-14.jpg" alt="">
-                    <div class="choice_text">
-                        <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                        <div class="date">
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section> -->
-<!--================End Choice Area =================-->
 
 @endsection

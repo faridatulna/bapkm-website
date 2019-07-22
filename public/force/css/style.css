@@ -465,17 +465,6 @@ body {
 
 /*end tentang kami*/
 
-/* fa-like article*/
-.iconlike {
-  font-size: 30px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.iconlike:hover {
-  color: darkred;
-}
-/* end of fa-like article*/
 
 /*hover effect*/
 .hovereffect {
@@ -570,7 +559,7 @@ body {
 
 /*sop*/
 * {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
+/*body {font-family: "Lato", sans-serif;}*/
 
 /* Style the tab */
 .tab {
@@ -622,7 +611,7 @@ html,body
   height: 100%
   display: flex
   justify-content: center
-  font-family: 'Titillium Web', sans serif
+  /*font-family: 'Titillium Web', sans serif*/
   color: #758D96
 
 button
@@ -631,7 +620,7 @@ button
   min-width: 100px
   padding: 20px
   margin: 20px
-  font-family: 'Titillium Web', sans serif
+  /*font-family: 'Titillium Web', sans serif*/
   border: none
   color: white
   font-size: 16px
@@ -673,7 +662,7 @@ a:hover, a:focus {
 body {
   line-height: 24px;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
+  /*font-family: "Open Sans", sans-serif;*/
   font-weight: normal;
   color: #777777;
 }
@@ -1998,6 +1987,7 @@ button:focus {
 
 .single-post-area .navigation-area p {
   margin-bottom: 0px;
+  text-transform: uppercase;
 }
 
 .single-post-area .navigation-area h4 {
@@ -2083,9 +2073,9 @@ button:focus {
 
 .comments-area {
   background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 50px 30px;
-  margin-top: 50px;
+  margin-top: 10px;
+  /*border-top: 2px solid #eee;*/
+  padding: 10px 30px;
   /*overflow-y: scroll;
   max-height: 300px;*/
 }
@@ -2107,6 +2097,7 @@ button:focus {
 .comments-area h5 {
   font-size: 16px;
   font-weight: bold;
+  text-transform: capitalize;
   margin-bottom: 0px;
 }
 
@@ -2115,15 +2106,25 @@ button:focus {
 }
 
 .comments-area .comment-list {
-  padding-bottom: 48px;
+  padding-bottom: 8px;
+  margin-top: 15px;
+  /*border-bottom: 2px solid #eee;*/
 }
 
 .comments-area .comment-list:last-child {
-  padding-bottom: 0px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  /*border-bottom: 2px solid #eee;*/
+}
+
+.comments-area .comment-list .single-comment {
+  border-bottom: 0.5px solid #eee;
 }
 
 .comments-area .comment-list.left-padding {
   padding-left: 25px;
+  margin-top: 15px;
+  border-bottom: 2px solid #eee;
 }
 
 @media (max-width: 413px) {
@@ -2150,7 +2151,7 @@ button:focus {
 
 .comments-area .comment {
   color: #777777;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .comments-area .btn-reply {
@@ -2161,6 +2162,7 @@ button:focus {
   font-size: 12px;
   display: block;
   font-weight: 600;
+  text-align: right;
   -webkit-transition: all 300ms linear 0s;
   -o-transition: all 300ms linear 0s;
   transition: all 300ms linear 0s;
@@ -2172,16 +2174,16 @@ button:focus {
 }
 
 .comment-form {
-  background: #c1c4e3;
+  background: #fff;
   text-align: left;
-  padding: 47px 30px 43px;
-  margin-top: 50px;
-  margin-bottom: 40px;
+  padding: 10px 30px 43px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .comment-form h4 {
   text-align: left;
-  margin-bottom: 50px;
+  margin-bottom: 27px;
   font-size: 18px;
   line-height: 22px;
   color: #222222;
@@ -2212,7 +2214,7 @@ button:focus {
   padding: 8px 20px;
   background: #f9f9ff;
   border: none;
-  border-radius: 0px;
+  border-radius: 10px;
   width: 100%;
   font-size: 14px;
   color: #777777;
@@ -2243,7 +2245,7 @@ button:focus {
 }
 
 .comment-form textarea.form-control {
-  height: 140px;
+  height: 80px;
   resize: none;
 }
 
@@ -2368,7 +2370,9 @@ button:focus {
 
 .main_blog_details .news_d_footer {
   overflow: hidden;
-  border-top: 1px solid #eeeeee;
+  border-top: 5px solid #eeeeee;
+  padding-bottom : 15px;
+  border-bottom: 2px solid #eee;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2378,7 +2382,7 @@ button:focus {
 }
 
 .main_blog_details .news_d_footer a {
-  font-size: 14px;
+  font-size: 15px;
   font-family: "Open Sans", sans-serif;
   color: #777777;
 }
@@ -2400,6 +2404,25 @@ button:focus {
 .main_blog_details .news_d_footer .news_socail a:last-child {
   margin-right: 0px;
 }
+
+/* fa-like article*/
+.iconlike {
+  /*font-size: 50px;*/
+  cursor: pointer;
+  user-select: none;
+  color: red;
+}
+
+.iconlike:hover {
+  color: red;
+}
+
+/*.heart {
+  font-size: 25px;
+  color:red;
+}*/
+
+/* end of fa-like article*/
 
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
@@ -4196,13 +4219,13 @@ h6 {
   width: auto;
   display: inline-block;
   background: #003A7F;
-  padding: 0px 50px;
+  padding: 0px 10px;
   color: #fff;
   font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-weight: 500;
-  line-height: 50px;
-  border-radius: 0px;
+  line-height: 35px;
+  border-radius: 2px;
   outline: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;

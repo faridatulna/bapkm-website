@@ -14,13 +14,12 @@ class Article extends Model implements Searchable
 
     protected $fillable = [
         'title',
-
         'fileImg',
         'url',
         'filePdf',
-        
         'description',
-        'type'
+        'like_count',
+        'type' //filter_id
     ];
 
     public function getSearchResult(): SearchResult
@@ -32,15 +31,29 @@ class Article extends Model implements Searchable
             $this->title,
             $url,
             $this->description,
-            $this->type
          );
     }
 
-    // public function scopeSearch($query, $q) 
-    // {        
-    //    $match = "MATCH('title','description','url','type') AGAINST (?)";
-    //    return $query->whereRaw($match, array($q))
-    //                 ->orderByRaw($match.' DESC', array($q));  
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
+
+    public function comments_data($id)
+    {
+        $comment = Comment::where('commentable_id',$id)->get();
+        return $comment;
+        //return $this->morphMany(Comment::class, 'cid')->where('commentable_id','=',$id);
+    }
+
+    public function commentsCount($id)
+    {
+        $aid = Article::where('id',$id)->get();
+        return $this->morphMany(Comment::class, 'commentable')->where('commentable_id','=',$id)->count();
+    }
 
 }

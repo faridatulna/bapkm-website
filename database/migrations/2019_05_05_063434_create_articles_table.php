@@ -16,14 +16,14 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->integer('type'); 
-            // 0=akademik, 1=beasiswa, 2=calonmhs, 3=wisuda , 4=wisuda , 5=kalender, 6=kemahasiswaan
-            
+            $table->longText('description')->nullable();
             $table->string('fileImg')->nullable();
             $table->string('filePdf')->nullable();
             $table->string('url')->nullable();
-            $table->longText('description')->nullable();
-            
+            $table->integer('like_count')->nullable();
+
+            $table->unsignedInteger('type'); //filter_id
+            $table->foreign('type')->references('id')->on('filters')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

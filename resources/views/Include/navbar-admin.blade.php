@@ -50,7 +50,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.event.index') }}">Agenda</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" hidden>
                                 <a class="nav-link" href="{{ route('admin.calendar.index') }}">Kalender</a>
                             </li>
                             <li class="nav-item">
@@ -103,7 +103,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="fas fa-globe"></i></i> View website </a>
+                    <a class="nav-link" href="/"><i class="fas fa-globe"></i></i> View website <span class="float-right"><i class="fa fa-arrow-right"></i></span></a>
                 </li>
 
             </ul>

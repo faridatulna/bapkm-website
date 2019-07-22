@@ -22,10 +22,6 @@ use Illuminate\Support\Facades\Input;
 
 //ui user
 
-// Route::get('/', function() {
-//   echo "hello ini '/'";
-// });
-
 Route::get('/', function () {
 
     $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
@@ -185,6 +181,10 @@ Route::prefix('help')
         })->name('datkeg');
     });
 
+//comment and reply
+Route::resource('comment','CommentController');
+Route::post('/comment/add', 'CommentController@store')->name('comment.add');
+Route::post('/reply/add', 'CommentController@replyStore')->name('reply.add');
 
 //admin authorities
 Auth::routes();
@@ -202,6 +202,9 @@ Route::prefix('admin')
         Route::resource('event','EventController');
         Route::get('/quicklink','QuicklinkController@index');
         Route::resource('link','QuicklinkController');
+
+        Route::post('/comment-add', 'CommentController@store')->name('comment-add')->middleware('auth.admin');
+        Route::post('/reply-add', 'CommentController@replyStore')->name('reply-add')->middleware('auth.admin');
 
         Route::prefix('product')->name('product.')->group(function () {
             Route::get('/create', function () {

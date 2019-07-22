@@ -1387,8 +1387,8 @@ Top Header
 .indicator {
     content: '';
     position: absolute;
-    top: 16px;
-    right: 23px;
+    top: 10px;
+    right: 17px;
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -2318,12 +2318,13 @@ Pageheader
 
 
 /* ==========================================================================
-   Ecommerce Products
+   Ecommerce posts
    ========================================================================== */
 
-.product-thumbnail{ border:1px solid #e6e6f2; background-color: #fff; margin-bottom: 30px; }
-.product-img{ text-align: center; padding: 35px 0px;  }
-.product-img-head{position: relative;}
+.post-thumbnail{ border:1px solid #e6e6f2; background-color: #fff; margin-bottom-: 30px; }
+.post-img{ text-align: center; padding: 0px 0px;  }
+.post-img-head{position: relative;}
+.post-header{ padding: 9px 15px 9px 15px;position: relative; }
 .ribbons{
     -webkit-clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 100%, 50% 73%, 10% 100%, 10% 50%);
 clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 100%, 50% 73%, 10% 100%, 10% 50%);
@@ -2340,33 +2341,38 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     top: 11px;
     left: 10px;
     color: #fff;}
-.product-wishlist-btn{height: 40px;
+.post-wishlist-btn{
+    /*height: 40px;*/
     width: 40px;
-    border: 2px solid #dfdfec;
-    border-radius: 100px;
+    /*border: 2px solid #dfdfec;
+    border-radius: 100px;*/
     font-size: 18px;
-    line-height: 2.3;
+    /*line-height: 2.3;*/
     color: #dfdfec;
     text-align: center;
     display: block;
-    position: absolute;
-    right: 15px;
-    top: 15px;}
-    .product-wishlist-btn:hover{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
-    .product-wishlist-btn.active{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
-.product-content{ border-top:1px solid #e6e6f2; padding: 23px;}
-.product-content-head{ position: relative; margin-bottom: 25px; }
-.product-title{font-size: 16px; margin-bottom: 5px;}
-.product-rating{font-size: 12px;
+    /*position: absolute;*/
+    /*right: 15px;*/
+    /*top: 15px;*/
+    }
+    .post-wishlist-btn:hover{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
+    .post-wishlist-btn.active{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
+.post-content{ border-top:1px solid #e6e6f2; padding: 9px 15px 10px 15px; border-bottom:1px solid #e6e6f2;}
+.post-content-head{ position: relative; margin-bottom: 25px;}
 
-    color: #ffa811;}
-.product-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #3d405c;font-family: 'Circular Std Medium'; line-height: 1;}
-.product-btn{}
-.product-del{font-size: 14px; color: #71748d;}
-.product-sidebar{ background-color: #fff; border:1px solid #e6e6f2;  }
-.product-sidebar-widget{border-bottom: 1px solid #e6e6f2; padding: 10px 20px; margin-bottom: 10px;}
-.product-sidebar-widget:last-child{border:0px;}
-.product-sidebar-widget-title{font-size: 16px; margin-bottom: 10px;}
+.post-content-foot{position: relative; padding: 9px 15px 10px 15px; margin-top: 15px; margin-bottom: 0px; }
+
+.post-title{font-size: 16px; margin-bottom: 5px; padding-top: 15px}
+.post-rating{font-size: 14px;
+    color: #ff3367;}
+
+.post-price{ position: absolute; top: 0; right: 0; font-size: 16px; color: #3d405c;font-family: 'Circular Std Medium'; line-height: 1;}
+.post-btn{}
+.post-del{font-size: 14px; color: #71748d;}
+.post-sidebar{ background-color: #fff; border:1px solid #e6e6f2;  }
+.post-sidebar-widget{border-bottom: 1px solid #e6e6f2; padding: 10px 20px; margin-bottom: 10px;}
+.post-sidebar-widget:last-child{border:0px;}
+.post-sidebar-widget-title{font-size: 16px; margin-bottom: 10px;}
 
 .custom-color-red.custom-radio .custom-control-input:checked~.custom-control-label::before {
     background-color: #a40000;
@@ -2381,9 +2387,9 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 
 
-.product-slider{background-color: #fff;  border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 110px;}
-.product-carousel{}
-.product-carousel .carousel-indicators {
+.post-slider{background-color: #fff;  border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding: 110px;}
+.post-carousel{}
+.post-carousel .carousel-indicators {
     position: absolute;
     right: 0;
     bottom: -80px;
@@ -2399,7 +2405,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     list-style: none;
 }
 
-.product-carousel .carousel-indicators li {
+.post-carousel .carousel-indicators li {
   position: relative;
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
@@ -2411,22 +2417,22 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     background-color: rgb(224, 224, 231);
     border-radius: 100%;
 }
-.product-carousel .carousel-indicators li.active{ background-color: #5969ff; }
-.product-carousel .carousel-control-next, .carousel-control-prev {display: none;}
+.post-carousel .carousel-indicators li.active{ background-color: #5969ff; }
+.post-carousel .carousel-control-next, .carousel-control-prev {display: none;}
 
 
-.product-details{ background-color: #fff; padding: 30px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; position: relative;}
-.product-colors {padding-bottom: 10px; margin-bottom: 10px;}
-.product-size{padding-bottom: 14px; margin-bottom: 10px; position: relative;}
-.product-colors input[type=checkbox], input[type=radio] {
+.post-details{ background-color: #fff; padding: 30px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; position: relative;}
+.post-colors {padding-bottom: 10px; margin-bottom: 10px;}
+.post-size{padding-bottom: 14px; margin-bottom: 10px; position: relative;}
+.post-colors input[type=checkbox], input[type=radio] {
     box-sizing: border-box;
     padding: 0;
     display: none;
 }
-.product-description{}
+.post-description{}
 
 
-.product-colors label {
+.post-colors label {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -2437,10 +2443,10 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     animation-duration: 1.6s;
     animation-name: dot-anim;
 }
-.product-colors .radio:checked + label {
+.post-colors .radio:checked + label {
     animation-play-state: paused;
 }
-.product-colors label:before {
+.post-colors label:before {
      content: "\f00c";
     position: absolute;
     font-family: 'Font Awesome\ 5 Free';
@@ -2452,7 +2458,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 }
 
 
-.product-colors .radio:checked + label:after {
+.post-colors .radio:checked + label:after {
     background: transparent;
     transition: all .5s;
     transform: scale(1);
@@ -2502,7 +2508,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 
 
-.product-qty{position: absolute;
+.post-qty{position: absolute;
     right: 0;
     top: 0px;}
 
@@ -2510,14 +2516,14 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
   position: relative;
 }
 
-.product-qty input[type=number]::-webkit-inner-spin-button,
-.product-qty input[type=number]::-webkit-outer-spin-button
+.post-qty input[type=number]::-webkit-inner-spin-button,
+.post-qty input[type=number]::-webkit-outer-spin-button
 {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.product-qty input[type=number]
+.post-qty input[type=number]
 {
   -moz-appearance: textfield;
 }
@@ -2989,6 +2995,29 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     box-shadow: 0 0 0 1px rgb(40, 167, 69);
 }
 
+.approved-btn {
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 2px;
+    color: #2ec551;
+    background-color: transparent;
+    border-color: #2ec551;   
+}
+
+.approved-btn:hover {
+    color: #fff;
+    background-color: #2ec551;
+    border-color: #2ec551;
+}
+
+.approved-btn.focus,
+.approved-btn:focus {
+    color: #fff;
+    background-color: #2ec551;
+    border-color: #2ec551;
+    box-shadow: 0 0 0 1px rgb(40, 167, 69);
+}
+
 
 /*--- btn outline danger --*/
 
@@ -3006,6 +3035,26 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 .btn-outline-danger.focus,
 .btn-outline-danger:focus {
+    color: #fff;
+    background-color: #ef172c;
+    border-color: #ef172c;
+    box-shadow: 0 0 0 1px rgb(239, 23, 44);
+}
+
+.disapproved-btn {
+    color: #ef172c;
+    background-color: transparent;
+    border-color: #ef172c;
+}
+
+.disapproved-btn:hover {
+    color: #fff;
+    background-color: #ef172c;
+    border-color: #ef172c;
+}
+
+.disapproved-btn.focus,
+.disapproved-btn:focus {
     color: #fff;
     background-color: #ef172c;
     border-color: #ef172c;
@@ -4499,6 +4548,7 @@ Pills vertical
 
 .table td,
 .table th {
+    text-align: center;
     padding: 10px;
     vertical-align: middle;
     border-top: 1px solid #e6e6f2;
@@ -4506,6 +4556,7 @@ Pills vertical
 }
 
 .table thead th {
+    text-align: center;
     vertical-align: bottom;
     border-bottom: 2px solid #e6e6f2;
 }
@@ -4554,6 +4605,76 @@ tr.group:hover {
 5.3. Table Filters
 --------------------*/
 
+/*-----------------------
+5.4. Manage Comment
+--------------------*/
+
+.comment-row{
+    /*border-bottom: 2px solid #ccc;*/ margin-bottom: 5px;
+}
+
+.comment-row .comment-row{
+    /*border-bottom: 2px solid #ccc;*/ margin-top: 5px;
+}
+
+.comment-row .single-comment{
+    border-bottom: 1px solid #e6e6f2; 
+}
+
+.comment-row .author{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+.comment-row .date{
+    font-size: 11px;
+    color: #cccccc;
+    margin: 0;
+}
+
+.comment-row .body{
+    color: #777777;
+    margin-top: 0; margin-bottom: 2px;
+}
+
+.comment-row .control .control-button{
+    width: auto;
+    display: inline-block;
+    padding: 0px 40px;
+    vertical-align: middle; 
+    align-items: center; 
+    text-align: center;
+    padding-top: 5px;
+    line-height: 35px;
+
+}
+
+.iconlike {
+  /*font-size: 50px;*/
+  cursor: pointer;
+  user-select: none;
+  color: #71748d;
+}
+
+.iconlike:hover {
+    color: #f0346e;
+    background-color: white;
+    border-color: white;
+}
+
+.btnlike {
+    margin-left: 10px; padding: 0px; color: #71748d;
+    background-color: white;
+    border-color: white;
+}
+
+.btnlike:hover {
+    color: #f0346e;
+    background-color: white;
+    border-color: white;
+}
 
 /* ==========================================================================
  6. Pages
@@ -6760,7 +6881,7 @@ Media Query
 
 /* Large Devices, Wide Screens */
 
-@media only screen and (max-width:1400px) {.product-price{position: initial;}.product-slider {
+@media only screen and (max-width:1400px) {.post-price{position: initial;}.post-slider {
     background-color: #fff;
     border-top-left-radius: 4px;
     padding: 131px 28px;}
@@ -6771,7 +6892,7 @@ Media Query
     border-right: 1px solid #e6e6f2;
 }
 }
-@media only screen and (max-width:1200px) {.product-price{position: initial;}.product-slider{padding: 131px 30px;}
+@media only screen and (max-width:1200px) {.post-price{position: initial;}.post-slider{padding: 131px 30px;}
 /*--------- dashboard-influence -------- */
     .user-social-media {
         padding: 16px 45px;
@@ -6854,9 +6975,9 @@ Media Query
         color: #404040;
     }
 
-    /*--------- dashboard-product-single -------- */
-.product-slider{padding: 131px 30px;}
-.product-carousel .carousel-indicators{bottom: -30px;}
+    /*--------- dashboard-post-single -------- */
+.post-slider{padding: 131px 30px;}
+.post-carousel .carousel-indicators{bottom: -30px;}
 
 /*--------- dashboard-influence -------- */
     .user-social-media {
@@ -6964,9 +7085,9 @@ Media Query
     .tab-regular .nav.nav-pills .nav-item {
         margin-bottom: 5px;
     }
-  /*--------- dashboard-product-single -------- */
-.product-slider{padding: 30px 10px;}
-.product-carousel .carousel-indicators{bottom: -30px;}
+  /*--------- dashboard-post-single -------- */
+.post-slider{padding: 30px 10px;}
+.post-carousel .carousel-indicators{bottom: -30px;}
 .simple-card .nav.nav-tabs .nav-item .nav-link {
     padding: 17px 29px;}
 }

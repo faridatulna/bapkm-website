@@ -19,6 +19,12 @@ class Admin
         if (Auth::check() && Auth::user()->role_id == 0) {
             return $next($request);
         }
+        elseif (Auth::check() && Auth::user()->role_id == 1) {
+            return $next($request);
+        }
+        elseif (Auth::check() && Auth::user()->role_id == 2) {
+            return $next($request);
+        }
         else {
             return redirect()->route('login');
         }
