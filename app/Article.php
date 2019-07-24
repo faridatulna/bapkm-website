@@ -53,7 +53,7 @@ class Article extends Model implements Searchable
     public function commentsCount($id)
     {
         $aid = Article::where('id',$id)->get();
-        return $this->morphMany(Comment::class, 'commentable')->where('commentable_id','=',$id)->count();
+        return $this->morphMany(Comment::class, 'commentable')->where('commentable_id','=',$id);
     }
 
 }

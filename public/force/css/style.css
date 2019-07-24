@@ -2090,7 +2090,7 @@ button:focus {
 .comments-area h4 {
   text-align: center;
   margin-bottom: 50px;
-  color: #222222;
+  color: #777777;
   font-size: 18px;
 }
 
@@ -2214,7 +2214,7 @@ button:focus {
   padding: 8px 20px;
   background: #f9f9ff;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   width: 100%;
   font-size: 14px;
   color: #777777;
@@ -2245,8 +2245,8 @@ button:focus {
 }
 
 .comment-form textarea.form-control {
-  height: 80px;
-  resize: none;
+  height: 60px;
+  resize: block;
 }
 
 .comment-form ::-webkit-input-placeholder {
@@ -4662,13 +4662,43 @@ h6 {
   padding-top: 100px;
 }
 
+.logo-office{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.logo-office .logo-its{
+  width:14vw;height: auto;
+}
+
+@media (min-width: 576px){
+  .borderline{
+    border-left: 3px solid #F4BA23;
+  }
+}
+
+.logo-office .logo-bapkm{
+  width:11vw;height: auto;
+}
+
+@media (max-width: 576px) {
+  .logo-office .logo-its{
+    width:145px;
+  }
+
+  .logo-office .logo-bapkm{
+    width:141px;
+  }
+}
+
 .ab_widgets img {
   margin-bottom: 25px;
 }
 
 .f_title {
   background: #003A7F;
-  /* border-left: 3px solid #F4BA23; */
+  color: #F4BA23;
+  text-transform: uppercase;
   margin-bottom: 15px;
 }
 
@@ -4677,7 +4707,7 @@ h6 {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  color: #fff;
+  color: #F4BA23;
   line-height: 40px;
 }
 
@@ -4724,7 +4754,7 @@ h6 {
 
 .single-footer-widget p {
   margin-bottom: 0px;
-  color: #777777;
+  color: #f4f4f4;
   max-width: 325px;
 }
 

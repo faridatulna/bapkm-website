@@ -62,23 +62,26 @@
     <footer class="footer-area" style="bottom: 0px;">
         <div class="container">
             <div class="row">  <!-- f_widgets_inner -->
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{{ asset('force/img/core-img/logo.png') }}" style="width:14vw;height: auto;" alt=""  style="border-right: 3px solid #F4BA23;">
-              </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <div class="single-footer-widget ab_widgets">
-                       <h2 style="color: #F4BA23; padding:0;">BAPKM ITS</h2>
-                       <!-- <hr style="border: 1.5px solid #F4BA23; width: 40%;"> -->
-                       <p style="color: #f4f4f4;">Biro Administrasi Pembelajaran dan Kesejahteraan Mahasiswa</p>
-                    </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">  
+                  <div class="logo-office">
+                    <img class="logo-its" src="{{ asset('force/img/core-img/logo-its.png') }}" alt="">
+                    <img class="logo-bapkm" src="{{ asset('force/img/core-img/logo.png') }}" alt="">
+                  </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="borderline col-lg-3 col-md-3 col-sm-3">
+                  <div class="single-footer-widget ab_widgets">
+                    <h2 class="f_title">BAPKM ITS</h2>
+                         <!-- <hr style="border: 1.5px solid #F4BA23; width: 40%;"> -->
+                    <p>Biro Administrasi Pembelajaran dan Kesejahteraan Mahasiswa</p>
+                  </div>
+                </div>
+                <div class="borderline col-lg-3 col-md-3 col-sm-3">
                     <div class="single-footer-widget">
                         <div class="f_title">
-                          <h3 style="color: #F4BA23;">Kontak Kami</h3>
+                          <h3>Kontak Kami</h3>
                         </div>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-lg-12">
                               <ul class="contact">
                                 <li><i class="ficon fa fa-envelope-o"></i><a href="mailto:baakcare@its.ac.id" class="mail">baakcare@its.ac.id</a></li>
                                 <li><i class="ficon fa fa-phone"></i>(031) 5994251-54</li>
@@ -91,10 +94,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="borderline col-lg-2 col-md-2 col-sm-2">
                     <div class="single-footer-widget">
                         <div class="f_title">
-                          <h3 style="color: #F4BA23;">Pengunjung</h3>
+                          <h3>Pengunjung</h3>
                         </div>
                         <div class="row">
                             <div class="col-10">
@@ -162,7 +165,8 @@
                   <div class="f_boder"></div>
                 </div> -->
                 <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center">
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script>BAPKM</a>
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Badan Administrasi Pembelajaran & Kesejahteraan Mahasiswa</a>
                 </p>
             </div>
         </div>

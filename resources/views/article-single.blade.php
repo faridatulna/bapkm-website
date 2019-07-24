@@ -145,7 +145,8 @@ $(".iconlike.fa").click(function() {
                     <div class="news_d_footer">
                         <a> <i class="iconlike fa fa-heart-o "></i>like this post! 4</a>
 
-                        <a onclick="showForm()" class="iconlike justify-content-center ml-auto"><i class="fa fa-comments-o"></i>5 Komentar</a>
+                        <a onclick="showForm()" class="iconlike justify-content-center ml-auto">
+                            <i class="fa fa-comments-o"></i>Tambahkan Komentar</a>
                         <!-- <div class="news_socail ml-auto">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -162,7 +163,7 @@ $(".iconlike.fa").click(function() {
                         {{ csrf_field() }}
                         <div class="form-group form-inline">
                             <div class="form-group col-lg-6 col-md-6 name">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter Name'">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter Name'" required="">
                                 <input type="hidden" name="article_id" value="{{ $data->id }}" />
                             </div>
                         </div>
@@ -176,7 +177,16 @@ $(".iconlike.fa").click(function() {
                 </div>
 
                 <div class="comments-area">
+                    <h4>{{$data->commentsCount($data->id)->where('status',1)->count()}} Komentar</h4>
                     @include('partials._comment_replies', ['comments' => $data->comments, 'article_id' => $data->id])
+                </div>
+                <div class="comment-foot">
+                    @if(session()->has('status'))
+                        <div class="alert alert-primary">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session()->get('status') }}
+                        </div>
+                    @endif
                 </div>
             </div>
 

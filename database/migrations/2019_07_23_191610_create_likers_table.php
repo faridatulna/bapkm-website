@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountersTable extends Migration
+class CreateLikersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateCountersTable extends Migration
      */
     public function up()
     {
-        Schema::create('counters', function (Blueprint $table) {
+        Schema::create('likers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('visit_date')->unique();
-            $table->time('visit_time');
-            $table->integer('today_visitors');
-            // $table->integer('total_visitors');
-            // $table->dateTime('date');
+            $table->ip('ip_liker');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateCountersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('counters');
+        Schema::dropIfExists('likers');
     }
 }

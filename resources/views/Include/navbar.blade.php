@@ -6,7 +6,7 @@
                 <div class="top-header-content d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href=""><img src="https://colorlib.com/preview/theme/newspaper/img/core-img/logo.png" alt=""></a>
+                        <a href="/"><img src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" style="max-width:20vw;" alt="" ></a>
                         <!-- <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
                         <h2 style="float: left; color: white; margin-left: 2vw;"><a href="/" style="color: white !important;">KREATIF DAN INOVATIF</a></h2> -->
                     </div>
@@ -38,7 +38,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html"><img src="https://colorlib.com/preview/theme/newspaper/img/core-img/logo.png" alt=""></a>
+                    <a href="/"><img src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" style="max-width:45vw;" alt="" ></a>
                 </div>
 
                 <!-- Navbar Toggler -->

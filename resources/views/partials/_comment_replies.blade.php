@@ -1,6 +1,7 @@
 <!-- This is for reply section on the comment-area -->
 
 @foreach($comments as $comment)
+@if( $comment->status == 1 )
 <script type="text/javascript">
     
 function showReplyForm{{$comment->cid}}() {
@@ -21,7 +22,11 @@ function showReplyForm{{$comment->cid}}() {
                 <img src="{{ url('force/img/core-img/user.png')}}" alt="">
             </div>
             <div class="desc">
+                @if($comment->user_id != null)
+                <h5 style="color:#F4BA23;">{{ $comment->name }}</h5>
+                @else
                 <h5>{{ $comment->name }}</h5>
+                @endif
                 <p class="date">{{date('M j, Y', strtotime($comment->submit_time))}}</p>
                 <p class="comment"> {{ $comment->body }} </p>
             </div>
@@ -53,5 +58,5 @@ function showReplyForm{{$comment->cid}}() {
 
     @include('partials._comment_replies', ['comments' => $comment->replies])
 </div>
-
+@else @endif
 @endforeach

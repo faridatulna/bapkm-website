@@ -45,11 +45,18 @@ class CommentController extends Controller
         $comment->status = 0;
         if($comment->user_id != null){
             $comment->status = 1;
-        }
-        $post = Article::find($request->get('article_id'));
-        $post->comments()->save($comment);
+            $post = Article::find($request->get('article_id'));
+            $post->comments()->save($comment);
 
-        return back();
+            return back()->with('status','Komentar Berhasil Ditambahkan');
+
+        }else{
+            $post = Article::find($request->get('article_id'));
+            $post->comments()->save($comment);
+
+            return back()->with('status','Komentar Akan Segera Ditampilkan Setelah Disetujui Oleh Admin');
+        }
+        
     }
 
     public function replyStore(Request $request)
@@ -63,12 +70,14 @@ class CommentController extends Controller
         $reply->status = 0;
         if($reply->user_id != null){
             $reply->status = 1;
+            $post = Article::find($request->get('article_id'));
+            $post->comments()->save($reply);
+            return back()->with('status','Komentar Berhasil Ditambahkan');
+        }else{
+            $post = Article::find($request->get('article_id'));
+            $post->comments()->save($reply);
+            return back()->with('status','Komentar Akan Segera Ditampilkan Setelah Disetujui Oleh Admin');
         }
-        $post = Article::find($request->get('article_id'));
-        $post->comments()->save($reply);
-
-        return back();
-
     }
 
     /**
