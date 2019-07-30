@@ -30,14 +30,17 @@
             <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
 
                 <div class="card">
-                    <!-- <h5 class="card-header">Agenda</h5> -->
+                    <div class="card-header">
+
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#addevent"><i class="fa fa-plus"></i> Tambah</button>
+
+                    </div>
                     <div class="col-lg-12">
                         @if (Session::has('message'))
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                         @endif
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#addevent"><i class="fa fa-plus"></i>&nbsp Tambah</button>
                         @if($event->count())
                         <table class="table table-striped">
                             <thead>
@@ -81,13 +84,12 @@
                                                 {!!Form::model($data,['method'=>'PATCH', 'action'=>['EventController@update',$data->id ]]) !!}
 
                                                 <div class="modal-body">
-                                                  <ul style="color: red;font-size: 0.75rem;">
-                                                      <i class="fa fa-asterisk"></i>
-                                                      <em> Form wajib diisi </em>
-                                                  </ul>
+                                                    <ul class="list-unstyled">
+                                                       <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                                                    </ul>
 
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                        <label for="title" class="col-md-6 control-label">Judul</label>
+                                                        <label for="title" class="col-md-6 control-label">Judul<span class="required-text"> *</span></label>
                                                         <div class="col-md-12">
                                                             <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required> @if ($errors->has('title'))
                                                             <span class="help-block">
@@ -96,7 +98,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('dateOfEvent') ? ' has-error' : '' }}">
-                                                        <label for="date" class="col-md-6 control-label">Tanggal Agenda</label>
+                                                        <label for="date" class="col-md-6 control-label">Tanggal Pelaksanaan<span class="required-text"> *</span></label>
                                                         <div class="col-md-6">
                                                             <input id="date" type="date" class="form-control" name="dateOfEvent" value="{{ date('m/d/y', strtotime($data->dateOfEvent)) }}" placeholder="{{ date('m/d/y', strtotime($data->dateOfEvent)) }}" required> @if ($errors->has('dateOfEvent'))
                                                             <span class="help-block">
@@ -105,16 +107,17 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
-                                                        <label for="time" class="col-md-6 control-label">Waktu Agenda</label>
-                                                        <div class="row col-12">
-                                                            <div class="col-5">
+                                                        <label for="time" class="col-md-6 control-label">Waktu Pelaksanaan<span class="required-text"> *</span></label>
+                                                        <div class="col-12 d-flex">
+                                                            <div class="col-6 align-self-start">
+                                                                <label for="start-time" >Mulai</label>
                                                                 <input id="fromTime" type="time" class="form-control" name="fromTime" value="{{ $data->fromTime }}" placeholder="{{ time('h:ia', strtotime($data->fromTime)) }}" required> @if ($errors->has('fromTime'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('fromTime') }}</strong>
                                                                 </span> @endif
                                                             </div>
-                                                            <div class="col-2"> - </div>
-                                                            <div class="col-5">
+                                                            <div class="col-6 align-self-end">
+                                                                <label for="end-time" >Sampai</label>
                                                                 <input id="toTime" type="time" class="form-control" name="toTime" value="{{ $data->toTime }}" placeholder="{{ time('h:ia', strtotime($data->toTime)) }}" required> @if ($errors->has('toTime'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('toTime') }}</strong>
@@ -124,7 +127,7 @@
 
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
-                                                        <label for="place" class="col-md-6 control-label">Akhir</label>
+                                                        <label for="place" class="col-md-6 control-label">Tempat Pelaksanaan<span class="required-text">( Optional )</span></label>
                                                         <div class="col-md-12">
                                                             <input id="place" type="place" class="form-control" name="place" value="{{ $data->place }}" placeholder="{{$data->place}}" required> @if ($errors->has('place'))
                                                             <span class="help-block">
@@ -196,15 +199,14 @@
                     <form method="POST" action="{{ route('admin.event.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                          <ul style="color: red;font-size: 0.75rem;">
-                              <i class="fa fa-asterisk"></i>
-                              <em> Form wajib diisi </em>
-                          </ul>
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                            </ul>
 
                             <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-6 control-label">Judul</label>
+                                <label for="title" class="col-md-6 control-label">Nama Agenda<span class="required-text"> *</span></label>
                                 <div class="col-12">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Contoh: upacara 17 agustus" required> @if ($errors->has('title'))
                                     <span class="help-block">
                                                     <strong>{{ $errors->first('title') }}</strong>
                                                 </span> @endif
@@ -212,7 +214,7 @@
                             </div>
 
                             <div class="form-group required {{ $errors->has('dateOfEvent') ? ' has-error' : '' }}">
-                                <label for="dateOfEvent" class="col-md-6 control-label">Tanggal Pelaksanaan</label>
+                                <label for="dateOfEvent" class="col-md-6 control-label">Tanggal Pelaksanaan<span class="required-text"> *</span></label>
                                 <div class="col-12">
                                     <input id="dateOfEvent" type="date" class="form-control" name="dateOfEvent" placeholder="Judul Artikel" >
                                 </div>
@@ -220,13 +222,14 @@
                             </div>
 
                             <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
-                                <label for="dateOfEvent" class="col-md-6 control-label">Waktu Pelaksanaan</label>
-                                <div class="row col-12">
-                                    <div class="col-5">
-                                    <input id="fromTime" type="time" class="form-control" name="fromTime" placeholder="Mulai" >
+                                <label for="dateOfEvent" class="col-md-6 control-label">Waktu Pelaksanaan<span class="required-text"> *</span></label>
+                                <div class="col-12 d-flex">
+                                    <div class="col-6 align-self-start">
+                                        <label for="start-time" >Mulai</label>
+                                        <input id="fromTime" type="time" class="form-control" name="fromTime" placeholder="Mulai" >
                                     </div>
-                                    <div class="col-2"> - </div>
-                                    <div class="col-5">
+                                    <div class="col-6 align-self-end">
+                                        <label for="end-time">Akhir</label>
                                         <input id="toTime" type="time" class="form-control" name="toTime" placeholder="Akhir" >
                                     </div>
                                 </div>
@@ -235,9 +238,9 @@
                             </div>
 
                             <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
-                                <label for="place" class="col-12 control-label">Tempat Pelaksanaan</label>
+                                <label for="place" class="col-12 control-label">Tempat Pelaksanaan<span class="optional-text">( Optional )</span></label>
                                 <div class="col-12">
-                                    <input id="place" type="text" class="form-control" name="place" placeholder="Tempat Pelaksanaan" >
+                                    <input id="place" type="text" class="form-control" name="place" placeholder="contoh: stadion ITS" >
                                 </div>
 
                             </div>

@@ -35,6 +35,7 @@ Table of Content:
 15/ career
 16/ contact
 17/ footer
+18/ marquee
 
 =====================================================================*/
 /*----------------------------------------------------*/
@@ -4357,7 +4358,7 @@ h6 {
 }
 
 .date a {
-  color: #777777;
+  color: #b3afaf;
   font-size: 12px;
   font-family: "Open Sans", sans-serif;
   margin-right: 15px;
@@ -4369,6 +4370,10 @@ h6 {
 
 .date a:last-child {
   margin-right: 0px;
+}
+
+.date-post{
+  color:#b3afaf;
 }
 
 /* End choice Area css
@@ -4952,6 +4957,18 @@ h6 {
   margin-right: 0px;
 }
 
+/*---------------------------------------------------- */
+
+/*----------------marquee-scrolling text------*/
+.running-text {
+  text-transform: uppercase;
+  font-size:1em;
+  font-weight:bold;
+  line-height:2em;
+  color:#000066;
+  background-color:#FFFF33;
+  padding:0em;
+}
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */

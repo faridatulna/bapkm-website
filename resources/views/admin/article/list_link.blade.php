@@ -30,7 +30,9 @@
             <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
 
                 <div class="card">
-                    <!-- <h5 class="card-header">Quick Links</h5> -->
+                    <div class="card-header">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addlinks"><i class="fa fa-plus"></i>&nbsp Tambah</button>
+                    </div>
 
                     <div class="col-lg-12">
                         @if (Session::has('message'))
@@ -39,13 +41,13 @@
                     </div>
 
                     <div class="card-body">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#addlinks"><i class="fa fa-plus"></i>&nbsp Tambah</button>
+
                         @if($links->count())
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama QuickLinks</th>
+                                    <th scope="col">Nama Link</th>
                                     <th scope="col">Url (https://www.its.ac.id)</th>
                                     <th scope="col" colspan="2">Action</th>
                                 </tr>
@@ -78,22 +80,21 @@
                                                 {!!Form::model($data,['method'=>'PATCH', 'action'=>['QuicklinkController@update',$data->id ]]) !!}
 
                                                 <div class="modal-body">
-                                                  <ul style="color: red;font-size: 0.75rem;">
-                                                      <i class="fa fa-asterisk"></i>
-                                                      <em> Form wajib diisi </em>
-                                                  </ul>
+                                                  <ul class="list-unstyled">
+                                                       <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                                                    </ul>
 
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                        <label for="title" class="col-md-6 control-label">Judul</label>
+                                                        <label for="title" class="col-md-6 control-label">Nama Link<span class="required-text"> *</span></label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul" required> @if ($errors->has('title'))
+                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Nama Link (contoh: integra)" required> @if ($errors->has('title'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('title') }}</strong>
                                                             </span> @endif
                                                         </div>
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('date') ? ' has-error' : '' }}">
-                                                        <label for="url" class="col-md-4 control-label">Url</label>
+                                                        <label for="url" class="col-md-4 control-label">Url<span class="required-text"> *</span></label>
                                                         <div class="col-md-12">
                                                             <input id="url" type="url" class="form-control" name="url" value="{{ $data->url }}">
                                                         </div>
@@ -162,15 +163,14 @@
                     <form method="POST" action="{{ route('admin.link.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                          <ul style="color: red;font-size: 0.75rem;">
-                              <i class="fa fa-asterisk"></i>
-                              <em> Form wajib diisi </em>
-                          </ul>
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                            </ul>
 
                             <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-6 control-label">Judul</label>
+                                <label for="title" class="col-md-6 control-label">Nama Link<span class="required-text"> *</span></label>
                                 <div class="col-12">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Nama Link (contoh: integra)" required> @if ($errors->has('title'))
                                     <span class="help-block">
                                             <strong>{{ $errors->first('title') }}</strong>
                                         </span> @endif
@@ -179,9 +179,9 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                <label for="url" class="col-md-6 control-label">Url</label>
+                                <label for="url" class="col-md-6 control-label">Url<span class="required-text"> *</span></label>
                                 <div class="col-12">
-                                    <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
+                                    <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (contoh: https://www.its.ac.id/)"> @if ($errors->has('url'))
                                     <span class="help-block">
                                             <strong>{{ $errors->first('url') }}</strong>
                                         </span> @endif

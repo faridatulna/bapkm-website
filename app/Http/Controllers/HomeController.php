@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
 use App\Article;
 use App\Events;
-use App\Quicklinks;
-use App\Services;
 use App\Helps;
+use App\Services;
+use App\Galleries;
+use App\Quicklinks;
+use App\counter;
+use App\Aboutus;
+use Carbon\Carbon;
 use App\User;
 use Auth;
 
@@ -16,9 +20,16 @@ class HomeController extends Controller
 {
     function index()
     {
+      $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+      $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+      $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+      $links = Quicklinks::all();
+      $service = Services::all();
+      $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get();
+      $gal = Galleries::all();
 
+      return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service') );
     }
-
 
     /**
      * Display the specified resource.
@@ -28,6 +39,7 @@ class HomeController extends Controller
      */
     public function articlepage($id)
     {
+
         $datas = Article::all();
         $data = Article::findorfail($id);
 
@@ -48,39 +60,19 @@ class HomeController extends Controller
         $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
         $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
 
+        setcookie('id', $id, time() + 3600, "/"); //86400 = 1 day
+
+          if( !isset($_COOKIE['id']) ) {
+              \DB::table('articles')->where('id', $id)->increment('viewer',1);
+              $data = Article::findorfail($id);
+              // echo "Set Cookies ". $data->viewer;
+          } else {
+            $data = Article::findorfail($id);
+            // echo "Incrementing ". $data->viewer;
+          }
+
         return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next'));
         // return View::make('users.show')->with('previous', $previous)->with('next', $next);
-    }
-
-    public function likePost(Request $request){
-           // $post_id = $request['postId'];
-           // $is_like = $request['isLike'] === 'true';
-           // $update = false;
-           // $post = Post::find($post_id);
-           // if (!$post) {
-           //     return null;
-           // }
-           // $clientIP = request()->ip();
-           // $like = $clientIP->likes()->where('post_id', $post_id)->first();
-           // if ($like) {
-           //     $already_like = $like->like;
-           //     $update = true;
-           //     if ($already_like == $is_like) {
-           //         $like->delete();
-           //         return null;
-           //     }
-           // } else {
-           //     $like = new Like();
-           // }
-           // $like->like = $is_like;
-           // $like->user_id = $user->id;
-           // $like->post_id = $post->id;
-           // if ($update) {
-           //     $like->update();
-           // } else {
-           //     $like->save();
-           // }
-           // return null;
     }
 
     public function search(Request $request)

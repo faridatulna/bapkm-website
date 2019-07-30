@@ -118,61 +118,56 @@
                                                 <form action="{{ route('admin.service.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
-                                                    <ul style="color: red;font-size: 0.75rem;">
-                                                        <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
-                                                        </li>
+                                                    <ul class="list-unstyled">
+                                                       <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
                                                     </ul>
 
-                                                    <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                                        <label for="url" class="col-md-6 control-label">Url</label>
-                                                        <div class="col-md-12">
-                                                            <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" value="{{ $data->url }}">
-                                                            @if ($errors->has('url'))
-                                                            <span class="help-block">
-                                                            <strong>{{ $errors->first('url') }}</strong>
-                                                    </span> @endif
-                                                        </div>
-                                                    </div>
-
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                        <label for="title" class="col-md-6 control-label">Judul</label>
+                                                        <label for="title" class="col-md-12 control-label">Nama Layanan<span class="required-text">*</span></label>
                                                         <div class="col-md-12">
-                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Judul Artikel" required>
+                                                            <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required>
                                                             @if ($errors->has('title'))
-                                                            <span class="help-block">
-                                                                <strong>{{ $errors->first('title') }}</strong>
-                                                                  </span> @endif
+                                                            <span class="help-block"><strong>{{ $errors->first('title') }}</strong></span> @endif
                                                         </div>
 
                                                     </div>
 
                                                     <div class="form-group{{ $errors->has('fileImg') ? ' has-error' : '' }}">
-                                                    <label for="fileImg" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
-                                                    <div class="col-12">
-                                                        <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
-                                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email" class="col-md-6 control-label">File Pdf</label>
-                                                    <div class="col-md-12">
-                                                        <input type="file" name="filePdf">
-                                                        @if($data->filePdf)
-                                                        <a src="{{url('Uploaded/SOP/', $data->filePdf)}}"><i class="fa fa-download"> </i>Unduh File PDF </a>
-                                                        @else @endif
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                                                    <div class="col-md-12">
-                                                        {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control')) !!}
+                                                        <label for="fileImg" class="col-md-12 control-label">Gambar<span class="required-text">*</span></label>
+                                                        <div class="col-12">
+                                                            <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
+                                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                        </div>
                                                     </div>
 
-                                                </div>
-                                                </div>
+                                                    <div class="form-group required {{ $errors->has('url') ? ' has-error' : '' }}">
+                                                        <label for="url" class="col-md-12 control-label">Url<span class="required-text">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" value="{{ $data->url }}">
+                                                            @if ($errors->has('url'))
+                                                            <span class="help-block"><strong>{{ $errors->first('url') }}</strong></span> @endif
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span> </label>
+                                                        <div class="col-md-12 d-inline-block">
+                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                                            @if($data->filePdf)
+                                                            <span></span>
+                                                            <a class="file-text" src="{{url('Uploaded/Product/', $data->filePdf)}}"><i class="fa fa-download"></i>
+                                                                {{ $data->filePdf }}</a>
+                                                            @else @endif
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+                                                        <div class="col-md-12">
+                                                            <label for="description">Deskripsi<span class="optional-text"> ( Optional )</span></label>
+                                                            {!! Form::textarea('description',$data->description, array('class' => 'form-control')) !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary" id="submit">Update</button>
@@ -237,43 +232,41 @@
                     <form method="POST" action="{{ route('admin.service.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <li class="fa fa-asterisk">
-                                    <em> Form Wajib diisi </em>
-                                </li>
+                            <ul class="list-unstyled">
+                               <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
                             </ul>
 
-                            <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="url" class="col-md-6 control-label">Url</label>
-                                <div class="col-md-12">
-                                    <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
-                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('url') }}</strong>
-                                                </span> @endif
-                                </div>
-                            </div>
-
                             <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-6 control-label">Judul</label>
+                                <label for="title" class="col-md-12 control-label">Nama Layanan<span class="required-text">*</span></label>
                                 <div class="col-md-12">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Layanan Surat Mahasiswa" required> @if ($errors->has('title'))
                                     <span class="help-block">
-                                                    <strong>{{ $errors->first('title') }}</strong>
-                                                </span> @endif
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span> @endif
                                 </div>
 
                             </div>
 
-                            <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                            <div class="form-group{{ $errors->has('fileImg') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-12 control-label">Gambar<span class="required-text">*</span></label>
                                 <div class="col-12">
-                                    <img width="430" height="250" />
-                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
+                                    <img width="435" height="250" />
+                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg" required="">
+                                </div>
+                            </div>
+
+                            <div class="form-group required {{ $errors->has('url') ? ' has-error' : '' }}">
+                                <label for="url" class="col-md-12 control-label">Url<span class="required-text">*</span></label>
+                                <div class="col-md-12">
+                                    <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" required=""> @if ($errors->has('url'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('url') }}</strong>
+                                    </span> @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-6 control-label">File Pdf</label>
+                                <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text">( Optional *.pdf only )</span> </label>
                                 <div class="col-md-12">
                                     <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                 </div>
@@ -281,8 +274,7 @@
 
                             <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                 <div class="col-md-12">
-
-                                    {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'SOP ini tentang ... ')) !!} @if ($errors->has('description'))
+                                    <label for="description">Deskripsi<span class="optional-text"> ( Optional )</span></label> {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Layanan ini membantu teknis persuratan mahasiswa ..')) !!} @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span> @endif

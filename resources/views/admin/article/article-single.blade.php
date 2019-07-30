@@ -75,17 +75,10 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="post-thumbnail">
                                     <div class="post-header">
-                                        @if($data->type == 1)
-                                        <span class="badge badge-rounded" style="background-color: #053a8e; color:#fff;" disabled="">Akademik</span> @elseif($data->type == 2)
-                                        <span class="badge badge-rounded" style="background-color: #5b048e; color:#fff;" disabled="">Beasiswa</span> @elseif($data->type == 3)
-                                        <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Calon Mahasiswa</span> @elseif($data->type == 4)
-                                        <span class="badge badge-rounded" style="background-color: #5b048e; color:#fff;" disabled="">Umum</span> @elseif($data->type == 5)
-                                        <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Wisuda</span> @elseif($data->type == 6)
-                                        <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Kalender</span> @endif
+                                        <span class="badge badge-info" disabled="">{{ $data->filter($data->type)->filter_name }}</span>
 
                                         <button class="btn btnlike float-right" data-toggle="modal" data-target="#mcomment{{ $data->id }}"><i class="fas fa-fw fa-bell"></i> @if( $data->comments_data($data->id)->where('status',0)->count() > 0 )
-                                            <span class="indicator"></span> @else @endif
-                                            </a>
+                                        <span class="indicator"></span> @else @endif
 
                                     </div>
                                     <div class="post-img-head">
@@ -96,11 +89,12 @@
                                     <div class="post-content">
                                         <div class="post-content-head">
                                             <div class="justify-content-between d-flex">
-                                                <button class="btn btnlike"><i class="fas fa-heart"></i> {{ $data->like_count }} Disukai </a>
-                                                    <button class="btn btnlike"><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id) }} Komentar</a>
+                                                <a><i class="fas fa-heart"></i> {{ $data->viewer }} Dilihat </a>
+                                                <a><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id)->count() }} Komentar</a>
                                             </div>
                                             <h3 class="post-title">{{ $data->title }}</h3>
                                             <div class="">{{ date('M j, Y h:i A ', strtotime($data->updated_at)) }}</div>
+                                            <p> {!! $data->description !!} </p>
                                         </div>
                                         <div class="post-content-main">
                                             @include('admin.partials._comment_replies_admin', ['comments' => $data->comments->where('status',1), 'article_id' => $data->id ])
@@ -142,33 +136,39 @@
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            @foreach( $data->comments_data($data->id) as $comment )
-                            @if( $comment->status == 0 )
-                            <div class="row comment-row justify-content-between d-flex">
-                                <div class="col">
-                                    <h5 class="author"> {{ $comment->name }} </h5>
-                                    <p class="date"> {{date('M j, Y h:i A', strtotime($comment->submit_time))}} </p>
-                                    <p class="body"> {{ $comment->body }} </p>
-                                    <!-- <a href="/admin" target="_blank" style="margin-top: 0;"><i class="fas fa-reply"></i> Reply </a> -->
-                                </div>
-                                <div class="col control-button">
-                                    <div class="control justify-content-between d-flex">
-                                        @if( $comment->status == 0 )
-                                        <form method="POST" action= "{{ route('comment.update', $comment->cid ) }}" enctype="multipart/form-data">
-                                            {{ csrf_field() }} {{ method_field('put') }}
-                                            <button class="btn approved-btn"><i class="fas fa-check-circle"></i> Approve</button>
-                                        </form>
+                            @if ( $data->comments_data($data->id)->count() )
+                                @foreach( $data->comments_data($data->id) as $comment )
+                                @if( $comment->status == 0 )
+                                <div class="row comment-row justify-content-between d-flex">
+                                    <div class="col">
+                                        <h5 class="author"> {{ $comment->name }} </h5>
+                                        <p class="date"> {{date('M j, Y h:i A', strtotime($comment->submit_time))}} </p>
+                                        <p class="body"> {{ $comment->body }} </p>
+                                        <!-- <a href="/admin" target="_blank" style="margin-top: 0;"><i class="fas fa-reply"></i> Reply </a> -->
+                                    </div>
+                                    <div class="col control-button">
+                                        <div class="control justify-content-between d-flex">
+                                            @if( $comment->status == 0 )
+                                            <form method="POST" action= "{{ route('comment.update', $comment->cid ) }}" enctype="multipart/form-data">
+                                                {{ csrf_field() }} {{ method_field('put') }}
+                                                <button class="btn approved-btn"><i class="fas fa-check-circle"></i> Approve</button>
+                                            </form>
 
-                                        {!! Form::open(array('route' => array('comment.destroy', $comment->cid), 'method' => 'delete')) !!} 
-                                            {!! Form::button('<i class="fas fa-trash-circle"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn disapproved-btn'))!!}{{ Form::close() }}
-                                        @elseif( $comment->status == 1 )
+                                            {!! Form::open(array('route' => array('comment.destroy', $comment->cid), 'method' => 'delete')) !!} 
+                                                {!! Form::button('<i class="fas fa-trash-circle"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn disapproved-btn'))!!}{{ Form::close() }}
+                                            @elseif( $comment->status == 1 )
 
-                                        @endif
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                @else
+                                    <div class="row"> <p> Semua Komentar Telah Disetujui </p> </div>
+                                @endif
+                                @endforeach
+                            @else
+                               <div class="row"> <p> Tidak Ada Komentar </p> </div>
                             @endif
-                            @endforeach
                         </div>
                     </div>
                 </div>

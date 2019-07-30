@@ -20,8 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('fileImg')->nullable();
             $table->string('filePdf')->nullable();
             $table->string('url')->nullable();
-            $table->integer('like_count')->nullable();
-
+            // $table->integer('like_count')->default(0);
+            $table->bigInteger('viewer')->default(0);
             $table->unsignedInteger('type'); //filter_id
             $table->foreign('type')->references('id')->on('filters')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

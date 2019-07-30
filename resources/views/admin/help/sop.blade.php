@@ -55,18 +55,16 @@
 
                 <div class="card">
                     <div class="card-header">
-
-                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-plus"></i>&nbsp Tambah</button>
-
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" onclick=><i class="fa fa-plus"></i>&nbsp Tambah
+                        </button>
                     </div>
                     <div class="col-lg-12">
-                        @if (Session::has('message'))
+                        @if (Session::has('message') )
                         <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                         @endif
                     </div>
 
                         <div class="card-body">
-
                             @if($datas->count())
                             <table class="table table-striped">
                                 <thead>
@@ -82,7 +80,6 @@
                                 <tbody>
                                     <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
                                     @foreach($datas as $data)
-
                                     <tr>
                                         <th scope="row">{{$i++}}</th>
                                         <td>{{$data->title}}</td>
@@ -121,17 +118,15 @@
                                                 <form action="{{ route('admin.sop.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                                                 <div class="modal-body">
-                                                    <ul style="color: red;font-size: 0.75rem;">
-                                                        <li class="fa fa-asterisk">
-                                                            <em> Form Wajib diisi </em>
-                                                        </li>
+                                                    <ul class="list-unstyled">
+                                                       <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
                                                     </ul>
 
                                                     <div class="row">
                                                         <div class="col-4 form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                                            <label for="type" class="col-md-6 control-label">Jenis SOP</label>
+                                                            <label for="type" class="col-md-6 control-label">Jenis SOP <span class="required-text">*</span></label>
                                                             <div class="col-md-12">
-                                                                <select class="form-control" name="type" required="">
+                                                                <select type="select" class="form-control" name="type" required="">
                                                                     <option value="1" @if($data->type == 1) selected @endif>SOP-RD</option>
                                                                     <option value="2" @if($data->type == 2) selected @endif>SOP-PEP</option>
                                                                     <option value="3" @if($data->type == 3) selected @endif>SOP-BEASISWA</option>
@@ -141,9 +136,9 @@
                                                         </div>
 
                                                         <div class="col-8 form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                            <label for="title" class="col-md-6 control-label">Nama SOP</label>
+                                                            <label for="title" class="col-md-6 control-label">Nama SOP <span class="required-text">*</span></label>
                                                             <div class="col-md-12">
-                                                                <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Nama Sop" required> @if ($errors->has('title'))
+                                                                <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required> @if ($errors->has('title'))
                                                                 <span class="help-block">
                                                         <strong>{{ $errors->first('title') }}</strong>
                                                     </span> @endif
@@ -153,19 +148,17 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                                        <label for="email" class="col-md-4 control-label">Gambar<span class="required-text">*</span></label>
                                                         <div class="col-12">
-                                                            <img @if($data->fileImg) src="{{ url('Uploaded/SOP', $data->fileImg) }}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
+                                                            <img @if($data->fileImg) src="{{ url('Uploaded/SOP', $data->fileImg) }}" @endif width="735px" max-width="735px" max-height="250px" height="250px" alt="image" style="margin-right: 10px;" />
 
                                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
-                                                            <!-- <img width="725" height="250" @if($data->fileImg) src="{{ url('Uploaded/Images/Product',$data->fileImg) }}" @endif /> -->
-                                                            <!-- <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff" value="{{$data->fileImg}}"> -->
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                                         <div class="col-md-12">
-                                                            <label for="description">Deskripsi</label>
+                                                            <label for="description">Deskripsi <span class="optional-text"> ( Optional )</span> </label> 
                                                             <textarea name="description" id="summernote{{$data->id}}" style="visibility: hidden; display: none;">{!! $data->description !!}</textarea>
                                                             <!-- {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',$data->description, array('class' => 'form-control', 'required')) !!} -->
                                                         </div>
@@ -178,25 +171,14 @@
 
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="col-6 form-group">
-                                                            <label for="email" class="col-md-6 control-label">File Pdf</label>
-                                                            <div class="col-md-12">
-                                                                <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
-                                                                @if($data->filePdf)
-                                                                    <a href="{{ url('Uploaded/SOP/'. $data->filePdf) }}"> <i class="fa fa-download"></i> File Pdf Sudah Ada</a>
-                                                                @else @endif
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                                            <label for="url" class="col-md-6 control-label">Url</label>
-                                                            <div class="col-md-12">
-                                                                <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)" value="{{ $data->url }}"> @if ($errors->has('url'))
-                                                                <span class="help-block">
-                                                            <strong>{{ $errors->first('url') }}</strong>
-                                                    </span> @endif
-                                                            </div>
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
+                                                        <div class="col-md-12 d-inline-block">
+                                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                                            <span></span>
+                                                            @if($data->filePdf)
+                                                                <a class="file-text" href="{{ url('Uploaded/SOP/'. $data->filePdf) }}"> <i class="fa fa-download"></i> {{ $data->filePdf }}</a>
+                                                            @else @endif
                                                         </div>
                                                     </div>
 
@@ -236,7 +218,7 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="show{{ $data->id }}">Form Lihat</h5>
+                                                    <h5 class="modal-title" id="show{{ $data->id }}"></h5>
                                                     <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </a>
@@ -244,8 +226,8 @@
                                                 <div class="modal-body">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="card">
-                                                            <div class="card-header p-4">
-                                                                <h2 class="pt-1 d-inline-block">{{ $data->title}}</h2>
+                                                            <div class="card-header">
+                                                                <h2 class="d-inline-block">{{ $data->title}}</h2>
 
                                                                 <div class="float-right">
                                                                     <h3 class="mb-0">
@@ -259,13 +241,13 @@
                                                                     <button class="btn btn-rounded btn-sm" style="background-color: #053a8e; color:#fff;" disabled="">SOP-PDKM</button>
 
                                                                     @endif
-                                                                </h3> {{ date('M j ,Y', strtotime($data->updated_at)) }}</div>
+                                                                </h3> </div>
                                                             </div>
                                                             <div class="card-body">
                                                                 <div class="row mb-4">
                                                                     <div class="col-sm-12">
                                                                         @if($data->fileImg)
-                                                                          <img src="{{url('Uploaded/SOP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="400px" alt="image" style="margin-right: 10px;" />
+                                                                          <img src="{{url('Uploaded/SOP/', $data->fileImg)}}" width="700px" max-width="700px" max-height="400px" height="250px" alt="image" style="margin-right: 10px;" />
                                                                         @else @endif
 
                                                                     </div>
@@ -279,7 +261,7 @@
                                                             <div class="card-footer bg-white">
                                                                 <div class="col-sm-12">
                                                                     @if($data->filePdf)
-                                                                    <a src="{{url('Uploaded/SOP/', $data->filePdf)}}"><i class="fa fa-download"> Unduh File PDF </i></a> @else @endif
+                                                                    <a src="{{url('Uploaded/SOP/', $data->filePdf)}}"><i class="fa fa-download"></i> Unduh File Panduan</a> @else @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -324,17 +306,15 @@
                     <form method="POST" action="{{ route('admin.sop.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <li class="fa fa-asterisk">
-                                    <em> Form Wajib diisi </em>
-                                </li>
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
                             </ul>
                             <div class="row">
                                 <div class="col-4 form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                    <label for="type" class="col-md-6 control-label">Jenis SOP</label>
+                                    <label for="type" class="col-md-6 control-label">Jenis SOP<span class="required-text">*</span></label>
                                     <div class="col-md-12">
-                                        <select class="form-control" name="type" required="">
-                                            <option value=" ">Pilih jenis SOP</option>
+                                        <select type="select" class="form-control" name="type" required="">
+                                            <option value=" ">Pilih jenis SOP </option>
                                             <option value="1">SOP-RD</option>
                                             <option value="2">SOP-PEP</option>
                                             <option value="3">SOP-BEASISWA</option>
@@ -344,9 +324,9 @@
                                 </div>
 
                                 <div class="col-8 form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                    <label for="title" class="col-md-6 control-label">Nama Sop</label>
+                                    <label for="title" class="col-md-6 control-label">Nama Sop<span class="required-text">*</span></label>
                                     <div class="col-md-12">
-                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Nama Sop" required> @if ($errors->has('title'))
+                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="contoh: SOP Surat Mahasiswa" required> @if ($errors->has('title'))
                                         <span class="help-block">
                                                     <strong>{{ $errors->first('title') }}</strong>
                                                 </span> @endif
@@ -356,16 +336,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
+                                <label for="email" class="col-md-4 control-label">Gambar<span class="required-text">*</span></label>
                                 <div class="col-12">
-                                    <img width="725" height="250" />
+                                    <img width="735" height="250" />
                                     <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                 </div>
                             </div>
 
                             <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                                 <div class="col-md-12">
-                                    <label for="description">Deskripsi</label>
+                                    <label for="description">Deskripsi<span class="optional-text"> ( Optional )</span></label>
                                     <textarea name="description" id="summernote_add" style="visibility: hidden; display: none;"></textarea>
                                 </div>
                                 <script>
@@ -378,21 +358,13 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-6 form-group">
-                                    <label for="email" class="col-md-6 control-label">File Pdf</label>
+                                <div class="col-12 form-group">
+                                    <label for="filePdf" class="col-md-6 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
                                     <div class="col-md-12">
                                         <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                     </div>
                                 </div>
-                                <div class="col-6 form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                    <label for="url" class="col-md-6 control-label">Url</label>
-                                    <div class="col-md-12">
-                                        <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
-                                        <span class="help-block">
-                                                        <strong>{{ $errors->first('url') }}</strong>
-                                                </span> @endif
-                                    </div>
-                                </div>
+                                
                             </div>
 
                         </div>

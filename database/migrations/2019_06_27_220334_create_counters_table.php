@@ -15,11 +15,9 @@ class CreateCountersTable extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->date('visit_date')->unique();
-            // $table->time('visit_time');
-            $table->integer('today_visitors');
-            $table->integer('total_visitors');
-            $table->dateTime('date');
+            $table->date('visit_date')->unique();
+            $table->time('visit_time'); //kayaknya gaperlu
+            $table->integer('today_visitors',['ongoing','posted']);
             $table->timestamps();
         });
     }

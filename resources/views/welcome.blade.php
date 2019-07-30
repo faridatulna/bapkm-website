@@ -17,31 +17,13 @@
                     @endforeach
                 </ol>
                 <div class="carousel-inner">
-                    <!-- <div class="carousel-item active">
-                        <div class="banner_inner d-flex align-items-center" >
-                            <div class="banner_content text-center">
-                                <div class="date">
-                                    <a class="gad_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                                <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            </div>
-                        </div>
-                    </div> -->
                     @foreach($gal as $i=>$data)
                     <div class="carousel-item @if($i == 0) active @endif">
                         <div class="banner_inner d-flex align-items-center" @if($data->banner) style="background:url({{ url('Uploaded/Banner',$data->banner) }}) no-repeat scroll center center; filter: brightness(85%); background-size: cover;" @endif>
                             <!-- style="background-image:url({{ url('Uploaded/Banner',$data->banner) }}); background-repeat: no-repeat; background-position: center; filter: brightness(85%); background-size: 100%;" -->
                             <div class="banner_content text-center">
                                 <div class="date">
-                                    <!-- <a class="gad_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a> -->
                                 </div>
-                                <!-- <h3>Nest Protect: 2nd Gen Smoke + CO Alarm</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p> -->
                             </div>
                         </div>
                     </div>
@@ -69,26 +51,9 @@
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn text-uppercase" href="#" disabled="">
-                                        @if($data->type == 1)
-                                        Akademik
-
-                                        @elseif($data->type == 2)
-                                        Beasiswa
-
-                                        @elseif($data->type == 3)
-                                        Calon Mahasiswa
-
-                                        @elseif($data->type == 4)
-                                        Umum
-
-                                        @elseif($data->type == 5)
-                                        Wisuda
-
-                                        @elseif($data->type == 6)
-                                        Kalender
-                                        @endif
-                                        </a>
-                                    <a><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                        {{ $data->filter($data->type)->filter_name }}
+                                    </a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <a href="/article-page/{{$data->id}}" method="post"><h4>{{$data->title}}</h4></a> {{ csrf_field() }}
                                 <span class="d-inline-block" >

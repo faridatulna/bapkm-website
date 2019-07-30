@@ -5533,5 +5533,67 @@
             "check",
             "validate"
         ]
+    },
+    {
+        "name": "yajra/laravel-disqus",
+        "version": "v1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yajra/laravel-disqus.git",
+            "reference": "1a929e1a30ad6c010684d4b4dc7447841dbb79b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yajra/laravel-disqus/zipball/1a929e1a30ad6c010684d4b4dc7447841dbb79b4",
+            "reference": "1a929e1a30ad6c010684d4b4dc7447841dbb79b4",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/filesystem": "5.*",
+            "illuminate/support": "5.*",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*",
+            "scrutinizer/ocular": "~1.1"
+        },
+        "time": "2017-11-24T05:03:02+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Yajra\\Disqus\\DisqusServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Yajra\\Disqus\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arjay Angeles",
+                "email": "aqangeles@gmail.com",
+                "homepage": "http://yajrabox.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple Disqus platform integration with Laravel.",
+        "homepage": "https://github.com/yajra/laravel-disqus",
+        "keywords": [
+            "disqus",
+            "laravel",
+            "yajra"
+        ]
     }
 ]

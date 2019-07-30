@@ -41,7 +41,7 @@
                     Master Data
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>Artikel <span class="badge badge-secondary">New</span></a>
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-th-list"></i>Artikel <span class="badge badge-secondary">New</span></a>
                     <div id="submenu-7" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -60,7 +60,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-file "></i>Produk BAPKM</a>
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fas fa-fw fa-qrcode "></i>Produk BAPKM</a>
                     <div id="submenu-9" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">

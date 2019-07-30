@@ -107,55 +107,82 @@
                                     $password = "";
                                     $dbname = "bapkm-db";
                                     $conn = new mysqli($servername, $username, $password, $dbname);
-
                                     if ($conn->connect_error) {
                                         die("Connection failed: " . $conn->connect_error);
                                     } 
 
-                                    session_start();
+                                    // setcookie('views', 'test0', time() + 50, "/"); //86400 = 1 day
+                                    session_start(); //start a session
 
-                                    if(isset( $_SESSION['views']) ){
-                                      $_SESSION['views'] = $_SESSION['views']+ 1;
-                                      $sql = "UPDATE counters SET today_visitors = today_visitors+1, total_visitors = total_visitors+1  WHERE id = 1";
+                                    //define current date and time
+                                      $now_date = date("y-m-d");
+                                      $now_time = date("G:i:s", time());
+                                      $check_row = "SELECT * FROM counters";
+                                      $check_date = "SELECT visit_date FROM counters";
+
+                                    //check if there is a session and cookies already set
+                                    if(isset($_SESSION['views'])){ 
+                                      $_SESSION['views'] = $_SESSION['views']+1;
+                                      $visits = $_SESSION['views'];
+                                      //increment visitor by 1
+                                      $sql = "UPDATE counters SET today_visitors = today_visitors+1  WHERE visit_date = '".$now_date."' ";
                                       $conn->query($sql);
-                                      $sql = "SELECT today_visitors,total_visitors FROM counters WHERE id = 1";
-                                      // echo $_SESSION['views']; // this will include the counter. 
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            while($row = $result->fetch_assoc()) {
-                                                $visits = $row["today_visitors"];
-                                                $total = $row["total_visitors"];
-                                            }
-                                        } else {
-                                            echo "no results";
-                                        }
 
                                     }else{
-                                       $visits = 0;
-                                       $_SESSION['views'] = 1;
-                                       $sql = "UPDATE counters SET today_visitors = 1 WHERE id = 1";
-                                       $conn->query($sql);
+                                       $crow = $conn->query($check_row);
 
-                                       $sql = "SELECT today_visitors,total_visitors FROM counters WHERE id = 1";
-                                       $result = $conn->query($sql);
-                                       if ($result->num_rows > 0) {
+                                       //if the table doesn't have any rows
+                                       if( $crow->num_rows < 0) {
+                                          $_SESSION['views'] = 1;
+
+                                          $sql = "INSERT INTO counters(visit_date,visit_time,today_visitors) 
+                                          VALUES('".$now_date."', '".$now_time."' , 1) ";
+                                          $conn->query($sql);
+
+                                       }else{
+                                          $cdate = $conn->query($check_date);
+                                          while ( $row_date = $cdate->fetch_assoc() ) {
+                                              if( $row_date["visit_date"] != $now_date )
+                                              {
+                                                 $_SESSION['views'] = 1;
+                                                 //insert new row in each a day by cookies
+                                                 $sql = "INSERT INTO counters(visit_date,visit_time,today_visitors) 
+                                                 VALUES('".$now_date."', '".$now_time."' , 1) ";
+                                                 $conn->query($sql);
+                                              }else{
+                                                 $_SESSION['views'] = $_SESSION['views']+1;
+                                                 $sql = "UPDATE counters SET today_visitors = today_visitors+1  WHERE visit_date = '".$now_date."' ";
+                                                 $conn->query($sql);
+                                              }
+                                          }
+                                       }
+                                    }
+                              ?>
+
+                              <p style="color: white;">Hari ini: 
+                                <?php 
+                                  $sql = "SELECT today_visitors FROM counters WHERE visit_date = '".$now_date."' ";
+                                  $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
                                             while($row = $result->fetch_assoc()) {
-                                                $visits = $row["today_visitors"];
-                                                $total = $row["total_visitors"];
+                                                print $visits = $row["today_visitors"];
                                             }
                                         } else {
-                                            echo "no results";
+                                            print "no result";
                                         }
-                                    }
-
-                                    $conn->close();
                                 ?>
-                              <p style="color: white;">Hari ini: <?php print $visits; ?>
                               </p>
-                              <p style="color: white;">Total: <?php print $total; ?></p>
-                            </div>
+                              <p style="color: white;">Total: 
+                                <?php 
+                                  $sql_view = "SELECT SUM(today_visitors) FROM counters";
+                                  $totalq = $conn->query($sql_view);
+                                  $row_t = $totalq->fetch_assoc();
+                                  $total = $row_t["SUM(today_visitors)"];
+                                  print $total;
+                                ?>
+                              </p>
+                              <?php $conn->close(); ?>
+  
                         </div>
                     </div>
                 </div>

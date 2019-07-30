@@ -251,6 +251,23 @@ label {
     color: #71748d;
 }
 
+.required-text{
+    content: '*';
+    color: red;
+}
+
+.optional-text{
+    color: #ff6600;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.file-text{
+    color: #f54949;
+    font-size: 14px;
+    margin-top: 35px;
+}
+
 .form-control {
     display: block;
     width: 100%;
@@ -315,19 +332,19 @@ textarea.form-control {
 }
 
 input::-webkit-input-placeholder {
-    color: #71748d !important;
+    color: #c1c2d1 !important;
 }
 
 input:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #b7b8cc !important;
 }
 
 textarea::-webkit-input-placeholder {
-    color: #71748d !important;
+    color: #c1c2d1 !important;
 }
 
 textarea:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #b7b8cc !important;
 }
 
 button.btn {}
@@ -2598,7 +2615,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 2.1  Alerts
 -------------------------*/
 .alert {
-    color: white;
+    color: #000;
     font-weight: 20px;
 }
 
@@ -3497,7 +3514,6 @@ btn-link
 
 
 /*---------Tooltips----------*/
-
 
 /*--------- Popovers ----------------*/
 

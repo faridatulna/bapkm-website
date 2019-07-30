@@ -7,8 +7,6 @@
                     <!-- Logo -->
                     <div class="logo">
                         <a href="/"><img src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" style="max-width:20vw;" alt="" ></a>
-                        <!-- <a href="/"><img src="{{ asset('force/img/core-img/logo.png') }}" style="max-width:5vw; float: left;" alt=""></a>
-                        <h2 style="float: left; color: white; margin-left: 2vw;"><a href="/" style="color: white !important;">KREATIF DAN INOVATIF</a></h2> -->
                     </div>
 
                     <!-- Login Search Area -->
@@ -31,7 +29,7 @@
 
 <!-- Navbar Area -->
 <div class="newspaper-main-menu" id="stickyMenu">
-    <div class="classy-nav-container breakpoint-off">
+    <div class="classy-nav-container">
         <div class="container">
             <!-- Menu -->
             <nav class="classy-navbar justify-content-between" id="newspaperNav">
@@ -82,5 +80,6 @@
                 </div>
             </nav>
         </div>
+        <marquee class="running-text" direction="left" scroll-amount="7" behavior="scroll">Your scrolling text goes here</marquee>
     </div>
 </div>

@@ -75,4 +75,11 @@
       'Alert' => 'UxWeb\\SweetAlert\\SweetAlert',
     ),
   ),
+  'yajra/laravel-disqus' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yajra\\Disqus\\DisqusServiceProvider',
+    ),
+  ),
 );

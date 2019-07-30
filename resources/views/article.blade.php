@@ -13,81 +13,6 @@
 @stop @extends('layouts.app') @section('content')
 
 <!--================Choice Area =================-->
-<!-- <section class="choice_area mt-50 mb-50">
-    <div class="container">
-        <div class="main_title2">
-            <h2>Berita Terbaru</h2>
-        </div>
-        <div class="row choice_inner">
-            <div class="col-lg-6">
-                <div class="row choice_small_inner">
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="choice_item small">
-                            <img class="img-fluid" src="{{asset('force/img/blog/popular-post/pp-4.jpg')}}" alt="">
-                            <div class="choice_text">
-                                <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                                <div class="date">
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="choice_item small">
-                            <img class="img-fluid" src="{{asset('force/img/blog/popular-post/pp-5.jpg')}}" alt="">
-                            <div class="choice_text">
-                                <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                                <div class="date">
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="choice_item small">
-                            <img class="img-fluid" src="{{asset('force/img/blog/popular-post/pp-6.jpg')}}" alt="">
-                            <div class="choice_text">
-                                <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                                <div class="date">
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="choice_item small">
-                            <img class="img-fluid" src="{{asset('force/img/blog/popular-post/pp-7.jpg')}}" alt="">
-                            <div class="choice_text">
-                                <a href="news-details.html"><h4>Technical Support 10 with Dealing With</h4></a>
-                                <div class="date">
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="choice_item">
-                    <img class="img-fluid" src="{{ asset('force/img/blog/popular-post/pp-8.jpg')}}" alt="">
-                    <div class="choice_text">
-                        <div class="date">
-                            <a class="gad_btn" href="#">Gadgets</a>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
-                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>05</a>
-                        </div>
-                        <a href="news-details.html"><h4>Dealing With Technical Support with 10 Useful Tips</h4></a>
-                        <p>It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <section class="choice_area mt-50 mb-50">
     <div class="container">
         <div class="main_title2">
@@ -101,24 +26,7 @@
                     <div class="choice_text">
                         <div class="date">
                             <a class="gad_btn" href="#">
-                                        @if($data->type == 1)
-                                        Akademik
-
-                                        @elseif($data->type == 2)
-                                        Beasiswa
-
-                                        @elseif($data->type == 3)
-                                        Calon Mahasiswa
-
-                                        @elseif($data->type == 4)
-                                        Umum
-
-                                        @elseif($data->type == 5)
-                                        Wisuda
-
-                                        @elseif($data->type == 6)
-                                        Kalender
-                                        @endif
+                                {{ $data->filter($data->type)->filter_name }}
                             </a>
                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                         </div>
@@ -162,26 +70,9 @@
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn text-uppercase" href="#" disabled="">
-                                        @if($data->type == 1)
-                                        Akademik
-
-                                        @elseif($data->type == 2)
-                                        Beasiswa
-
-                                        @elseif($data->type == 3)
-                                        Calon Mahasiswa
-
-                                        @elseif($data->type == 4)
-                                        Umum
-
-                                        @elseif($data->type == 5)
-                                        Wisuda
-
-                                        @elseif($data->type == 6)
-                                        Kalender
-                                        @endif
+                                        {{ $data->filter($data->type)->filter_name }}
                                         </a>
-                                    <a><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
+                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
                                 <a href="/article-page/{{$data->id}}" method="post"><h4>{{$data->title}}</h4></a> {{ csrf_field() }}
                                 <span class="d-inline-block">

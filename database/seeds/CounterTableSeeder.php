@@ -17,8 +17,9 @@ class CounterTableSeeder extends Seeder
             [
               'id'              => 1,
               'today_visitors'  => 0,
-              'total_visitors'  => 0,
-              'date'           => \Carbon\Carbon::now(),
+              // 'total_visitors'  => 0,
+              'visit_date'           => \Carbon\Carbon::now(),
+              'visit_time'           => \Carbon\Carbon::now(),
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
             ]

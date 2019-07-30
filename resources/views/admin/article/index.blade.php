@@ -3,6 +3,10 @@
     $(document).ready(function() {
         $(".users").select2();
     });
+
+    $(document).ready(function() {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
 </script>
 
 <script type="text/javascript">
@@ -54,7 +58,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <button class="btn-primary btn" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i>&nbsp Tambah</button>
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#add" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
 
                     </div>
                     <div class="col-lg-12">
@@ -72,21 +76,9 @@
                                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="post-thumbnail">
                                         <div class="post-header">
-                                            @if($data->type == 1)
-                                            <span class="badge badge-rounded" style="background-color: #053a8e; color:#fff;" disabled="">Akademik</span>
-                                            @elseif($data->type == 2)
-                                            <span class="badge badge-rounded" style="background-color: #5b048e; color:#fff;" disabled="">Beasiswa</span>
-                                            @elseif($data->type == 3)
-                                            <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Calon Mahasiswa</span>
-                                            @elseif($data->type == 4)
-                                            <span class="badge badge-rounded" style="background-color: #5b048e; color:#fff;" disabled="">Umum</span>
-                                            @elseif($data->type == 5)
-                                            <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Wisuda</span>
-                                            @elseif($data->type == 6)
-                                            <span class="badge badge-rounded" style="background-color: #158701; color:#fff;" disabled="">Kalender</span>
-                                            @endif
+                                            <span class="badge badge-info" disabled="">{{ $data->filter($data->type)->filter_name }}</span>
 
-                                            <button class="btn bg-white float-right" data-toggle="modal" data-target="#mcomment{{ $data->id }}" style="padding: 0px;"><i class="fas fa-fw fa-bell"></i>
+                                            <button class="btn btnlike float-right" data-toggle="modal" data-target="#mcomment{{ $data->id }}" style="padding: 0px;"><i class="fas fa-fw fa-bell" data-toggle="tooltip" title="Manage Komentar"></i>
                                                 @if( $data->comments_data($data->id)->where('status',0)->count() > 0 )
                                                 <span class="indicator"></span>
                                                 @else
@@ -102,19 +94,21 @@
                                         <div class="post-content">
                                             <div class="post-content-head">
                                                 <div class="justify-content-between d-flex">
-                                                    <button class="btn btnlike"><i class="fas fa-heart"></i> {{ $data->like_count }} Disukai 
-                                                    <a href="{{ route('admin.article.show', $data->id) }}">
-                                                        <button class="btn btnlike"><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id) }} Komentar</a>
+                                                    <a> <i class="fas fa-eye"></i> {{ $data->viewer }} </a>
+                                                    <a class="btn btnlike" href="{{ route('admin.article.show', $data->id) }}" data-toggle="tooltip" title="Lihat Komentar" ><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id)->count() }} </a>
                                                 </div>
                                                 <h3 class="post-title">{{ $data->title }}</h3>
                                                 <div class="">{{ date('M j, Y h:i A ', strtotime($data->updated_at)) }}</div>
                                             </div>
                                             <div class="post-btn justify-content-between d-flex" >
-                                                <a href="/article-page/{{$data->id}}"> 
-                                                    <button class="btn btn-primary fa fa-eye"></button>
+                                                <a href="/article-page/{{$data->id}}" data-toggle="tooltip" title="Lihat Artikel"> 
+                                                    <button class="btn btn-primary fas fa-external-link-alt"></button>
+                                                    
                                                 </a>
-                                                <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#edit{{ $data->id }}"></button>
-                                                <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#del{{ $data->id }}"></button>
+                                                <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#edit{{ $data->id }}" data-toggle="tooltip" title="Edit">
+                                                </button>
+                                                <button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#del{{ $data->id }}" data-toggle="tooltip" title="Hapus">
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +138,7 @@
         @foreach($datas as $data)
         <!--edit-->
         <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="edit{{ $data->id }}">Form Edit</h5>
@@ -156,70 +150,55 @@
                     <form action="{{ route('admin.article.update', $data->id) }}" method="post" enctype="multipart/form-data">{{ csrf_field() }} {{ method_field('put') }}
 
                         <div class="modal-body">
-                            <ul style="color: red;font-size: 0.75rem;">
-                                <i class="fa fa-asterisk"></i>
-                                <em> Kolom jenis, judul, dan deskripsi wajib diisi </em>
-                            </ul>
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                            </ul> 
 
                             <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type" class="col-md-6 control-label">Jenis Artikel</label>
-                                <div class="col-md-11">
+                                <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
+                                <div class="col-md-12">
                                     <select class="form-control" name="type" required="">
-                                        <option value="1">Akademik</option>
-                                        <option value="2">Beasiswa</option>
-                                        <option value="3">Calon Mahasiswa</option>
-                                        <option value="4">Umum</option>
-                                        <option value="5">Wisuda</option>
-                                        <option value="6">Kalender</option>
+                                        @foreach ($filter as $select)
+                                            <option value="{{ $select->id }}" @if($data->type == $select->id) selected @endif>{{ $select->filter_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                        <label for="title" class="col-md-6 control-label">Judul</label>
-                                        <div class="col-md-11">
+                                        <label for="title" class="col-md-12 control-label">Judul<span class="required-text"> *</span></label>
+                                        <div class="col-md-12">
                                             <input id="title" type="text" class="form-control" name="title" value="{!! $data->title !!}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
-                                            <span class="help-block">
-                                                                          <strong>{{ $errors->first('title') }}</strong>
-                                                                      </span> @endif
+                                            <span class="help-block"><strong>{{ $errors->first('title') }}</strong></span> @endif
                                         </div>
-
                                     </div>
 
                                     <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                        <label for="url" class="col-md-6 control-label">Url</label>
-                                        <div class="col-md-11">
+                                        <label for="url" class="col-md-12 control-label">Url Terkait<span class="optional-text"> ( Optional )</span></label>
+                                        <div class="col-md-12">
                                             <input id="Url" type="url" name="url" class="form-control" value="{{$data->url}}" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
-                                            <span class="help-block">
-                                                                          <strong>{{ $errors->first('url') }}</strong>
-                                                                  </span> @endif
+                                            <span class="help-block"><strong>{{ $errors->first('url') }}</strong>
+                                            </span> @endif
                                         </div>
                                     </div>
                                     <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                                        <div class="col-11">
-                                            {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description', $data->description , array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
-                                            <span class="help-block">
-                                                                          <strong>{{ $errors->first('description') }}</strong>
-                                                                      </span> @endif
+                                        <div class="col-12">
+                                            <label for="description">Deskripsi <span class="optional-text"> ( Optional )</span> </label>
+                                             {!! Form::textarea('description', $data->description , array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
+                                            <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span> @endif
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
-                                        <div class="col-md-10">
-                                            <img width="300" height="250" @if($data->fileImg) src="{{ url('Uploaded/Article/', $data->fileImg) }}" @else @endif />
+                                        <label for="email" class="col-md-12 control-label">Gambar<span class="optional-text"> ( Optional )</span></label>
+                                        <div class="col-md-12">
+                                            <img width="435" height="250" @if($data->fileImg) src="{{ url('Uploaded/Article/', $data->fileImg) }}" @else @endif />
                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email" class="col-md-4 control-label">File Pdf</label>
-                                        <div class="col-md-10">
+                                        <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
+                                        <div class="col-md-12">
                                             <input type="file" class="uploads form-control" name="filePdf" accept=".pdf"> @if($data->filePdf)
-                                            <a href="{{url('Uploaded/Article/', $data->filePdf )}}"><i class="fa fa-download"></i> File Pdf Sudah Ada</a> @else @endif
+                                            <a class="file-text" href="{{url('Uploaded/Article/', $data->filePdf )}}"><i class="fa fa-download"></i> {{ $data->filePdf }}</a> @else @endif
                                         </div>
                                     </div>
                                 </div>
@@ -306,7 +285,7 @@
 
     <!--add-->
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="add">Form Tambah</h5>
@@ -317,41 +296,32 @@
                 <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                        <ul style="color: red;font-size: 0.75rem;">
-                            <i class="fa fa-asterisk"></i>
-                            <em> Kolom jenis, judul, dan deskripsi wajib diisi </em>
-                        </ul>
+                        <ul class="list-unstyled">
+                            <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                         </ul>
 
-                        <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                            <label for="type" class="col-md-6 control-label">Jenis Artikel</label>
-                            <div class="col-md-11">
-                                <select class="form-control" name="type" required="">
-                                    <option value="1">Akademik</option>
-                                    <option value="2">Beasiswa</option>
-                                    <option value="3">Calon Mahasiswa</option>
-                                    <option value="4">Umum</option>
-                                    <option value="5">Wisuda</option>
-                                    <option value="6">Kalender</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
+                                <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
+                                    <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
+                                    <div class="col-md-12">
+                                        <select class="form-control" name="type" required="">
+                                            @foreach ($filter as $filter)
+                                            <option value="{{ $filter->id }}">{{ $filter->filter_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                    <label for="title" class="col-md-6 control-label">Judul</label>
-                                    <div class="col-md-11">
+                                    <label for="title" class="col-md-12 control-label">Judul<span class="required-text"> *</span></label>
+                                    <div class="col-md-12">
                                         <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
                                         <span class="help-block">
                                                     <strong>{{ $errors->first('title') }}</strong>
                                                 </span> @endif
                                     </div>
-
                                 </div>
-
                                 <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                    <label for="url" class="col-md-6 control-label">Url</label>
-                                    <div class="col-md-11">
+                                    <label for="url" class="col-md-12 control-label">Url Terkait<span class="optional-text"> ( Optional )</span></label>
+                                    <div class="col-md-12">
                                         <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
                                         <span class="help-block">
                                                     <strong>{{ $errors->first('url') }}</strong>
@@ -359,33 +329,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                                    <div class="col-11">
-                                        {!! Form::label('description', 'Deskripsi') !!} {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
+                                    <div class="col-12">
+                                        <label for="description">Deskripsi <span class="optional-text"> ( Optional )</span> </label>
+                                         {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
                                         <span class="help-block">
                                                     <strong>{{ $errors->first('description') }}</strong>
                                                 </span> @endif
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="email" class="col-md-4 control-label">Gambar<i style="content:'*';color:'red';" aria-hidden="true"></i></label>
-                                    <div class="col-md-10">
-                                        <img width="300" height="250" />
+                                    <label for="email" class="col-md-12 control-label">Gambar<span class="optional-text"> ( Optional )</span></label>
+                                    <div class="col-md-12">
+                                        <img width="435" height="250" />
                                         <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="col-md-4 control-label">File Pdf</label>
-                                    <div class="col-md-10">
+                                    <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
+                                    <div class="col-md-12">
                                         <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="submit">Add</button>

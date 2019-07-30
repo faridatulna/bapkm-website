@@ -16,8 +16,8 @@ $factory->define(Article::class, function (Faker $faker) {
         'url' 			=> $faker->domainName(),
         'description' 	=> $faker->text(30),
         'like_count'	=> 0,
-        'type'		=> $fid, //filter_id
-
+        'type'		    => $fid, //filter_id
+        'viewer'        => 0,
         // 0=umum , 1=beasiswa , 2=kemahasiswaan
     ];
 });

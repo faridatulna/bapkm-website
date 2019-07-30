@@ -47,7 +47,6 @@ class Article extends Model implements Searchable
     {
         $comment = Comment::where('commentable_id',$id)->get();
         return $comment;
-        //return $this->morphMany(Comment::class, 'cid')->where('commentable_id','=',$id);
     }
 
     public function commentsCount($id)
@@ -56,4 +55,9 @@ class Article extends Model implements Searchable
         return $this->morphMany(Comment::class, 'commentable')->where('commentable_id','=',$id);
     }
 
+    public function filter($id)
+    {
+        $comment = Filter::findOrFail($id);
+        return $comment;
+    }
 }

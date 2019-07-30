@@ -40,24 +40,7 @@ $(".iconlike.fa").click(function() {
                     <div class="user_details">
                         <div class="float-left">
                             <a class="gad_btn">
-                                @if($data->type == 1)
-                                    Akademik
-
-                                @elseif($data->type == 2)
-                                    Beasiswa
-
-                                @elseif($data->type == 3)
-                                    Calon Mahasiswa
-
-                                @elseif($data->type == 4)
-                                    Umum
-
-                                @elseif($data->type == 5)
-                                    Wisuda
-
-                                @elseif($data->type == 6)
-                                    Kalender
-                                @endif
+                                {{ $data->filter($data->type)->filter_name }}
                             </a>
                         </div>
                         <div class="float-right">
@@ -143,8 +126,8 @@ $(".iconlike.fa").click(function() {
 
                 <div class="main_blog_details">
                     <div class="news_d_footer">
-                        <a> <i class="iconlike fa fa-heart-o "></i>like this post! 4</a>
-
+                        <!-- <a> <i class="iconlike fa fa-heart-o "></i>like this post! 4</a> -->
+                        <a>{{$data->viewer}} kali dilihat</a>
                         <a onclick="showForm()" class="iconlike justify-content-center ml-auto">
                             <i class="fa fa-comments-o"></i>Tambahkan Komentar</a>
                         <!-- <div class="news_socail ml-auto">
@@ -156,6 +139,8 @@ $(".iconlike.fa").click(function() {
                         </div> -->
                     </div>
                 </div>
+
+                <div id="disqus_thread"></div>
 
                 <div class="comment-form" id="comment-form" style="display: none;">
                     <h4>Leave a Comment</h4>

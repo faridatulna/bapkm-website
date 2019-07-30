@@ -3,11 +3,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Comment;
+use App\Filter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 use Storage;
 use Validator;
 
@@ -40,10 +42,11 @@ class ArticleController extends Controller
     {
         $datas = Article::orderBy('updated_at','desc')->get();
         $datas = Article::orderBy('updated_at','desc')->paginate(4);
+        $filter = Filter::all();
         $comments = Comment::orderBy('updated_at','desc')->get();
-        $comments = Comment::orderBy('updated_at','desc')->paginate(5);
+        $comments = Comment::orderBy('updated_at','desc')->paginate(4);
 
-        return view('admin.article.index',compact('datas','comments'));
+        return view('admin.article.index',compact('datas','comments','filter'));
     }
 
     /**

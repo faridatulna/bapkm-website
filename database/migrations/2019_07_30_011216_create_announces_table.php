@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikersTable extends Migration
+class CreateAnnouncesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateLikersTable extends Migration
      */
     public function up()
     {
-        Schema::create('likers', function (Blueprint $table) {
+        Schema::create('announces', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->ip('ip_liker');
+            $table->string('message');
+            $table->time('fromTime')->nullable();
+            $table->time('toTime')->nullable();
+            $table->enum('status')
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateLikersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likers');
+        Schema::dropIfExists('announces');
     }
 }
