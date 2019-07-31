@@ -17,7 +17,7 @@ class CreateCountersTable extends Migration
             $table->bigIncrements('id');
             $table->date('visit_date')->unique();
             $table->time('visit_time'); //kayaknya gaperlu
-            $table->integer('today_visitors',['ongoing','posted']);
+            $table->bigInteger('today_visitors');
             $table->timestamps();
         });
     }
