@@ -92,7 +92,7 @@
                                                 <a><i class="fas fa-heart"></i> {{ $data->viewer }} Dilihat </a>
                                                 <a><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id)->count() }} Komentar</a>
                                             </div>
-                                            <h3 class="post-title">{{ $data->title }}</h3>
+                                            <h3 class="post-title">{!! $data->title !!}</h3>
                                             <div class="">{{ date('M j, Y h:i A ', strtotime($data->updated_at)) }}</div>
                                             <p> {!! $data->description !!} </p>
                                         </div>

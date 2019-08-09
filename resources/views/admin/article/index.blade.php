@@ -53,11 +53,9 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
+            <div class="col-xl-9 col-lg-9 col-md-6 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-
                         <button class="btn-primary btn" data-toggle="modal" data-target="#add" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
 
                     </div>
@@ -73,7 +71,7 @@
                             <?php $i = ($datas->currentpage()-1)* $datas->perpage() + 1;?>
 
                                 @foreach($datas as $data)
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="post-thumbnail">
                                         <div class="post-header">
                                             <span class="badge badge-info" disabled="">{{ $data->filter($data->type)->filter_name }}</span>
@@ -97,7 +95,7 @@
                                                     <a> <i class="fas fa-eye"></i> {{ $data->viewer }} </a>
                                                     <a class="btn btnlike" href="{{ route('admin.article.show', $data->id) }}" data-toggle="tooltip" title="Lihat Komentar" ><i class="fas fa-comment"></i> {{ $data->commentsCount($data->id)->count() }} </a>
                                                 </div>
-                                                <h3 class="post-title">{{ $data->title }}</h3>
+                                                <h3 class="post-title">{!! $data->title !!}</h3>
                                                 <div class="">{{ date('M j, Y h:i A ', strtotime($data->updated_at)) }}</div>
                                             </div>
                                             <div class="post-btn justify-content-between d-flex" >
@@ -132,6 +130,27 @@
 
                 </div>
 
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">
+                        Kategori
+                    </h5>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            @foreach($filter as $data)
+                            <li class="list-group-item d-flex justify-content-between align-items-center" id="{{ $data->id }}"> 
+                                {{ $data->filter_name }} 
+                                <span class="badge badge-primary badge-pill">{{ $data->article->count() }}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-secondary btn" data-toggle="modal" data-target="#addcat" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -357,6 +376,48 @@
                     </div>
 
             </div>
+            </form>
+        </div>
+    </div>
+
+    <!--addactegory-->
+    <div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addcat">Form Tambah</h5>
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </a>
+                </div>
+                <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                         </ul>
+
+                        <div class="form-group required {{ $errors->has('filter_name') ? ' has-error' : '' }}">
+                            <label for="filter_name" class="col-md-12 control-label">Kategori<span class="required-text"> *</span></label>
+                            <div class="col-md-12">
+                                <input id="filter_name" type="text" class="form-control" name="filter_name" value="{{ old('filter_name') }}" placeholder="Kategori" required> @if ($errors->has('filter_name'))
+                                <span class="help-block"><strong>{{ $errors->first('filter_name') }}</strong></span> @endif
+                            </div>
+                        </div>
+                        <div class="form-group required {{ $errors->has('filter_code') ? ' has-error' : '' }}">
+                            <label for="filter_code" class="col-md-12 control-label">Kode Kategori<span class="required-text"> *</span></label>
+                            <div class="col-md-12">
+                                <input id="filter_code" type="text" class="form-control" name="filter_code" value="{{ old('filter_code') }}" placeholder="A0X" required> @if ($errors->has('filter_code'))
+                                <span class="help-block"><strong>{{ $errors->first('filter_code') }}</strong></span> @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+
+                </div>
             </form>
         </div>
     </div>

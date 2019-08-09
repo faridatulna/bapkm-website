@@ -41,10 +41,10 @@ class ArticleController extends Controller
     public function index()
     {
         $datas = Article::orderBy('updated_at','desc')->get();
-        $datas = Article::orderBy('updated_at','desc')->paginate(4);
-        $filter = Filter::all();
+        $datas = Article::orderBy('updated_at','desc')->paginate(6);
+        $filter = Filter::orderBy('filter_name','asc')->get();
         $comments = Comment::orderBy('updated_at','desc')->get();
-        $comments = Comment::orderBy('updated_at','desc')->paginate(4);
+        $comments = Comment::orderBy('updated_at','desc')->paginate(6);
 
         return view('admin.article.index',compact('datas','comments','filter'));
     }
