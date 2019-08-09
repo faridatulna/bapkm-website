@@ -17,6 +17,7 @@ use App\Services;
 use App\Galleries;
 use App\Quicklinks;
 use App\counter;
+use App\Announce;
 use App\Aboutus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
@@ -25,122 +26,48 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', 'HomeController@index')->name('welcome');
 
-// Route::any ( '/search-result', function () {
-//     $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-//     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-//     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-//     $links = Quicklinks::all();
-//     $sop = Helps::all();
-//     $service = Services::all();
-
-//     $projects = Article::search(Input::get('search'))->get();
-
-//     $q = Input::get ( 'q' );
-//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
-//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
-//     // $data = Article::paginate(5);
-//     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
-//     if (count($data) > 0)
-//         return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
-//     else
-//         return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
-// } );
-
 Route::any('/search-result', 'HomeController@search')->name('search');
+
+Route::get('/feedback','HomeController@showFeedback')->name('feedback');
 
 Route::prefix('article')
     ->name('article.')
     ->group(function () {
-
-        Route::get('/', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        });
-        Route::get('/umum', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',4)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        })->name('umum');
-        Route::get('/camaba', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',3)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',3)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        })->name('camaba');
-        Route::get('/beasiswa', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',2)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',2)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        })->name('beasiswa');
-        Route::get('/akademik', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',1)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',1)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        })->name('akademik');
-        Route::get('/wisuda', function () {
-          $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
-          $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-          $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-
-            $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',5)->get();
-            $article = Article::orderBy('updated_at', 'desc')->where('type','=',5)->paginate(6);
-            return view('article',compact('article','news','cal','cal_lastest','agenda'));
-        })->name('wisuda');
-
+        Route::get('/', 'HomeController@articlePage')->name('all');
+        Route::get('/category/{id}', 'HomeController@articleCategory')->name('category');
     });
+Route::get('/article-page/{id}', 'HomeController@articleSinglePage')->name('article-page');
 
-Route::get('/article-page/{id}', 'HomeController@articlepage')->name('article-page');
 // download files
-
 Route::get('download/{id}', function ($filename) {
     $file= public_path('Uploaded/Article/').$filename;
     return response()->download($file, $filename);
 });
 
+//comment and reply
+Route::resource('comment','CommentController');
+Route::post('/comment/add', 'CommentController@store')->name('comment.add');
+Route::post('/reply/add', 'CommentController@replyStore')->name('reply.add');
 
 Route::prefix('aboutus')
     ->name('aboutus.')
     ->group(function () {
         Route::get('/history', function () {
-           return view('aboutus.history');
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
+           return view('aboutus.history',compact('announce','cdatetime'));
         })->name('history');
+
         Route::get('/organigram', function () {
-           return view('aboutus.organigram');
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
+           return view('aboutus.organigram',compact('announce','cdatetime'));
         })->name('organigram');
+
         Route::get('/profile', function () {
-           return view('aboutus.profile');
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
+           return view('aboutus.profile',compact('announce','cdatetime'));
         })->name('profile');
 
     });
@@ -149,36 +76,38 @@ Route::prefix('help')
     ->name('help.')
     ->group(function () {
         Route::get('/', function () {
-           return view('help');
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
+           return view('help', compact('announce','cdatetime'));
         });
         Route::get('/regdat', function () {
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
             $sop = Helps::where('type','=',1)->get();
-            return view('SOP.regdat', compact('sop'));
+            return view('SOP.regdat', compact('sop','announce','cdatetime'));
         })->name('regdat');
 
         Route::get('/pep', function () {
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
             $sop = Helps::where('type','=',2)->get();
-            return view('SOP.PEP', compact('sop'));
+            return view('SOP.PEP', compact('sop','announce','cdatetime'));
         })->name('pep');
 
         Route::get('/beasiswa', function () {
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
             $sop = Helps::where('type','=',3)->get();
-            return view('SOP.beasiswa', compact('sop'));
+            return view('SOP.beasiswa', compact('sop','announce','cdatetime'));
         })->name('beasiswa');
 
         Route::get('/datkeg', function () {
+            $announce = Announce::all();
+            $cdatetime = \Carbon\Carbon::now();
             $sop = Helps::where('type','=',4)->get();
-            return view('SOP.datkeg', compact('sop'));
+            return view('SOP.datkeg', compact('sop','announce','cdatetime'));
         })->name('datkeg');
     });
-
-//comment and reply
-Route::resource('comment','CommentController');
-Route::post('/comment/add', 'CommentController@store')->name('comment.add');
-Route::post('/reply/add', 'CommentController@replyStore')->name('reply.add');
-
-
-
 
 //ADMIN AUTHORITIES
 Auth::routes();
@@ -187,6 +116,7 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
     	Route::get('/','HomeAdminController@index');
+        Route::post('/add-running-text', 'HomeAdminController@storeRunningText')->name('addrunningtext');
 
         Route::get('/article','HomeAdminController@index');
         Route::resource('article','ArticleController');

@@ -139,11 +139,8 @@
                                                             <label for="title" class="col-md-6 control-label">Nama SOP <span class="required-text">*</span></label>
                                                             <div class="col-md-12">
                                                                 <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required> @if ($errors->has('title'))
-                                                                <span class="help-block">
-                                                        <strong>{{ $errors->first('title') }}</strong>
-                                                    </span> @endif
+                                                                <span class="help-block"><strong>{{ $errors->first('title') }}</strong></span> @endif
                                                             </div>
-
                                                         </div>
                                                     </div>
 
@@ -181,13 +178,12 @@
                                                             @else @endif
                                                         </div>
                                                     </div>
-
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" id="submit">Update</button>
+                                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
-                                                    <button type="reset" class="btn btn-danger">Reset</button>
-                                                </div>
-
+                                            
                                             </div>
                                             </form>
                                         </div>
@@ -364,15 +360,13 @@
                                         <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                     </div>
                                 </div>
-                                
                             </div>
 
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>
-                        </div>
-
                     </form>
                 </div>
             </div>

@@ -86,7 +86,7 @@
                                         <th scope="row">{{$i++}}</th>
                                         <!-- <td>
                                           @if($data->fileImage)
-                                          <img src="{{ url('Uploaded/Image/Product', $data->fileImg ) }}" alt="image" style="margin-right: 10px;" >
+                                          <img src="{{ url('Uploaded/Service', $data->fileImg ) }}" alt="image" style="margin-right: 10px;" >
                                           @else
                                               <img src="" alt="image" style="margin-right: 10px;" />
 
@@ -135,7 +135,7 @@
                                                     <div class="form-group{{ $errors->has('fileImg') ? ' has-error' : '' }}">
                                                         <label for="fileImg" class="col-md-12 control-label">Gambar<span class="required-text">*</span></label>
                                                         <div class="col-12">
-                                                            <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Product',$data->fileImg) }}" @endif />
+                                                            <img width="430" height="250" @if($data->fileImg) src="{{ url('Uploaded/Service',$data->fileImg) }}" @endif />
                                                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                                                         </div>
                                                     </div>
@@ -155,7 +155,7 @@
                                                             <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
                                                             @if($data->filePdf)
                                                             <span></span>
-                                                            <a class="file-text" src="{{url('Uploaded/Product/', $data->filePdf)}}"><i class="fa fa-download"></i>
+                                                            <a class="file-text" src="{{url('Uploaded/Service/', $data->filePdf)}}"><i class="fa fa-download"></i>
                                                                 {{ $data->filePdf }}</a>
                                                             @else @endif
                                                         </div>

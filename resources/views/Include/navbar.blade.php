@@ -36,7 +36,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="/"><img src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" style="max-width:45vw;" alt="" ></a>
+                    <a href="/"><img class="logo-navbar2" src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" alt="" ></a>
                 </div>
 
                 <!-- Navbar Toggler -->
@@ -64,14 +64,9 @@
                               </ul>
                             </li>
                             <li class="nav-link2"><a href="/article"><strong>Berita</strong></a>
-                                <ul class="dropdown" style="margin-top:5px;">
+                                <!-- <ul class="dropdown" style="margin-top:5px;">
                                     <li><a href="/article/umum">Umum</a></li>
-                                    <li><a href="/article/camaba">Calon Mahasiswa</a></li>
-                                    <li class="nav-divider"></li>
-                                    <li><a href="/article/beasiswa">Beasiswa</a></li>
-                                    <li><a href="/article/akademik">Akademik</a></li>
-                                    <li><a href="/article/wisuda">Wisuda</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>
                         </ul>
@@ -80,6 +75,13 @@
                 </div>
             </nav>
         </div>
-        <marquee class="running-text" direction="left" scroll-amount="7" behavior="scroll">Your scrolling text goes here</marquee>
+        @foreach( $announce as $announce )
+            @if( $cdatetime > $announce->dt_start && $cdatetime < $announce->dt_end )
+            <marquee class="running-text" direction="left" scroll-amount="7" behavior="scroll">
+                {{ $announce->message }}
+            </marquee>
+            @else
+            @endif
+        @endforeach
     </div>
 </div>

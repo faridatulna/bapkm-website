@@ -89,7 +89,7 @@
                                                     </ul>
 
                                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                                        <label for="title" class="col-md-6 control-label">Judul<span class="required-text"> *</span></label>
+                                                        <label for="title" class="col-md-6 control-label">Nama Agenda<span class="required-text"> *</span></label>
                                                         <div class="col-md-12">
                                                             <input id="title" type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="{{ $data->title }}" required> @if ($errors->has('title'))
                                                             <span class="help-block">
@@ -108,15 +108,15 @@
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
                                                         <label for="time" class="col-md-6 control-label">Waktu Pelaksanaan<span class="required-text"> *</span></label>
-                                                        <div class="col-12 d-flex">
-                                                            <div class="col-6 align-self-start">
+                                                        <div class="d-flex">
+                                                            <div class="col-lg-6">
                                                                 <label for="start-time" >Mulai</label>
                                                                 <input id="fromTime" type="time" class="form-control" name="fromTime" value="{{ $data->fromTime }}" placeholder="{{ time('h:ia', strtotime($data->fromTime)) }}" required> @if ($errors->has('fromTime'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('fromTime') }}</strong>
                                                                 </span> @endif
                                                             </div>
-                                                            <div class="col-6 align-self-end">
+                                                            <div class="col-lg-6">
                                                                 <label for="end-time" >Sampai</label>
                                                                 <input id="toTime" type="time" class="form-control" name="toTime" value="{{ $data->toTime }}" placeholder="{{ time('h:ia', strtotime($data->toTime)) }}" required> @if ($errors->has('toTime'))
                                                                 <span class="help-block">
@@ -131,18 +131,17 @@
                                                         <div class="col-md-12">
                                                             <input id="place" type="place" class="form-control" name="place" value="{{ $data->place }}" placeholder="{{$data->place}}" required> @if ($errors->has('place'))
                                                             <span class="help-block">
-                                                                    <strong>{{ $errors->first('place') }}</strong>
-                                                                </span> @endif
+                                                                <strong>{{ $errors->first('place') }}</strong>
+                                                            </span> @endif
                                                         </div>
                                                     </div>
 
-
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" id="submit">Update</button>
+                                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
-                                                    <button type="reset" class="btn btn-danger">Reset</button>
-                                                </div>
-
+                                                
                                             </div>
                                             {!! Form::close()!!}
                                         </div>
@@ -221,16 +220,16 @@
 
                             </div>
 
-                            <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="dateOfEvent" class="col-md-6 control-label">Waktu Pelaksanaan<span class="required-text"> *</span></label>
-                                <div class="col-12 d-flex">
-                                    <div class="col-6 align-self-start">
-                                        <label for="start-time" >Mulai</label>
-                                        <input id="fromTime" type="time" class="form-control" name="fromTime" placeholder="Mulai" >
+                                <div class="d-flex">
+                                    <div class="col-lg-6">
+                                        <label for="start-time">Mulai</label>
+                                        <input id="fromTime" type="time" class="form-control" name="fromTime" placeholder="Mulai" required>
                                     </div>
-                                    <div class="col-6 align-self-end">
+                                    <div class="col-lg-6">
                                         <label for="end-time">Akhir</label>
-                                        <input id="toTime" type="time" class="form-control" name="toTime" placeholder="Akhir" >
+                                        <input id="toTime" type="time" class="form-control" name="toTime" placeholder="Akhir" required>
                                     </div>
                                 </div>
 
@@ -242,16 +241,13 @@
                                 <div class="col-12">
                                     <input id="place" type="text" class="form-control" name="place" placeholder="contoh: stadion ITS" >
                                 </div>
-
                             </div>
-
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>
-                        </div>
-
-                </div>
+                    </div>
                 </form>
             </div>
         </div>

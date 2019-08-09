@@ -10,6 +10,7 @@
             }
         });
 </script>
+<script type="text/javascript"></script>
 @stop @extends('layouts.app') @section('content')
 
 <!--================Choice Area =================-->
@@ -22,7 +23,6 @@
             @foreach($news as $data)
             <div class="col-lg-3 col-md-6">
                 <div class="choice_item">
-                    <!-- <img class="img-fluid" src="img/blog/choice/choice-1.jpg" alt=""> -->
                     <div class="choice_text">
                         <div class="date">
                             <a class="gad_btn" href="#">
@@ -51,13 +51,10 @@
                         <i class="dropdown icon"></i>Filter
                     </div>
                     <div class="content active">
-                        <div class="ui yellow labels">
-                            <!-- /*label*/ -->
-                            <a class="ui small label" href="/article/akademik">Akademik</a>
-                            <a class="ui small label" href="/article/beasiswa">Beasiswa</a>
-                            <a class="ui small label" href="/article/camaba">Calon Mahasiswa</a>
-                            <a class="ui small label" href="/article/umum">Umum</a>
-                            <a class="ui small label" href="/article/wisuda">Wisuda</a>
+                        <div class="ui yellow labels"> 
+                            @foreach( $filter as $filter )
+                              <a class="ui small label" href="{{ route('article.category', $filter->id) }}">{{$filter->filter_name}}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

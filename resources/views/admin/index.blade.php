@@ -90,7 +90,12 @@
         <div class="row mt-10">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">Running Message</h5>
+                    <div class="card-header d-flex">
+                        <div class="col-lg-10"><h5>Running Message</h5></div>
+                        <div class="col-lg-2 float-right">
+                            <button class="btn-primary btn" data-toggle="modal" data-target="#add" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -104,13 +109,15 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1;?>
-                                    <tr class="table-info">
-                                        <th scope="row">{{$i++}}</th>
-                                        <td>pesan pesan</td>
-                                        <td>start date - end date</td>
-                                        <td>ongoing, posted</td>
-                                        <td></td>
-                                    </tr>
+                                @foreach( $announce as $announce )
+                                <tr class="table-light">
+                                    <td scope="row">{{$i++}}</td>
+                                    <td>{{$announce->message}}</td>
+                                    <td>{{$announce->dt_start}} - {{$announce->dt_end}}</td>
+                                    <td>{{$announce->status}}</td>
+                                    <td></td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -154,6 +161,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th scope="col">#</th>
                                         <th scope="col">Tanggal</th>
                                         <th scope="col">Pengunjung</th>
                                     </tr>
@@ -162,6 +170,7 @@
                                     <?php $i = 1;?>
                                     @foreach($latest_visitor as $data)
                                     <tr class="table-success">
+                                        <td>{{$i++}}</td>
                                         <td>{!! $data->visit_date !!}</td>
                                         <td>{{ $data->today_visitors }}</td>
                                     </tr>
@@ -174,5 +183,51 @@
         </div>
     </div>
 </div>
+
+<!--add-->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add">Form Tambah</h5>
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </a>
+                </div>
+                <form method="POST" action="{{ route('admin.addrunningtext') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <ul class="list-unstyled"><li class="required-text"><em> Form wajib diisi <span>*</span></em></li></ul>
+                        </div>
+                        
+                        <div class="form-group required {{ $errors->has('message') ? ' has-error' : '' }}">
+                            <label for="type" class="col-md-12 control-label">Pesan<span class="required-text"> *</span></label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="message" placeholder="Pesan">
+                            </div>
+                        </div>
+                        <div class="form-group required {{ $errors->has('time') ? ' has-error' : '' }}">
+                            <div class="d-flex">
+                                <div class="col-lg-6 align-self-start">
+                                    <label for="dt_start">Active Date<span class="required-text"> *</span></label>
+                                    <input type="datetime-local" class="form-control" name="dt_start" placeholder="Pesan" required>
+                                </div>
+                                <div class="col-lg-6 align-self-start">
+                                    <label for="dt_end">Expire Date<span class="required-text"> *</span></label>
+                                    <input type="datetime-local" class="form-control" name="dt_end" placeholder="Pesan" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection

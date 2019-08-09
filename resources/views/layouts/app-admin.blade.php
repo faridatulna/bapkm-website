@@ -34,7 +34,7 @@
 
     @show
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('Uploaded/logo.ico')}}" />
 </head>
 
 <body>

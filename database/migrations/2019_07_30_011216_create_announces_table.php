@@ -16,9 +16,9 @@ class CreateAnnouncesTable extends Migration
         Schema::create('announces', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('message');
-            $table->time('active_time')->nullable();
-            $table->time('expire_time')->nullable();
-            $table->enum('status',['ongoing','posted']);
+            $table->dateTime('dt_start')->nullable();
+            $table->dateTime('dt_end')->nullable();
+            // $table->enum('status',['ongoing','posted']);
             $table->timestamps();
         });
     }

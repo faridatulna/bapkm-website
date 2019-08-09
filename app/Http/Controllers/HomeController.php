@@ -12,6 +12,8 @@ use App\Galleries;
 use App\Quicklinks;
 use App\counter;
 use App\Aboutus;
+use App\Announce;
+use App\Filter;
 use Carbon\Carbon;
 use App\User;
 use Auth;
@@ -27,8 +29,27 @@ class HomeController extends Controller
       $service = Services::all();
       $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get();
       $gal = Galleries::all();
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
 
-      return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service') );
+      return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service','announce','cdatetime') );
+    }
+
+    function articlePage()
+    {
+      $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+      $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+      $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
+
+      $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
+      $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
+      $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
+
+      $filter = Filter::orderBy('filter_name','asc')->get();
+
+      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter'));
     }
 
     /**
@@ -37,9 +58,24 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function articlepage($id)
-    {
+    public function articleCategory($id){
+      $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
+      $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+      $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
 
+      $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
+      $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->get();
+      $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->paginate(6);
+
+      $filter = Filter::orderBy('filter_name','asc')->get();
+
+      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter'));
+    }
+
+    public function articleSinglePage($id)
+    {
         $datas = Article::all();
         $data = Article::findorfail($id);
 
@@ -59,20 +95,19 @@ class HomeController extends Controller
         $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
         $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
         $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
+        $announce = Announce::all();
+        $cdatetime = \Carbon\Carbon::now();
 
         setcookie('id', $id, time() + 3600, "/"); //86400 = 1 day
 
           if( !isset($_COOKIE['id']) ) {
               \DB::table('articles')->where('id', $id)->increment('viewer',1);
               $data = Article::findorfail($id);
-              // echo "Set Cookies ". $data->viewer;
           } else {
             $data = Article::findorfail($id);
-            // echo "Incrementing ". $data->viewer;
           }
 
-        return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next'));
-        // return View::make('users.show')->with('previous', $previous)->with('next', $next);
+        return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next','announce','cdatetime'));
     }
 
     public function search(Request $request)
@@ -83,6 +118,8 @@ class HomeController extends Controller
         $links = Quicklinks::all();
         $sop = Helps::all();
         $service = Services::all();
+        $announce = Announce::all();
+        $cdatetime = \Carbon\Carbon::now();
 
         $searchResults = (new Search())
             ->registerModel(Article::class, 'title','description','type')
@@ -91,9 +128,41 @@ class HomeController extends Controller
             ->registerModel(Services::class, 'title')
             ->perform($request->input('q'));
 
-        return view('search1', compact('cal','cal_lastest','agenda','links','searchResults'));
-        //    dd($searchResults);
+        return view('search1', compact('cal','cal_lastest','agenda','links','searchResults','announce','cdatetime'));
     }
 
 
+    function showFeedback()
+    {
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
+      return view('kuisioner',compact('announce','cdatetime'));
+    }
+
+    // Route::any ( '/search-result', function () {
+//     $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
+//     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
+//     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
+//     $links = Quicklinks::all();
+//     $sop = Helps::all();
+//     $service = Services::all();
+
+//     $projects = Article::search(Input::get('search'))->get();
+
+//     $q = Input::get ( 'q' );
+//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
+//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
+//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
+//     // $data = Article::paginate(5);
+//     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
+//     if (count($data) > 0)
+//         return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
+//     else
+//         return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
+// } );
 }

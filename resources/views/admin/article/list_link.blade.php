@@ -99,13 +99,12 @@
                                                             <input id="url" type="url" class="form-control" name="url" value="{{ $data->url }}">
                                                         </div>
                                                     </div>
-
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" id="submit">Update</button>
+                                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
-                                                    <button type="reset" class="btn btn-danger">Reset</button>
-                                                </div>
-
+                                                
                                             </div>
                                             {!! Form::close()!!}
                                         </div>
@@ -187,13 +186,12 @@
                                         </span> @endif
                                 </div>
                             </div>
-
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>
-                        </div>
-
+                        
                     </form>
                 </div>
             </div>

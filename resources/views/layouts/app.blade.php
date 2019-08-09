@@ -41,8 +41,6 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <meta charset="utf-8">
 
-    <!--asset2-->
-
     @show
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('Uploaded/logo.ico')}}" />
@@ -71,7 +69,6 @@
                 <div class="borderline col-lg-3 col-md-3 col-sm-3">
                   <div class="single-footer-widget ab_widgets">
                     <h2 class="f_title">BAPKM ITS</h2>
-                         <!-- <hr style="border: 1.5px solid #F4BA23; width: 40%;"> -->
                     <p>Biro Administrasi Pembelajaran dan Kesejahteraan Mahasiswa</p>
                   </div>
                 </div>
@@ -185,19 +182,44 @@
   
                         </div>
                     </div>
+                    
+                    <!-- <div class="box-rating">
+                      <a href="/feedback" class="btn btn-info"><i class="fa fa-edit"></i> Rate Our Website</a>
+                      <button class="btn btn-info" data-toggle="modal" data-target="#rate">Beri Rating</button>
+                    </div> -->
+                    
                 </div>
             </div>
-            <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                <!-- <div class="col-lg-12">
-                  <div class="f_boder"></div>
-                </div> -->
-                <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center">
-                Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> Badan Administrasi Pembelajaran & Kesejahteraan Mahasiswa</a>
-                </p>
-            </div>
+        </div>
+        <div class="row footer-bottom d-flex justify-content-between align-items-center">
+          <p class="col-lg-8 col-md-8 footer-text m-0" style="color: #dddddd;" align="center">Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> Badan Administrasi Pembelajaran & Kesejahteraan Mahasiswa</a>
+          </p>
         </div>
     </footer>
+
+    <!-- <div class="modal custom fade" id="rate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-header"> 
+            <h3 class="title">Terima kasih atas </h3>
+          </div>
+          <div class="modal-body">
+            <h4 class="body">Rating 5</h4>
+            <form>
+              <div class="from-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Masukkan Email Kamu Disini">
+              </div>
+              <div class="from-group">
+                <label for="q1"></label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
 
 
     <!-- Optional JavaScript -->
@@ -226,6 +248,7 @@
     <script src="{{ asset('force/js/active.js') }}"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    
     <!--sop-->
     <script>
       function openCity(evt, cityName) {
@@ -244,8 +267,8 @@
 
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
-      </script>
-      <!--end of sop-->
+    </script>
+    <!--end of sop-->
 
     <script>
       $(document).ready(function () {
@@ -253,135 +276,132 @@
       var itemsDiv = ('.MultiCarousel-inner');
       var itemWidth = "";
 
-      $('.leftLst, .rightLst').click(function () {
-          var condition = $(this).hasClass("leftLst");
-          if (condition)
-              click(0, this);
-          else
-              click(1, this)
-      });
-
-      ResCarouselSize();
-
-
-
-
-      $(window).resize(function () {
-          ResCarouselSize();
-      });
-
-      //this function define the size of the items
-      function ResCarouselSize() {
-          var incno = 0;
-          var dataItems = ("data-items");
-          var itemClass = ('.item');
-          var id = 0;
-          var btnParentSb = '';
-          var itemsSplit = '';
-          var sampwidth = $(itemsMainDiv).width();
-          var bodyWidth = $('body').width();
-          $(itemsDiv).each(function () {
-              id = id + 1;
-              var itemNumbers = $(this).find(itemClass).length;
-              btnParentSb = $(this).parent().attr(dataItems);
-              itemsSplit = btnParentSb.split(',');
-              $(this).parent().attr("id", "MultiCarousel" + id);
-
-
-              if (bodyWidth >= 1200) {
-                  incno = itemsSplit[3];
-                  itemWidth = sampwidth / incno;
-              }
-              else if (bodyWidth >= 992) {
-                  incno = itemsSplit[2];
-                  itemWidth = sampwidth / incno;
-              }
-              else if (bodyWidth >= 768) {
-                  incno = itemsSplit[1];
-                  itemWidth = sampwidth / incno;
-              }
-              else {
-                  incno = itemsSplit[0];
-                  itemWidth = sampwidth / incno;
-              }
-              $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-              $(this).find(itemClass).each(function () {
-                  $(this).outerWidth(itemWidth);
-              });
-
-              $(".leftLst").addClass("over");
-              $(".rightLst").removeClass("over");
-
-          });
-      }
-
-
-      //this function used to move the items
-      function ResCarousel(e, el, s) {
-          var leftBtn = ('.leftLst');
-          var rightBtn = ('.rightLst');
-          var translateXval = '';
-          var divStyle = $(el + ' ' + itemsDiv).css('transform');
-          var values = divStyle.match(/-?[\d\.]+/g);
-          var xds = Math.abs(values[4]);
-          if (e == 0) {
-              translateXval = parseInt(xds) - parseInt(itemWidth * s);
-              $(el + ' ' + rightBtn).removeClass("over");
-
-              if (translateXval <= itemWidth / 2) {
-                  translateXval = 0;
-                  $(el + ' ' + leftBtn).addClass("over");
-              }
-          }
-          else if (e == 1) {
-              var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-              translateXval = parseInt(xds) + parseInt(itemWidth * s);
-              $(el + ' ' + leftBtn).removeClass("over");
-
-              if (translateXval >= itemsCondition - itemWidth / 2) {
-                  translateXval = itemsCondition;
-                  $(el + ' ' + rightBtn).addClass("over");
-              }
-          }
-          $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
-      }
-
-      //It is used to get some elements from btn
-      function click(ell, ee) {
-          var Parent = "#" + $(ee).parent().attr("id");
-          var slide = $(Parent).attr("data-slide");
-          ResCarousel(ell, Parent, slide);
-      }
-
-  });
-
-    /*tentang kami */
-    $(function() {
-    var selectedClass = "";
-    $(".filter").click(function(){
-    selectedClass = $(this).attr("data-rel");
-    $("#gallery").fadeTo(100, 0.1);
-    $("#gallery div").not("."+selectedClass).fadeOut().removeClass('animation');
-    setTimeout(function() {
-    $("."+selectedClass).fadeIn().addClass('animation');
-    $("#gallery").fadeTo(300, 1);
-    }, 300);
-    });
-    });
-
-    </script>
-    <script>
-    $(window).scroll(function() {
-            if ($(this).scrollTop() > 50 ) {
-                $('.scrolltop:hidden').stop(true, true).fadeIn();
-            } else {
-                $('.scrolltop').stop(true, true).fadeOut();
-            }
+        $('.leftLst, .rightLst').click(function () {
+            var condition = $(this).hasClass("leftLst");
+            if (condition)
+                click(0, this);
+            else
+                click(1, this)
         });
 
+        ResCarouselSize();
+
+        $(window).resize(function () {
+            ResCarouselSize();
+        });
+
+        //this function define the size of the items
+        function ResCarouselSize() {
+            var incno = 0;
+            var dataItems = ("data-items");
+            var itemClass = ('.item');
+            var id = 0;
+            var btnParentSb = '';
+            var itemsSplit = '';
+            var sampwidth = $(itemsMainDiv).width();
+            var bodyWidth = $('body').width();
+            $(itemsDiv).each(function () {
+                id = id + 1;
+                var itemNumbers = $(this).find(itemClass).length;
+                btnParentSb = $(this).parent().attr(dataItems);
+                itemsSplit = btnParentSb.split(',');
+                $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+                if (bodyWidth >= 1200) {
+                    incno = itemsSplit[3];
+                    itemWidth = sampwidth / incno;
+                }
+                else if (bodyWidth >= 768) {
+                    incno = itemsSplit[2];
+                    itemWidth = sampwidth / incno;
+                }
+                else if (bodyWidth < 768 && bodyWidth >= 411) {
+                    incno = itemsSplit[1];
+                    itemWidth = sampwidth / incno;
+                }
+                else {
+                    incno = itemsSplit[0];
+                    itemWidth = sampwidth / incno;
+                }
+                $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+                $(this).find(itemClass).each(function () {
+                    $(this).outerWidth(itemWidth);
+                });
+
+                $(".leftLst").addClass("over");
+                $(".rightLst").removeClass("over");
+
+            });
+        }
+
+
+        //this function used to move the items
+        function ResCarousel(e, el, s) {
+            var leftBtn = ('.leftLst');
+            var rightBtn = ('.rightLst');
+            var translateXval = '';
+            var divStyle = $(el + ' ' + itemsDiv).css('transform');
+            var values = divStyle.match(/-?[\d\.]+/g);
+            var xds = Math.abs(values[4]);
+            if (e == 0) {
+                translateXval = parseInt(xds) - parseInt(itemWidth * s);
+                $(el + ' ' + rightBtn).removeClass("over");
+
+                if (translateXval <= itemWidth / 2) {
+                    translateXval = 0;
+                    $(el + ' ' + leftBtn).addClass("over");
+                }
+            }
+            else if (e == 1) {
+                var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+                translateXval = parseInt(xds) + parseInt(itemWidth * s);
+                $(el + ' ' + leftBtn).removeClass("over");
+
+                if (translateXval >= itemsCondition - itemWidth / 2) {
+                    translateXval = itemsCondition;
+                    $(el + ' ' + rightBtn).addClass("over");
+                }
+            }
+            $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+        }
+
+        //It is used to get some elements from btn
+        function click(ell, ee) {
+            var Parent = "#" + $(ee).parent().attr("id");
+            var slide = $(Parent).attr("data-slide");
+            ResCarousel(ell, Parent, slide);
+        }
+      });
+      
+      /*tentang kami */
         $(function() {
-          $(".scrolltop").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");
-          return false})});
+        var selectedClass = "";
+        $(".filter").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#gallery").fadeTo(100, 0.1);
+        $("#gallery div").not("."+selectedClass).fadeOut().removeClass('animation');
+        setTimeout(function() {
+        $("."+selectedClass).fadeIn().addClass('animation');
+        $("#gallery").fadeTo(300, 1);
+        }, 300);
+        });
+      });
+    </script>
+
+    <script>
+      $(window).scroll(function() {
+              if ($(this).scrollTop() > 50 ) {
+                  $('.scrolltop:hidden').stop(true, true).fadeIn();
+              } else {
+                  $('.scrolltop').stop(true, true).fadeOut();
+              }
+          });
+
+          $(function() {
+            $(".scrolltop").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");
+            return false})
+          });
     </script>
 
     @section('js') @show
