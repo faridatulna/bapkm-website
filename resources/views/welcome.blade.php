@@ -215,19 +215,16 @@
                                                 @foreach($agenda as $data)
                                                 <div class="detail-calendar-grey">
                                                     <div class="calendar-grey">
-                                                        <h1 style="margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
+                                                        <h1 style="margin-top:10px;margin-bottom:0;">{{ date('j', strtotime($data->dateOfEvent)) }}</h1>
                                                         <h3 style="margin-top:0;">{{ date('M', strtotime($data->dateOfEvent)) }}</h3>
                                                     </div>
                                                     <div class="calendar-contain-grey">
                                                         <div class="calendar-contain-description-grey">
-                                                            <a href="https://www.its.ac.id/international/agenda/aun-qa-assesment/" title="AUN-QA Assesment">{{$data->title}}</a>
+                                                            <medium>{{$data->title}}<medium>
                                                             <br>
-                                                            <small><i class="fa fa-clock-o"></i> &nbsp;
-                                                            {{ date('h:ia', strtotime($data->fromTime)) }} - {{ date('h:ia', strtotime($data->totime)) }}
-                                                        </small>
+                                                            <small><i class="fa fa-clock-o"></i> &nbsp; {{ date('h:i A', strtotime($data->fromTime)) }} - {{ date('h:i A', strtotime($data->totime)) }}</small>
                                                             <br>
-                                                            <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}
-                                                        </small>
+                                                            <small><i class="fa fa-map-marker"></i> &nbsp; {{$data->place}}</small>
                                                         </div>
                                                     </div>
                                                 </div>

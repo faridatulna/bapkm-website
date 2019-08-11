@@ -26,9 +26,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', 'HomeController@index')->name('welcome');
 
-Route::any('/search-result', 'HomeController@search')->name('search');
-
-Route::get('/feedback','HomeController@showFeedback')->name('feedback');
+Route::any('/search-result', 'HomeController@search')->name('search'); 
 
 Route::prefix('article')
     ->name('article.')
@@ -48,6 +46,8 @@ Route::get('download/{id}', function ($filename) {
 Route::resource('comment','CommentController');
 Route::post('/comment/add', 'CommentController@store')->name('comment.add');
 Route::post('/reply/add', 'CommentController@replyStore')->name('reply.add');
+
+Route::post('/storeFeedback','HomeController@storeFeedback')->name('storeFeedback');
 
 Route::prefix('aboutus')
     ->name('aboutus.')
@@ -119,13 +119,14 @@ Route::prefix('admin')
         Route::post('/add-running-text', 'HomeAdminController@storeRunningText')->name('addrunningtext');
 
         Route::get('/article','HomeAdminController@index');
-        Route::resource('article','ArticleController');
-        Route::get('/calendar','CalendarController@index');
-        Route::resource('calendar','CalendarController');
+        Route::get('/articleCategory/{id}','ArticleController@showCategory')->name('ArticleCategory');
+        
+        Route::resource('article','ArticleController'); 
         Route::get('/event','EventController@index');
         Route::resource('event','EventController');
         Route::get('/quicklink','QuicklinkController@index');
         Route::resource('link','QuicklinkController');
+        Route::resource('filter','FilterController');
 
         Route::post('/comment-add', 'CommentController@store')->name('comment-add')->middleware('auth.admin');
         Route::post('/reply-add', 'CommentController@replyStore')->name('reply-add')->middleware('auth.admin');
@@ -166,7 +167,7 @@ Route::prefix('admin')
                 })->name('profile');
 
             });
-        Route::resource('aboutus','AboutusController');
+
     });
 
 Auth::routes();

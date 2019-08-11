@@ -119,10 +119,15 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showCategory($id)
     {
-        $data = Article::findorfail($id);
-        return view('admin.article.article-single', compact('data'));
+        $datas = Article::orderBy('updated_at','desc')->where('type',$id)->get();
+        $datas = Article::orderBy('updated_at','desc')->where('type',$id)->paginate(6);
+        $filter = Filter::orderBy('filter_name','asc')->get();
+        $comments = Comment::orderBy('updated_at','desc')->get();
+        $comments = Comment::orderBy('updated_at','desc')->paginate(6);
+
+        return view('admin.article.index',compact('datas','comments','filter'));
     }
 
     /**

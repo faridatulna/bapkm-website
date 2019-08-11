@@ -14,7 +14,9 @@ use App\counter;
 use App\Aboutus;
 use App\Announce;
 use App\Filter;
+use App\Feedback;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use Auth;
 
@@ -32,8 +34,19 @@ class HomeController extends Controller
       $announce = Announce::all();
       $cdatetime = \Carbon\Carbon::now();
 
+      // session_start();
+
       return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service','announce','cdatetime') );
     }
+
+    // function updateCounter(){
+    //   $now_date = date("y-m-d");
+    //   $now_time = date("G:i:s", time());
+
+    //   $jad = DB::table('jadwals')->join('dosens','jadwals.nipdosenngajar','=','dosens.nip')->join('matakuliahs','jadwals.idmk_jadwal','=','matakuliahs.id_mk')->get();
+    //   $cdate = counter::where('')
+    //   if (  )
+    // }
 
     function articlePage()
     {
@@ -131,12 +144,23 @@ class HomeController extends Controller
         return view('search1', compact('cal','cal_lastest','agenda','links','searchResults','announce','cdatetime'));
     }
 
-
-    function showFeedback()
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFeedback(Request $request)
     {
-      $announce = Announce::all();
-      $cdatetime = \Carbon\Carbon::now();
-      return view('kuisioner',compact('announce','cdatetime'));
+        Feedback::create([
+            'rating' => $request->input('rating'),
+            'opinion' => $request->input('opinion')
+        ]);
+
+        Alert::success('Thanks For Your Rate', 'Have A Nice Day!');
+
+        return redirect()->back();
     }
 
     // Route::any ( '/search-result', function () {

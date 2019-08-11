@@ -29,8 +29,7 @@
     <div class="tab">
       @foreach($sop as $data)
       <button class="tablinks" onclick="openCity(event, '{{$data->id}}')" id="defaultOpen">{{$data->title}}</button>
-      @endforeach
-      <!-- <button class="tablinks" onclick="openCity(event, 'beasiswa')" id="defaultOpen">Layanan Surat Mahasiswa</button> -->
+      @endforeach 
     </div>
 
     @foreach($sop as $data)
@@ -62,28 +61,23 @@
         </div>
       </div>
 
-      <p>Klik gambar untuk memperbesar.</p>
-      @elseif($data->filePdf)
-      <p>Klik <a href="{{ url('Uploaded/SOP/',$data->filePdf) }}">di sini</a> untuk detil panduan.</p>
+      <h4>Klik gambar untuk memperbesar.</h4>
+      @endif
+
+      @if($data->filePdf)
+      <h4>Klik <a href="{{ url('Uploaded/SOP/',$data->filePdf) }}">di sini</a> untuk detil panduan.</h4>
       @else
       @endif
 
       @if($data->description)
-      <p>
-        <h3>Dokumen-Dokumen yang Diperlukan</h3>
+      <h4>Dokumen-Dokumen yang Diperlukan</h4>
+      <h4>
         {!!$data->description!!}
-      </p>
+      </h4>
       @else
       @endif
     </div>
     @endforeach
-
-    <!-- <div id="beasiswa" class="tabcontent">
-      <h3 class="ui header">Panduan Penggunaan Layanan Surat Mahasiswa</h3>
-      <p>Klik <a href="{{ asset('files/Regdat/REGDAT.pdf')}}">di sini</a> untuk detil panduan.</p>
-    </div> -->
-
 </div>
 
-
-    @endsection
+@endsection

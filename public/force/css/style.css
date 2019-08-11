@@ -2185,13 +2185,13 @@ img.logo-navbar2 {
 
 .main_blog_details .user_details .float-right .media .media-body h5 {
   margin-bottom: 0px;
-  font-size: 14px;
+  font-size: 16px;
   color: #222222;
   margin-bottom: 5px;
 }
 
 .main_blog_details .user_details .float-right .media .media-body p {
-  font-size: 12px;
+  font-size: 15px;
   color: #777777;
   margin-bottom: 0px;
 }
@@ -2204,7 +2204,7 @@ img.logo-navbar2 {
 }
 
 .main_blog_details p {
-  font-size: 14px;
+  font-size: 17px;
   color: #777777;
   margin-bottom: 15px;
 }
@@ -2239,7 +2239,6 @@ img.logo-navbar2 {
 
 .main_blog_details .news_d_footer a {
   font-size: 15px;
-  font-family: "Open Sans", sans-serif;
   color: #777777;
 }
 
@@ -2261,9 +2260,8 @@ img.logo-navbar2 {
   margin-right: 0px;
 }
 
-/* fa-like article*/
+/* fa-like article (not-used) */
 .iconlike {
-  /*font-size: 50px;*/
   cursor: pointer;
   user-select: none;
   color: red;
@@ -2272,12 +2270,6 @@ img.logo-navbar2 {
 .iconlike:hover {
   color: red;
 }
-
-/*.heart {
-  font-size: 25px;
-  color:red;
-}*/
-
 /* end of fa-like article*/
 
 /*---------------------------------------------------- */
@@ -2488,31 +2480,110 @@ img.logo-navbar2 {
 /* Contact Success and error Area css
 ============================================================================================ */
 .modal.custom {
-    outline:none; 
+    outline: none;
+    background-color: #c9c6d45e;
 }
 
 .modal.custom .modal-dialog .modal-content{
-  width: 75%;
-  height: auto;
-  margin: 200px auto;
+  margin: 20% 0;
 }
 
 .modal.custom .modal-dialog .modal-header{
   padding:15px;
+  text-align: center;
 }
 .modal.custom .modal-dialog .modal-body{
-  position: relative;
   padding:15px;
 }
 
-.modal.custom .modal-dialog .modal-header h3 .title{
-  font-size: 35px;
-  font-weight: 100;
+.modal.custom .modal-dialog .modal-body textarea{
+  font-size: 16.5px;
+  font-style: oblique;
 }
-.modal.custom .modal-dialog .modal-body h4 .body{
-  font-size: 25px;
-  color: red;
+
+.modal.custom .modal-dialog .modal-body .input-form{
+  padding: 20px;
 }
+
+.modal.custom .modal-dialog .modal-button{
+  background-color: #383636;
+  color: white;
+}
+
+.modal.custom .modal-dialog .modal-button:hover {
+  color: #f5f11d;
+}
+
+fieldset, label { margin: 0; padding: 0; }
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+  padding: 0 25%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 2.78em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+@media (max-width: 517px) {
+  .rating > label:before { 
+    font-size: 2.41em;
+  }
+}
+@media (max-width: 468px) {
+  .rating > label:before { 
+    font-size: 2.1em;
+  }
+}
+@media (max-width: 375px) {
+  .rating > label:before { 
+    font-size: 1.684em;
+  }
+}
+
+@media (max-width: 321px) {
+  .modal.custom .modal-dialog h3{
+    font-size: 95%;
+    font-style: bold; 
+  }
+  .rating > label:before { 
+    font-size: 1.2em;
+  }
+  .modal.custom .modal-dialog .modal-body textarea{
+    font-size: 14px;
+  }
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+  float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
 
 .modal-message .modal-dialog {
   position: absolute;
@@ -4159,10 +4230,16 @@ h6 {
   padding: 0px 20px;
   line-height: 30px;
   border-radius: 15px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
 }
+
+/* badge ui-semantic for filter article */
+.ui.yellow.label, .ui.yellow.labels .label{
+  font-size: 15px;
+}
+/* end of badge ui-semantic for filter article */
 
 /* End Main Button Area css
 ============================================================================================ */
@@ -4241,7 +4318,7 @@ h6 {
 
 .date a {
   color: #b3afaf;
-  font-size: 12px;
+  font-size: 15px;
   font-family: "Open Sans", sans-serif;
   margin-right: 15px;
 }

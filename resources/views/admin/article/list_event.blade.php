@@ -12,7 +12,6 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
                     <h2 class="pageheader-title">Master Data - Agenda</h2>
-                    <!-- <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p> -->
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -111,14 +110,14 @@
                                                         <div class="d-flex">
                                                             <div class="col-lg-6">
                                                                 <label for="start-time" >Mulai</label>
-                                                                <input id="fromTime" type="time" class="form-control" name="fromTime" value="{{ $data->fromTime }}" placeholder="{{ time('h:ia', strtotime($data->fromTime)) }}" required> @if ($errors->has('fromTime'))
+                                                                <input id="fromTime" type="time" class="form-control" name="fromTime" value="{{ $data->fromTime }}" required> @if ($errors->has('fromTime'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('fromTime') }}</strong>
                                                                 </span> @endif
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <label for="end-time" >Sampai</label>
-                                                                <input id="toTime" type="time" class="form-control" name="toTime" value="{{ $data->toTime }}" placeholder="{{ time('h:ia', strtotime($data->toTime)) }}" required> @if ($errors->has('toTime'))
+                                                                <input id="toTime" type="time" class="form-control" name="toTime" value="{{ $data->toTime }}" required> @if ($errors->has('toTime'))
                                                                 <span class="help-block">
                                                                     <strong>{{ $errors->first('toTime') }}</strong>
                                                                 </span> @endif
@@ -127,7 +126,7 @@
 
                                                     </div>
                                                     <div class="form-group required {{ $errors->has('place') ? ' has-error' : '' }}">
-                                                        <label for="place" class="col-md-6 control-label">Tempat Pelaksanaan<span class="required-text">( Optional )</span></label>
+                                                        <label for="place" class="col-md-12 control-label">Tempat Pelaksanaan<span class="required-text">( Optional )</span></label>
                                                         <div class="col-md-12">
                                                             <input id="place" type="place" class="form-control" name="place" value="{{ $data->place }}" placeholder="{{$data->place}}" required> @if ($errors->has('place'))
                                                             <span class="help-block">

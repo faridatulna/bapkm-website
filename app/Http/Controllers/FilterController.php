@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Events;
+use App\Filter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
-class EventController extends Controller
+class FilterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,22 +23,14 @@ class EventController extends Controller
         $this->middleware(['auth'])->except('logout');
     }
 
-    public function links()
-    {
-        $event = Events::orderBy('dateOfEvent', 'desc')->get();
-        return view('admin.article.list_event',compact('event'));
-    }
-    
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $event = Events::orderBy('dateOfEvent', 'desc')->paginate(10);
-
-        return view('admin.article.list_event',compact('event'));
+        //
     }
 
     /**
@@ -47,9 +40,8 @@ class EventController extends Controller
      */
     public function create()
     {
-
+        //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -59,19 +51,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event = new Events;
-        $event->title = $request->title;
-        $event->place = $request->place;
-        $event->fromTime = $request->fromTime;
-        $event->toTime = $request->toTime;
-        $event->dateOfEvent = $request->dateOfEvent;
- 
-        dd($event->dateOfEvent->toFormattedDateString());
-        $event->save();
+        Filter::create([
+            'filter_name' => $request->input('filter_name'),
+            'filter_code' => $request->input('filter_code')
+        ]);
 
-        // Session::flash('message', 'Berhasil ditambahkan!');
-        // Session::flash('message_type', 'success');
-        // return redirect()->back();
+        Session::flash('messageCat', 'Berhasil ditambahkan!');
+        Session::flash('messageCat_type', 'success');
+        return redirect()->back();
     }
 
     /**
@@ -82,7 +69,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -93,7 +80,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -106,13 +93,6 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $event = Events::findorfail($id);
-
-        $event->update($request->all());
-        
-        Session::flash('message', 'Berhasil diubah!');
-        Session::flash('message_type', 'success');
-        return redirect()->back();
     }
 
     /**
@@ -123,11 +103,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Events::findOrFail($id);       
-        $event->delete();
+        $filter = Filter::findOrFail($id);
 
-        Session::flash('message', 'Berhasil dihapus!');
-        Session::flash('message_type', 'success');
+        $filter->delete();
+
+        Session::flash('messageCat', 'Berhasil dihapus!');
+        Session::flash('messageCat_type', 'success');
         return redirect()->back();
     }
 }

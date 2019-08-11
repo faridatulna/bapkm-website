@@ -24,8 +24,6 @@
     $(function() {
         $(".uploads").change(readURL)
         $("#f").submit(function() {
-            // do ajax submit or just classic form submit
-            //  alert("fake subminting")
             return false
         })
     })
@@ -101,7 +99,6 @@
                                             <div class="post-btn justify-content-between d-flex" >
                                                 <a href="/article-page/{{$data->id}}" data-toggle="tooltip" title="Lihat Artikel"> 
                                                     <button class="btn btn-primary fas fa-external-link-alt"></button>
-                                                    
                                                 </a>
                                                 <button class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#edit{{ $data->id }}" data-toggle="tooltip" title="Edit">
                                                 </button>
@@ -136,19 +133,47 @@
                 <div class="card">
                     <h5 class="card-header">
                         Kategori
+                        <button class="btn btnlike float-right" data-toggle="modal" data-target="#addcat" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i></button>
                     </h5>
+                    <div class="col-lg-12">
+                        @if (Session::has('messageCat'))
+                        <div class="alert alert-{{ Session::get('messageCat_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('messageCat') }}</div>
+                        @endif
+                    </div>
                     <div class="card-body">
                         <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="/admin/article">Semua</a>
+                                <span class="badge badge-primary badge-pill">{{ $datas->count() }}</span>
+                            </li>
                             @foreach($filter as $data)
                             <li class="list-group-item d-flex justify-content-between align-items-center" id="{{ $data->id }}"> 
-                                {{ $data->filter_name }} 
+                                <span data-toggle="modal" data-target="#delcat{{ $data->id }}" data-toggle="tooltip" title="Hapus" class="fa fa-times" style="color: red;"> 
+                                </span>
+                                <a href="{{ route('admin.ArticleCategory', $data->id ) }}">{{ $data->filter_name }} </a>
                                 <span class="badge badge-primary badge-pill">{{ $data->article->count() }}</span>
                             </li>
+                            <!--del-->
+                            <div class="modal fade" id="delcat{{ $data->id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="delcat{{ $data->id}}"><strong>Hapus Kategori</strong></h5>
+                                            <button class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {!! Form::open(array('route' => array('admin.filter.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus Kategori ??
+                                        </div>
+                                        <div class="modal-footer pull-right" style="margin-right: 12px;">
+                                            {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}{{ Form::close() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </ul>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn-secondary btn" data-toggle="modal" data-target="#addcat" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
                     </div>
                 </div>
             </div>
@@ -249,7 +274,7 @@
                         {!! Form::open(array('route' => array('admin.article.destroy', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus data ??
                     </div>
                     <div class="modal-footer pull-right" style="margin-right: 12px;">
-                        {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('<i class="fa fa-trash"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}{{ Form::close() }}
+                        {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button( 'Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}{{ Form::close() }}
                     </div>
                 </div>
             </div>
@@ -390,7 +415,7 @@
                         <span aria-hidden="true">×</span>
                     </a>
                 </div>
-                <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.filter.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <ul class="list-unstyled">
