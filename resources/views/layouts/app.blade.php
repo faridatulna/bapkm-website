@@ -100,88 +100,13 @@
                         </div>
                         <div class="row">
                             <div class="col-10">
-                              <?php
-                                    $servername = "localhost";
-                                    $username = "root";
-                                    $password = "";
-                                    $dbname = "bapkm-db";
-                                    $conn = new mysqli($servername, $username, $password, $dbname);
-                                    if ($conn->connect_error) {
-                                        die("Connection failed: " . $conn->connect_error);
-                                    } 
-
-                                    // setcookie('views', 'test0', time() + 50, "/"); //86400 = 1 day
-                                    session_start(); //start a session
-
-                                    //define current date and time
-                                      $now_date = date("y-m-d");
-                                      $now_time = date("G:i:s", time());
-                                      $check_row = "SELECT * FROM counters";
-                                      $check_date = "SELECT visit_date FROM counters";
-
-                                    //check if there is a session and cookies already set
-                                    if(isset($_SESSION['views'])){ 
-                                      $_SESSION['views'] = $_SESSION['views']+1;
-                                      $visits = $_SESSION['views'];
-                                      //increment visitor by 1
-                                      $sql = "UPDATE counters SET today_visitors = today_visitors+1  WHERE visit_date = '".$now_date."' ";
-                                      $conn->query($sql);
-
-                                    }else{
-                                       $crow = $conn->query($check_row);
-
-                                       //if the table doesn't have any rows
-                                       if( $crow->num_rows < 0) {
-                                          $_SESSION['views'] = 1;
-
-                                          $sql = "INSERT INTO counters(visit_date,visit_time,today_visitors) 
-                                          VALUES('".$now_date."', '".$now_time."' , 1) ";
-                                          $conn->query($sql);
-
-                                       }else{
-                                          $cdate = $conn->query($check_date);
-                                          while ( $row_date = $cdate->fetch_assoc() ) {
-                                              if( $row_date["visit_date"] != $now_date )
-                                              {
-                                                 $_SESSION['views'] = 1;
-                                                 //insert new row in each a day by cookies
-                                                 $sql = "INSERT INTO counters(visit_date,visit_time,today_visitors) 
-                                                 VALUES('".$now_date."', '".$now_time."' , 1) ";
-                                                 $conn->query($sql);
-                                              }else{
-                                                 $_SESSION['views'] = $_SESSION['views']+1;
-                                                 $sql = "UPDATE counters SET today_visitors = today_visitors+1  WHERE visit_date = '".$now_date."' ";
-                                                 $conn->query($sql);
-                                              }
-                                          }
-                                       }
-                                    }
-                              ?>
-
                               <p style="color: white;">Hari ini: 
-                                <?php 
-                                  $sql = "SELECT today_visitors FROM counters WHERE visit_date = '".$now_date."' ";
-                                  $result = $conn->query($sql);
-                                        if ($result->num_rows > 0) {
-                                            while($row = $result->fetch_assoc()) {
-                                                print $visits = $row["today_visitors"];
-                                            }
-                                        } else {
-                                            print "no result";
-                                        }
-                                ?>
+                                @foreach($visitor as $key => $value)
+                                  {!! $value['today_visitors'] !!}
+                                @endforeach
                               </p>
-                              <p style="color: white;">Total: 
-                                <?php 
-                                  $sql_view = "SELECT SUM(today_visitors) FROM counters";
-                                  $totalq = $conn->query($sql_view);
-                                  $row_t = $totalq->fetch_assoc();
-                                  $total = $row_t["SUM(today_visitors)"];
-                                  print $total;
-                                ?>
+                              <p style="color: white;">Total: {{ $sumVisits }}
                               </p>
-                              <?php $conn->close(); ?>
-  
                         </div>
                     </div>
                     

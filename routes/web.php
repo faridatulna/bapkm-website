@@ -53,21 +53,36 @@ Route::prefix('aboutus')
     ->name('aboutus.')
     ->group(function () {
         Route::get('/history', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
-           return view('aboutus.history',compact('announce','cdatetime'));
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+           return view('aboutus.history',compact('announce','cdatetime','sumVisits','visitor'));
         })->name('history');
 
         Route::get('/organigram', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
-           return view('aboutus.organigram',compact('announce','cdatetime'));
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+           return view('aboutus.history',compact('announce','cdatetime','sumVisits','visitor'));
         })->name('organigram');
 
         Route::get('/profile', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
-           return view('aboutus.profile',compact('announce','cdatetime'));
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+           return view('aboutus.history',compact('announce','cdatetime','sumVisits','visitor'));
         })->name('profile');
 
     });
@@ -76,36 +91,65 @@ Route::prefix('help')
     ->name('help.')
     ->group(function () {
         Route::get('/', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
-           return view('help', compact('announce','cdatetime'));
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors','sumVisits');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+           return view('help', compact('announce','cdatetime','visitor'));
         });
         Route::get('/regdat', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+
             $sop = Helps::where('type','=',1)->get();
-            return view('SOP.regdat', compact('sop','announce','cdatetime'));
+            return view('SOP.regdat', compact('sop','announce','cdatetime','sumVisits','visitor'));
         })->name('regdat');
 
         Route::get('/pep', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+
             $sop = Helps::where('type','=',2)->get();
-            return view('SOP.PEP', compact('sop','announce','cdatetime'));
+            return view('SOP.PEP', compact('sop','announce','cdatetime','sumVisits','visitor'));
         })->name('pep');
 
         Route::get('/beasiswa', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+
             $sop = Helps::where('type','=',3)->get();
-            return view('SOP.beasiswa', compact('sop','announce','cdatetime'));
+            return view('SOP.beasiswa', compact('sop','announce','cdatetime','sumVisits','visitor'));
         })->name('beasiswa');
 
         Route::get('/datkeg', function () {
+            //runnint-text
             $announce = Announce::all();
             $cdatetime = \Carbon\Carbon::now();
+            //visitor-counter
+            $sumVisits = DB::table('counters')->sum('today_visitors');
+            $now_date = date("Y-m-d");
+            $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
+            
             $sop = Helps::where('type','=',4)->get();
-            return view('SOP.datkeg', compact('sop','announce','cdatetime'));
+            return view('SOP.datkeg', compact('sop','announce','cdatetime','sumVisits','visitor'));
         })->name('datkeg');
     });
 

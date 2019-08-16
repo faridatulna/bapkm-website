@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\Searchable\Search;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Article;
 use App\Events;
 use App\Helps;
@@ -11,17 +14,71 @@ use App\Services;
 use App\Galleries;
 use App\Quicklinks;
 use App\counter;
-use App\Aboutus;
 use App\Announce;
 use App\Filter;
 use App\Feedback;
 use Carbon\Carbon;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use Auth;
+use Session;
 
 class HomeController extends Controller
 {
+
+    function in_array_field($needle, $needle_field, $haystack, $strict = false) { 
+      if ($strict) { 
+          foreach ($haystack as $item) 
+              if (isset($item->$needle_field) && $item->$needle_field === $needle) 
+                  return true; 
+      } 
+      else { 
+          foreach ($haystack as $item) 
+              if (isset($item->$needle_field) && $item->$needle_field == $needle) 
+                  return true; 
+      } 
+      return false; 
+    } 
+
+    public function todayVisits(){
+      session_start();
+
+      $now_date = date("Y-m-d");
+      $now_time = date("G:i:s", time());
+      $check_row = DB::table('counters')->count();
+      $check_date = DB::select('SELECT visit_date FROM counters');
+
+      if( Session::has('views') ){
+        $_SESSION['views'] = $_SESSION['views']+1;
+        $today_visitors = DB::table('counters')->where('visit_date', $now_date)->update(['today_visitors'=> DB::raw('today_visitors+1')]);
+      }
+      else{
+          if($check_row < 0){
+            $_SESSION['views'] = 1;
+
+            DB::table('counters')->insert(
+                array('visit_date' => $now_date,
+                      'visit_time' => $now_time,
+                      'today_visitors' => 1 )
+            );
+          }
+          else{
+              if( !$this->in_array_field( $now_date,'visit_date',$check_date ) ){
+                  $_SESSION['views'] = 1;
+
+                  DB::table('counters')->insert(
+                      array('visit_date' => $now_date,
+                            'visit_time' => $now_time,
+                            'today_visitors' => 1 )
+                  );
+              }
+              else{
+                  $_SESSION['views'] = $_SESSION['views']+1;
+                  $today_visitors = DB::table('counters')->where('visit_date', $now_date)->update(['today_visitors'=> DB::raw('today_visitors+1')]);
+              }
+          }
+      }
+    }
+
     function index()
     {
       $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
@@ -31,38 +88,38 @@ class HomeController extends Controller
       $service = Services::all();
       $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(3)->get();
       $gal = Galleries::all();
+      //runnint-text
       $announce = Announce::all();
       $cdatetime = \Carbon\Carbon::now();
+      //visitor-counter
+      $sumVisits = DB::table('counters')->sum('today_visitors');
+      $this->todayVisits();
+      $now_date = date("Y-m-d");
+      $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
-      // session_start();
-
-      return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service','announce','cdatetime') );
+      return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service','announce','cdatetime','sumVisits','visitor') );
     }
 
-    // function updateCounter(){
-    //   $now_date = date("y-m-d");
-    //   $now_time = date("G:i:s", time());
-
-    //   $jad = DB::table('jadwals')->join('dosens','jadwals.nipdosenngajar','=','dosens.nip')->join('matakuliahs','jadwals.idmk_jadwal','=','matakuliahs.id_mk')->get();
-    //   $cdate = counter::where('')
-    //   if (  )
-    // }
+    
 
     function articlePage()
     {
       $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
       $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
       $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-      $announce = Announce::all();
-      $cdatetime = \Carbon\Carbon::now();
-
       $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
       $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
       $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
-
       $filter = Filter::orderBy('filter_name','asc')->get();
+      //runnint-text
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
+      //visitor-counter
+      $sumVisits = DB::table('counters')->sum('today_visitors');
+      $now_date = date("Y-m-d");
+      $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
-      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter'));
+      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
     }
 
     /**
@@ -75,16 +132,19 @@ class HomeController extends Controller
       $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
       $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
       $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-      $announce = Announce::all();
-      $cdatetime = \Carbon\Carbon::now();
-
       $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
       $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->get();
       $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->paginate(6);
-
       $filter = Filter::orderBy('filter_name','asc')->get();
+      //runnint-text
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
+      //visitor-counter
+      $sumVisits = DB::table('counters')->sum('today_visitors');
+      $now_date = date("Y-m-d");
+      $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
-      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter'));
+      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
     }
 
     public function articleSinglePage($id)
@@ -108,8 +168,13 @@ class HomeController extends Controller
         $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
         $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
         $news = Article::orderBy('updated_at', 'desc')->take(4)->get();
+        // //runnint-text
         $announce = Announce::all();
         $cdatetime = \Carbon\Carbon::now();
+        //visitor-counter
+        $sumVisits = DB::table('counters')->sum('today_visitors');
+        $now_date = date("Y-m-d");
+        $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
         setcookie('id', $id, time() + 3600, "/"); //86400 = 1 day
 
@@ -120,7 +185,7 @@ class HomeController extends Controller
             $data = Article::findorfail($id);
           }
 
-        return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next','announce','cdatetime'));
+        return view('article-single',compact('datas','data','news','cal','cal_lastest','agenda','prev','next','announce','cdatetime','sumVisits','visitor'));
     }
 
     public function search(Request $request)
@@ -128,11 +193,16 @@ class HomeController extends Controller
       $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
       $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
       $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-        $links = Quicklinks::all();
-        $sop = Helps::all();
-        $service = Services::all();
-        $announce = Announce::all();
-        $cdatetime = \Carbon\Carbon::now();
+      $links = Quicklinks::all();
+      $sop = Helps::all();
+      $service = Services::all();
+      //runnint-text
+      $announce = Announce::all();
+      $cdatetime = \Carbon\Carbon::now();
+      //visitor-counter
+      $sumVisits = DB::table('counters')->sum('today_visitors');
+      $now_date = date("Y-m-d");
+      $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
         $searchResults = (new Search())
             ->registerModel(Article::class, 'title','description','type')
@@ -141,7 +211,7 @@ class HomeController extends Controller
             ->registerModel(Services::class, 'title')
             ->perform($request->input('q'));
 
-        return view('search1', compact('cal','cal_lastest','agenda','links','searchResults','announce','cdatetime'));
+        return view('search1', compact('cal','cal_lastest','agenda','links','searchResults','announce','cdatetime','sumVisits','visitor'));
     }
 
     
@@ -162,31 +232,4 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
-
-    // Route::any ( '/search-result', function () {
-//     $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(1)->get();
-//     $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
-//     $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
-//     $links = Quicklinks::all();
-//     $sop = Helps::all();
-//     $service = Services::all();
-
-//     $projects = Article::search(Input::get('search'))->get();
-
-//     $q = Input::get ( 'q' );
-//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->get();
-//     $data = Article::where ( 'title', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'description', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'updated_at', 'LIKE', '%' . $q . '%' )->
-//                 orWhere ( 'url', 'LIKE', '%' . $q . '%' )->orWhere ( 'type', 'LIKE', '%' . $q . '%' )->paginate(5);
-//     // $data = Article::paginate(5);
-//     //$link = Links::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'description', 'LIKE', '%' . $q . '%' )->get ();
-//     if (count($data) > 0)
-//         return view ( 'search', compact('cal','cal_lastest','agenda','links'))->withDetails ( $data )->withQuery ( $q );
-//     else
-//         return view ( 'search', compact('cal','cal_lastest','agenda','links') )->withQuery ( $q )->withMessage ( 'Kami tidak dapat menemukan pencarian anda , Mohon coba lagi.' );
-// } );
 }
