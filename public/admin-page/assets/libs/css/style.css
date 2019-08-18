@@ -7104,7 +7104,9 @@ Media Query
     padding: 17px 29px;}
 }
 
-
+.star.checked{
+    color: yellow;
+}
 
 
 /* Custom, iPhone Retina */

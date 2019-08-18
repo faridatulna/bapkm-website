@@ -15,6 +15,7 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('username')->default("anonymous");
             $table->integer('rating');
             $table->longText('opinion');
             $table->timestamps();

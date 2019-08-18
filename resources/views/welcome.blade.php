@@ -116,10 +116,6 @@
                                     <a href="{{ url('Uploaded/Service',$data->filePdf) }}">
                                         <div class="card-product-button"><i class="fa fa-book"></i> Panduan</div>
                                     </a>
-                                    <!-- <div class="pad15 development" style="background-color: #003A7F;">
-                                        <p class="lead" style="margin-top: 11.5vh;"><strong>{{ $data->description }}</strong>
-                                        <a href="{{ $data->url }}" target="_blank"><button class="btn btn-info">Link<i class="fa fa-arrow-right"></i></button></a></p>
-                                    </div> -->
                                 </div>
                                 @endforeach
                                 <div class="item">

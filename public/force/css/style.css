@@ -2502,11 +2502,13 @@ img.logo-navbar2 {
 }
 
 .modal.custom .modal-dialog .modal-body .input-form{
-  padding: 20px;
+  margin-top: 15px;
+  font-size: 16.5px;
+  font-style: oblique;
 }
 
 .modal.custom .modal-dialog .modal-button{
-  background-color: #383636;
+  background-color: #003A7F;
   color: white;
 }
 

@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', 'HomeController@index')->name('welcome');
 
-Route::any('/search-result', 'HomeController@search')->name('search'); 
+Route::any('/search-result', 'HomeController@search')->name('search');
 
 Route::prefix('article')
     ->name('article.')
@@ -161,6 +161,8 @@ Route::prefix('admin')
     ->group(function () {
     	Route::get('/','HomeAdminController@index');
         Route::post('/add-running-text', 'HomeAdminController@storeRunningText')->name('addrunningtext');
+        Route::post('/del-running-text', 'HomeAdminController@destroyRunningText')->name('delrunningtext');
+        Route::get('/customers/{id}', 'HomeAdminController@customersRate')->name('customersRate');
 
         Route::get('/article','HomeAdminController@index');
         Route::get('/articleCategory/{id}','ArticleController@showCategory')->name('ArticleCategory');

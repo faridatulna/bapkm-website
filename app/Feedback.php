@@ -12,6 +12,7 @@ class Feedback extends Model
 
     protected $fillable = [
         'rating',
+        'username',
         'opinion'
     ];
 

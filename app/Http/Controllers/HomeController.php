@@ -47,13 +47,14 @@ class HomeController extends Controller
       $check_row = DB::table('counters')->count();
       $check_date = DB::select('SELECT visit_date FROM counters');
 
-      if( Session::has('views') ){
-        $_SESSION['views'] = $_SESSION['views']+1;
+      if( isset($_SESSION['views']) ){
+        // $_SESSION['views'] = $_SESSION['views']+1;
         $today_visitors = DB::table('counters')->where('visit_date', $now_date)->update(['today_visitors'=> DB::raw('today_visitors+1')]);
       }
       else{
+        //$_SESSION['views'] = " ";
           if($check_row < 0){
-            $_SESSION['views'] = 1;
+            // $_SESSION['views'] = 1;
 
             DB::table('counters')->insert(
                 array('visit_date' => $now_date,
@@ -63,7 +64,7 @@ class HomeController extends Controller
           }
           else{
               if( !$this->in_array_field( $now_date,'visit_date',$check_date ) ){
-                  $_SESSION['views'] = 1;
+                  // $_SESSION['views'] = 1;
 
                   DB::table('counters')->insert(
                       array('visit_date' => $now_date,
@@ -72,7 +73,7 @@ class HomeController extends Controller
                   );
               }
               else{
-                  $_SESSION['views'] = $_SESSION['views']+1;
+                  // $_SESSION['views'] = $_SESSION['views']+1;
                   $today_visitors = DB::table('counters')->where('visit_date', $now_date)->update(['today_visitors'=> DB::raw('today_visitors+1')]);
               }
           }
@@ -225,6 +226,7 @@ class HomeController extends Controller
     {
         Feedback::create([
             'rating' => $request->input('rating'),
+            'username' => $request->input('username'),
             'opinion' => $request->input('opinion')
         ]);
 

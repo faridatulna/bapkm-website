@@ -87,40 +87,72 @@
             </div>
         </div>
 
-        <div class="row mt-10">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="row mt-10" >
+            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
                 <div class="card">
-                    <div class="card-header d-flex">
-                        <div class="col-lg-10"><h5>Running Message</h5></div>
-                        <div class="col-lg-2 float-right">
-                            <button class="btn-primary btn" data-toggle="modal" data-target="#add" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i>&nbsp Tambah</button>
-                        </div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Customer Satisfaction</h5><span class="badge badge-primary badge-pill">Total {{ $customers->count() }} Responder</span>
                     </div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Message</th>
-                                    <th scope="col">Periode</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1;?>
-                                @foreach( $announce as $announce )
-                                <tr class="table-light">
-                                    <td scope="row">{{$i++}}</td>
-                                    <td>{{$announce->message}}</td>
-                                    <td>{{$announce->dt_start}} - {{$announce->dt_end}}</td>
-                                    <td>{{$announce->status}}</td>
-                                    <td></td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- <div class="card-body"> -->
+                         <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="cd">
+                                    <!-- <span>Excelent</span> -->
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                </div>
+                                <a href="/admin/customers/5"><span class="badge badge-primary badge-pill">{{ $customers->where('rating',5)->count() }}</span></a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center"> 
+                                <div class="cd">
+                                    <!-- <span>Good</span> -->
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star "></span> 
+                                </div>
+                                <a href="/admin/customers/4"><span class="badge badge-primary badge-pill">{{ $customers->where('rating',4)->count() }}</span></a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center"> 
+                                <div class="cd">
+                                    <!-- <span>Average</span> -->
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span> 
+                                </div>
+                                <a href="/admin/customers/3"><span class="badge badge-primary badge-pill">{{ $customers->where('rating',3)->count() }}</span></a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                
+                                <div class="cd">
+                                    <!-- <span>Poor</span> -->
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span>
+                                </div>
+                                <a href="/admin/customers/2"><span class="badge badge-primary badge-pill">{{ $customers->where('rating',2)->count() }}</span></a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="cd">
+                                    <!-- <span>Terrible</span> -->
+                                    <span class="star fa fa-star checked"></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span>
+                                    <span class="star fa fa-star "></span>
+                                </div>
+                                <a href="/admin/customers/1"><span class="badge badge-primary badge-pill">{{ $customers->where('rating',1)->count() }}</span></a>
+                            </li>
+                        </ul>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -131,22 +163,13 @@
                     <h5 class="card-header" style="text-transform: uppercase; text-align: center;">TOP 5 Artikel</h5>
                         <div class="card-body">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Judul</th>
-                                        <th scope="col">Viewer</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     <?php $i = 1;?>
                                     @foreach($top_article as $data)
                                     <tr class="table-primary">
                                         <th scope="row">{{$i++}}</th>
-                                        <td>{!! $data->title !!}</td>
-                                        <td>{{ $data->viewer }}</td>
-                                        <td><a href="/article-page/{{ $data->id }}"><i class="fas fa-external-link-alt"></i></td>
+                                        <td scope="row">{!! $data->title !!}</td>
+                                        <td scope="row"><a href="/article-page/{{ $data->id }}"><i class="fas fa-external-link-alt"></i></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -179,8 +202,72 @@
                             </table>
                         </div>
                  </div>
+            </div> 
+        </div>
+
+        <div class="row mt-10">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Running Message
+                            <button class="btn btnlike float-right" data-toggle="modal" data-target="#add" data-toggle="tooltip" title="Tambah"><i class="fa fa-plus"></i></button>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Message</th>
+                                    <th scope="col">Periode</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1;?>
+                                @foreach( $announce as $announce )
+                                <tr class="table-light">
+                                    <td scope="row">{{$i++}}</td>
+                                    <td>{{$announce->message}}</td>
+                                    <td>{{$announce->dt_start}} - {{$announce->dt_end}}</td>
+                                    @if( $cdatetime > $announce->dt_start && $cdatetime < $announce->dt_end )
+                                    <td>published</td>
+                                    @else
+                                    <td>ongoing</td>
+                                    @endif
+                                    <td><span data-toggle="modal" data-target="#delrm{{ $data->id }}" data-toggle="tooltip" title="Hapus" class="fa fa-times" style="color: red;"> 
+                                </span></td>
+                                </tr>
+
+                                <!--del-->
+                                <div class="modal fade" id="delrm{{ $data->id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="delrm{{ $data->id}}"><strong>Hapus Kategori</strong></h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {!! Form::open(array('route' => array('admin.delrunningtext', $data->id), 'method' => 'delete')) !!} Anda Yakin Ingin Menghapus Data ??
+                                            </div>
+                                            <div class="modal-footer pull-right" style="margin-right: 12px;">
+                                                {!! Form::button('<i class="fa fa-times-square"></i>'. 'Close', array('type' => 'close', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal' ))!!} {!! Form::button('Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))!!}{{ Form::close() }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 
