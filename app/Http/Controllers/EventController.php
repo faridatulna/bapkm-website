@@ -66,12 +66,12 @@ class EventController extends Controller
         $event->toTime = $request->toTime;
         $event->dateOfEvent = $request->dateOfEvent;
  
-        dd($event->dateOfEvent->toFormattedDateString());
+        // dd($event->dateOfEvent->toFormattedDateString());
         $event->save();
 
-        // Session::flash('message', 'Berhasil ditambahkan!');
-        // Session::flash('message_type', 'success');
-        // return redirect()->back();
+        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+        return redirect()->back();
     }
 
     /**
