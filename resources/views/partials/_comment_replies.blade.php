@@ -49,6 +49,7 @@ function showReplyForm{{$comment->cid}}() {
                 <textarea class="form-control " rows="2" name="body" placeholder="Message" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Message'" required=""></textarea>
                 <input type="hidden" name="article_id" value="{{ $article_id }}" />
                 <input type="hidden" name="comment_id" value="{{ $comment->cid }}" />
+                <!-- <input type="hidden" name="user_id" value="10" /> -->
             </div>
             <div class="form-group">
                 <button class="primary-btn submit_btn">Post Reply</button>

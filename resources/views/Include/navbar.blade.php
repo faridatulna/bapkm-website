@@ -28,60 +28,59 @@
 
 
 <!-- Navbar Area -->
-<div class="newspaper-main-menu" id="stickyMenu">
-    <div class="classy-nav-container">
-        <div class="container">
-            <!-- Menu -->
-            <nav class="classy-navbar justify-content-between" id="newspaperNav">
-
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="/"><img class="logo-navbar2" src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" alt="" ></a>
-                </div>
-
-                <!-- Navbar Toggler -->
-                <div class="classy-navbar-toggler">
-                    <span class="navbarToggler"><span></span><span></span><span></span></span>
-                </div>
-
+<div id="stickyMenu-sticky-wrapper" class="sticky-wrapper" style="height: 80px;">
+    <div class="newspaper-main-menu" id="stickyMenu">
+        <div class="classy-nav-container light left breakpoint-off">
+            <div class="container">
                 <!-- Menu -->
-                <div class="classy-menu">
+                <nav class="classy-navbar justify-content-between" id="newspaperNav">
 
-                    <!-- close btn -->
-                    <div class="classycloseIcon">
-                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="/"><img class="logo-navbar2" src="{{ asset('force/img/core-img/logo-KREATIF.png') }}" alt="" ></a>
                     </div>
 
-                    <!-- Nav Start -->
-                    <div class="classynav">
-                        <ul>
-                            <li class="nav-link2"><a href="/"><strong>Home</strong></a></li>
-                            <li class="nav-link2"><a href="#"><strong>Tentang Kami</strong> </a>
-                              <ul class="dropdown" style="margin-top:5px;">
-                                <li><a href="{{ route('aboutus.history') }}">Sejarah</a></li>
-                                <li><a href="{{ route('aboutus.organigram') }}">Struktur Organisasi</a></li>
-                                <li><a href="{{ route('aboutus.profile') }}">Profil</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-link2"><a href="/article"><strong>Berita</strong></a>
-                                <!-- <ul class="dropdown" style="margin-top:5px;">
-                                    <li><a href="/article/umum">Umum</a></li>
-                                </ul> -->
-                            </li>
-                            <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>
-                        </ul>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
-                    <!-- Nav End -->
-                </div>
-            </nav>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li class="nav-link2"><a href="/"><strong>Home</strong></a></li>
+                                <li class="nav-link2"><a href="#"><strong>Tentang Kami</strong> </a>
+                                    <ul class="dropdown" style="margin-top:5px;">
+                                        <li><a href="{{ route('aboutus.history') }}">Sejarah</a></li>
+                                        <li><a href="{{ route('aboutus.organigram') }}">Struktur Organisasi</a></li>
+                                        <li><a href="{{ route('aboutus.profile') }}">Profil</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-link2"><a href="/article"><strong>Berita</strong></a>
+                                </li>
+                                <li class="nav-link2"><a href="/help"><strong>Bantuan</strong></a></li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+            @foreach( $announce as $announce )
+                @if( $cdatetime > $announce->dt_start && $cdatetime < $announce->dt_end )
+                <marquee class="running-text" direction="left" scroll-amount="7" behavior="scroll">
+                    {{ $announce->message }}
+                </marquee>
+                @else
+                @endif
+            @endforeach
         </div>
-        @foreach( $announce as $announce )
-            @if( $cdatetime > $announce->dt_start && $cdatetime < $announce->dt_end )
-            <marquee class="running-text" direction="left" scroll-amount="7" behavior="scroll">
-                {{ $announce->message }}
-            </marquee>
-            @else
-            @endif
-        @endforeach
     </div>
 </div>

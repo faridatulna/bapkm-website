@@ -137,10 +137,6 @@
                         </div>
                     </aside>
 
-                    <aside class="r_widgets add_widgets text-center">
-                        <img class="img-fluid" src="img/blog/add-1.jpg" alt="">
-                    </aside>
-
                 </div>
             </div>
         </div>

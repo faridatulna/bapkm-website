@@ -19,6 +19,7 @@ use App\Quicklinks;
 use App\counter;
 use App\Announce;
 use App\Aboutus;
+use App\Filter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 
@@ -28,12 +29,10 @@ Route::get('/', 'HomeController@index')->name('welcome');
 
 Route::any('/search-result', 'HomeController@search')->name('search');
 
-Route::prefix('article')
-    ->name('article.')
-    ->group(function () {
-        Route::get('/', 'HomeController@articlePage')->name('all');
-        Route::get('/category/{id}', 'HomeController@articleCategory')->name('category');
-    });
+Route::get('/article', 'HomeController@articlePage');
+Route::get('/get-articles/{id}', 'HomeController@getArticles');
+Route::get('/tag/{name}', 'HomeController@articleCategory')->name('category');
+
 Route::get('/article-page/{id}', 'HomeController@articleSinglePage')->name('article-page');
 
 // download files
@@ -71,7 +70,7 @@ Route::prefix('aboutus')
             $sumVisits = DB::table('counters')->sum('today_visitors');
             $now_date = date("Y-m-d");
             $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
-           return view('aboutus.history',compact('announce','cdatetime','sumVisits','visitor'));
+           return view('aboutus.organigram',compact('announce','cdatetime','sumVisits','visitor'));
         })->name('organigram');
 
         Route::get('/profile', function () {
@@ -82,7 +81,7 @@ Route::prefix('aboutus')
             $sumVisits = DB::table('counters')->sum('today_visitors');
             $now_date = date("Y-m-d");
             $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
-           return view('aboutus.history',compact('announce','cdatetime','sumVisits','visitor'));
+           return view('aboutus.profile',compact('announce','cdatetime','sumVisits','visitor'));
         })->name('profile');
 
     });
@@ -98,7 +97,7 @@ Route::prefix('help')
             $sumVisits = DB::table('counters')->sum('today_visitors','sumVisits');
             $now_date = date("Y-m-d");
             $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
-           return view('help', compact('announce','cdatetime','visitor'));
+           return view('help', compact('announce','cdatetime','visitor','sumVisits'));
         });
         Route::get('/regdat', function () {
             //runnint-text

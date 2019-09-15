@@ -100,18 +100,17 @@ class HomeController extends Controller
 
       return view('welcome',compact('article','cal','cal_lastest','agenda','links','gal','service','announce','cdatetime','sumVisits','visitor') );
     }
-
     
-
     function articlePage()
     {
       $cal_lastest = Article::orderBy('updated_at', 'desc')->where('type','=',6)->firstOrFail();
       $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
       $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
       $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-      $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
-      $article = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
-      $filter = Filter::orderBy('filter_name','asc')->get();
+      $datas = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
+      $datas = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->paginate(6);
+      $filter = Filter::orderBy('filter_name','asc')->where('id','!=',6)->get();
+
       //runnint-text
       $announce = Announce::all();
       $cdatetime = \Carbon\Carbon::now();
@@ -120,7 +119,57 @@ class HomeController extends Controller
       $now_date = date("Y-m-d");
       $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
-      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
+      return view('article',compact('datas','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
+    }
+
+    public function getArticles($id)
+    {   
+        $datas = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->where('type', $id)->get(); 
+        // $datas = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->where('type', $id)->paginate(6); 
+        $data = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->get();
+
+        $list = '';
+        if($id == 0){
+          if ($data->count()){
+
+            foreach ($data as $key => $value) {
+              $list .= "<div class='choice_text'>
+                        <div class='date'>
+                          <a class='gad_btn text-uppercase' href='#' disabled>" . $value->filter($value->type)->filter_name . "</a>
+                          <a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" . date('M j, Y', strtotime($value->updated_at)) . "</a>
+                        </div>
+                        <a href='/article-page/". $value->id ."' method='post'><h4>" . $value->title  . "</h4></a>
+                        <span class='d-inline-block'>
+                          <p class='word-wrap'>" .$value->description. "</p>
+                        </span>
+                       </div>";
+            }
+          }
+          else{
+            $list .= "<br></br> <div class='alert alert-warning'><h4> Pengumuman belum ditambahkan pada laman berikut ini :) </h4></div>";
+          }
+        }else{
+          if ($datas->count()){
+            foreach ($datas as $key => $value) {
+              $list .= "<div class='choice_text'>
+                        <div class='date'>
+                          <a class='gad_btn text-uppercase' href='#' disabled>" . $value->filter($value->type)->filter_name . "</a>
+                          <a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" . date('M j, Y', strtotime($value->updated_at)) . "</a>
+                        </div>
+                        <a href='/article-page/". $value->id ."' method='post'><h4>" . $value->title  . "</h4></a>
+                        <span class='d-inline-block'>
+                          <p class='word-wrap'>" .$value->description. "</p>
+                        </span>
+                       </div>";
+            }
+          }
+          else{
+              $list .= "<br></br> <div class='alert alert-warning'><h4> Pengumuman belum ditambahkan pada laman berikut ini :) </h4></div>";
+          }
+        }
+
+        return $list; 
+        // return view('article',['datas' => $datas, 'news' => $news,'cal'=>$cal , 'cal_lastest' => $cal_lastest ,'agenda'=>$agenda,'announce'=>$announce,'cdatetime'=>$cdatetime,'filter'=>$filter,'sumVisits'=>$sumVisits,'visitor'=>$visitor]);
     }
 
     /**
@@ -134,9 +183,9 @@ class HomeController extends Controller
       $cal = Article::orderBy('updated_at', 'desc')->where('type','=',6)->take(3)->get();
       $agenda = Events::orderBy('dateOfEvent', 'desc')->take(10)->get();
       $news = Article::orderBy('updated_at', 'desc')->where('type','!=',6)->take(4)->get();
-      $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->get();
-      $article = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->paginate(6);
-      $filter = Filter::orderBy('filter_name','asc')->get();
+      $datas = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->get();
+      $datas = Article::orderBy('updated_at', 'desc')->where('type','=', $id)->paginate(6);
+      $filter = Filter::orderBy('filter_name','asc')->where('id','!=',6)->get();
       //runnint-text
       $announce = Announce::all();
       $cdatetime = \Carbon\Carbon::now();
@@ -145,12 +194,12 @@ class HomeController extends Controller
       $now_date = date("Y-m-d");
       $visitor = counter::select('today_visitors')->where('visit_date', $now_date)->get('today_visitors');
 
-      return view('article',compact('article','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
+      return view('article',compact('datas','news','cal','cal_lastest','agenda', 'announce','cdatetime','filter','sumVisits','visitor'));
     }
 
     public function articleSinglePage($id)
     {
-        $datas = Article::all();
+        $datas = Article::where('type','!=',6)->get();
         $data = Article::findorfail($id);
 
             // get the current user

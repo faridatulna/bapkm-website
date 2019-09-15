@@ -29,7 +29,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('force/bower_components/semantic-ui-calendar/dist/calendar.min.css') }}" /> -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
@@ -57,7 +57,7 @@
       <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
     </div>
 
-    @include('sweetalert::alert')
+    <!-- @include('sweetalert::alert') -->
 
     <footer class="footer-area" style="bottom: 0px;">
         <div class="container">
@@ -343,6 +343,38 @@
             $(".scrolltop").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");
             return false})
           });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      //get category id
+      $("#fid0").click(function(){
+        var cat = $("#fid0").val();
+        
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/get-articles')}}/' + cat,
+          success:function(data){
+            $("#product").html(data);
+          },
+        });
+      });
+      @foreach(App\Filter::all() as $catList)
+      $("#fid{{$catList->id}}").click(function(){
+        var cat = $("#fid{{$catList->id}}").val();
+        
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/get-articles')}}/' + cat,
+          success:function(data){
+            $("#product").html(data);
+          },
+        });
+      });
+      @endforeach
+    });
     </script>
 
     @section('js') @show

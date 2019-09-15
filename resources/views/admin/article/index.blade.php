@@ -28,10 +28,10 @@
         })
     })
 </script>
-@stop @extends('layouts.app-admin') @section('content')
+@stop @extends('layouts.app-admin') 
+@section('content')
 
 <div class="dashboard-main-wrapper">
-
     <div class="container-fluid dashboard-content">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -179,6 +179,7 @@
             </div>
         </div>
 
+    <div class="container">
         @foreach($datas as $data)
         <!--edit-->
         <div class="modal fade" id="edit{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
@@ -292,33 +293,38 @@
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            @foreach( $data->comments_data($data->id) as $comment )
-                            @if( $comment->status == 0 )
-                            <div class="row comment-row justify-content-between d-flex">
-                                <div class="col">
-                                    <h5 class="author"> {{ $comment->name }} </h5>
-                                    <p class="date"> {{date('M j, Y h:i A', strtotime($comment->submit_time))}} </p>
-                                    <p class="body"> {{ $comment->body }} </p>
-                                    <!-- <a href="/admin" target="_blank" style="margin-top: 0;"><i class="fas fa-reply"></i> Reply </a> -->
-                                </div>
-                                <div class="col control-button">
-                                    <div class="control justify-content-between d-flex">
-                                        @if( $comment->status == 0 )
-                                        <form method="POST" action= "{{ route('comment.update', $comment->cid ) }}" enctype="multipart/form-data">
-                                            {{ csrf_field() }} {{ method_field('put') }}
-                                            <button class="btn approved-btn"><i class="fas fa-check-circle"></i> Approve</button>
-                                        </form>
+                            @if ( $data->comments_data($data->id)->count() )
+                                @foreach( $data->comments_data($data->id) as $comment )
+                                    @if ( $comment->status == 0 )
+                                    <div class="row comment-row justify-content-between d-flex">
+                                        <div class="col">
+                                            <h5 class="author"> {{ $comment->name }} </h5>
+                                            <p class="date"> {{date('M j, Y h:i A', strtotime($comment->submit_time))}} </p>
+                                            <p class="body"> {{ $comment->body }} </p>
+                                            <!-- <a href="/admin" target="_blank" style="margin-top: 0;"><i class="fas fa-reply"></i> Reply </a> -->
+                                        </div>
+                                        <div class="col control-button">
+                                            <div class="control justify-content-between d-flex">
+                                                @if( $comment->status == 0 )
+                                                <form method="POST" action= "{{ route('comment.update', $comment->cid ) }}" enctype="multipart/form-data">
+                                                    {{ csrf_field() }} {{ method_field('put') }}
+                                                    <button class="btn approved-btn"><i class="fas fa-check-circle"></i> Approve</button>
+                                                </form>
 
-                                        {!! Form::open(array('route' => array('comment.destroy', $comment->cid), 'method' => 'delete')) !!} 
-                                            {!! Form::button('<i class="fas fa-trash-circle"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn disapproved-btn'))!!}{{ Form::close() }}
-                                        @elseif( $comment->status == 1 )
+                                                {!! Form::open(array('route' => array('comment.destroy', $comment->cid), 'method' => 'delete')) !!} 
+                                                    {!! Form::button('<i class="fas fa-trash-circle"></i>'. 'Delete', array('type' => 'submit', 'class' => 'btn disapproved-btn'))!!}{{ Form::close() }}
+                                                @elseif( $comment->status == 1 )
 
-                                        @endif
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    @else
+                                    @endif
+                                @endforeach
+                            @else
+                               <div class="row"> <p> Tidak Ada Komentar Baru </p> </div>
                             @endif
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -327,123 +333,122 @@
 
         @endforeach
 
-    <!--add-->
-    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="add">Form Tambah</h5>
-                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </a>
+        <!--add-->
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add">Form Tambah</h5>
+                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                    <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                             </ul>
+
+                                    <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
+                                        <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="type" required="">
+                                                @foreach ($filter as $filter)
+                                                <option value="{{ $filter->id }}">{{ $filter->filter_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
+                                        <label for="title" class="col-md-12 control-label">Judul<span class="required-text"> *</span></label>
+                                        <div class="col-md-12">
+                                            <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
+                                            <span class="help-block">
+                                                        <strong>{{ $errors->first('title') }}</strong>
+                                                    </span> @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+                                        <label for="url" class="col-md-12 control-label">Url Terkait<span class="optional-text"> ( Optional )</span></label>
+                                        <div class="col-md-12">
+                                            <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
+                                            <span class="help-block">
+                                                        <strong>{{ $errors->first('url') }}</strong>
+                                                </span> @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+                                        <div class="col-12">
+                                            <label for="description">Deskripsi <span class="optional-text"> ( Optional )</span> </label>
+                                             {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
+                                            <span class="help-block">
+                                                        <strong>{{ $errors->first('description') }}</strong>
+                                                    </span> @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-12 control-label">Gambar<span class="optional-text"> ( Optional )</span></label>
+                                        <div class="col-md-12">
+                                            <img width="435" height="250" />
+                                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
+                                        <div class="col-md-12">
+                                            <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </form>
                 </div>
-                <form method="POST" action="{{ route('admin.article.store') }}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="modal-body">
-                        <ul class="list-unstyled">
-                            <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
-                         </ul>
-
-                                <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                    <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
-                                    <div class="col-md-12">
-                                        <select class="form-control" name="type" required="">
-                                            @foreach ($filter as $filter)
-                                            <option value="{{ $filter->id }}">{{ $filter->filter_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
-                                    <label for="title" class="col-md-12 control-label">Judul<span class="required-text"> *</span></label>
-                                    <div class="col-md-12">
-                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Judul Artikel" required> @if ($errors->has('title'))
-                                        <span class="help-block">
-                                                    <strong>{{ $errors->first('title') }}</strong>
-                                                </span> @endif
-                                    </div>
-                                </div>
-                                <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                    <label for="url" class="col-md-12 control-label">Url Terkait<span class="optional-text"> ( Optional )</span></label>
-                                    <div class="col-md-12">
-                                        <input id="Url" type="url" name="url" class="form-control" placeholder="Url/Tautan (ex: https://www.its.ac.id/)"> @if ($errors->has('url'))
-                                        <span class="help-block">
-                                                    <strong>{{ $errors->first('url') }}</strong>
-                                            </span> @endif
-                                    </div>
-                                </div>
-                                <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                                    <div class="col-12">
-                                        <label for="description">Deskripsi <span class="optional-text"> ( Optional )</span> </label>
-                                         {!! Form::textarea('description',null, array('class' => 'form-control','placeholder'=>'Artikel ini tentang ... ')) !!} @if ($errors->has('description'))
-                                        <span class="help-block">
-                                                    <strong>{{ $errors->first('description') }}</strong>
-                                                </span> @endif
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-md-12 control-label">Gambar<span class="optional-text"> ( Optional )</span></label>
-                                    <div class="col-md-12">
-                                        <img width="435" height="250" />
-                                        <input type="file" class="uploads form-control" style="margin-top: 20px;" name="fileImg" accept=".jpg,.png,.jpeg,.svg">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-md-12 control-label">Unggah File Panduan <span class="optional-text"> ( Optional *.pdf only )</span></label>
-                                    <div class="col-md-12">
-                                        <input type="file" class="uploads form-control" name="filePdf" accept=".pdf">
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="submit">Add</button>
-                        <button type="reset" class="btn btn-danger">Reset</button>
-                    </div>
-
             </div>
-            </form>
         </div>
-    </div>
 
-    <!--addactegory-->
-    <div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addcat">Form Tambah</h5>
-                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </a>
-                </div>
-                <form method="POST" action="{{ route('admin.filter.store') }}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="modal-body">
-                        <ul class="list-unstyled">
-                            <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
-                         </ul>
+        <!--addactegory-->
+        <div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addcat">Form Tambah</h5>
+                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                    <form method="POST" action="{{ route('admin.filter.store') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <ul class="list-unstyled">
+                                <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
+                             </ul>
 
-                        <div class="form-group required {{ $errors->has('filter_name') ? ' has-error' : '' }}">
-                            <label for="filter_name" class="col-md-12 control-label">Kategori<span class="required-text"> *</span></label>
-                            <div class="col-md-12">
-                                <input id="filter_name" type="text" class="form-control" name="filter_name" value="{{ old('filter_name') }}" placeholder="Kategori" required> @if ($errors->has('filter_name'))
-                                <span class="help-block"><strong>{{ $errors->first('filter_name') }}</strong></span> @endif
+                            <div class="form-group required {{ $errors->has('filter_name') ? ' has-error' : '' }}">
+                                <label for="filter_name" class="col-md-12 control-label">Kategori<span class="required-text"> *</span></label>
+                                <div class="col-md-12">
+                                    <input id="filter_name" type="text" class="form-control" name="filter_name" value="{{ old('filter_name') }}" placeholder="Kategori" required> @if ($errors->has('filter_name'))
+                                    <span class="help-block"><strong>{{ $errors->first('filter_name') }}</strong></span> @endif
+                                </div>
+                            </div>
+                            <div class="form-group required {{ $errors->has('filter_code') ? ' has-error' : '' }}">
+                                <label for="filter_code" class="col-md-12 control-label">Kode Kategori<span class="required-text"> *</span></label>
+                                <div class="col-md-12">
+                                    <input id="filter_code" type="text" class="form-control" name="filter_code" value="{{ old('filter_code') }}" placeholder="A0X" required> @if ($errors->has('filter_code'))
+                                    <span class="help-block"><strong>{{ $errors->first('filter_code') }}</strong></span> @endif
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group required {{ $errors->has('filter_code') ? ' has-error' : '' }}">
-                            <label for="filter_code" class="col-md-12 control-label">Kode Kategori<span class="required-text"> *</span></label>
-                            <div class="col-md-12">
-                                <input id="filter_code" type="text" class="form-control" name="filter_code" value="{{ old('filter_code') }}" placeholder="A0X" required> @if ($errors->has('filter_code'))
-                                <span class="help-block"><strong>{{ $errors->first('filter_code') }}</strong></span> @endif
-                            </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="submit">Add</button>
-                        <button type="reset" class="btn btn-danger">Reset</button>
-                    </div>
-
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 

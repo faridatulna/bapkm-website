@@ -48,7 +48,6 @@ $(".iconlike.fa").click(function() {
                                 <div class="media-body">
                                     <h5>by Admin</h5>
                                     <p>{{date('M j, Y', strtotime($data->updated_at))}}</p>
-                                    <!-- <p>12 Dec, 2017 11:21 am</p> -->
                                 </div>
                                 <div class="d-flex">
                                     <img src="img/blog/user-img.jpg" alt="">
@@ -86,15 +85,9 @@ $(".iconlike.fa").click(function() {
                                 <p style="text-align: right;"><span></span> Next Post <span class="lnr lnr-arrow-right"></span> </p>
                                 <a href="/article-page/{{$next->id}}"><h4>{!!$next->title!!}</h4></a>
                             </div>
-                            <!-- <div class="arrow">
-                                <a href="/article-page/{{$next->id}}"><span class="lnr text-white lnr-arrow-right"></span></a>
-                            </div> -->
                         </div>
                         @elseif( $datas->count() > 1 && $data->id == $datas->max('id') )
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                            <!-- <div class="arrow">
-                                <a href="/article-page/{{$prev->id}}"><span class="lnr text-white lnr-arrow-left"></span></a>
-                            </div> -->
                             <div class="detials">
                                 <p><span class="lnr lnr-arrow-left"></span> Prev Post</p>
                                 <a href="/article-page/{{$prev->id}}"><h4>{!!$prev->title!!}</h4></a>
@@ -103,9 +96,6 @@ $(".iconlike.fa").click(function() {
 
                         @else
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                            <!-- <div class="arrow">
-                                <a href="/article-page/{{$prev->id}}"><span class="lnr text-white lnr-arrow-left"></span></a>
-                            </div> -->
                             <div class="detials">
                                 <p><span class="lnr lnr-arrow-left"></span> Prev Post</p>
                                 <a href="/article-page/{{$prev->id}}"><h4>{!!$prev->title!!}</h4></a>
@@ -116,9 +106,6 @@ $(".iconlike.fa").click(function() {
                                 <p style="text-align: right;"><span></span> Next Post <span class="lnr lnr-arrow-right"></span> </p>
                                 <a href="/article-page/{{$next->id}}"><h4>{!!$next->title!!}</h4></a>
                             </div>
-                            <!-- <div class="arrow">
-                                <a href="/article-page/{{$next->id}}"><span class="lnr text-white lnr-arrow-right"></span></a>
-                            </div> -->
                         </div>
                         @endif
                     </div>
@@ -126,21 +113,11 @@ $(".iconlike.fa").click(function() {
 
                 <div class="main_blog_details">
                     <div class="news_d_footer">
-                        <!-- <a> <i class="iconlike fa fa-heart-o "></i>like this post! 4</a> -->
                         <a>{{$data->viewer}} kali dilihat</a>
                         <a onclick="showForm()" class="iconlike justify-content-center ml-auto">
                             <i class="fa fa-comments-o"></i>Tambahkan Komentar</a>
-                        <!-- <div class="news_socail ml-auto">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-rss"></i></a>
-                        </div> -->
                     </div>
                 </div>
-
-                <div id="disqus_thread"></div>
 
                 <div class="comment-form" id="comment-form" style="display: none;">
                     <h4>Leave a Comment</h4>
@@ -150,6 +127,7 @@ $(".iconlike.fa").click(function() {
                             <div class="form-group col-lg-6 col-md-6 name">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Enter Name'" required="">
                                 <input type="hidden" name="article_id" value="{{ $data->id }}" />
+                                <!-- <input type="hidden" name="user_id" value="10" /> -->
                             </div>
                         </div>
                         <div class="form-group">

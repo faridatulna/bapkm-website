@@ -10,7 +10,7 @@
             }
         });
 </script>
-<script type="text/javascript"></script>
+
 @stop @extends('layouts.app') @section('content')
 
 <!--================Choice Area =================-->
@@ -48,12 +48,15 @@
             <div class="col-lg-8">
                 <div class="ui accordion">
                     <div class="title active">
-                        <i class="dropdown icon"></i>Filter
+                        <i class="dropdown icon"></i>Kategori
                     </div>
                     <div class="content active">
                         <div class="ui yellow labels"> 
+                              <button class="ui small label option" id="fid0" value="0">Semua</button>
+                              <!-- <a class="ui small label option" href="/article">Semua</a> -->
                             @foreach( $filter as $filter )
-                              <a class="ui small label" href="{{ route('article.category', $filter->id) }}">{{$filter->filter_name}}</a>
+                              <button class="ui small label option" id="fid{{$filter->id}}" value="{{$filter->id}}">{{$filter->filter_name}}</button>
+                              <!-- <a class="ui small label option" href="/article/{{$filter->id}}">{{$filter->filter_name}}</a> -->
                             @endforeach
                         </div>
                     </div>
@@ -61,23 +64,24 @@
                 <div class="latest_news">
 
                     <div class="media">
-                        @if( $article->count() )
+                        @if( $datas->count() )
                         <div class="media-body">
-                            @foreach($article as $data)
+                          <div id="product">
+                            @foreach($datas as $data)
                             <div class="choice_text">
                                 <div class="date">
                                     <a class="gad_btn text-uppercase" href="#" disabled="">
                                         {{ $data->filter($data->type)->filter_name }}
-                                        </a>
+                                    </a>
                                     <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ date('M j, Y', strtotime($data->updated_at)) }}</a>
                                 </div>
-                                <a href="/article-page/{{$data->id}}" method="post"><h4>{{$data->title}}</h4></a> {{ csrf_field() }}
+                                <a href="/article-page/{{$data->id}}" method="post"><h4>{!! $data->title !!}</h4></a> {{ csrf_field() }}
                                 <span class="d-inline-block">
                                       <p class="word-wrap">{!!$data->description!!}</p>
                                 </span>
-
                             </div>
                             @endforeach
+                          </div>
                         </div>
                         @else
                         <br></br>
@@ -87,10 +91,10 @@
                     </div>
 
                     <nav aria-label="Page navigation example">
-                        @if ($article->hasPages()) Halaman <strong>{{ $article->currentPage() }}</strong> dari <strong>{{ $article->lastPage() }}</strong>.
-                        <br/> Menampilkan <strong>{{ ((($article->currentPage() -1) * $article->perPage()) + 1) }}</strong> sampai <strong>{{ ((($article->currentPage() -1) * $article->perPage()) + $article->count()) }}</strong> dari <strong>{{ $article->total() }}</strong> data yang ada.
+                       @if ($datas->hasPages()) Halaman <strong>{{ $datas->currentPage() }}</strong> dari <strong>{{ $datas->lastPage() }}</strong>.
+                        <br/> Menampilkan <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + 1) }}</strong> sampai <strong>{{ ((($datas->currentPage() -1) * $datas->perPage()) + $datas->count()) }}</strong> dari <strong>{{ $datas->total() }}</strong> data yang ada.
                         <br/> @endif
-                        <br> {{ $article->fragment('one')->links() }}
+                        <br> {{ $datas->fragment('one')->links() }}
                     </nav>
                 </div>
             </div>
@@ -138,7 +142,7 @@
                   </aside>
 
                     <aside class="r_widgets add_widgets text-center">
-                        <img class="img-fluid" src="img/blog/add-1.jpg" alt="">
+                        <!-- <img class="img-fluid" src="img/blog/add-1.jpg" alt=""> -->
                     </aside>
 
                     <aside class="r_widgets add_widgets">

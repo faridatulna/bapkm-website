@@ -113,9 +113,15 @@
                                             <p class="lead"><strong class="text">{{$data->title}}</strong></p>
                                         </a>
                                     </div>
+                                    @if($data->filePdf)
                                     <a href="{{ url('Uploaded/Service',$data->filePdf) }}">
                                         <div class="card-product-button"><i class="fa fa-book"></i> Panduan</div>
                                     </a>
+                                    @else
+                                    <a href="{{ $data->url }}">
+                                        <div class="card-product-button"> Lihat<i class="fa fa-arrow-right"></i></div>
+                                    </a>
+                                    @endif
                                 </div>
                                 @endforeach
                                 <div class="item">
@@ -128,12 +134,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="right_sidebar">
-                        <aside class="r_widgets news_widgets">
+            <div class="col-lg-4">
+                <div class="right_sidebar">
+                    <aside class="r_widgets news_widgets">
                             <div class="main_title2">
                                 <h2>Kalender Akademik</h2>
                             </div>
@@ -177,10 +182,9 @@
                                     </div>
                                     @else @endif @endforeach
                                 </div>
+                    </aside>
 
-                        </aside>
-
-                        <aside class="r_widgets sosial_widgets">
+                    <aside class="r_widgets sosial_widgets">
                             <div class="main_title2">
                                 <h2>Quick Links</h2>
                             </div>
@@ -197,9 +201,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </aside>
+                    </aside>
 
-                        <aside class="r_widgets add_widgets">
+                    <aside class="r_widgets add_widgets">
                             <div class="main_title2">
                                 <h2>Agenda</h2>
                             </div>
@@ -230,16 +234,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </aside>
-
-                        <aside class="r_widgets add_widgets text-center">
-                            <img class="img-fluid" src="img/blog/add-1.jpg" alt="">
-                        </aside>
-
-                    </div>
+                    </aside>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!--================End News Area =================-->
 

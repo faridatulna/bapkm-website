@@ -130,6 +130,13 @@ class ArticleController extends Controller
         return view('admin.article.index',compact('datas','comments','filter'));
     }
 
+    public function show($id)
+    {
+        $data = Article::where('id',$id)->firstOrFail();
+
+        return view('admin.article.article-single',compact('data'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

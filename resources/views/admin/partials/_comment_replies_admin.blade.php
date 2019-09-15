@@ -16,7 +16,11 @@
     <div class="single-comment justify-content-between d-flex">
         <div class="user-comment justify-content-between d-flex">
             <div class="desc">
+                @if($comment->user_id != null)
+                <h5 class="author" style="color:#F4BA23;"> {{ $comment->name }} </h5>
+                @else
                 <h5 class="author"> {{ $comment->name }} </h5>
+                @endif
                 <p class="date"> {{date('M j, Y h:i A', strtotime($comment->submit_time))}} </p>
                 <p class="body"> {{ $comment->body }} </p>
                 @if ( $comment->status != 0 )

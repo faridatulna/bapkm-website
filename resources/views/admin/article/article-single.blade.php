@@ -136,9 +136,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            @if ( $data->comments_data($data->id)->count() )
+                            @if ( $data->comments_data($data->id)->count() && $data->comments_data($data->status == 0))
                                 @foreach( $data->comments_data($data->id) as $comment )
-                                @if( $comment->status == 0 )
+                                @if ( $comment->status == 0 )
                                 <div class="row comment-row justify-content-between d-flex">
                                     <div class="col">
                                         <h5 class="author"> {{ $comment->name }} </h5>
@@ -162,12 +162,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                @else
-                                    <div class="row"> <p> Semua Komentar Telah Disetujui </p> </div>
-                                @endif
+                                @else @endif
                                 @endforeach
                             @else
-                               <div class="row"> <p> Tidak Ada Komentar </p> </div>
+                               <div class="row"> <p> Tidak Ada Komentar Baru </p> </div>
                             @endif
                         </div>
                     </div>

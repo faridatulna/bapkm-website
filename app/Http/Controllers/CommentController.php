@@ -66,6 +66,7 @@ class CommentController extends Controller
         $reply->submit_time = Carbon::now();
         $reply->body = $request->get('body');
         $reply->parent_id = $request->get('comment_id');
+        // $reply->user_id = $request->get('user_id');
         $reply->user()->associate($request->user());
         $reply->status = 0;
         if($reply->user_id != null){
