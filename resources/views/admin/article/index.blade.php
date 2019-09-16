@@ -199,16 +199,16 @@
                                 <li class="required-text"><em> Form wajib diisi <span>*</span></em></li>
                             </ul> 
 
-                            <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
-                                <div class="col-md-12">
-                                    <select class="form-control" name="type" required="">
-                                        @foreach ($filter as $select)
-                                            <option value="{{ $select->id }}" @if($data->type == $select->id) selected @endif>{{ $select->filter_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                                    <div class="form-group required {{ $errors->has('type') ? ' has-error' : '' }}">
+                                        <label for="type" class="col-md-12 control-label">Jenis Artikel<span class="required-text"> *</span></label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="type" required="">
+                                                @foreach ($filter as $select)
+                                                    <option value="{{ $select->id }}" @if($data->type == $select->id) selected @endif>{{ $select->filter_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group required {{ $errors->has('title') ? ' has-error' : '' }}">
                                         <label for="title" class="col-md-12 control-label">Judul<span class="required-text"> *</span></label>
                                         <div class="col-md-12">
@@ -246,10 +246,6 @@
                                             <a class="file-text" href="{{url('Uploaded/Article/', $data->filePdf )}}"><i class="fa fa-download"></i> {{ $data->filePdf }}</a> @else @endif
                                         </div>
                                     </div>
-                                </div>
-
-                            </div>
-
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary" id="submit">Update</button>
@@ -257,7 +253,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
 

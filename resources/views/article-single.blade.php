@@ -61,17 +61,22 @@ $(".iconlike.fa").click(function() {
                     <!-- <img class="img-fluid" src="https://dummyimage.com/600x400/000/fff" alt=""> -->
                     @endif
 
+                    @if( $data->filePdf )
                     <blockquote class="blockquote">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-9">
                                 <h3 class="mb-0">
-                                    <a href="{{ url('Uploaded/Article', $data->filePdf )}}">
-                                        <button class="btn btn-secondary btn-sm"><i class="fa fa-download"></i> Unduh File</button>
-                                    </a>
+                                    Silahkan mengunduh file terkait disini
                                 </h3>
+                            </div>
+                            <div class="col-3">
+                                <a href="{{ url('Uploaded/Article', $data->filePdf )}}">
+                                    <button class="btn btn-secondary btn-sm"><i class="fa fa-download"></i> Unduh File</button>
+                                </a>
                             </div>
                         </div>
                     </blockquote>
+                    @endif
                 </div>
 
                 <div class="navigation-area mt-50">
